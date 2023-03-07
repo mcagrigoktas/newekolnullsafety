@@ -92,7 +92,7 @@ class BroadcastHelper {
 
         if (broadcastLink.safeLength < 6 && broadcastData == null) return OverAlert.show(type: AlertType.danger, message: 'errliveurl'.translate);
         final item = LiveBroadcastModel()
-          ..targetList = [lesson.classKey]
+          ..targetList = [lesson.classKey!]
           ..broadcastLink = broadcastLink
           ..broadcastData = broadcastData
           ..channelName = channelName

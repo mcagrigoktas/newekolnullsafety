@@ -30,7 +30,7 @@ class EatService {
   static Future<void> dbSetDayEats(String day, List<String> yemekListesi) => _database33.set('Okullar/$_kurumId/$_termKey/Eat/DayEats/$day', yemekListesi);
 
   // Okul bilgilerini yemek url si veya dosya urlsini kaydeder
-  static Future<void> saveEatData(String? url) async {
+  static Future<void> saveEatData(String url) async {
     Map<String, dynamic> updates = {};
     updates['/Okullar/$_kurumId/SchoolData/Info/em'] = url;
     updates['/Okullar/$_kurumId/SchoolData/Versions/SchoolInfo'] = _realTime;

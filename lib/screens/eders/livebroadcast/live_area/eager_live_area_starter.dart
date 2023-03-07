@@ -34,7 +34,7 @@ class LiveAreaStarter {
     await eager.loadLibrary();
     return eager.DeferredLiveAreaStarter.startGetTo(
       item: LiveBroadcastModel()
-        ..targetList = [studentKey]
+        ..targetList = studentKey == null ? null : [studentKey]
         ..broadcastLink = LiveBroadCastHelper.getJitsiDomain()
         ..channelName = 'ch' + channelName + channelName
 

@@ -43,7 +43,7 @@ class ExamResultCalculator {
 
     ///Sinvi online cozen ogrencilerin llistesini tutar
     ///kurumId->seisonNo->/studetnKeey /{answerData}/{lessonKey->answer}
-    Map<String, Map<String, Map<String, Map<String, Map<String, String>>>>>? onlineExamStudentData = await _downloadOnlineStudentAnsweer(exam.key);
+    Map<String, Map<String, Map<String, Map<String, Map<String, String>>>>>? onlineExamStudentData = await _downloadOnlineStudentAnsweer(exam.key!);
 
     ///cevap anahtari optic formdan alinacaksa cvap anahtarini saklar
     Map<String, Map<String, String>> answerKeyDataFromOpticFrom = {};
@@ -706,7 +706,7 @@ class ExamResultCalculator {
   }
 
   ///seisonNo->/kurumId->/studetnKeey /{answerData}/{lessonKey->answer}
-  static Future<Map<String, Map<String, Map<String, Map<String, Map<String, String>>>>>?> _downloadOnlineStudentAnsweer(String? examKey) async {
+  static Future<Map<String, Map<String, Map<String, Map<String, Map<String, String>>>>>?> _downloadOnlineStudentAnsweer(String examKey) async {
     log('Ogrenci onlline sinav cevap llistesi indiriliyor');
 
     Map? data = (await ExamService.dbGetOnlineExamAllStudentAnswer(examKey).once())?.value;

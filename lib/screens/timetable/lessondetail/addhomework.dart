@@ -86,13 +86,13 @@ class _AddHomeWorkState extends State<AddHomeWork> {
       _data.lessonKey = widget.lesson!.key;
       _data.tur = widget.tur;
 
-      List<String?> contactlist = AppVar.appBloc.studentService!.dataList.where((student) => student.classKeyList.contains(widget.sinif!.key)).map((student) => student.key).toList();
+      List<String> contactlist = AppVar.appBloc.studentService!.dataList.where((student) => student.classKeyList.contains(widget.sinif!.key)).map((student) => student.key!).toList();
       if (contactlist.isEmpty) {
         OverAlert.show(type: AlertType.danger, message: 'nostudent'.translate);
         return;
       }
 
-      HomeWorkService.saveHomeWork(_data.mapForSave(), teacherHomeWorkSharing, widget.sinif!.key, widget.lesson!.key, contactlist, _data.teacherKey).then((a) async {
+      HomeWorkService.saveHomeWork(_data.mapForSave(), teacherHomeWorkSharing, widget.sinif!.key!, widget.lesson!.key, contactlist, _data.teacherKey).then((a) async {
         if (teacherHomeWorkSharing) {
           EkolPushNotificationService.sendMultipleNotification(HomeWorkHelper.getNotificationHeader(widget.tur) + ': ' + _data.title!, _data.content, contactlist, NotificationArgs(tag: 'homework')).unawaited;
         }

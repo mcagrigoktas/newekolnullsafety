@@ -221,7 +221,7 @@ class _PaymentPlanWidgetState extends State<PaymentPlanWidget> {
                       icon: const Icon(Icons.print),
                       color: Colors.white,
                       onPressed: () {
-                        var student = AppVar.appBloc.studentService!.dataListItem(widget.studentKey!)!;
+                        var student = AppVar.appBloc.studentService!.dataListItem(widget.studentKey)!;
                         PrintAccounting.printMakbuz(context, student, tutar: odeme.miktar, paymentTypeKey: widget.paymentTypeKey, faturaNo: odeme.faturaNo, paymentName: selectedTaksit!.name!, date: odeme.tarih);
                       },
                     ),
@@ -299,7 +299,7 @@ class _PaymentPlanWidgetState extends State<PaymentPlanWidget> {
             leading: Icons.print.icon.color(Fav.design.primaryText).make(),
             title: 'print1'.translate.text.make(),
             onPressed: () async {
-              var student = AppVar.appBloc.studentService!.dataListItem(widget.studentKey!);
+              var student = AppVar.appBloc.studentService!.dataListItem(widget.studentKey);
               if ('lang'.translate == 'tr') {
                 await PrintAccounting.printStudentAccountingForTurkey(student!, columnNames, data);
                 await 1000.wait;
@@ -315,7 +315,7 @@ class _PaymentPlanWidgetState extends State<PaymentPlanWidget> {
             leading: Icons.print.icon.color(Fav.design.primaryText).make(),
             title: 'print2'.translate.text.make(),
             onPressed: () async {
-              var student = AppVar.appBloc.studentService!.dataListItem(widget.studentKey!);
+              var student = AppVar.appBloc.studentService!.dataListItem(widget.studentKey);
               await PrintAccounting.printAccountingVoucher(context, student, columnNames, data);
             }),
         if (data.odemeTuru == 1) QudsPopupMenuDivider(),
@@ -583,7 +583,7 @@ class _PaymentPlanWidgetState extends State<PaymentPlanWidget> {
       });
       selectedTaksit = null;
       OverAlert.saveSuc();
-      var student = AppVar.appBloc.studentService!.dataListItem(widget.studentKey!)!;
+      var student = AppVar.appBloc.studentService!.dataListItem(widget.studentKey)!;
       PrintAccounting.printMakbuz(
         context,
         student,

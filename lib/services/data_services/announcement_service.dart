@@ -3,9 +3,9 @@ part of '../dataservice.dart';
 class AnnouncementService {
   AnnouncementService._();
 
-  static String? get _kurumId => AppVar.appBloc.hesapBilgileri.kurumID;
-  static String? get _uid => AppVar.appBloc.hesapBilgileri.uid;
-  static String? get _termKey => AppVar.appBloc.hesapBilgileri.termKey;
+  static String get _kurumId => AppVar.appBloc.hesapBilgileri.kurumID!;
+  static String get _uid => AppVar.appBloc.hesapBilgileri.uid!;
+  static String get _termKey => AppVar.appBloc.hesapBilgileri.termKey!;
   static Database get _database11 => AppVar.appBloc.database1;
   static Database get _database22 => AppVar.appBloc.database2;
   static dynamic get _realTime => databaseTime;
@@ -27,7 +27,7 @@ class AnnouncementService {
       if (announcement.isPublish == true) {
         EkolPushNotificationService.sendMultipleNotification(announcement.title, announcement.content, announcement.targetList!, NotificationArgs(tag: 'announcement'));
       } else if (UserPermissionList.sendnotifyunpublisheditem() == true) {
-        sendUnpublishedItemNotify(announcement.senderName, 'publishthisannouncement'.argsTranslate({'title': announcement.title}));
+        sendUnpublishedItemNotify(announcement.senderName!, 'publishthisannouncement'.argsTranslate({'title': announcement.title}));
       }
       _database11.set('${StringHelper.schools}/$_kurumId/SchoolData/Versions/$_termKey/${VersionListEnum.announcements}', _realTime);
       if (existingKey == null) LogHelper.addLog('Announcements', _uid);
@@ -71,12 +71,12 @@ class AnnouncementService {
 
   // Hangi Duyurunun Çekildiğinin versiyonunu yazar;
   //todo bunun yeni versiyon mantigina gore calistigini kontrol et
-  static Future<void> saveGettingAnnouncementVersion(int? version) async {
+  static Future<void> saveGettingAnnouncementVersion(int version) async {
     return _databaseLogss.set('${StringHelper.schools}/$_kurumId/$_termKey/AnnouncementsLogs/$_uid', version);
   }
 
   //Idareciye paylasmasi gerekenlerle ilgili bildirimat
-  static void sendUnpublishedItemNotify(String? title, String message) {
+  static void sendUnpublishedItemNotify(String title, String message) {
     final _uidList = AppVar.appBloc.managerService!.dataList.where((element) => element.key == 'Manager1' || element.authorityList!.contains('yetki4')).map((e) => e.key).toList();
     EkolPushNotificationService.sendMultipleNotification(title, message, _uidList, NotificationArgs(tag: 'unpublisheditem'));
   }

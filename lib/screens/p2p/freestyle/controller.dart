@@ -23,7 +23,7 @@ class P2PController extends GetxController {
   double? studentRequestMenuWidth;
 
   // String filteredStudentClassKey;
-  Set<String?> selectedStudentList = {};
+  Set<String> selectedStudentList = {};
   String? teacherFilterText;
   String? selectedTeacher;
   int tableStartHour = 8;
@@ -242,7 +242,7 @@ class P2PController extends GetxController {
     //   return;
     // }
     selectedStudentList.clear();
-    selectedStudentList.add(request.studentKey);
+    selectedStudentList.add(request.studentKey!);
     selectedRequest = request;
 
     final _lesson = AppVar.appBloc.lessonService!.dataListItem(request.lessonKey!);
@@ -310,7 +310,7 @@ class P2PController extends GetxController {
       selectedStudentList.remove(studentKey);
     } else {
       await studentBanControlOk(studentKey);
-      selectedStudentList.add(studentKey);
+      selectedStudentList.add(studentKey!);
     }
     setupEventList();
   }
@@ -397,7 +397,7 @@ class P2PController extends GetxController {
           day: model.day,
           startMinute: model.startTime!,
           endMinute: model.startTime! + model.duration!,
-          title: model.studentList!.fold<String>('\n', (p, e) => p + (AppVar.appBloc.studentService!.dataListItem(e!)?.name ?? '') + '\n'),
+          title: model.studentList!.fold<String>('\n', (p, e) => p + (AppVar.appBloc.studentService!.dataListItem(e)?.name ?? '') + '\n'),
         ));
       } else if (model.studentList!.any((element) => selectedStudentList.contains(element))) {
         final _teacher = AppVar.appBloc.teacherService!.dataListItem(model.teacherKey!);
@@ -429,7 +429,7 @@ class P2PController extends GetxController {
   void _addStudentProgramEvents() {
     studentEventList.clear();
     selectedStudentList.forEach((studentKey) {
-      studentProgramEventCache[studentKey] ??= ProgramHelper.getStudentEventListFromProgram(studentKey!);
+      studentProgramEventCache[studentKey] ??= ProgramHelper.getStudentEventListFromProgram(studentKey);
       studentEventList.addAll(studentProgramEventCache[studentKey]!);
     });
   }

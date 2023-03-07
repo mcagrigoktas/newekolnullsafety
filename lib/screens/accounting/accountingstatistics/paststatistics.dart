@@ -283,7 +283,7 @@ class StatisticsTile extends StatelessWidget {
                   ..forParentOtherMenu = true
                   ..pageName = PageName.sA;
                 OverLoading.show();
-                await InAppNotificationService.sendInAppNotification(_notification, pastData!.studentKey, notificationTag: PageName.sA.name).then((value) {
+                await InAppNotificationService.sendInAppNotification(_notification, pastData!.studentKey!, notificationTag: PageName.sA.name).then((value) {
                   OverAlert.show(title: 'sendnotificationsuc'.translate + ' - ' + pastData!.name!, message: _message, autoClose: false);
                 });
                 await OverLoading.close();

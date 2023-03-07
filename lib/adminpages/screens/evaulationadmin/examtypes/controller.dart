@@ -115,9 +115,9 @@ class ExamTypeController extends GetxController {
       if (selectedItem!.key.safeLength < 5) return;
       selectedItem!.lastUpdate = databaseTime;
       if (girisTuru == EvaulationUserType.school) {
-        await ExamService.saveSchoolExamType(selectedItem!.mapForSave(), selectedItem!.key);
+        await ExamService.saveSchoolExamType(selectedItem!.mapForSave(), selectedItem!.key!);
       } else if (girisTuru == EvaulationUserType.admin) {
-        await ExamService.saveAdminExamType(selectedItem!.mapForSave(), selectedItem!.key);
+        await ExamService.saveAdminExamType(selectedItem!.mapForSave(), selectedItem!.key!);
       } else {
         throw Exception('Bilinmeyen  kullanici  tipi');
       }
@@ -134,9 +134,9 @@ class ExamTypeController extends GetxController {
     selectedItem!.aktif = false;
     selectedItem!.lastUpdate = databaseTime;
     if (girisTuru == EvaulationUserType.school) {
-      await ExamService.saveSchoolExamType(selectedItem!.mapForSave(), selectedItem!.key);
+      await ExamService.saveSchoolExamType(selectedItem!.mapForSave(), selectedItem!.key!);
     } else if (girisTuru == EvaulationUserType.admin) {
-      await ExamService.saveAdminExamType(selectedItem!.mapForSave(), selectedItem!.key);
+      await ExamService.saveAdminExamType(selectedItem!.mapForSave(), selectedItem!.key!);
     } else {
       throw Exception('Bilinmeyen  kullanici  tipi');
     }

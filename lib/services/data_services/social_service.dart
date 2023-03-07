@@ -52,7 +52,7 @@ class SocialService {
       if (socialItem.isPublish == true) {
         EkolPushNotificationService.sendMultipleNotification(socialItem.senderName, socialItem.isPhoto ? 'newsocialitemnotify'.argsTranslate({'count': socialItem.imgList!.length}) : 'newsocialvideonotify'.translate, socialItem.targetList!, NotificationArgs(tag: 'social'));
       } else if (UserPermissionList.sendnotifyunpublisheditem() == true) {
-        AnnouncementService.sendUnpublishedItemNotify(socialItem.senderName, 'publishthissocial'.translate);
+        AnnouncementService.sendUnpublishedItemNotify(socialItem.senderName!, 'publishthissocial'.translate);
       }
       if (tur == 'SocialNetwork') {
         List imgList = socialItem.imgList ?? [];

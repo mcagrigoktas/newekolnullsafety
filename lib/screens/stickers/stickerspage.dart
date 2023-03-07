@@ -87,7 +87,7 @@ class StickersPageState extends State<StickersPage> with AppFunctions {
     OverLoading.show();
     if (sticker.extraData > existingStarCount) {
       await StickerService.dbSetStickersStar(
-        AppVar.appBloc.hesapBilgileri.gtS ? AppVar.appBloc.hesapBilgileri.uid : seciliOgrenciKey,
+        AppVar.appBloc.hesapBilgileri.gtS ? AppVar.appBloc.hesapBilgileri.uid! : seciliOgrenciKey!,
         sticker,
         existingStarCount + 1,
         sendNotification: AppVar.appBloc.hesapBilgileri.gtMT,
@@ -115,7 +115,7 @@ class StickersPageState extends State<StickersPage> with AppFunctions {
     if (0 < existingStarCount) {
       OverLoading.show();
       await StickerService.dbSetStickersStar(
-        AppVar.appBloc.hesapBilgileri.gtS ? AppVar.appBloc.hesapBilgileri.uid : seciliOgrenciKey,
+        AppVar.appBloc.hesapBilgileri.gtS ? AppVar.appBloc.hesapBilgileri.uid! : seciliOgrenciKey!,
         sticker,
         existingStarCount - 1,
       ).then((_) {

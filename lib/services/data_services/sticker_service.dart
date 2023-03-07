@@ -50,7 +50,7 @@ class StickerService {
 
 // Etiket yildizini degistirir
 
-  static Future<void> dbSetStickersStar(String? studentKey, Sticker sticker, int? count, {bool sendNotification = false}) {
+  static Future<void> dbSetStickersStar(String studentKey, Sticker sticker, int? count, {bool sendNotification = false}) {
     return _database33.set('Okullar/$_kurumId/$_termKey/Stickers/Datas/$studentKey/${sticker.key}/stars', count).then((_) {
       _databaseVersionss.set('Okullar/$_kurumId/$_termKey/$studentKey/StudentStickersData', _realTime);
       LogHelper.addLog('GiveStars', _uid);

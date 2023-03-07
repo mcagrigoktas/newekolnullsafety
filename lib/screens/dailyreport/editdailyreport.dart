@@ -14,9 +14,9 @@ import '../../widgets/sticker_picker.dart';
 import 'helper.dart';
 
 class EditDailyReport extends StatefulWidget {
-  final String? classKey;
+  final String classKey;
 
-  EditDailyReport({this.classKey});
+  EditDailyReport({required this.classKey});
 
   @override
   _EditDailyReportState createState() => _EditDailyReportState();

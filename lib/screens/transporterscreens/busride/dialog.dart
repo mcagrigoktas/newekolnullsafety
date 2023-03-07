@@ -6,9 +6,9 @@ import '../../../models/allmodel.dart';
 import 'controller.dart';
 
 class TransporterStudentDialog extends StatelessWidget {
-  final Student? student;
+  final Student student;
   TransporterStudentDialog({
-    this.student,
+    required this.student,
   });
   BusRideController get controller => Get.find<BusRideController>();
 
@@ -25,25 +25,25 @@ class TransporterStudentDialog extends StatelessWidget {
             Spacer(
               flex: 2,
             ),
-            if (student!.imgUrl != null && student!.imgUrl.startsWithHttp)
+            if (student.imgUrl != null && student.imgUrl.startsWithHttp)
               ClipRRect(
                 borderRadius: BorderRadius.circular(16),
                 child: MyCachedImage(
-                  imgUrl: student!.imgUrl!,
+                  imgUrl: student.imgUrl!,
                   width: 200,
                 ),
               ).pt16,
             16.heightBox,
-            student!.name.text.color(Colors.white).center.fontSize(40).bold.make(),
+            student.name.text.color(Colors.white).center.fontSize(40).bold.make(),
             4.heightBox,
-            student!.adress.text.color(Colors.white).center.make(),
+            student.adress.text.color(Colors.white).center.make(),
             16.heightBox,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    controller.makeStudentHere(student!.key);
+                    controller.makeStudentHere(student.key!);
                     Get.back();
                   },
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.green, fixedSize: Size(_buttonWidth, 96)),
@@ -52,7 +52,7 @@ class TransporterStudentDialog extends StatelessWidget {
                 32.widthBox,
                 ElevatedButton(
                   onPressed: () {
-                    controller.makeStudentAbsent(student!.key);
+                    controller.makeStudentAbsent(student.key!);
                     Get.back();
                   },
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.red, fixedSize: Size(_buttonWidth, 96)),
@@ -68,30 +68,30 @@ class TransporterStudentDialog extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Opacity(
-                    opacity: controller.getSendWeAreComingNotStatus(student!.key) == true ? 0.5 : 1.0,
+                    opacity: controller.getSendWeAreComingNotStatus(student.key) == true ? 0.5 : 1.0,
                     child: IgnorePointer(
-                      ignoring: controller.getSendWeAreComingNotStatus(student!.key) == true,
+                      ignoring: controller.getSendWeAreComingNotStatus(student.key) == true,
                       child: ElevatedButton(
                         onPressed: () {
                           controller.sendWeAreComingNot(student);
                         },
                         style: ElevatedButton.styleFrom(backgroundColor: Color.fromARGB(255, 255, 255, 255), fixedSize: Size(416, 54)),
-                        child: FittedBox(child: (controller.getSendWeAreComingNotStatus(student!.key) == true ? 'sendnotificationsuc' : 'sendwearecomingnot').translate.text.center.fontSize(90).color(Colors.black).make().p8),
+                        child: FittedBox(child: (controller.getSendWeAreComingNotStatus(student.key) == true ? 'sendnotificationsuc' : 'sendwearecomingnot').translate.text.center.fontSize(90).color(Colors.black).make().p8),
                       ),
                     ),
                   ),
                   32.heightBox,
                   Opacity(
-                    opacity: controller.getSendWeAreCameNotStatus(student!.key) == true ? 0.5 : 1.0,
+                    opacity: controller.getSendWeAreCameNotStatus(student.key) == true ? 0.5 : 1.0,
                     child: IgnorePointer(
-                      ignoring: controller.getSendWeAreCameNotStatus(student!.key) == true,
+                      ignoring: controller.getSendWeAreCameNotStatus(student.key) == true,
                       child: ElevatedButton.icon(
                         icon: Icons.thumb_up_alt_rounded.icon.color(Colors.green).make(),
                         onPressed: () {
                           controller.sendWeAreCameNot(student);
                         },
                         style: ElevatedButton.styleFrom(backgroundColor: Color.fromARGB(255, 255, 255, 255), fixedSize: Size(416, 54)),
-                        label: FittedBox(child: (controller.getSendWeAreCameNotStatus(student!.key) == true ? 'sendnotificationsuc' : 'sendwecamenot').translate.text.center.fontSize(90).color(Colors.black).make().p8),
+                        label: FittedBox(child: (controller.getSendWeAreCameNotStatus(student.key) == true ? 'sendnotificationsuc' : 'sendwecamenot').translate.text.center.fontSize(90).color(Colors.black).make().p8),
                       ),
                     ),
                   ),
@@ -104,11 +104,11 @@ class TransporterStudentDialog extends StatelessWidget {
             MyFlatButton(
               text: 'savestudentlocation'.translate,
               onPressed: () {
-                controller.saveStudentLocation(student!.key);
+                controller.saveStudentLocation(student.key);
               },
               textColor: Colors.white,
             ),
-            if (student!.getLatitude != null) 'oldstudentlocation'.argTranslate(student!.getLatitude.toString() + ',' + student!.getLongitude.toString()).text.color(Colors.white).make(),
+            if (student.getLatitude != null) 'oldstudentlocation'.argTranslate(student.getLatitude.toString() + ',' + student.getLongitude.toString()).text.color(Colors.white).make(),
             16.heightBox,
           ],
         ),

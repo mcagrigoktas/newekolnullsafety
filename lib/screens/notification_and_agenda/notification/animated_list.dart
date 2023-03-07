@@ -172,7 +172,7 @@ class _NotificationListTile extends StatelessWidget {
               ..senderKey = AppVar.appBloc.hesapBilgileri.uid
               ..title = AppVar.appBloc.hesapBilgileri.name
               ..content = 'preparemystudentok'.translate,
-            notification!.senderKey,
+            notification!.senderKey!,
             sendOnlyThisTokenList: [arguments.token],
           );
           await NotificationWidgetHelper.makeThisNotificationRead(notification!);

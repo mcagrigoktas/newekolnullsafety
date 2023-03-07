@@ -3,12 +3,12 @@ part of '../dataservice.dart';
 class HomeWorkService {
   HomeWorkService._();
 
-  static String? get _kurumId => AppVar.appBloc.hesapBilgileri.kurumID;
-  static String? get _termKey => AppVar.appBloc.hesapBilgileri.termKey;
+  static String get _kurumId => AppVar.appBloc.hesapBilgileri.kurumID!;
+  static String get _termKey => AppVar.appBloc.hesapBilgileri.termKey!;
   static Database get _database33 => AppVar.appBloc.database3;
   static Database get _databaseProgram => AppVar.appBloc.databaseProgram;
   static Database get _databaseVersionss => AppVar.appBloc.databaseVersions;
-  static String? get _uid => AppVar.appBloc.hesapBilgileri.uid;
+  static String get _uid => AppVar.appBloc.hesapBilgileri.uid!;
   static Database get _databaseLogss => AppVar.appBloc.databaseLogs;
 
   static dynamic get _realTime => databaseTime;
@@ -19,10 +19,10 @@ class HomeWorkService {
   static Reference dbUserHomeWorkRef([key]) => Reference(_database33, 'Okullar/$_kurumId/$_termKey/LessonDetail/UserDatas/${key ?? _uid}');
 
   //Ogretmen icin odev kontrol bilgilerini ceker
-  static Reference dbHomeWorkCheckData(String? homeworkKey) => Reference(_database33, 'Okullar/$_kurumId/$_termKey/LessonDetail/HomeWorkDatas/$homeworkKey');
+  static Reference dbHomeWorkCheckData(String homeworkKey) => Reference(_database33, 'Okullar/$_kurumId/$_termKey/LessonDetail/HomeWorkDatas/$homeworkKey');
 
   //Idareci yayinlanmamis odevleri ceker
-  static Reference dbIsNotPublishedHomeWork(String? classKey) => Reference(_database33, 'Okullar/$_kurumId/$_termKey/LessonDetail/Datas/$classKey');
+  static Reference dbIsNotPublishedHomeWork(String classKey) => Reference(_database33, 'Okullar/$_kurumId/$_termKey/LessonDetail/Datas/$classKey');
 
 //Odev qr codes
   static Reference dbGetHomeworkDataFromQRData(String qrCode) => Reference(_databaseLogss, 'QRCodes/$qrCode');
@@ -31,7 +31,7 @@ class HomeWorkService {
 
   // Ogretmen odev ekler. Ayrica ogretmenin direk paylasma yetkisi yoksa idareci onay kisminada ekler.
   // Ogretmenlerinde hanesine kendi paylasimlari yaziliyor. Ayrica isterse tum datalardan anliz yaptirilabilir
-  static Future<void> saveHomeWork(Map homeWorkData, bool teacherHomeWorkSharing, String? classKey, String? lessonKey, List<String?> contactList, String? teacherKey) async {
+  static Future<void> saveHomeWork(Map homeWorkData, bool teacherHomeWorkSharing, String classKey, String? lessonKey, List<String> contactList, String? teacherKey) async {
     Map<String, dynamic> updates = {};
     Map<String, dynamic> updatesUserVersion = {};
     final String key = 6.makeKey;

@@ -40,7 +40,7 @@ class OnlineExamController extends GetxController {
                       ? null
                       : BookLetModel.fromJson(examAnnouncement!.extraData!['onlineForms']['seison$seisonNo']);
 
-  String? examKey;
+  String examKey;
   int? seisonNo;
   OnlineExamController(this._onlineExamData, this.examKey, this.seisonNo, {this.isBookletReviewing = false});
 
@@ -55,7 +55,7 @@ class OnlineExamController extends GetxController {
     return answers.replaceAll(' ', '').length;
   }
 
-  String get preferencesSaveKey => isBookletReviewing ? 'reviewKey$examKey' : examKey! + AppVar.appBloc.hesapBilgileri.girisTuru.toString() + AppVar.appBloc.hesapBilgileri.uid! + 'answerKeyDataSeison$seisonNo';
+  String get preferencesSaveKey => isBookletReviewing ? 'reviewKey$examKey' : examKey + AppVar.appBloc.hesapBilgileri.girisTuru.toString() + AppVar.appBloc.hesapBilgileri.uid! + 'answerKeyDataSeison$seisonNo';
 
   Uint8List? activePdfData;
   String? activeLessonKey;
@@ -75,10 +75,10 @@ class OnlineExamController extends GetxController {
     }
 
     if (!isBookletReviewing) {
-      examAnnouncement = AppVar.appBloc.announcementService!.dataListItem(examKey!);
+      examAnnouncement = AppVar.appBloc.announcementService!.dataListItem(examKey);
       subscription = AppVar.appBloc.announcementService!.stream.listen((event) async {
         await 100.wait;
-        examAnnouncement = AppVar.appBloc.announcementService!.dataListItem(examKey!);
+        examAnnouncement = AppVar.appBloc.announcementService!.dataListItem(examKey);
         await 100.wait;
         if (newBookLetData?.notificationRole?.isVisibleBooklet != true) {
           denemeSubject.add(DenemeEvent.closeBooklet);
@@ -175,14 +175,14 @@ class OnlineExamController extends GetxController {
 
     for (String url in urlList) {
       final existingBookLet = await DownloadManager.getCacheData(url: url);
-      if (existingBookLet != null ) {
+      if (existingBookLet != null) {
         return existingBookLet;
       } else {}
     }
     urlList.shuffle();
     for (String url in urlList) {
       final downloaded = await DownloadManager.downloadThenCache(url: url);
-      if (downloaded != null ) {
+      if (downloaded != null) {
         return downloaded;
       } else {}
     }
@@ -255,7 +255,7 @@ class OnlineExamController extends GetxController {
     return const SizedBox();
   }
 
-  String get sendDataPreferencesKey => AppVar.appBloc.hesapBilgileri.kurumID! + AppVar.appBloc.hesapBilgileri.uid! + examKey! + 'seison$seisonNo' + 'sendedStudentExamData';
+  String get sendDataPreferencesKey => AppVar.appBloc.hesapBilgileri.kurumID! + AppVar.appBloc.hesapBilgileri.uid! + examKey + 'seison$seisonNo' + 'sendedStudentExamData';
   bool? get dataSended => Fav.preferences.getBool(sendDataPreferencesKey, false);
 
   Future<void> sendExamDataForReview() async {

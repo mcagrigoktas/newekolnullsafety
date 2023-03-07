@@ -137,11 +137,11 @@ class OpticFormDefineController extends GetxController {
       }
 
       if (selectedItem!.userType == EvaulationUserType.school) {
-        await ExamService.saveSchoolOpticForm(selectedItem!.mapForSave(), selectedItem!.key);
+        await ExamService.saveSchoolOpticForm(selectedItem!.mapForSave(), selectedItem!.key!);
       } else if (selectedItem!.userType == EvaulationUserType.admin) {
-        await ExamService.saveAdminOpticForm(selectedItem!.mapForSave(), selectedItem!.key);
+        await ExamService.saveAdminOpticForm(selectedItem!.mapForSave(), selectedItem!.key!);
       } else if (selectedItem!.userType == EvaulationUserType.supermanager) {
-        await ExamService.saveAdminOpticForm(selectedItem!.mapForSave(), selectedItem!.key);
+        await ExamService.saveAdminOpticForm(selectedItem!.mapForSave(), selectedItem!.key!);
       } else {
         throw Exception('Bilinmeyen giiris turu');
       }
@@ -158,11 +158,11 @@ class OpticFormDefineController extends GetxController {
     selectedItem!.aktif = false;
     selectedItem!.lastUpdate = databaseTime;
     if (girisTuru == EvaulationUserType.school) {
-      await ExamService.saveSchoolOpticForm(selectedItem!.mapForSave(), selectedItem!.key);
+      await ExamService.saveSchoolOpticForm(selectedItem!.mapForSave(), selectedItem!.key!);
     } else if (girisTuru == EvaulationUserType.admin) {
-      await ExamService.saveAdminOpticForm(selectedItem!.mapForSave(), selectedItem!.key);
+      await ExamService.saveAdminOpticForm(selectedItem!.mapForSave(), selectedItem!.key!);
     } else if (girisTuru == EvaulationUserType.supermanager) {
-      await ExamService.saveAdminOpticForm(selectedItem!.mapForSave(), selectedItem!.key);
+      await ExamService.saveAdminOpticForm(selectedItem!.mapForSave(), selectedItem!.key!);
     } else {
       throw Exception('Bilinmeyen giiris turu');
     }

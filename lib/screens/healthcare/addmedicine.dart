@@ -298,7 +298,7 @@ class _MedicineDetailsState extends State<MedicineDetails> with AppFunctions {
                 type: NotificationType.medicine,
                 pageName: PageName.med,
               ),
-              widget.medicineProfile!.studentKey);
+              widget.medicineProfile!.studentKey!);
         }).catchError((err) {
           OverAlert.saveErr();
         });

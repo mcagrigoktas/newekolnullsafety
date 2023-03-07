@@ -32,7 +32,7 @@ class _EatFileState extends State<EatFile> {
     setState(() {
       isLoading = true;
     });
-    EatService.saveEatData(urlController).then((_) {
+    EatService.saveEatData(urlController!).then((_) {
       Get.back();
       OverAlert.saveSuc();
       setState(() {

@@ -91,7 +91,7 @@ class _CheckHomeWorkState extends State<CheckHomeWork> {
   void initState() {
     super.initState();
 
-    HomeWorkService.dbHomeWorkCheckData(widget.homeWork!.key).once().then((snap) {
+    HomeWorkService.dbHomeWorkCheckData(widget.homeWork!.key!).once().then((snap) {
       if (snap?.value != null) {
         checktype = snap!.value['checktype'];
         _studentData = snap.value['studentData'];

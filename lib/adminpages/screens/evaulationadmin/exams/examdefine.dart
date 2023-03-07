@@ -412,7 +412,7 @@ class ExamDefine extends StatelessWidget {
                                                         data['examType'] = controller.selectedItem!.examType!.mapForStudent();
                                                         data['onlineForms'] ??= {};
                                                         data['onlineForms']['seison$s'] = controller.selectedItem!.onlineForm(s)!.mapForStudent();
-                                                        Fav.guardTo(OlineExamMain(), binding: BindingsBuilder(() => Get.put<OnlineExamController>(OnlineExamController(data, controller.selectedItem!.key, s, isBookletReviewing: true))));
+                                                        Fav.guardTo(OlineExamMain(), binding: BindingsBuilder(() => Get.put<OnlineExamController>(OnlineExamController(data, controller.selectedItem!.key!, s, isBookletReviewing: true))));
                                                       },
                                                       text: 'checkbooklet'.translate)
                                               ],

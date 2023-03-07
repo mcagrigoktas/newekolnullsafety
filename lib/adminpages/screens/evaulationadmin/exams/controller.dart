@@ -188,8 +188,8 @@ class ExamController extends GetxController {
       }
       isLoading = true;
       update();
-      if (selectedItem!.userType == EvaulationUserType.school) await ExamService.saveSchoollExam(selectedItem!.mapForSave(), selectedItem!.key);
-      if (selectedItem!.userType == EvaulationUserType.supermanager) await ExamService.saveGlobalExams(selectedItem!.mapForSave(), selectedItem!.key);
+      if (selectedItem!.userType == EvaulationUserType.school) await ExamService.saveSchoollExam(selectedItem!.mapForSave(), selectedItem!.key!);
+      if (selectedItem!.userType == EvaulationUserType.supermanager) await ExamService.saveGlobalExams(selectedItem!.mapForSave(), selectedItem!.key!);
       if (selectedItem!.userType == EvaulationUserType.admin) throw Exception('Admin sayfasinda sinav su an aktif degil');
       isLoading = false;
       update();
@@ -222,7 +222,7 @@ class ExamController extends GetxController {
     }
     isLoading = true;
     update();
-    await ExamService.saveSchoollExam(_newExam.mapForSave(), _newExam.key);
+    await ExamService.saveSchoollExam(_newExam.mapForSave(), _newExam.key!);
     isLoading = false;
     update();
     OverAlert.saveSuc();
@@ -235,8 +235,8 @@ class ExamController extends GetxController {
     if (selectedItem!.key.safeLength < 5) return;
     selectedItem!.aktif = false;
     selectedItem!.lastUpdate = databaseTime;
-    if (girisTuru == EvaulationUserType.school) await ExamService.saveSchoollExam(selectedItem!.mapForSave(), selectedItem!.key);
-    if (girisTuru == EvaulationUserType.supermanager) await ExamService.saveGlobalExams(selectedItem!.mapForSave(), selectedItem!.key);
+    if (girisTuru == EvaulationUserType.school) await ExamService.saveSchoollExam(selectedItem!.mapForSave(), selectedItem!.key!);
+    if (girisTuru == EvaulationUserType.supermanager) await ExamService.saveGlobalExams(selectedItem!.mapForSave(), selectedItem!.key!);
     isLoading = false;
     deSelectItem();
   }
@@ -390,7 +390,7 @@ class ExamController extends GetxController {
       }
     });
     OverLoading.show();
-    await ExamService.sendExamResultInPortfollio(willSend, selectedItem!.key, selectedItem!.name).then((_) async {
+    await ExamService.sendExamResultInPortfollio(willSend, selectedItem!.key!, selectedItem!.name!).then((_) async {
       selectedItem!.resultSendedToStudent![AppVar.appBloc.hesapBilgileri.kurumID] = true;
       await saveItem();
     }).catchError((e) {

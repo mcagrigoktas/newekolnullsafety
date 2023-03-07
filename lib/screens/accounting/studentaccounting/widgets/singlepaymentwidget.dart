@@ -300,7 +300,7 @@ class _SinglePaymentWidgetState extends State<SinglePaymentWidget> {
       selectedTaksit = null;
       selecTedTaksitKey = null;
       OverAlert.saveSuc();
-      var student = AppVar.appBloc.studentService!.dataListItem(widget.studentKey!)!;
+      var student = AppVar.appBloc.studentService!.dataListItem(widget.studentKey)!;
       PrintAccounting.printMakbuz(
         context,
         student,

@@ -244,7 +244,7 @@ class _VideoChatAppointmentState extends State<VideoChatAppointment> with AppFun
     await LiveAreaStarter.startVideoChat(
       channelName: users[0]! + users[1]!,
       //  spyVisible: spyVisible,
-      studentKey: _program!.lessons[lessonNo].studentKey,
+      studentKey: _program!.lessons[lessonNo].studentKey!,
     );
   }
 

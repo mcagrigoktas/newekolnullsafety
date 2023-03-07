@@ -113,7 +113,7 @@ class BusRideController extends BaseController {
   }
 
   int? getStudentStatus(String? studentKey) => data![studentKey]!['s'];
-  void makeStudentHere(String? studentKey) {
+  void makeStudentHere(String studentKey) {
     data![studentKey]!['s'] = 1;
     Fav.securePreferences.setMap(dataPreferencesKey, data!);
 
@@ -137,7 +137,7 @@ class BusRideController extends BaseController {
     update();
   }
 
-  void makeStudentAbsent(String? studentKey) {
+  void makeStudentAbsent(String studentKey) {
     data![studentKey]!['s'] = -1;
     Fav.securePreferences.setMap(dataPreferencesKey, data!);
 
@@ -163,28 +163,28 @@ class BusRideController extends BaseController {
   }
 
   bool? getSendWeAreComingNotStatus(String? studentKey) => (notificationCacheData[studentKey] ??= {})['c'];
-  void sendWeAreComingNot(Student? student) {
+  void sendWeAreComingNot(Student student) {
     if (Fav.noConnection()) return;
-    (notificationCacheData[student!.key] ??= {})['c'] = true;
+    (notificationCacheData[student.key] ??= {})['c'] = true;
     Fav.securePreferences.setMap(notificationPreferencesKey, notificationCacheData);
     final _inAppNotification = InAppNotification(type: NotificationType.service)
       ..key = student.key! + 'sc'
       ..title = 'transportnot'.translate
       ..content = 'transportcomingnot'.translate;
-    InAppNotificationService.sendInAppNotification(_inAppNotification, student.key);
+    InAppNotificationService.sendInAppNotification(_inAppNotification, student.key!);
     update();
   }
 
   bool? getSendWeAreCameNotStatus(String? studentKey) => (notificationCacheData[studentKey] ??= {})['w'];
-  void sendWeAreCameNot(Student? student) {
+  void sendWeAreCameNot(Student student) {
     if (Fav.noConnection()) return;
-    (notificationCacheData[student!.key] ??= {})['w'] = true;
+    (notificationCacheData[student.key] ??= {})['w'] = true;
     Fav.securePreferences.setMap(notificationPreferencesKey, notificationCacheData);
     final _inAppNotification = InAppNotification(type: NotificationType.service)
       ..key = student.key! + 'sw'
       ..title = 'transportnot'.translate
       ..content = 'transportcamenot'.translate;
-    InAppNotificationService.sendInAppNotification(_inAppNotification, student.key);
+    InAppNotificationService.sendInAppNotification(_inAppNotification, student.key!);
     update();
   }
 

@@ -537,7 +537,7 @@ class LiveBroadcastModel extends DatabaseItem {
   bool? aktif;
   String? key;
   String? channelName;
-  List<String?>? targetList;
+  List<String>? targetList;
   String? broadcastLink;
   //0 zaman ayarli 1 sabitlenmis
   int? timeType;

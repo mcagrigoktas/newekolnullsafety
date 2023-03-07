@@ -46,7 +46,7 @@ class VideoChatService {
           ),
           [
             ...item.targetList!,
-            if (AppVar.appBloc.hesapBilgileri.gtM) item.teacherKey,
+            if (AppVar.appBloc.hesapBilgileri.gtM) item.teacherKey!,
           ],
           notificationTag: 'videolesson',
           targetListContainsAllUserOrClassList: true,
@@ -136,10 +136,10 @@ class VideoChatService {
     updates['/Okullar/$_kurumId/$_termKey/VideoLesson/UserData/${program.teacherKey}/${program.key}/aktif'] = false;
     updates['/Okullar/$_kurumId/$_termKey/VideoLesson/UserData/${program.teacherKey}/${program.key}/timeStamp'] = _realTime;
     updatesVersion['/Okullar/$_kurumId/$_termKey/${program.teacherKey}/${VersionListEnum.videoLessonService}'] = _realTime;
-    List<String?> studentKeys = [];
+    List<String> studentKeys = [];
     for (var i = 0; i < program.lessons.length; i++) {
       if (program.lessons[i].studentKey != null) {
-        studentKeys.add(program.lessons[i].studentKey);
+        studentKeys.add(program.lessons[i].studentKey!);
         updates['/Okullar/$_kurumId/$_termKey/VideoLesson/UserData/${program.lessons[i].studentKey}/${program.key! + i.toString()}/aktif'] = false;
         updates['/Okullar/$_kurumId/$_termKey/VideoLesson/UserData/${program.lessons[i].studentKey}/${program.key! + i.toString()}/timeStamp'] = _realTime;
         updatesVersion['/Okullar/$_kurumId/$_termKey/${program.lessons[i].studentKey}/${VersionListEnum.videoLessonService}'] = _realTime;

@@ -40,7 +40,7 @@ class _HomeWorkPublishState extends State<HomeWorkPublish> {
     setState(() {
       loading = true;
     });
-    subscription = HomeWorkService.dbIsNotPublishedHomeWork(classKey).onValue(orderByChild: 'isPublish', equalTo: false).listen((event) {
+    subscription = HomeWorkService.dbIsNotPublishedHomeWork(classKey!).onValue(orderByChild: 'isPublish', equalTo: false).listen((event) {
       hwList = [];
 
       if (event?.value == null) {

@@ -59,12 +59,12 @@ class AnnouncementHelper {
 
   //? Burada bir kisinin son gelen duyurusunun zamani en son bu tarihe kadari gonderildi diye database e yazar
   static void _saveLastAnnouncementTimeToDatabaseForLastSeen(List<Announcement> allAnnouncementList) {
-    final newDatabaseVersion = allAnnouncementList.fold<int?>(0, (p, e) => p! > e.timeStamp ? p : e.timeStamp);
+    final newDatabaseVersion = allAnnouncementList.fold<int>(0, (p, e) => p > e.timeStamp ? p : e.timeStamp);
 
     final _prefKey = AppVar.appBloc.hesapBilgileri.kurumID! + AppVar.appBloc.hesapBilgileri.termKey! + AppVar.appBloc.hesapBilgileri.uid! + 'anoouncemetseen';
     if (newDatabaseVersion != 0 && Fav.preferences.getInt(_prefKey) != newDatabaseVersion) {
       AnnouncementService.saveGettingAnnouncementVersion(newDatabaseVersion);
-      Fav.preferences.setInt(_prefKey, newDatabaseVersion!);
+      Fav.preferences.setInt(_prefKey, newDatabaseVersion);
     }
   }
 

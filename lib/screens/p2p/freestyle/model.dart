@@ -13,7 +13,7 @@ class P2PModel {
   int? duration;
   String? channel;
 
-  List<String?>? studentList;
+  List<String>? studentList;
   String? teacherKey;
   String? studentRequestKey;
   String? note;

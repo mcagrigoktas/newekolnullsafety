@@ -100,7 +100,7 @@ class _P2PStudentListState extends State<P2PStudentList> {
                 .icon
                 .onPressed(() {
                   if (controller.selectedStudentList.isEmpty) {
-                    controller.selectedStudentList.addAll(AppVar.appBloc.studentService!.dataList.where((element) => element.classKeyList.contains(_filteredStudentClassKey)).map((e) => e.key).toList());
+                    controller.selectedStudentList.addAll(AppVar.appBloc.studentService!.dataList.where((element) => element.classKeyList.contains(_filteredStudentClassKey)).map((e) => e.key!).toList());
                   } else {
                     controller.selectedStudentList.clear();
                   }

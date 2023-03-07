@@ -53,7 +53,7 @@ class _DailyReportTeacherScreenState extends State<DailyReportTeacherScreen> wit
 
     OverLoading.show();
     _receivingStudentReportData.clear();
-    await DailyReportService.dbStudentDailyReports(_dateMillis!.dateFormat("dd-MM-yyyy"), _seciliOgrenciKey).once().then((snapshot) async {
+    await DailyReportService.dbStudentDailyReports(_dateMillis!.dateFormat("dd-MM-yyyy"), _seciliOgrenciKey!).once().then((snapshot) async {
       await OverLoading.close();
       setState(() {
         _refreshPageData();
@@ -91,7 +91,7 @@ class _DailyReportTeacherScreenState extends State<DailyReportTeacherScreen> wit
     _sendingStudentReportData["sortinglist"] = _sendingStudentReportData.keys.toList();
     OverLoading.show();
 
-    DailyReportService.dbSetStudentDailyReport(_seciliOgrenciKey, _dateMillis!.dateFormat("dd-MM-yyyy"), _sendingStudentReportData).then((_) {
+    DailyReportService.dbSetStudentDailyReport(_seciliOgrenciKey!, _dateMillis!.dateFormat("dd-MM-yyyy"), _sendingStudentReportData).then((_) {
       setState(() async {
         _receivingStudentReportData = _sendingStudentReportData;
         await OverLoading.close();
