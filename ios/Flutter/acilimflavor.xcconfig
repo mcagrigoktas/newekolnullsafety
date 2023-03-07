@@ -1,0 +1,11 @@
+#include "Pods/Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"
+#include "Generated.xcconfig"
+
+APP_NAME=Açılım Dijital
+LOGO=acilim
+REVERSED_CLIENT_ID=com.googleusercontent.apps.309980956561-g71sjrbvb0g48k16soqr9jaj8kp7j8o5
+FLUTTER_TARGET=/Users/cagrigoktas/Documents/Flutter/Flutter_Mobile_Uygulamalar/newekol/lib/flavors/main_acilim.dart
+PRODUCT_BUNDLE_IDENTIFIER=com.ekid.kurum1
+FLUTTER_BUILD_NAME=3.1.0
+FLUTTER_BUILD_NUMBER=7
+

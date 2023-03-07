@@ -1,0 +1,232 @@
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterRoot = localProperties.getProperty('flutter.sdk')
+if (flutterRoot == null) {
+    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+}
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) {
+    flutterVersionCode = '1'
+}
+
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) {
+    flutterVersionName = '1.0'
+}
+
+apply plugin: 'com.android.application'
+apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+
+def keystorePropertiesFile = rootProject.file("key.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+
+android {
+    compileSdkVersion 33
+    flavorDimensions "default"
+    // NDK version rive paketi yuzunden girildi
+    ndkVersion "25.1.8937393"
+
+
+    aaptOptions {
+        ignoreAssetsPattern "!x86:!*ffprobe"
+    }
+
+    lintOptions {
+        disable 'InvalidPackage'
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+
+    defaultConfig {
+        applicationId "com.elseif.ekol"
+        minSdkVersion 21
+        targetSdkVersion 33
+        versionCode 1
+        versionName '1.0'
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+//        multiDexEnabled true
+
+        ndk {
+            abiFilters 'armeabi-v7a' ,'arm64-v8a' , 'x86'
+        }
+    }
+
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+        }
+        sorubankasi {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFileQB'])
+            storePassword keystoreProperties['storePassword']
+        }
+        oby {
+            keyAlias keystoreProperties['keyAliasOby']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFileOBY'])
+            storePassword keystoreProperties['storePassword']
+        }
+         dersprogrami {
+            keyAlias keystoreProperties['keyAliasDersProgrami']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFileDersProgrami'])
+            storePassword keystoreProperties['storePassword']
+        }
+    }
+
+    buildTypes {
+        release {
+            //   signingConfig signingConfigs.release
+            minifyEnabled false
+            useProguard false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    productFlavors {
+
+//E-coll
+        elseifflavor {
+            applicationId "com.elseif.ekol"
+            versionCode 32
+            versionName "3.1.0"
+            signingConfig signingConfigs.release
+        }
+
+///SpeedSis
+        speedsisflavor {
+            applicationId "com.kazanim.dersprogrami"
+            versionCode 12
+            versionName "3.1.2"
+            signingConfig signingConfigs.dersprogrami
+        }
+///Nijerya Ecoll
+        datatacflavor {
+            applicationId "com.elseif.datatac.ekol"
+            versionCode 24
+            versionName "3.1.1"
+            signingConfig signingConfigs.release
+        }
+
+//Ekid +
+        elseifekidflavor {
+            applicationId "com.elseif.ekid"
+            versionCode 27
+            versionName "3.1.0"
+            signingConfig signingConfigs.release
+        }
+///Nijerya ekid +
+        datatacekidflavor {
+            applicationId "com.elseif.datatac.ekid"
+            versionCode 24
+            versionName "3.1.1"
+            signingConfig signingConfigs.release
+        }
+// Soru Bankalari
+        qbankflavor {
+            applicationId "com.elseif.golden.qb"
+            versionCode 4
+            versionName "2"
+            signingConfig signingConfigs.sorubankasi
+        }
+///Nijerya soru bankasi
+        smatqbankflavor {
+            applicationId "com.elseif.datatac.qbank"
+            versionCode 6
+            versionName "1.04"
+            signingConfig signingConfigs.sorubankasi
+        }
+       tareaflavor {
+            applicationId "com.elseif.tarea"
+            versionCode 2
+            versionName "1.01"
+            signingConfig signingConfigs.sorubankasi
+        }
+        // Kuruma ozeller
+        aciflavor {
+            applicationId "com.elseif.mycollage"
+            versionCode 60
+            versionName "3.1.1"
+            signingConfig signingConfigs.release
+        }
+
+        taktikbendeflavor {
+            applicationId "com.elseif.taktikbende"
+            versionCode 8
+            versionName "3.1.0"
+            signingConfig signingConfigs.release
+        }
+
+        
+
+        muradiyeflavor {
+            applicationId "com.elseif.muradiye"
+            versionCode 15
+            versionName "3.1.0"
+            signingConfig signingConfigs.release
+        }
+
+
+        teknokentflavor {
+            applicationId "com.elseif.teknokentekol"
+            versionCode 15
+            versionName "3.1.0"
+            signingConfig signingConfigs.release
+        }
+
+        golbasiflavor {
+            applicationId "com.elseif.golbasiekol"
+            versionCode 1
+            versionName "1.00"
+            signingConfig signingConfigs.release
+        }
+
+        acilimflavor {
+            applicationId "com.ekid.kurum1"
+            versionCode 6
+            versionName "3.1.0"
+            signingConfig signingConfigs.oby
+        }
+
+        tuaflavor {
+            applicationId "com.elseif.tua"
+            versionCode 1
+            versionName "2.2.2"
+            signingConfig signingConfigs.oby
+        }
+    }
+}
+
+flutter {
+    source '../..'
+}
+
+dependencies {
+     //implementation 'androidx.appcompat:appcompat:1.1.0-alpha03'
+     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+     testImplementation 'junit:junit:4.12'
+     //androidTestİmplementation 'androidx.test.runner:1.1.1'
+     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+     implementation 'com.android.support:multidex:1.0.3'
+}
+

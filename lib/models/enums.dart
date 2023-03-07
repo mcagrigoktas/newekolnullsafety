@@ -1,0 +1,37 @@
+class VersionListEnum {
+  VersionListEnum._();
+  static String announcements = 'Announcements';
+  static String schoolInfo = 'SchoolInfo';
+  static String schoolInfoForManager = 'SIFM';
+  static String teachers = 'Teachers';
+  static String classes = 'Classes';
+  static String lessons = 'Lessons';
+  static String students = 'Students';
+  static String transporters = 'Transporters';
+  static String managers = 'Managers';
+  static String books = 'Books';
+  static String permissions = 'Permissions';
+  static String dailyReportProfiles = 'DailyReportProfiles';
+  static String stickerProfiles = 'StickerProfiles';
+  static String medicineProfiles = 'MedicineProfiles';
+  static String socialNetwork = 'SocialNetwork';
+  static String video = 'Video';
+  static String newSocialService = 'FS';
+  static String messagesPreview = 'MessagesPreview';
+  static String dailyReport = 'DailyReport';
+  static String studentStickersData = 'StudentStickersData';
+  static String userInfoChangeService = 'UserInfoChangeService';
+  static String videoLessonService = 'VideoLessonService';
+  static String times = 'Times';
+  static String teacherClassHours = 'TeacherClassHours';
+  static String timeTable = 'TimeTable';
+  static String simpleP2PSchoolDraft = 'sPSD';
+  static String rollCall = 'RollCall';
+  static String homeWork = 'HomeWork';
+  static String liveBroadCast = 'LiveBroadCast';
+  static String portfolio = 'Portfolio';
+  static String inAppNotification = 'N';
+  static String tokenListForStudent = 'tLS';
+  static String tokenListForManagerTeacher = 'tLM';
+  static String educationService = 'EdS';
+}

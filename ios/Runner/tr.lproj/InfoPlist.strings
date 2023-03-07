@@ -1,0 +1,13 @@
+/* 
+  InfoPlist.strings
+  Runner
+
+  Created by Kanbei on 22.11.2021.
+  Copyright © 2021 The Chromium Authors. All rights reserved.
+*/
+"NSCalendarsUsageDescription" = "Etkinlikleri takviminize ekleyebilmemiz için izin veriyor musunuz?";
+"NSCameraUsageDescription" = "Paylaşım yapmak veya canlı etkinliklere katılabılmek için kamera kullanımına izin vermeniz gerekmektedir. Kamera için izin veriyor musunuz?";
+"NSLocationWhenInUseUsageDescription" = "Size özel içerikleri tahmin edebilmemiz için konum bilginize ihtiyacımız var. İzin veriyor musunuz?";
+"NSMicrophoneUsageDescription" = "Paylaşım yapmak veya canlı etkinliklere katılabılmek için mikrofon kullanımına izin vermeniz gerekmektedir. Mikrofon icin izin veriyor musunuz?";
+"NSPhotoLibraryAddUsageDescription" = "Fotoğrafı galeriye kaydetmek için izin vermeniz gerekmektedir. Galeriye kaydetmek için izin veriyor musunuz?";
+"NSPhotoLibraryUsageDescription" = "Paylaşmak için fotoğraf yüklemek istediniz. Fotoğrafı yükleyebilmeniz için Galeri erişim izni vermeniz gerekmektedir. Galeri için izin veriyor musunuz?";

@@ -1,0 +1,10 @@
+#include "Pods/Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"
+#include "Generated.xcconfig"
+
+APP_NAME=Taktik Bende
+LOGO=taktikbende
+REVERSED_CLIENT_ID=com.googleusercontent.apps.309980956561-ii8u63mokkktcutrbfobdspdmj2ij9gu
+FLUTTER_TARGET=/Users/cagrigoktas/Documents/Flutter/Flutter_Mobile_Uygulamalar/newekol/lib/flavors/main_taktikbende.dart
+PRODUCT_BUNDLE_IDENTIFIER=com.elseif.taktikbende
+FLUTTER_BUILD_NAME=3.1.0
+FLUTTER_BUILD_NUMBER=9

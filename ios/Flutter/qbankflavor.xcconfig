@@ -1,0 +1,11 @@
+#include "Pods/Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"
+#include "Generated.xcconfig"
+
+APP_NAME=Qbank
+LOGO=qbank
+REVERSED_CLIENT_ID=com.googleusercontent.apps.309980956561-t4tm91orgoudp9itkbj7d41d1dun2ise
+FLUTTER_TARGET=/Users/cagrigoktas/Documents/Flutter/Flutter_Mobile_Uygulamalar/newekol/lib/flavors/main_qbank.dart
+PRODUCT_BUNDLE_IDENTIFIER=com.elseif.golden.qb
+FLUTTER_BUILD_NAME=1.0.4
+FLUTTER_BUILD_NUMBER=6
+

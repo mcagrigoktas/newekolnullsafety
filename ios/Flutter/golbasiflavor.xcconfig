@@ -1,0 +1,10 @@
+#include "Pods/Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"
+#include "Generated.xcconfig"
+
+APP_NAME=Eğitim Platformu
+LOGO=golbasi
+REVERSED_CLIENT_ID=com.googleusercontent.apps.309980956561-gdsgetarimfojg6ihrppiq41obi95dn5
+FLUTTER_TARGET=/Users/cagrigoktas/Documents/Flutter/Flutter_Mobile_Uygulamalar/newekol/lib/flavors/main_golbasi.dart
+PRODUCT_BUNDLE_IDENTIFIER=com.elseif.golbasiekol
+FLUTTER_BUILD_NAME=1.0.0
+FLUTTER_BUILD_NUMBER=1

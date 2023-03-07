@@ -1,0 +1,12 @@
+#include "Pods/Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"
+#include "Generated.xcconfig"
+
+APP_NAME=E-Coll
+LOGO=ekol
+REVERSED_CLIENT_ID=com.googleusercontent.apps.309980956561-h4072csf8fbm0a48v2tqa839rig5jvk4
+FLUTTER_TARGET=/Users/cagrigoktas/Documents/Flutter/Flutter_Mobile_Uygulamalar/newekol/lib/flavors/main_elseif.dart
+PRODUCT_BUNDLE_IDENTIFIER=com.elseif.ekol
+FLUTTER_BUILD_NAME=3.1.0
+FLUTTER_BUILD_NUMBER=24
+
+

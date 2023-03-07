@@ -1,0 +1,13 @@
+/* 
+  InfoPlist.strings
+  Runner
+
+  Created by Kanbei on 22.11.2021.
+  Copyright © 2021 The Chromium Authors. All rights reserved.
+*/
+"NSCalendarsUsageDescription" = "Do you give permission us to add events to your calendar?";
+"NSCameraUsageDescription" = "You need to give permission to use camera to share and participate in live events. Do you give permission for camera?";
+"NSLocationWhenInUseUsageDescription" = "We need your location information so that we can predict content specific to you. Do you give permission us to access your location information?";
+"NSMicrophoneUsageDescription" = "You need to give permission to use camera to share and participate in live events. Do you give permission for microphone?";
+"NSPhotoLibraryAddUsageDescription" = "You need to give permission to save the photo to the gallery. Do you give permission to save the photo to the gallery?";
+"NSPhotoLibraryUsageDescription" = "You want to upload a photo to share. You need to give permission for gallery access to upload the photo. Do you give permission for gallery?";

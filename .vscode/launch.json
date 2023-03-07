@@ -1,0 +1,181 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "web",
+            "request": "launch",
+            "type": "dart",
+            "program": "./lib/main.dart",
+            // "debug", "profile" or "release".
+            "flutterMode": "debug",
+            "args": [
+                "-d",
+                "chrome",
+                //   "--release"
+                "--web-renderer",
+                "html"
+            ]
+        },
+        // {
+        //     "name": "macos",
+        //     "request": "launch",
+        //     "type": "dart",
+        //     "program": "./lib/main.dart",
+        //     // "debug", "profile" or "release".
+        //     "flutterMode": "debug",
+        //     "args": [
+        //         "-d",
+        //         "macos",
+        //     ]
+        // },
+        {
+            "name": "webRelease",
+            "request": "launch",
+            "type": "dart",
+            "program": "./lib/main.dart",
+            // "debug", "profile" or "release".
+            "flutterMode": "release",
+            "args": [
+                "-d",
+                "chrome",
+            ]
+        },
+        {
+            "name": "speedsis",
+            "request": "launch",
+            "type": "dart",
+            "program": "./lib/flavors/main_speedsis.dart",
+            // "debug", "profile" or "release".
+            "flutterMode": "debug",
+            "args": [
+                "--flavor",
+                "speedsisflavor",
+            ]
+        },
+        {
+            "name": "speedsisrelease",
+            "request": "launch",
+            "type": "dart",
+            "program": "./lib/flavors/main_speedsis.dart",
+            // "debug", "profile" or "release".
+            "flutterMode": "debug",
+            "args": [
+                "--flavor",
+                "speedsisflavor",
+                "--release"
+            ]
+        },
+        {
+            "name": "aci",
+            "request": "launch",
+            "type": "dart",
+            "program": "./lib/flavors/main_aci.dart",
+            // "debug", "profile" or "release".
+            "flutterMode": "debug",
+            "args": [
+                "--flavor",
+                "aciflavor",
+            ]
+        },
+        {
+            "name": "acirelease",
+            "request": "launch",
+            "type": "dart",
+            "program": "./lib/flavors/main_aci.dart",
+            // "debug", "profile" or "release".
+            "flutterMode": "debug",
+            "args": [
+                "--flavor",
+                "aciflavor",
+                "--release"
+            ]
+        },
+        {
+            "name": "elseifrelease",
+            "request": "launch",
+            "type": "dart",
+            "program": "./lib/flavors/main_elseif.dart",
+            // "debug", "profile" or "release".
+            "flutterMode": "debug",
+            "args": [
+                "--flavor",
+                "elseifflavor",
+                "--release"
+            ]
+        },
+        {
+            "name": "qbank",
+            "request": "launch",
+            "type": "dart",
+            "program": "./lib/flavors/main_qbank.dart",
+            // "debug", "profile" or "release".
+            "flutterMode": "debug",
+            "args": [
+                "--flavor",
+                "qbankflavor",
+            ]
+        },
+        {
+            "name": "tarea",
+            "request": "launch",
+            "type": "dart",
+            "program": "./lib/flavors/main_tarea.dart",
+            // "debug", "profile" or "release".
+            "flutterMode": "release",
+            "args": [
+                "--flavor",
+                "tareaflavor"
+            ]
+        },
+        {
+            "name": "teknokentrelease",
+            "request": "launch",
+            "type": "dart",
+            "program": "./lib/flavors/main_teknokent.dart",
+            // "debug", "profile" or "release".
+            "flutterMode": "release",
+            "args": [
+                "--flavor",
+                "teknokentflavor",
+            ]
+        },
+        {
+            "name": "acilimrelease",
+            "request": "launch",
+            "type": "dart",
+            "program": "./lib/flavors/main_acilim.dart",
+            // "debug", "profile" or "release".
+            "flutterMode": "debug",
+            "args": [
+                "--flavor",
+                "acilimflavor",
+            ]
+        },
+        {
+            "name": "marketinfo",
+            "request": "launch",
+            "type": "dart",
+            "program": "./lib/flavors/market_info/main.dart",
+            "flutterMode": "debug",
+            "args": [
+                "-d",
+                "chrome",
+            ]
+        },
+        {
+            "name": "tua",
+            "request": "launch",
+            "type": "dart",
+            "program": "./lib/flavors/main_tua.dart",
+            // "debug", "profile" or "release".
+            "flutterMode": "debug",
+            "args": [
+                "--flavor",
+                "tuaflavor",
+            ]
+        },
+    ]
+}

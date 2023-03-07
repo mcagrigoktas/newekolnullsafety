@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Meeting end</title>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="origin-trial" content="">
+</head>
+
+<body>
+
+
+
+    <script>
+        var platform = localStorage.getItem('platform');
+
+        if (platform != 'web') {
+            window.addEventListener("flutterInAppWebViewPlatformReady", function(event) {
+                window.flutter_inappwebview.callHandler('message', JSON.stringify({
+                    id: 121
+                }));
+            });
+        } else {
+            window.parent.postMessage(JSON.stringify({
+                id: 121
+            }), '*');
+        }
+
+    </script>
+
+</body>
+
+</html>
+
+
+
+

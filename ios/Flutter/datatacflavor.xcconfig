@@ -1,0 +1,10 @@
+#include "Pods/Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"
+#include "Generated.xcconfig"
+
+APP_NAME=Smat College
+LOGO=smatekol
+REVERSED_CLIENT_ID=com.googleusercontent.apps.309980956561-7aub5as0ddngck0ev89op80c0f8f0acg
+FLUTTER_TARGET=/Users/cagrigoktas/Documents/Flutter/Flutter_Mobile_Uygulamalar/newekol/lib/flavors/main_datatac.dart
+PRODUCT_BUNDLE_IDENTIFIER=com.elseif.datatac.ekol
+FLUTTER_BUILD_NAME=3.1.0
+FLUTTER_BUILD_NUMBER=16

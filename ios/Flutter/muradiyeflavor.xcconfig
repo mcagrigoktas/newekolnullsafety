@@ -1,0 +1,10 @@
+#include "Pods/Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"
+#include "Generated.xcconfig"
+
+APP_NAME=Muradiye Eğitim Kurumları
+LOGO=muradiye
+REVERSED_CLIENT_ID=com.googleusercontent.apps.309980956561-kdgr4r55fnepfakl56dfkl4afeb935k0
+FLUTTER_TARGET=/Users/cagrigoktas/Documents/Flutter/Flutter_Mobile_Uygulamalar/newekol/lib/flavors/main_muradiye.dart
+PRODUCT_BUNDLE_IDENTIFIER=com.elseif.muradiye
+FLUTTER_BUILD_NAME=3.1.0
+FLUTTER_BUILD_NUMBER=11

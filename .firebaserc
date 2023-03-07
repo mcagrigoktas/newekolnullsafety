@@ -1,0 +1,34 @@
+{
+  "projects": {
+    "default": "class-724",
+    "tuaacademy": "tuaacademy-33045"
+  },
+  "targets": {
+    "class-724": {
+      "hosting": {
+        "eokuldeneme": [
+          "eokuldeneme"
+        ],
+        "class-724": [
+          "class-724"
+        ],
+        "ecollmeet": [
+          "ecollmeet"
+        ],
+        "ecolines": [
+          "ecolines"
+        ],
+        "userdatainfo": [
+          "userdatainfo"
+        ]
+      }
+    },
+    "tuaacademy-33045": {
+      "hosting": {
+        "tuaacademy": [
+          "tuaacademy"
+        ]
+      }
+    }
+  }
+}
