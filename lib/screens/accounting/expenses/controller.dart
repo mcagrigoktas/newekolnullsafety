@@ -117,8 +117,8 @@ class ExpensesController extends GetxController {
       isSaving = true;
       update();
 
-      await AppVar.appBloc.firestore.setItemInPkg(ReferenceService.expensesCollectionRef() + ReferenceService.getDocName(itemData!.key, 15), 'data', itemData!.key!, itemData!.toJson()).then((value) {
-        AppVar.appBloc.firestore.setItemInPkg(ReferenceService.accountLogRef() + ReferenceService.getDocName(itemData!.key), 'data', itemData!.key!, itemData!.toLog(), addParentDocName: false).catchError(log);
+      await AppVar.appBloc.firestore.setItemInPkg(ReferenceService.expensesCollectionRef() + ReferenceService.getDocName(itemData!.key!, 15), 'data', itemData!.key!, itemData!.toJson()).then((value) {
+        AppVar.appBloc.firestore.setItemInPkg(ReferenceService.accountLogRef() + ReferenceService.getDocName(itemData!.key!), 'data', itemData!.key!, itemData!.toLog(), addParentDocName: false).catchError(log);
 
         isSaving = false;
         OverAlert.saveSuc();

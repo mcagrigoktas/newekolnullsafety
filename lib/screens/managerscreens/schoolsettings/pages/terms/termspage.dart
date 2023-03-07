@@ -274,10 +274,10 @@ class _SubTermAddWidget extends StatefulWidget {
 
 class _SubTermAddWidgetState extends State<_SubTermAddWidget> {
   final _formKey = GlobalKey<FormState>();
-  String? term;
+  late String term;
   @override
   void initState() {
-    term = AppVar.appBloc.schoolInfoService!.singleData!.activeTerm;
+    term = AppVar.appBloc.schoolInfoService!.singleData!.activeTerm!;
     _itemList = AppVar.appBloc.schoolInfoService!.singleData!.subTermList() ?? [];
     if (_itemList.isEmpty) _addNewItem(0);
 

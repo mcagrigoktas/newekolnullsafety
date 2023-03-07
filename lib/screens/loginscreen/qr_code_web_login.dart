@@ -76,7 +76,7 @@ class _ScanViewDemoState extends State<ScanViewDemo> {
       final _stringData = jsonEncode(_userData);
       final _encStringData = _stringData.mix;
       OverLoading.show();
-      SignInOutService.dbQrCodeLogin(_data.replaceFirst('enc:', '').unMix).set(_encStringData).then((value) async {
+      SignInOutService.dbQrCodeLogin(_data.replaceFirst('enc:', '').unMix!).set(_encStringData).then((value) async {
         await OverLoading.close();
         Get.back();
       });

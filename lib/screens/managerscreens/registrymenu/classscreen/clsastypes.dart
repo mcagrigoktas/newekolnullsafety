@@ -50,7 +50,7 @@ class _ClassTypesState extends State<ClassTypes> {
       setState(() {
         _isLoading = true;
       });
-      SchoolDataService.setClassTypes(_classTypes).then((_) {
+      SchoolDataService.setClassTypes(_classTypes!).then((_) {
         setState(() {
           _isLoading = false;
         });

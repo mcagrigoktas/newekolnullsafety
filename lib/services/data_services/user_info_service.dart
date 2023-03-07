@@ -19,7 +19,7 @@ class UserInfoService {
   static Reference dbUsageInfo([serverId, term]) => Reference(_databaseLogss, 'Okullar/${serverId ?? _kurumId}/${term ?? _termKey}/UsageLogs');
 
 // Kullanıcı kişisel bilgilerini çeker. girisTuruKey(Manager,Students,Teachers,Editors listesine bakar)
-  static Reference dbGetUserInfo(String? serverId, String girisTuruKey, String? userId, String? term) {
+  static Reference dbGetUserInfo(String serverId, String girisTuruKey, String userId, String? term) {
     if (girisTuruKey == "Managers") return Reference(_database11, '${StringHelper.schools}/$serverId/$girisTuruKey/$userId');
     return Reference(_database11, '${StringHelper.schools}/$serverId/$term/$girisTuruKey/$userId');
   }

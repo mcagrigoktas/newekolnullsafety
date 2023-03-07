@@ -72,7 +72,7 @@ class P2PService {
           EkolPushNotificationService.sendSingleNotification(
             'p2pstudentnotify1'.translate,
             _studentName + ' ' + McgFunctions.getDayNameFromDayOfWeek(data.day! + 1) + ' ' + data.startTime!.timeToString,
-            data.teacherKey,
+            data.teacherKey!,
             NotificationArgs(tag: 'portfolio'),
           );
         }
@@ -95,12 +95,12 @@ class P2PService {
     return _databaseProgramm.update(updates).then((_) {
       if (r == false) {
         EkolPushNotificationService.sendSingleNotification(
-          student.name,
+          student.name!,
           'p2prollcall1'.argsTranslate({
             'time': model.startTime!.timeToString,
             'name': (AppVar.appBloc.teacherService!.dataListItem(model.teacherKey!)?.name ?? ''),
           }),
-          studentKey,
+          studentKey!,
           NotificationArgs(tag: 'portfolio'),
         );
       }

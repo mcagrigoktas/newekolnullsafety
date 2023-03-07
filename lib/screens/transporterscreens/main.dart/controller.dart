@@ -49,7 +49,7 @@ class TransporterMainController extends GetxController {
         FetchType.LISTEN,
         multipleData: true,
         lastUpdateKey: 'lastUpdate',
-        queryRef: TransportService.dbAllServiceDataATransporter(AppVar.appBloc.hesapBilgileri.uid),
+        queryRef: TransportService.dbAllServiceDataATransporter(AppVar.appBloc.hesapBilgileri.uid!),
         jsonParse: (key, value) => BusRideModel(transporterUid: AppVar.appBloc.hesapBilgileri.uid, name: value['time'], key: key, data: value),
       );
       await 2000.wait;

@@ -31,7 +31,7 @@ class HomeWorkService {
 
   // Ogretmen odev ekler. Ayrica ogretmenin direk paylasma yetkisi yoksa idareci onay kisminada ekler.
   // Ogretmenlerinde hanesine kendi paylasimlari yaziliyor. Ayrica isterse tum datalardan anliz yaptirilabilir
-  static Future<void> saveHomeWork(Map homeWorkData, bool teacherHomeWorkSharing, String classKey, String? lessonKey, List<String> contactList, String? teacherKey) async {
+  static Future<void> saveHomeWork(Map homeWorkData, bool teacherHomeWorkSharing, String classKey, String? lessonKey, List<String> contactList, String teacherKey) async {
     Map<String, dynamic> updates = {};
     Map<String, dynamic> updatesUserVersion = {};
     final String key = 6.makeKey;

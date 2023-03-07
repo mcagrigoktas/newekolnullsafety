@@ -194,7 +194,7 @@ class AppblocDefineServiceHelper {
 
     if (_hesapBilgileri.gtT) {
       _appBloc.videoChatTeacherService = MultipleDataFCS<VideoLessonProgramModel>("${_hesapBilgileri.kurumID}${_hesapBilgileri.uid}${_hesapBilgileri.termKey}VideoLessonProgramModel",
-          queryRefForRealtimeDB: VideoChatService.dbGetTeacherVideoLessons(_hesapBilgileri.uid),
+          queryRefForRealtimeDB: VideoChatService.dbGetTeacherVideoLessons(_hesapBilgileri.uid!),
           jsonParse: (key, value) => VideoLessonProgramModel.fromJson(value, key),
           sortFunction: (VideoLessonProgramModel a, VideoLessonProgramModel b) {
             return b.startTime! - a.startTime!;
@@ -225,7 +225,7 @@ class AppblocDefineServiceHelper {
     final _girisTuruKey = LoginScreenGirisTuruHelper.girisTuruKey(_hesapBilgileri.girisTuru);
     _appBloc.userInfoChangeService = SingleDataFCS(
       "${_hesapBilgileri.kurumID}${_hesapBilgileri.uid}${_hesapBilgileri.termKey}UserInfoChangeService",
-      queryRef: UserInfoService.dbGetUserInfo(_hesapBilgileri.kurumID, _girisTuruKey, _hesapBilgileri.uid, _hesapBilgileri.termKey),
+      queryRef: UserInfoService.dbGetUserInfo(_hesapBilgileri.kurumID!, _girisTuruKey, _hesapBilgileri.uid!, _hesapBilgileri.termKey),
       getValueAfterOnlyDatabaseQuery: _parseUserInfo,
     );
     await _appBloc.userInfoChangeService!.init();

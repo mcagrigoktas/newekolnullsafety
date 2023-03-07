@@ -66,7 +66,7 @@ class LogHelper {
   static Database get _databaseLogss => AppVar.appBloc.databaseLogs;
   //Log kayitlari transaction
 
-  static void addLog(String menuname, String? senderKey, [int? count]) {
+  static void addLog(String menuname, String senderKey, [int? count]) {
     _databaseLogss.runTransaction('${StringHelper.schools}/$_kurumId/$_termKey/UsageLogs/${'m:' + DateTime.now().month.toString()}/$menuname/$senderKey', (count ?? 1));
   }
 }

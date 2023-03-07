@@ -163,8 +163,8 @@ class SalesContractsController extends GetxController {
       itemData!.personName = personList.firstWhereOrNull((element) => element.key == itemData!.personKey)?.name;
 
       final _completer = Completer<bool>();
-      await AppVar.appBloc.firestore.setItemInPkg(ReferenceService.salesContractCollectionRef() + ReferenceService.getDocName(itemData!.key, 15), 'data', itemData!.key!, itemData!.toJson()).then((value) async {
-        AppVar.appBloc.firestore.setItemInPkg(ReferenceService.accountLogRef() + ReferenceService.getDocName(itemData!.key), 'data', itemData!.key!, itemData!.toLog(), addParentDocName: false).catchError(log).unawaited;
+      await AppVar.appBloc.firestore.setItemInPkg(ReferenceService.salesContractCollectionRef() + ReferenceService.getDocName(itemData!.key!, 15), 'data', itemData!.key!, itemData!.toJson()).then((value) async {
+        AppVar.appBloc.firestore.setItemInPkg(ReferenceService.accountLogRef() + ReferenceService.getDocName(itemData!.key!), 'data', itemData!.key!, itemData!.toLog(), addParentDocName: false).catchError(log).unawaited;
 
         selectedInstallament = null;
         newContract = null;

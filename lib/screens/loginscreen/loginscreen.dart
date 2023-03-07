@@ -284,7 +284,7 @@ class _EkolSignInPageState extends State<EkolSignInPage> with TickerProviderStat
 
     if ((_username! + _password!).contains('.')) return _signInError();
 
-    await SignInOutService.checkUser(_username!, _password!, _serverId).then((snapshot) {
+    await SignInOutService.checkUser(_username!, _password!, _serverId!).then((snapshot) {
       bool _isParent = false;
       int _parentType = 1;
 
@@ -310,7 +310,7 @@ class _EkolSignInPageState extends State<EkolSignInPage> with TickerProviderStat
 //* Kullanici bilgileri cekiliyor
       _changeLiquidValue(0.4);
 
-      UserInfoService.dbGetUserInfo(_serverId, _girisTuruKey, _uid, _termKey).once().then((snapshot) async {
+      UserInfoService.dbGetUserInfo(_serverId!, _girisTuruKey, _uid!, _termKey).once().then((snapshot) async {
         _changeLiquidValue(0.5);
         final _userData = snapshot?.value;
         if (_userData == null) return _signInError();
@@ -416,7 +416,7 @@ class _EkolSignInPageState extends State<EkolSignInPage> with TickerProviderStat
           iS: _hesapBilgileri.gtS,
           uid: _hesapBilgileri.uid!,
         );
-        _futureList.add(SignInOutService.firstLoginSuccess(_serverId, _termKey, _hesapBilgileri.uid, _kvkkSettings?.kvkkUrlVersion));
+        _futureList.add(SignInOutService.firstLoginSuccess(_serverId!, _termKey!, _hesapBilgileri.uid!, _kvkkSettings?.kvkkUrlVersion));
 
         _changeLiquidValue(0.9);
 

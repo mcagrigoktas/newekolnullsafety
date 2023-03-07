@@ -13,7 +13,7 @@ class VideoChatService {
 //! GETDATASERVICE
 
 //Herhangi bir ogretmene ait video ders programini ceker
-  static Reference dbGetTeacherVideoLessons(String? teacherKey) => Reference(_database33, 'Okullar/$_kurumId/$_termKey/VideoLesson/UserData/$teacherKey');
+  static Reference dbGetTeacherVideoLessons(String teacherKey) => Reference(_database33, 'Okullar/$_kurumId/$_termKey/VideoLesson/UserData/$teacherKey');
 
   //Herhangi bir ogrenciye ait video ders programini ceker
   static Reference dbGetStudentVideoLessons() => Reference(_database33, 'Okullar/$_kurumId/$_termKey/VideoLesson/UserData/$_uid');
@@ -22,7 +22,7 @@ class VideoChatService {
   static Reference dbGetallActiveVideoLesson() => Reference(_database33, 'Okullar/$_kurumId/$_termKey/VideoLesson/Profiles');
 
   //Herhangi bir keye ait video ders programini ceker
-  static Reference dbGetVideoLessonProgram(String? itemKey) => Reference(_database33, 'Okullar/$_kurumId/$_termKey/VideoLesson/Profiles/$itemKey');
+  static Reference dbGetVideoLessonProgram(String itemKey) => Reference(_database33, 'Okullar/$_kurumId/$_termKey/VideoLesson/Profiles/$itemKey');
 
 //! SETDATASERVICE
 

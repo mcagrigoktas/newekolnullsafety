@@ -24,7 +24,7 @@ class SignInOutService {
   //static Reference dbTokenUser(String key) => Reference(_databaseLogss, '${StringHelper.schools}/$_kurumId/$_termKey/Tokens/$key');
 
   // Username ve Password ile kullanıcının sadece varlığını ve giriş türünü çeker.
-  static Future<Snap?> checkUser(String username, String password, String? serverId) => _database11.once('${StringHelper.schools}/$serverId/CheckList/${username + password}');
+  static Future<Snap?> checkUser(String username, String password, String serverId) => _database11.once('${StringHelper.schools}/$serverId/CheckList/${username + password}');
 
   // Butun kullanici adi sifrelerini checklist kismindan alir. Sadece kurum idarecileri alabilir
   static Future<Snap?> checkAllCheckListValues() => _database11.once('${StringHelper.schools}/$_kurumId/CheckList');
@@ -39,11 +39,11 @@ class SignInOutService {
   static Future<Snap?> getDemoInfo(String username, String password) => _database11.once('DemoPasswordList/${username + password}');
 
   //QrCodeLoginReferansi
-  static Reference dbQrCodeLogin(String? key) => Reference(_databaseLogss, 'QRCodeLogin/$key');
+  static Reference dbQrCodeLogin(String key) => Reference(_databaseLogss, 'QRCodeLogin/$key');
 //! SETDATASERVICE
 
 //Ilk Login olmanin tamamlandigi bilgisini Ekler
-  static Future firstLoginSuccess(String? kurumId, String? termKey, String? uid, String? kvkkVersion) {
+  static Future firstLoginSuccess(String kurumId, String termKey, String uid, String? kvkkVersion) {
     Map<String, dynamic> updates = {};
     updates['/${StringHelper.schools}/$kurumId/$termKey/FirstLogin/$uid'] = true;
     if (kvkkVersion != null) updates['/${StringHelper.schools}/$kurumId/$termKey/KVKKCheckList/$uid'] = kvkkVersion;
@@ -63,13 +63,13 @@ class SignInOutService {
     final uidkey = AppVar.appBloc.hesapBilgileri.girisTuru.toString() + '-G-' + _uid!;
 
     updates['/${StringHelper.schools}/$_kurumId/$_termKey/Tokens2/TSM/$uidkey/lastUpdate'] = _realTime;
-    updates['/${StringHelper.schools}/$_kurumId/$_termKey/Tokens2/TSM/$uidkey/tl/$token'] = deviceName ;
+    updates['/${StringHelper.schools}/$_kurumId/$_termKey/Tokens2/TSM/$uidkey/tl/$token'] = deviceName;
 
     ParentStateHelper.addTokenValuesForParents(updates, _kurumId, _termKey, _uid, _realTime, deviceName, token);
 
     if (AppVar.appBloc.hesapBilgileri.gtMT || AppVar.appBloc.hesapBilgileri.gtTransporter) {
       updates['/${StringHelper.schools}/$_kurumId/$_termKey/Tokens2/TM/$uidkey/lastUpdate'] = _realTime;
-      updates['/${StringHelper.schools}/$_kurumId/$_termKey/Tokens2/TM/$uidkey/tl/$token'] = deviceName ;
+      updates['/${StringHelper.schools}/$_kurumId/$_termKey/Tokens2/TM/$uidkey/tl/$token'] = deviceName;
     }
 
     // if (updates.isNotEmpty)
@@ -85,7 +85,7 @@ class SignInOutService {
 
   // Kullanicinin push notification tokenini siller
   //static void dbDeleteToken(String kurumId, String termKey, String uid, String token) => _databaseLogss.set('${StringHelper.schools}/$kurumId/$termKey/Tokens/$uid/$token', null);
-  static void dbDeleteToken2(String? kurumId, String? termKey, String uid, String token) {
+  static void dbDeleteToken2(String kurumId, String termKey, String uid, String token) {
     Map<String, dynamic> updates = {};
 
     final uidkey = AppVar.appBloc.hesapBilgileri.girisTuru.toString() + '-G-' + uid;

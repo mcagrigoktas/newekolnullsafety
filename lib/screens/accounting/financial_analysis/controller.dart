@@ -403,7 +403,7 @@ class FinancialAnalysisController extends GetxController {
 
       final _completer = Completer<bool>();
       await AppVar.appBloc.firestore.setItemInPkg(ReferenceService.singleDocListCollectionRef() + '/Virmans', 'data', virmanItemForSave!.key!, virmanItemForSave!.toJson(), addParentDocName: false).then((value) async {
-        AppVar.appBloc.firestore.setItemInPkg(ReferenceService.accountLogRef() + ReferenceService.getDocName(virmanItemForSave!.key), 'data', virmanItemForSave!.key!, virmanItemForSave!.toLog(), addParentDocName: false).catchError(log).unawaited;
+        AppVar.appBloc.firestore.setItemInPkg(ReferenceService.accountLogRef() + ReferenceService.getDocName(virmanItemForSave!.key!), 'data', virmanItemForSave!.key!, virmanItemForSave!.toLog(), addParentDocName: false).catchError(log).unawaited;
         virmanPageType = null;
         virmanItemForSave = null;
         OverAlert.saveSuc();

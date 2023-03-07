@@ -72,7 +72,7 @@ class MessageService {
         if (keyList.length > 1) {
           EkolPushNotificationService.sendMultipleNotification(AppVar.appBloc.hesapBilgileri.name, message.message, keyList, NotificationArgs(tag: 'message'), forParentMessageMenu: forParentMessageMenu, parentVisibleCodeForNotification: parentVisibleCodeForNotification);
         } else if (keyList.length == 1) {
-          EkolPushNotificationService.sendSingleNotification(AppVar.appBloc.hesapBilgileri.name, message.message, keyList.first, NotificationArgs(tag: 'message'), forParentMessageMenu: forParentMessageMenu, parentVisibleCodeForNotification: parentVisibleCodeForNotification);
+          EkolPushNotificationService.sendSingleNotification(AppVar.appBloc.hesapBilgileri.name!, message.message!, keyList.first, NotificationArgs(tag: 'message'), forParentMessageMenu: forParentMessageMenu, parentVisibleCodeForNotification: parentVisibleCodeForNotification);
         }
         LogHelper.addLog('Messages', _uid, keyList.length);
       }

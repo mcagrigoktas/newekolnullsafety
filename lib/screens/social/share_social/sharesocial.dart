@@ -65,33 +65,33 @@ class _ShareSocialState extends State<ShareSocial> with SocialFunctions {
 
       ///Burda degisiklik yaparsan social functiondada yapman lazim
       //Butun yoneticiler burda listeye ekleniyor
-      Set<String?> managerList = AppVar.appBloc.managerService!.dataList.map((manager) => manager.key).toSet();
+      Set<String> managerList = AppVar.appBloc.managerService!.dataList.map((manager) => manager.key!).toSet();
 
-      Set<String?> teacherList = {};
+      Set<String> teacherList = {};
       // butun herkese gonderilecekse ogretmenlerin hepsi kaydediliyor
-      if (_data.targetList!.contains("alluser")) teacherList = AppVar.appBloc.teacherService!.dataList.map((teacher) => teacher.key).toSet();
+      if (_data.targetList!.contains("alluser")) teacherList = AppVar.appBloc.teacherService!.dataList.map((teacher) => teacher.key!).toSet();
 
       // paylasimi yapan ogretmense kendi hesabina  kaydedilmesi icin ekleniyor
-      if (AppVar.appBloc.hesapBilgileri.gtT) teacherList.add(AppVar.appBloc.hesapBilgileri.uid);
+      if (AppVar.appBloc.hesapBilgileri.gtT) teacherList.add(AppVar.appBloc.hesapBilgileri.uid!);
 
       // Ekidde Ogretmen paylasirken yardimici ogretmeni varsa onun hesabinada yazar yada idareci paylasirken her iki ogretmenede yazar
       if (AppVar.appBloc.hesapBilgileri.isEkid) {
         List<Class> sinifListesi = AppVar.appBloc.classService!.dataList.where((sinif) => _data.targetList!.contains(sinif.key)).toList();
         sinifListesi.forEach((sinif) {
-          if (sinif.classTeacher != null) teacherList.add(sinif.classTeacher);
-          if (sinif.classTeacher2 != null) teacherList.add(sinif.classTeacher2);
+          if (sinif.classTeacher != null) teacherList.add(sinif.classTeacher!);
+          if (sinif.classTeacher2 != null) teacherList.add(sinif.classTeacher2!);
         });
       }
 
       // Gonderilecek ogrenciler ayarlaniyor
-      List<String?> studentList = AppVar.appBloc.studentService!.dataList.where((student) {
+      List<String> studentList = AppVar.appBloc.studentService!.dataList.where((student) {
         if (_data.targetList!.contains("alluser")) return true;
 
         if (_data.targetList!.any((item) => [...student.classKeyList, student.key].contains(item))) return true;
 
         return false;
       }).map((student) {
-        return student.key;
+        return student.key!;
       }).toList();
 
       OverLoading.show();

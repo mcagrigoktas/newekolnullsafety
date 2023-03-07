@@ -3,9 +3,9 @@ part of '../dataservice.dart';
 class SocialService {
   SocialService._();
 
-  static String? get _kurumId => AppVar.appBloc.hesapBilgileri.kurumID;
-  static String? get _uid => AppVar.appBloc.hesapBilgileri.uid;
-  static String? get _termKey => AppVar.appBloc.hesapBilgileri.termKey;
+  static String get _kurumId => AppVar.appBloc.hesapBilgileri.kurumID!;
+  static String get _uid => AppVar.appBloc.hesapBilgileri.uid!;
+  static String get _termKey => AppVar.appBloc.hesapBilgileri.termKey!;
   static Database get _database22 => AppVar.appBloc.database2;
   static dynamic get _realTime => databaseTime;
   static Database get _databaseVersionss => AppVar.appBloc.databaseVersions;
@@ -18,7 +18,7 @@ class SocialService {
 
 //! SETDATASERVICE
   // Sosyal Ağa İtem Kaydeder
-  static Future<void> saveSocialItem(SocialItem socialItem, List<String?> managerList, List<String?> teacherList, List<String?> studentList, String tur /*SocialNetwork-Video*/, bool? isPublish) async {
+  static Future<void> saveSocialItem(SocialItem socialItem, List<String> managerList, List<String> teacherList, List<String> studentList, String tur /*SocialNetwork-Video*/, bool? isPublish) async {
     String key = _database22.pushKey('Okullar/$_kurumId/SocialNetwork/$_kurumId');
     Map<String, dynamic> updatesSocial = {};
     Map<String, dynamic> updatesSocialVersion = {};
@@ -64,7 +64,7 @@ class SocialService {
   }
 
   // Sosyal Ağ Yayınlar
-  static Future<void> publishSocialItem(SocialItem item, String tur, List<String?> contactList) async {
+  static Future<void> publishSocialItem(SocialItem item, String tur, List<String> contactList) async {
     Map<String, dynamic> updatesSocial = {};
     Map<String, dynamic> updatesSocialVersion = {};
     contactList.forEach((uid) {
@@ -88,7 +88,7 @@ class SocialService {
   }
 
 // Sosyal Ağ Siler
-  static Future<void> deleteSocialItem(String? existingKey, String tur, List<String?> contactList) async {
+  static Future<void> deleteSocialItem(String existingKey, String tur, List<String> contactList) async {
     Map<String, dynamic> updatesSocial = {};
     Map<String, dynamic> updatesSocialVersion = {};
     contactList.forEach((uid) {

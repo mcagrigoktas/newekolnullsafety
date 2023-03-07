@@ -11,9 +11,9 @@ class ReferenceService {
 
   //
 
-  static String? get _kurumId => AppVar.appBloc.hesapBilgileri.kurumID;
+  static String get _kurumId => AppVar.appBloc.hesapBilgileri.kurumID!;
   //static String? get _uid => AppVar.appBloc.hesapBilgileri.uid;
-  static String? get _termKey => AppVar.appBloc.hesapBilgileri.termKey;
+  static String get _termKey => AppVar.appBloc.hesapBilgileri.termKey!;
 
   static String userContractCollectionRef() => 'Okullar/$_kurumId/Accounting/$_termKey/UserContracts';
   static String salesContractCollectionRef() => 'Okullar/$_kurumId/Accounting/$_termKey/SalesContracts';
@@ -26,7 +26,7 @@ class ReferenceService {
 
 //* gelen keyin ilk harfini kesip o isimle biten doc ismi gonderir.
 //* mesele 10 farkli doc olusturup gelen datalari o 10 doca gore rasgele isminin bas harfine gore dagitir
-  static String getDocName(String? key, [int docCount = 10]) {
+  static String getDocName(String key, [int docCount = 10]) {
     return '/Doc' + (keyCharacters.indexOf(key.firstXcharacter(1)!) % docCount).toString();
   }
 

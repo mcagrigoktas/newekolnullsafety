@@ -60,7 +60,7 @@ class SchoolDataService {
   }
 
   // Okula alt donem bilgilerini kaydeder
-  static Future<void> saveSchoolSubTerm(String? termKey, List<SubTermModel> data) async {
+  static Future<void> saveSchoolSubTerm(String termKey, List<SubTermModel> data) async {
     Map<String, dynamic> updates = {};
     updates['/Okullar/$_kurumId/SchoolData/Info/sTL/$termKey'] = data.map((e) => e.toJson()).toList();
     updates['/Okullar/$_kurumId/SchoolData/Versions/SchoolInfo'] = _realTime;
@@ -95,7 +95,7 @@ class SchoolDataService {
   static Future<void> dbSetAdressBook(adressData) => _database11.set('Okullar/$_kurumId/SchoolData/AdressBook', adressData);
 
   //Aktif dönemi değiştirir
-  static Future<void> setClassTypes(Map? classTypes) async {
+  static Future<void> setClassTypes(Map classTypes) async {
     Map<String, dynamic> updates = {};
     updates['/${StringHelper.schools}/$_kurumId/SchoolData/Info/classTypes'] = classTypes;
     updates['/${StringHelper.schools}/$_kurumId/SchoolData/Versions/${VersionListEnum.schoolInfo}'] = _realTime;

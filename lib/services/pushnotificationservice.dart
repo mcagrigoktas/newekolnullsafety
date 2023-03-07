@@ -11,7 +11,7 @@ class EkolPushNotificationService {
   ///[parentVisibleCode] anne baba ayri bildirim icin gerekti.
   ///[forParentMessageMenu] anne babaya mesaj oldugunda true gelmeli.
   ///[forParentOtherMenu] mesaj menusu disinda diger menulerde anne babaya gonderilecekler icin.
-  static Tuple2<List<String>, Map<String, List<String>>?> _getTokenList(List<String?> uidList, {bool? forParentMessageMenu = false, bool forParentOtherMenu = false, String? parentVisibleCode}) {
+  static Tuple2<List<String>, Map<String, List<String>>?> _getTokenList(List<String> uidList, {bool? forParentMessageMenu = false, bool forParentOtherMenu = false, String? parentVisibleCode}) {
     final List<String> _tokenList = [];
 
     Map<String, List<String>>? tokenMapF;
@@ -65,7 +65,7 @@ class EkolPushNotificationService {
       });
 
       uidList.forEach((userKey) {
-        if (tokenMapF![userKey!] != null) _tokenList.addAll(List<String>.from(tokenMapF[userKey]!));
+        if (tokenMapF![userKey] != null) _tokenList.addAll(List<String>.from(tokenMapF[userKey]!));
       });
     }
 
@@ -77,18 +77,18 @@ class EkolPushNotificationService {
       await FirebaseFunctionService.sendTopicNotification(baslik!, icerik!, AppVar.appBloc.hesapBilgileri.kurumID! + 'pushnotification', sound: sound, tag: (tag..addUid('all')), channel: channel);
     } else {
       log(tergetList);
-      List<String?> uidList = [];
+      List<String> uidList = [];
 
       if (AppVar.appBloc.studentService != null) {
         AppVar.appBloc.studentService!.dataList.where((student) => tergetList.contains(student.key) || tergetList.any((item) => student.classKeyList.contains(item))).forEach((student) {
-          uidList.add(student.key);
+          uidList.add(student.key!);
         });
       }
       AppVar.appBloc.teacherService!.dataList.where((teacher) => tergetList.contains(teacher.key) || tergetList.contains('onlyteachers')).forEach((teacher) {
-        uidList.add(teacher.key);
+        uidList.add(teacher.key!);
       });
       AppVar.appBloc.managerService!.dataList.where((manager) => tergetList.contains(manager.key)).forEach((manager) {
-        uidList.add(manager.key);
+        uidList.add(manager.key!);
       });
       if (uidList.isEmpty) return;
       var sendingTokenData = _getTokenList(uidList, forParentMessageMenu: forParentMessageMenu, forParentOtherMenu: forParentOtherMenu, parentVisibleCode: parentVisibleCodeForNotification);
@@ -111,12 +111,12 @@ class EkolPushNotificationService {
     }
   }
 
-  static Future<void> sendSingleNotification(String? baslik, String? icerik, String? targetKey, NotificationArgs tag,
+  static Future<void> sendSingleNotification(String baslik, String icerik, String targetKey, NotificationArgs tag,
       {String? sound, String? channel, bool? forParentMessageMenu = false, bool forParentOtherMenu = false, String? parentVisibleCodeForNotification, List<String?>? sendOnlyThisTokenList}) async {
     var sendingTokenList = sendOnlyThisTokenList ?? (_getTokenList([targetKey], forParentMessageMenu: forParentMessageMenu, forParentOtherMenu: forParentOtherMenu, parentVisibleCode: parentVisibleCodeForNotification)).item1;
     if (sendingTokenList.isEmpty) return;
 
-    await FirebaseFunctionService.sendTokenListNotification(baslik!, icerik!, sendingTokenList as List<String>, sound: sound, tag: (tag..addUid(targetKey!)), channel: channel);
+    await FirebaseFunctionService.sendTokenListNotification(baslik, icerik, sendingTokenList as List<String>, sound: sound, tag: (tag..addUid(targetKey)), channel: channel);
   }
 }
 

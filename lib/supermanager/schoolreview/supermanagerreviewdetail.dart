@@ -34,7 +34,7 @@ class SuperManagerReviewDetailState extends State<SuperManagerReviewDetail> with
   void goSchoolAccount() {
     if (Fav.noConnection()) return;
 
-    UserInfoService.dbGetUserInfo(widget.islemYapilacakKey, 'Managers', 'Manager1', '').once().then((snap) {
+    UserInfoService.dbGetUserInfo(widget.islemYapilacakKey!, 'Managers', 'Manager1', '').once().then((snap) {
       if (snap!.value == null) {
         OverAlert.show(type: AlertType.danger, message: 'anerror'.translate);
       }

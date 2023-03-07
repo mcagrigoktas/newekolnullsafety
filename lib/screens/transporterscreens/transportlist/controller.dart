@@ -88,7 +88,7 @@ class TransporterListController extends GetxController {
       update();
       final _transporter = newItem ?? selectedItem;
       if (delete) _transporter!.aktif = false;
-      await TransportService.saveMultipleTransport([_transporter]).then((value) {
+      await TransportService.saveMultipleTransport([_transporter!]).then((value) {
         OverAlert.saveSuc();
         newItem = null;
         if (delete) visibleScreen = VisibleScreen.main;

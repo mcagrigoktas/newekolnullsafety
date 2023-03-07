@@ -78,7 +78,7 @@ class VideoChatItem extends StatelessWidget {
                     onPressed: () {
                       Fav.to(
                           VideoChatAppointment(
-                            itemKey: item.key,
+                            itemKey: item.key!,
                             lessonName: item.lessonName,
                             teacherImgUrl: imgUrl,
                             dateString: item.startTime!.dateFormat("d-MMMM-yyyy"),
@@ -93,7 +93,7 @@ class VideoChatItem extends StatelessWidget {
                     onPressed: () async {
                       await Fav.to(
                           VideoChatAppointment(
-                            itemKey: item.key,
+                            itemKey: item.key!,
                             lessonName: item.lessonName,
                             teacherImgUrl: imgUrl,
                             dateString: item.startTime!.dateFormat("d-MMMM-yyyy"),

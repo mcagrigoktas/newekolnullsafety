@@ -3,9 +3,9 @@ part of '../dataservice.dart';
 class SurveyService {
   SurveyService._();
 
-  static String? get _kurumId => AppVar.appBloc.hesapBilgileri.kurumID;
-  static String? get _termKey => AppVar.appBloc.hesapBilgileri.termKey;
-  static String? get _uid => AppVar.appBloc.hesapBilgileri.uid;
+  static String get _kurumId => AppVar.appBloc.hesapBilgileri.kurumID!;
+  static String get _termKey => AppVar.appBloc.hesapBilgileri.termKey!;
+  static String get _uid => AppVar.appBloc.hesapBilgileri.uid!;
   static Database get _database33 => AppVar.appBloc.database3;
 
 //! GETDATASERVICE

@@ -182,7 +182,7 @@ class ContractsController extends GetxController {
       update();
 
       await dataPackage!.sendDatabase(selectedPerson!.key!, 'data', itemData!.key!, itemData!.toJson()).then((value) async {
-        AppVar.appBloc.firestore.setItemInPkg(ReferenceService.accountLogRef() + ReferenceService.getDocName(itemData!.key), 'data', itemData!.key!, itemData!.toLog(), addParentDocName: false).catchError(log).unawaited;
+        AppVar.appBloc.firestore.setItemInPkg(ReferenceService.accountLogRef() + ReferenceService.getDocName(itemData!.key!), 'data', itemData!.key!, itemData!.toLog(), addParentDocName: false).catchError(log).unawaited;
 
         if (newContract != null) {
           await 1500.wait;

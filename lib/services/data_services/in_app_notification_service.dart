@@ -17,7 +17,7 @@ class InAppNotificationService {
   static Future<void> sendInAppNotification(InAppNotification notification, String targetUid, {String notificationTag = 'notify', List<String?>? sendOnlyThisTokenList}) {
     notification.lastUpdate = _realTime;
     return _database33.set('Okullar/$_kurumId/$_termKey/Notifications/$targetUid/${notification.key}', notification.toJson(notification.key!)).then((value) {
-      EkolPushNotificationService.sendSingleNotification(notification.title, notification.content, targetUid, NotificationArgs(tag: notificationTag), forParentOtherMenu: notification.forParentOtherMenu == true, sendOnlyThisTokenList: sendOnlyThisTokenList);
+      EkolPushNotificationService.sendSingleNotification(notification.title!, notification.content!, targetUid, NotificationArgs(tag: notificationTag), forParentOtherMenu: notification.forParentOtherMenu == true, sendOnlyThisTokenList: sendOnlyThisTokenList);
       _databaseVersionss.runTransaction("Okullar/$_kurumId/$_termKey/$targetUid/${VersionListEnum.inAppNotification}", 1);
     });
   }
@@ -55,7 +55,7 @@ class InAppNotificationService {
     return _database33.update(updates).then((value) {
       Map<String, dynamic> updatesVersion = {};
       itemList.forEach((item) {
-        EkolPushNotificationService.sendSingleNotification(item.notification.title, item.notification.content, item.uid, NotificationArgs(tag: notificationTag), forParentOtherMenu: item.notification.forParentOtherMenu == true);
+        EkolPushNotificationService.sendSingleNotification(item.notification.title!, item.notification.content!, item.uid, NotificationArgs(tag: notificationTag), forParentOtherMenu: item.notification.forParentOtherMenu == true);
 
         updatesVersion['/Okullar/$_kurumId/$_termKey/${item.uid}/${VersionListEnum.inAppNotification}'] = ServerValue.increment(1);
       });

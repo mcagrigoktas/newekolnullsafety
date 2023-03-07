@@ -101,7 +101,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
       if (_hesapBilgileri.gtS) _girisTuruKey = "Students";
 
       _changeLoading(true);
-      UserInfoService.dbGetUserInfo(_hesapBilgileri.kurumID, _girisTuruKey, _hesapBilgileri.uid, _hesapBilgileri.termKey).once().then((snapshot) {
+      UserInfoService.dbGetUserInfo(_hesapBilgileri.kurumID!, _girisTuruKey, _hesapBilgileri.uid!, _hesapBilgileri.termKey).once().then((snapshot) {
         final _userData = snapshot!.value;
         if (_userData == null) {
           _changeLoading(false);

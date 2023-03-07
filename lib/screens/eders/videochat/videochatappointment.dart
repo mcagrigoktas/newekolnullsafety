@@ -14,11 +14,11 @@ import '../../managerscreens/othersettings/user_permission/user_permission.dart'
 import '../livebroadcast/live_area/eager_live_area_starter.dart';
 
 class VideoChatAppointment extends StatefulWidget {
-  final String? itemKey;
+  final String itemKey;
   final String? lessonName;
   final String? dateString;
   final String? teacherImgUrl;
-  VideoChatAppointment({this.itemKey, this.lessonName, this.dateString, this.teacherImgUrl});
+  VideoChatAppointment({required this.itemKey, this.lessonName, this.dateString, this.teacherImgUrl});
   @override
   _VideoChatAppointmentState createState() => _VideoChatAppointmentState();
 }
