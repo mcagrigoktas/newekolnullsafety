@@ -72,7 +72,7 @@ class StudentList extends StatelessWidget {
             child: Icon(Icons.more_vert, color: Fav.design.appBar.text).paddingOnly(top: 0, right: 8, bottom: 0, left: 0),
             onSelected: (value) async {
               if (value == 0) {
-                Fav.to(ImportPageMain(menuNo: 10))!.unawaited;
+                Fav.to(ImportPageMain(menuNo: 10)).unawaited;
               } else if (value == 1) {
                 var classKey = await OverPage.openChoosebleListViewFromMap(data: (AppVar.appBloc.classService!.dataList.fold<Map>({'all': 'all'.translate}, (p, e) => p..[e.key] = e.name)), title: 'chooseclass'.translate);
                 if (classKey == null) return;

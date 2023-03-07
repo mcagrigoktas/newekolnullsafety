@@ -57,7 +57,7 @@ class TeacherList extends StatelessWidget {
             child: Icon(Icons.more_vert, color: Fav.design.appBar.text).paddingOnly(right: 8),
             onSelected: (value) async {
               if (value == 0) {
-                Fav.to(ImportPageMain(menuNo: 11))!.unawaited;
+                Fav.to(ImportPageMain(menuNo: 11)).unawaited;
               } else if (value == 1) {
                 ExportHelper.exportTeacherList();
               } else if (value == 2) {

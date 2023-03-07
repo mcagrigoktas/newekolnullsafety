@@ -189,7 +189,7 @@ class _DailyReportTeacherScreenState extends State<DailyReportTeacherScreen> wit
         return;
       }
 
-      Fav.to(EditDailyReport(classKey: classKey), preventDuplicates: false)!.unawaited;
+      Fav.to(EditDailyReport(classKey: classKey), preventDuplicates: false).unawaited;
     }
     if (value == 1) {
       _operStudentFormSendingList().unawaited;
@@ -211,7 +211,7 @@ class _DailyReportTeacherScreenState extends State<DailyReportTeacherScreen> wit
         OverAlert.show(type: AlertType.danger, message: "youarenotguidancestudent".translate);
         return;
       }
-      Fav.to(EkidRollCallTeacher(sinif: classKey))!.unawaited;
+      Fav.to(EkidRollCallTeacher(sinif: classKey)).unawaited;
     }
   }
 

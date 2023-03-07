@@ -7,7 +7,7 @@ class AppConfig {
   String appName;
 
   Function(bool, [Map])? ekolRestartApp;
-  Function(bool?)? qbankRestartApp;
+  Function(bool)? qbankRestartApp;
   final String? technicalSupportMail;
   final String? technicalSupportPhone;
   MarketData? marketData;

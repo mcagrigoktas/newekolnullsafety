@@ -6,9 +6,9 @@ import 'package:mcg_extension/mcg_extension.dart';
 import '../../appbloc/appvar.dart';
 
 class SplashScreen extends StatefulWidget {
-  final int? duration;
+  final int duration;
 
-  SplashScreen({this.duration});
+  SplashScreen({required this.duration});
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
@@ -16,7 +16,6 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMixin {
   MyFile? file;
   bool closeSplash = false;
-  String? logoUrl;
   String? name;
 
   @override
@@ -24,10 +23,10 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
     super.initState();
 
     final schoolData = AppVar.appBloc.schoolInfoService?.singleData;
-    logoUrl = schoolData?.logoUrl;
+    String? logoUrl = schoolData?.logoUrl;
     name = schoolData?.name ?? '';
 
-    Future.delayed(Duration(milliseconds: widget.duration! - 333)).then((_) {
+    Future.delayed(Duration(milliseconds: widget.duration - 333)).then((_) {
       if (mounted) {
         setState(() {
           closeSplash = true;

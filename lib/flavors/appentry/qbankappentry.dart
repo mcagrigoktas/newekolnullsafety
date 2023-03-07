@@ -14,8 +14,6 @@ import '../../widgets/errorwidget.dart';
 import '../appconfig.dart';
 
 class QbankAppEntry extends StatelessWidget {
-  QbankAppEntry();
-
   @override
   Widget build(BuildContext context) {
     ErrorWidget.builder = (FlutterErrorDetails errorDetails) {
@@ -57,11 +55,11 @@ class MyApp extends StatefulWidget {
 
 class MyAppState extends State<MyApp> with OpeningProcess {
   void _setAppRestartCode() {
-    AppVar.qbankBloc.appConfig.qbankRestartApp = (bool? restart) async {
+    AppVar.qbankBloc.appConfig.qbankRestartApp = (bool restart) async {
       await AppVar.qbankBloc.dispose();
       if (Get.isRegistered<QbankAppBloc>()) await Get.delete<QbankAppBloc>(force: true);
 
-      Get.offAll(() => MyApp(), transition: Transition.size, duration: 500.milliseconds)!.unawaited;
+      Get.offAll(() => MyApp(), transition: Transition.size, duration: 500.milliseconds).unawaited;
     };
   }
 

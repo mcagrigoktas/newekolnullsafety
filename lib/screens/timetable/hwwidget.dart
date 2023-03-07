@@ -92,7 +92,7 @@ class HomeWorkWidget extends StatelessWidget {
     }
 
     if (_value == 1) {
-      Fav.guardTo(CheckHomeWork(homeWork: homeWork))!.unawaited;
+      Fav.guardTo(CheckHomeWork(homeWork: homeWork)).unawaited;
     }
   }
 

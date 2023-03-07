@@ -311,7 +311,7 @@ class VideoChatStudentScreen extends StatelessWidget {
 
                                       if ((await PermissionManager.microphoneAndCamera()) == false) return;
 
-                                      LiveAreaStarter.startVideoChat(channelName: users[0]! + users[1]!)!.unawaited;
+                                      LiveAreaStarter.startVideoChat(channelName: users[0]! + users[1]!).unawaited;
                                     },
                                     color: Fav.design.primary,
                                   ),

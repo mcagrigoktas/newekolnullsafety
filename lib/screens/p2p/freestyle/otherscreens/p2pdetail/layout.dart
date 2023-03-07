@@ -45,7 +45,7 @@ class P2PDetail extends StatelessWidget {
                               ///ogrencinin kamera ve sesi giriste acik olabilmesi  icin lesson name  e bakiyor
                               ..lessonName = 'videolesson'.translate
                               ..livebroadcasturltype = 5,
-                          )!.unawaited;
+                          ).unawaited;
                         },
                       ),
                     ],
