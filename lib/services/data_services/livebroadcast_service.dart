@@ -3,9 +3,9 @@ part of '../dataservice.dart';
 class LiveBroadCastService {
   LiveBroadCastService._();
 
-  static String? get _uid => AppVar.appBloc.hesapBilgileri.uid;
-  static String? get _kurumId => AppVar.appBloc.hesapBilgileri.kurumID;
-  static String? get _termKey => AppVar.appBloc.hesapBilgileri.termKey;
+  static String get _uid => AppVar.appBloc.hesapBilgileri.uid!;
+  static String get _kurumId => AppVar.appBloc.hesapBilgileri.kurumID!;
+  static String get _termKey => AppVar.appBloc.hesapBilgileri.termKey!;
   static dynamic get _realTime => databaseTime;
   static Database get _database11 => AppVar.appBloc.database1;
   static Database get _database33 => AppVar.appBloc.database3;
@@ -15,10 +15,10 @@ class LiveBroadCastService {
 //! GETDATASERVICE
 
   // Video Chat Message  Referansı
-  static Reference dbVideoChats(String? channelKey) => Reference(_database22, 'Okullar/$_kurumId/$_termKey/Messages/VideoChats/$channelKey');
+  static Reference dbVideoChats(String channelKey) => Reference(_database22, 'Okullar/$_kurumId/$_termKey/Messages/VideoChats/$channelKey');
   // static Reference dbVideoChatSettings(String channelKey) => Reference(_database22, 'Okullar/$_kurumId/$_termKey/Messages/VideoChatSettings/$channelKey');
-  static Reference dbVideoChatSettings(String? channelKey) =>
-      AppVar.appBloc.hesapBilgileri.gtS ? Reference(_database22, 'Okullar/$_kurumId/$_termKey/Messages/VideoChatSettings/${channelKey! + 'v2'}/settings') : Reference(_database22, 'Okullar/$_kurumId/$_termKey/Messages/VideoChatSettings/${channelKey! + 'v2'}');
+  static Reference dbVideoChatSettings(String channelKey) =>
+      AppVar.appBloc.hesapBilgileri.gtS ? Reference(_database22, 'Okullar/$_kurumId/$_termKey/Messages/VideoChatSettings/${channelKey + 'v2'}/settings') : Reference(_database22, 'Okullar/$_kurumId/$_termKey/Messages/VideoChatSettings/${channelKey + 'v2'}');
 
 //Canli yayin listesini ceker
   static Reference dbGetLiveBroadcastLessons() => Reference(_database33, 'Okullar/$_kurumId/$_termKey/LiveBroadCast');
@@ -68,7 +68,7 @@ class LiveBroadCastService {
     });
   }
 
-  static Future<void> deleteBroadcastProgram(String? itemKey) async {
+  static Future<void> deleteBroadcastProgram(String itemKey) async {
     Map<String, dynamic> updates = {};
 
     updates['/Okullar/$_kurumId/$_termKey/LiveBroadCast/$itemKey/aktif'] = false;

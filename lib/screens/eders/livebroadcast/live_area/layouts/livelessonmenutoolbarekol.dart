@@ -102,7 +102,8 @@ class LiveLessonMenuLayoutEkol extends StatelessWidget {
                 8.widthBox,
                 FeatureButtons(),
                 if (controller.extraMenuType != ExtraMenuType.closed) Container(margin: const EdgeInsets.all(4.0), color: const Color(0x22BBC7DE), width: 1, height: double.infinity),
-                if (controller.extraMenuType == ExtraMenuType.rollCallMenu) Expanded(child: EkolRollCallTeacher(sinif: AppVar.appBloc.classService!.dataListItem(controller.lesson!.classKey!), lesson: controller.lesson, forOnlineLesson: true, onlineLessonOnlinePeopleData: controller.onlineUserList)),
+                if (controller.extraMenuType == ExtraMenuType.rollCallMenu)
+                  Expanded(child: EkolRollCallTeacher(sinif: AppVar.appBloc.classService!.dataListItem(controller.lesson!.classKey!)!, lesson: controller.lesson, forOnlineLesson: true, onlineLessonOnlinePeopleData: controller.onlineUserList)),
                 if (controller.extraMenuType == ExtraMenuType.rollCallMenuStarter) Expanded(child: RollCallMenuStarter()),
                 if (controller.extraMenuType == ExtraMenuType.hints) Expanded(child: Hints()),
                 if (controller.extraMenuType == ExtraMenuType.otherMenu) Expanded(child: OtherSettings()),

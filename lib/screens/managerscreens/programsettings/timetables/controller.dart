@@ -20,7 +20,7 @@ class TimaTableEditController extends BaseController {
   final timeTableSettings = TimeTableSettings();
   DrawerType drawerType = DrawerType.settings;
 
-  Map? programData = {};
+  Map programData = {};
   final Map caches = {};
 
   var isLoadingSave = false.obs;
@@ -95,7 +95,7 @@ class TimaTableEditController extends BaseController {
   Future<void> clearTimeTable() async {
     var _sure = await Over.sure();
     if (_sure == true) {
-      programData!.clear();
+      programData.clear();
       update();
     }
   }
@@ -148,7 +148,7 @@ class TimaTableEditController extends BaseController {
 
   bool ayniSaatteOgretmenDolumu(Class sinif, String lessonKey, int? day, int lessonNo) {
     bool _teacherFull = false;
-    programData!.forEach((classKey, value) {
+    programData.forEach((classKey, value) {
       if (classKey != sinif.key && !_teacherFull) {
         final Map _sinifProgarmi = value;
         _sinifProgarmi.forEach((time, lessonKey2) {
@@ -166,7 +166,7 @@ class TimaTableEditController extends BaseController {
   }
 
   Future<void> boxOnSelect(BuildContext context, String day, int lessonNo, GlobalKey gestureKey, Class sinif) async {
-    var _lessonList = AppVar.appBloc.lessonService!.dataList.where((lesson) => lesson.classKey == sinif.key).where((lesson) => lesson.count! > (((programData![sinif.key] ?? {}) as Map).values.fold(0, (t, e) => e == lesson.key ? t + 1 : t)));
+    var _lessonList = AppVar.appBloc.lessonService!.dataList.where((lesson) => lesson.classKey == sinif.key).where((lesson) => lesson.count! > (((programData[sinif.key] ?? {}) as Map).values.fold(0, (t, e) => e == lesson.key ? t + 1 : t)));
 
     final _lessonKey = await PopUpBuild.build(
       lessonList: _lessonList,
@@ -178,16 +178,16 @@ class TimaTableEditController extends BaseController {
     );
     if (_lessonKey == null) return;
 
-    if (programData![sinif.key] == null) programData![sinif.key] = {};
+    if (programData[sinif.key] == null) programData[sinif.key] = {};
 
     if (_lessonKey == 'sil') {
-      (programData![sinif.key] as Map).remove('$day-${lessonNo + 1}');
+      (programData[sinif.key] as Map).remove('$day-${lessonNo + 1}');
     } else {
       if (ayniSaatteOgretmenDolumu(sinif, _lessonKey, int.tryParse(day), lessonNo + 1) == true) {
         OverAlert.show(type: AlertType.danger, message: 'teacherlessonfull'.translate);
         return;
       }
-      programData![sinif.key]['$day-${lessonNo + 1}'] = _lessonKey;
+      programData[sinif.key]['$day-${lessonNo + 1}'] = _lessonKey;
     }
     update();
   }

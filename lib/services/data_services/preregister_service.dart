@@ -15,12 +15,12 @@ class PreRegisterService {
 //! SETDATASERVICE
 
 // Öğrenci On Kayit Kaydeder
-  static Future<void> savePreRegister(Map studentData, String? existingKey) async {
+  static Future<void> savePreRegister(Map studentData, String existingKey) async {
     return _database11.set('Okullar/$_kurumId/$_termKey/PreRegister/$existingKey', studentData);
   }
 
   // Öğrenci On Kayit Statusunu Degistirir
-  static Future<void> changePreRegisterStatus(String? existingKey, int status) async {
+  static Future<void> changePreRegisterStatus(String existingKey, int status) async {
     return _database11.set('Okullar/$_kurumId/$_termKey/PreRegister/$existingKey/status', status);
   }
 }

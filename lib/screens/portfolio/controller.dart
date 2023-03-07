@@ -85,7 +85,7 @@ class PortfolioController extends GetxController {
       multipleData: true,
       removeFunction: (a) => a.portfolioType == null || a.lastUpdate == null,
       lastUpdateKey: 'lastUpdate',
-      queryRef: PortfolioService.dbPortfolio(selectedStudent!.key),
+      queryRef: PortfolioService.dbPortfolio(selectedStudent!.key!),
       filterDeletedData: true,
       jsonParse: (key, value) => Portfolio.fromJson(value, key),
       sortFunction: (Portfolio a, Portfolio b) => b.lastUpdate - a.lastUpdate,

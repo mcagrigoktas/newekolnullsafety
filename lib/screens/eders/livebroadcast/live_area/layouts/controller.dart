@@ -47,7 +47,7 @@ class OnlineLessonController extends GetxController {
   bool get isOtherButtonEnable => liveLessonType == LiveLessonType.Jitsi;
   bool get settingButtonEnable => AppVar.appBloc.hesapBilgileri.gtMT;
 
-  String? get channelName => liveBroadcastItem!.channelName;
+  String get channelName => liveBroadcastItem!.channelName!;
   final LiveBroadcastModel? liveBroadcastItem;
 
   ///Ders programindan geliyorsa

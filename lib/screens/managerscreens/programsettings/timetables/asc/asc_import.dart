@@ -19,7 +19,7 @@ class AscImportHelper {
     }
 
     final _controller = Get.find<TimaTableEditController>();
-    final _programData = _controller.programData!;
+    final _programData = _controller.programData;
     _programData.clear();
     _cardElements.forEach((element) {
       final _classKey = element.getAttribute('classids');

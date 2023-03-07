@@ -209,7 +209,7 @@ class _P2PStudentListState extends State<P2PStudentList> {
             Expanded(
               child: Wrap(
                 children: controller.selectedStudentList
-                    .map((e) => (_studentNameCaches.putIfAbsent(e, () => AppVar.appBloc.studentService!.dataListItem(e!)!.name) ?? '').capitalLettersJoin(characterCount: 2, joinCharacter: '.').text.color(Colors.white).fontSize(10).make().rounded(background: Fav.design.primary, borderRadius: 2).p2)
+                    .map((e) => (_studentNameCaches.putIfAbsent(e, () => AppVar.appBloc.studentService!.dataListItem(e)!.name) ?? '').capitalLettersJoin(characterCount: 2, joinCharacter: '.').text.color(Colors.white).fontSize(10).make().rounded(background: Fav.design.primary, borderRadius: 2).p2)
                     .toList()
                   ..add(GestureDetector(
                       onTap: () {

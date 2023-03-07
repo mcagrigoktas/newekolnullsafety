@@ -68,7 +68,7 @@ class PortfolioHelper {
             subject = (AppVar.appBloc.teacherService!.dataListItem(_item.teacherKey!)?.name ?? '');
           } else if (AppVar.appBloc.hesapBilgileri.gtT) {
             if (_item.studentList != null && _item.studentList!.isNotEmpty) {
-              subject = AppVar.appBloc.studentService!.dataListItem(_item.studentList!.first!)?.name ?? '';
+              subject = AppVar.appBloc.studentService!.dataListItem(_item.studentList!.first)?.name ?? '';
               if (_item.studentList!.length > 1) {
                 subject += ' + ' + '${_item.studentList!.length - 1}' + ' ' + 'person'.translate;
               }

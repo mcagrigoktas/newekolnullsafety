@@ -35,7 +35,7 @@ class ChatScreen extends StatefulWidget {
 }
 
 class ChatScreenState extends State<ChatScreen> with AppFunctions {
-  String? get _targetKey => widget.mesaggingPreview!.senderKey;
+  String get _targetKey => widget.mesaggingPreview!.senderKey!;
   String? get _targetName => widget.mesaggingPreview!.senderName;
   String? get _targetImgUrl => widget.mesaggingPreview!.senderImgUrl;
   // Student student;
@@ -68,7 +68,7 @@ class ChatScreenState extends State<ChatScreen> with AppFunctions {
     super.initState();
 
     if (AppVar.appBloc.hesapBilgileri.gtMT) {
-      _student = AppVar.appBloc.studentService!.dataListItem(_targetKey!);
+      _student = AppVar.appBloc.studentService!.dataListItem(_targetKey);
     }
 
     _smsButtonIsEnabled = AppVar.appBloc.schoolInfoService!.singleData!.smsConfig.isSturdy && AppVar.appBloc.hesapBilgileri.gtMT;
@@ -91,7 +91,7 @@ class ChatScreenState extends State<ChatScreen> with AppFunctions {
     });
 
     if (!AppVar.appBloc.hesapBilgileri.isEkid && AppVar.appBloc.hesapBilgileri.gtMT) {
-      _loginTimeSubscriptionParent = MessageService.dbMessageLoginTime(_targetKey! + 'parent').onValue().listen((event) {
+      _loginTimeSubscriptionParent = MessageService.dbMessageLoginTime(_targetKey + 'parent').onValue().listen((event) {
         if (event?.value != null) {
           setState(() {
             _targetLoginTimeParent = event!.value;
@@ -101,7 +101,7 @@ class ChatScreenState extends State<ChatScreen> with AppFunctions {
     }
 
     if (AppVar.appBloc.hesapBilgileri.gtMT && widget.mesaggingPreview!.targetGirisTuru == 30 && _student!.parentState == 2) {
-      _loginTimeSubscriptionParent2 = MessageService.dbMessageLoginTime(_targetKey! + 'parent2').onValue().listen((event) {
+      _loginTimeSubscriptionParent2 = MessageService.dbMessageLoginTime(_targetKey + 'parent2').onValue().listen((event) {
         if (event?.value != null) {
           setState(() {
             _targetLoginTimeParent2 = event!.value;
@@ -140,7 +140,7 @@ class ChatScreenState extends State<ChatScreen> with AppFunctions {
                 MessageService.setMessageLoginTime(AppVar.appBloc.hesapBilgileri.uid! + 'parent');
               }
             } else {
-              MessageService.setMessageLoginTime(AppVar.appBloc.hesapBilgileri.uid);
+              MessageService.setMessageLoginTime(AppVar.appBloc.hesapBilgileri.uid!);
             }
           }
         });
@@ -186,7 +186,7 @@ class ChatScreenState extends State<ChatScreen> with AppFunctions {
 
     return ChatUi(
       scrollController: _scrollController,
-      trailing: (_targetImgUrl ?? "").startsWith("http") ? Hero(tag: _targetKey!, child: CircularProfileAvatar(imageUrl: _targetImgUrl, backgroundColor: Fav.design.scaffold.background, radius: 16.0)).pr8 : null,
+      trailing: (_targetImgUrl ?? "").startsWith("http") ? Hero(tag: _targetKey, child: CircularProfileAvatar(imageUrl: _targetImgUrl, backgroundColor: Fav.design.scaffold.background, radius: 16.0)).pr8 : null,
       title: _targetName,
       bottom: Column(
         children: [
@@ -433,13 +433,13 @@ class ChatScreenState extends State<ChatScreen> with AppFunctions {
     final _numbers = <String?>[];
 
     if (widget.mesaggingPreview!.targetGirisTuru == 10) {
-      final _manager = AppVar.appBloc.managerService!.dataListItem(_targetKey!);
+      final _manager = AppVar.appBloc.managerService!.dataListItem(_targetKey);
       if (_manager != null && _manager.phone.safeLength > 4) _numbers.add(_manager.phone);
     } else if (widget.mesaggingPreview!.targetGirisTuru == 20) {
-      final _teacher = AppVar.appBloc.teacherService!.dataListItem(_targetKey!);
+      final _teacher = AppVar.appBloc.teacherService!.dataListItem(_targetKey);
       if (_teacher != null && _teacher.phone.safeLength > 4) _numbers.add(_teacher.phone);
     } else if (widget.mesaggingPreview!.targetGirisTuru == 30) {
-      final _student = AppVar.appBloc.studentService!.dataListItem(_targetKey!);
+      final _student = AppVar.appBloc.studentService!.dataListItem(_targetKey);
       if (_student != null) {
         if (AppVar.appBloc.hesapBilgileri.isEkid) {
           _numbers.addAll([

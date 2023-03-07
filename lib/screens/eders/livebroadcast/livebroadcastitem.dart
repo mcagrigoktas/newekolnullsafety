@@ -14,7 +14,7 @@ class LiveBroadcastItem extends StatelessWidget with AppFunctions {
   final LiveBroadcastModel? item;
   LiveBroadcastItem({this.item});
 
-  Future<void> delete(String? itemKey) async {
+  Future<void> delete(String itemKey) async {
     bool sure = await Over.sure(message: 'deletesure'.translate);
     if (sure == true) {
       LiveBroadCastService.deleteBroadcastProgram(itemKey).then((value) => OverAlert.deleteSuc()).catchError((err) => OverAlert.deleteErr()).unawaited;
@@ -67,9 +67,8 @@ class LiveBroadcastItem extends StatelessWidget with AppFunctions {
                     child: Padding(padding: const EdgeInsets.only(left: 4.0), child: Icon(Icons.more_vert, color: Fav.design.card.button)),
                     onSelected: (value) async {
                       if (value == 0) {
-                        delete(item!.key).unawaited;
-                      }
-                      if (value == 1) {
+                        delete(item!.key!).unawaited;
+                      } else if (value == 1) {
                         await Fav.guardTo(MakeLiveBroadcastProgram(existingItem: item));
                       }
                     },

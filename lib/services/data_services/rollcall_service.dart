@@ -3,21 +3,21 @@ part of '../dataservice.dart';
 class RollCallService {
   RollCallService._();
 
-  static String? get _kurumId => AppVar.appBloc.hesapBilgileri.kurumID;
-  static String? get _termKey => AppVar.appBloc.hesapBilgileri.termKey;
+  static String get _kurumId => AppVar.appBloc.hesapBilgileri.kurumID!;
+  static String get _termKey => AppVar.appBloc.hesapBilgileri.termKey!;
   static Database get _databaseProgramm => AppVar.appBloc.databaseProgram;
   static dynamic get _realTime => databaseTime;
-  static String? get _uid => AppVar.appBloc.hesapBilgileri.uid;
+  static String get _uid => AppVar.appBloc.hesapBilgileri.uid!;
   static Database get _databaseVersionss => AppVar.appBloc.databaseVersions;
   static Database get _databaseLogss => AppVar.appBloc.databaseLogs;
 
 //! GETDATASERVICE
 
 //Gunu sinifi ve dersi belli olan yoklama listesini ceker
-  static Reference dbGetEkolRollCall(String dateKey, String? classKey, String lessonNo) => Reference(_databaseProgramm, 'Okullar/$_kurumId/$_termKey/RollCall/$dateKey/$classKey/$lessonNo');
+  static Reference dbGetEkolRollCall(String dateKey, String classKey, String lessonNo) => Reference(_databaseProgramm, 'Okullar/$_kurumId/$_termKey/RollCall/$dateKey/$classKey/$lessonNo');
 
   //DatabaseReference dbGetEkidRollCall(String dateKey, String classKey) => databaseProgram.child("Okullar").child(kurumId).child(termKey).child('EkidRollCall').child(dateKey).child(classKey);
-  static Reference dbGetEkidRollCall(String dateKey, String? classKey) => Reference(_databaseProgramm, 'Okullar/$_kurumId/$_termKey/EkidRollCall/$dateKey/$classKey');
+  static Reference dbGetEkidRollCall(String dateKey, String classKey) => Reference(_databaseProgramm, 'Okullar/$_kurumId/$_termKey/EkidRollCall/$dateKey/$classKey');
 
   //Ogrencinin yoklama bilgilerini ceker idareci ogrenci keyi yolllamli
   static Reference dbEkolStudentGetRollCall([studentKey]) => Reference(_databaseProgramm, 'Okullar/$_kurumId/$_termKey/StudentRollCall/${studentKey ?? _uid}');
@@ -35,7 +35,7 @@ class RollCallService {
 //! SETDATASERVICE
 
   // Yoklamayi idareci icin kaydeder. 2. liste gelen ogrencileride icermez
-  static Future<void> addEkolRollCall(String dateKey, String? classKey, int? lessonNo, String lessonNameNo, Map data, /*Map data2,*/ Map<String?, RollCallStudentModel> studentData) async {
+  static Future<void> addEkolRollCall(String dateKey, String classKey, int? lessonNo, String lessonNameNo, Map data, /*Map data2,*/ Map<String, RollCallStudentModel> studentData) async {
     Map<String, dynamic> updates = {};
     Map<String, dynamic> updatesStudentVersion = {};
     updates['/Okullar/$_kurumId/$_termKey/RollCall/$dateKey/$classKey/$lessonNameNo'] = data;
@@ -54,7 +54,7 @@ class RollCallService {
     });
   }
 
-  static Future<void> addEkidRollCall(String dateKey, String? classKey, Map data, Map<String?, RollCallStudentModel> studentData) async {
+  static Future<void> addEkidRollCall(String dateKey, String classKey, Map data, Map<String?, RollCallStudentModel> studentData) async {
     Map<String, dynamic> updates = {};
     Map<String, dynamic> updatesStudentVersion = {};
     updates['/Okullar/$_kurumId/$_termKey/EkidRollCall/$dateKey/$classKey'] = data;

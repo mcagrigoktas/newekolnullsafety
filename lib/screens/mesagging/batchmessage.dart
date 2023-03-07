@@ -69,8 +69,8 @@ class BatchMessagesState extends State<BatchMessages> {
         return;
       }
 
-      Map<String?, MesaggingPreview> _ownPreviewMap = {};
-      List<String?> _keyList = [];
+      Map<String, MesaggingPreview> _ownPreviewMap = {};
+      List<String> _keyList = [];
       List<String?> _phoneList = [];
 
       void _addManagerAndTeacherList() {
@@ -78,17 +78,17 @@ class BatchMessagesState extends State<BatchMessages> {
           if (AppVar.appBloc.hesapBilgileri.gtT && AppVar.appBloc.hesapBilgileri.uid == teacher.key) return false;
           return true;
         }).map((teacher) {
-          _ownPreviewMap[teacher.key] = MesaggingPreview(senderName: teacher.name, senderImgUrl: teacher.imgUrl, senderKey: teacher.key, timeStamp: databaseTime, lastMessage: _message);
+          _ownPreviewMap[teacher.key!] = MesaggingPreview(senderName: teacher.name, senderImgUrl: teacher.imgUrl, senderKey: teacher.key, timeStamp: databaseTime, lastMessage: _message);
           if (teacher.phone.safeLength > 4) _phoneList.add(teacher.phone);
-          return teacher.key;
+          return teacher.key!;
         }).toList());
         _keyList.addAll(AppVar.appBloc.managerService!.dataList.where((manager) {
           if (AppVar.appBloc.hesapBilgileri.gtM && AppVar.appBloc.hesapBilgileri.uid == manager.key) return false;
           return true;
         }).map((manager) {
-          _ownPreviewMap[manager.key] = MesaggingPreview(senderName: manager.name, senderImgUrl: manager.imgUrl, senderKey: manager.key, timeStamp: databaseTime, lastMessage: _message);
+          _ownPreviewMap[manager.key!] = MesaggingPreview(senderName: manager.name, senderImgUrl: manager.imgUrl, senderKey: manager.key, timeStamp: databaseTime, lastMessage: _message);
           if (manager.phone.safeLength > 4) _phoneList.add(manager.phone);
-          return manager.key;
+          return manager.key!;
         }).toList());
       }
 
@@ -103,7 +103,7 @@ class BatchMessagesState extends State<BatchMessages> {
           }
           return false;
         }).map((student) {
-          _ownPreviewMap[student.key] = MesaggingPreview(senderName: student.name, senderImgUrl: student.imgUrl, senderKey: student.key, timeStamp: databaseTime, lastMessage: _message);
+          _ownPreviewMap[student.key!] = MesaggingPreview(senderName: student.name, senderImgUrl: student.imgUrl, senderKey: student.key, timeStamp: databaseTime, lastMessage: _message);
           if (AppVar.appBloc.hesapBilgileri.isEkid) {
             if (student.motherPhone.safeLength > 4) _phoneList.add(student.motherPhone);
             if (student.fatherPhone.safeLength > 4) _phoneList.add(student.fatherPhone);
@@ -113,7 +113,7 @@ class BatchMessagesState extends State<BatchMessages> {
             if (_isParent == false && student.studentPhone.safeLength > 4) _phoneList.add(student.studentPhone);
           }
 
-          return student.key;
+          return student.key!;
         }).toList());
       }
       // if (!_targetList.contains('onlyteachers')) {

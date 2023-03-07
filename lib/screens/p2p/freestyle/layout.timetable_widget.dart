@@ -282,7 +282,7 @@ class EventForm extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ((controller.selectedStudentList.length == 1 ? 'student' : 'studentlist').translate + ': ').text.color(Fav.design.card.text).fontSize(16).bold.make(),
-                  Expanded(child: controller.selectedStudentList.fold<String>('', (p, e) => p + ' ' + AppVar.appBloc.studentService!.dataListItem(e!)!.name!).text.color(Fav.design.card.text).fontSize(14).make())
+                  Expanded(child: controller.selectedStudentList.fold<String>('', (p, e) => p + ' ' + AppVar.appBloc.studentService!.dataListItem(e)!.name!).text.color(Fav.design.card.text).fontSize(14).make())
                 ],
               ).pb8,
               Row(

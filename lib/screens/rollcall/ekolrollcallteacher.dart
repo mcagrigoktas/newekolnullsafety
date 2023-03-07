@@ -11,11 +11,11 @@ import '../managerscreens/othersettings/user_permission/user_permission.dart';
 import 'model.dart';
 
 class EkolRollCallTeacher extends StatefulWidget {
-  final Class? sinif;
+  final Class sinif;
   final Lesson? lesson;
   final bool forOnlineLesson;
   final List onlineLessonOnlinePeopleData;
-  EkolRollCallTeacher({this.sinif, this.lesson, this.forOnlineLesson = false, this.onlineLessonOnlinePeopleData = const []});
+  EkolRollCallTeacher({required this.sinif, this.lesson, this.forOnlineLesson = false, this.onlineLessonOnlinePeopleData = const []});
 
   @override
   _EkolRollCallTeacherState createState() => _EkolRollCallTeacherState();
@@ -48,13 +48,13 @@ class _EkolRollCallTeacherState extends State<EkolRollCallTeacher> {
     formKey.currentState!.save();
     if (rollCallDataForTeacher.keys.isEmpty) return;
 
-    Map<String?, RollCallStudentModel> studentData = {};
+    Map<String, RollCallStudentModel> studentData = {};
     rollCallDataForStudentPortfolio.forEach((studentKey, value) {
       studentData[studentKey] = RollCallStudentModel(
         date: DateTime.now().millisecondsSinceEpoch,
         lessonKey: widget.lesson!.key,
         lessonName: widget.lesson!.longName,
-        classKey: widget.sinif!.key,
+        classKey: widget.sinif.key,
         isEkid: false,
         value: value,
         lessonNo: lessonNo,
@@ -70,8 +70,8 @@ class _EkolRollCallTeacherState extends State<EkolRollCallTeacher> {
 
     final String dateKey = time!.dateFormat("d-MM-yyyy");
 
-    RollCallService.addEkolRollCall(dateKey, widget.sinif!.key, lessonNo, widget.lesson!.key! + 'LN:' + lessonNo.toString(), rollCallDataForTeacher, studentData).then((_) {
-      OverAlert.show(message: 'rollcallsavehint'.argsTranslate({'className': widget.sinif!.name, 'no': lessonNo, 'lessonName': widget.lesson!.longName}));
+    RollCallService.addEkolRollCall(dateKey, widget.sinif.key!, lessonNo, widget.lesson!.key! + 'LN:' + lessonNo.toString(), rollCallDataForTeacher, studentData).then((_) {
+      OverAlert.show(message: 'rollcallsavehint'.argsTranslate({'className': widget.sinif.name, 'no': lessonNo, 'lessonName': widget.lesson!.longName}));
       setState(() {
         isLoading = false;
       });
@@ -138,7 +138,7 @@ class _EkolRollCallTeacherState extends State<EkolRollCallTeacher> {
 
     int programdakiDersSayisi = 0;
     if (AppVar.appBloc.tableProgramService!.takeData(1).entries.length == 1) {
-      AppVar.appBloc.tableProgramService!.takeData(1).entries.first.value['classProgram'][widget.sinif!.key]?.forEach((dayhour, lessonKey) {
+      AppVar.appBloc.tableProgramService!.takeData(1).entries.first.value['classProgram'][widget.sinif.key]?.forEach((dayhour, lessonKey) {
         programdakiDersSayisi++;
         if (lessonKey == widget.lesson!.key) {
           final String day = dayhour.split('-').first;
@@ -165,7 +165,7 @@ class _EkolRollCallTeacherState extends State<EkolRollCallTeacher> {
       });
       rollCallDataForTeacher = {};
       final String dateKey = (time ?? DateTime.now()).dateFormat("d-MM-yyyy");
-      RollCallService.dbGetEkolRollCall(dateKey, widget.sinif!.key, widget.lesson!.key! + 'LN:' + lessonNo.toString()).once().then((snap) {
+      RollCallService.dbGetEkolRollCall(dateKey, widget.sinif.key!, widget.lesson!.key! + 'LN:' + lessonNo.toString()).once().then((snap) {
         rollCallDataForTeacher = snap?.value ?? {};
         rollCallDataForTeacherExistingData = Map.from(snap?.value ?? {});
         formKey = GlobalKey();
@@ -251,7 +251,7 @@ class _EkolRollCallTeacherState extends State<EkolRollCallTeacher> {
                     8.heightBox,
                     ...AppVar.appBloc.studentService!.dataList
                         .where((student) {
-                          return student.classKeyList.contains(widget.sinif!.key);
+                          return student.classKeyList.contains(widget.sinif.key);
                           //todo burasi asiri supheli
                           // if(widget.sinif.classType==0&&student.class0==widget.sinif.key){return true;}if(widget.sinif.classType==1&&student.class1==widget.sinif.key){return true;}return false;
                         })

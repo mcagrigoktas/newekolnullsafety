@@ -36,7 +36,7 @@ class P2PDetailController extends GetxController {
     } else {
       List<Widget> studentWidgets = [];
       model!.studentList!.forEach((studentKey) {
-        final student = AppVar.appBloc.studentService!.dataListItem(studentKey!);
+        final student = AppVar.appBloc.studentService!.dataListItem(studentKey);
         if (student != null) {
           studentWidgets.add(Row(
             children: [

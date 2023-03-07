@@ -202,8 +202,8 @@ class DrawerWidget extends StatelessWidget {
               trailing: TextButton(
                 child: 'sendtable'.translate.text.make(),
                 onPressed: () {
-                  _controller.programData!.clear();
-                  _controller.programData!.addAll(jsonDecode(jsonEncode(_programData)));
+                  _controller.programData.clear();
+                  _controller.programData.addAll(jsonDecode(jsonEncode(_programData)));
                   _controller.programData = ProgramHelper.makeProgramSturdy(_controller.programData, _controller.timesModel);
                   _controller.update();
 

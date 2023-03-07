@@ -77,7 +77,7 @@ class AppblocDefineServiceHelper {
     if (_hesapBilgileri.gtS || _hesapBilgileri.gtT) {
       _appBloc.portfolioService = MultipleDataFCS<Portfolio>(
         "${_hesapBilgileri.kurumID}${_hesapBilgileri.uid}${_hesapBilgileri.termKey}Portfolio",
-        queryRefForRealtimeDB: PortfolioService.dbPortfolio(_hesapBilgileri.uid),
+        queryRefForRealtimeDB: PortfolioService.dbPortfolio(_hesapBilgileri.uid!),
         jsonParse: (key, value) => Portfolio.fromJson(value, key),
         lastUpdateKey: 'lastUpdate',
         sortFunction: (Portfolio a, Portfolio b) => b.lastUpdate - a.lastUpdate,

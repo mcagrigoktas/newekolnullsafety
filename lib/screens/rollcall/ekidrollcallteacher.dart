@@ -9,8 +9,8 @@ import '../../services/pushnotificationservice.dart';
 import 'model.dart';
 
 class EkidRollCallTeacher extends StatefulWidget {
-  final String? sinif;
-  EkidRollCallTeacher({this.sinif});
+  final String sinif;
+  EkidRollCallTeacher({required this.sinif});
 
   @override
   _EkidRollCallTeacherState createState() => _EkidRollCallTeacherState();

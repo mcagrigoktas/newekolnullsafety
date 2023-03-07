@@ -148,7 +148,7 @@ class PopupBox extends StatelessWidget {
                                   radius: 9,
                                   backgroundColor: Colors.white,
                                   child: Center(
-                                    child: Text('${lesson.count! - (((_controller.programData![sinif!.key] ?? {}) as Map).values.fold(0, (t, e) => e == lesson.key ? t + 1 : t))}',
+                                    child: Text('${lesson.count! - (((_controller.programData[sinif!.key] ?? {}) as Map).values.fold(0, (t, e) => e == lesson.key ? t + 1 : t))}',
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 12,

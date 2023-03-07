@@ -3,12 +3,12 @@ part of '../dataservice.dart';
 class P2PService {
   P2PService._();
 
-  static String? get _kurumId => AppVar.appBloc.hesapBilgileri.kurumID;
-  static String? get _termKey => AppVar.appBloc.hesapBilgileri.termKey;
+  static String get _kurumId => AppVar.appBloc.hesapBilgileri.kurumID!;
+  static String get _termKey => AppVar.appBloc.hesapBilgileri.termKey!;
   static Database get _database11 => AppVar.appBloc.database1;
   static Database get _databaseProgramm => AppVar.appBloc.databaseProgram;
   static Database get _databaseVersionss => AppVar.appBloc.databaseVersions;
-  static String? get _uid => AppVar.appBloc.hesapBilgileri.uid;
+  static String get _uid => AppVar.appBloc.hesapBilgileri.uid!;
 
   static dynamic get _realTime => databaseTime;
 
@@ -18,7 +18,7 @@ class P2PService {
   static Reference dbGetP2PEvent(int week) => Reference(_databaseProgramm, 'Okullar/$_kurumId/$_termKey/P2P/Weeks/w_$week');
 
   // Ogrenci p2p isteklerini getirir
-  static Reference dbGetStudentP2PRequest(String? studentKey, String? lessonKey, int? week) => Reference(_databaseProgramm, 'Okullar/$_kurumId/$_termKey/P2P/SRequests/$studentKey/week$week/$lessonKey');
+  static Reference dbGetStudentP2PRequest(String studentKey, String lessonKey, int week) => Reference(_databaseProgramm, 'Okullar/$_kurumId/$_termKey/P2P/SRequests/$studentKey/week$week/$lessonKey');
   //Tum ogrencilerin verilen haftadaki birebir isteklerini listeler
   static Reference dbGetWeekStudentRequest(int week) => Reference(_databaseProgramm, 'Okullar/$_kurumId/$_termKey/P2P/AllRequests/week$week');
 
@@ -64,7 +64,7 @@ class P2PService {
         );
 
         if (UserPermissionList.sendP2PNotificationToTehacer() == true) {
-          var _studentName = AppVar.appBloc.studentService!.dataListItem(data.studentList!.first!)!.name!;
+          var _studentName = AppVar.appBloc.studentService!.dataListItem(data.studentList!.first)!.name!;
           if (data.studentList!.length > 1) {
             _studentName += ' +${data.studentList!.length - 1} ${"person".translate}';
           }
@@ -108,10 +108,10 @@ class P2PService {
     });
   }
 
-  static Future<void> setP2PStudentRequest(int? week, String lessonKey, Map data) {
+  static Future<void> setP2PStudentRequest(int week, String lessonKey, Map data) {
     Map<String, dynamic> updates = {};
 
-    updates['/Okullar/$_kurumId/$_termKey/P2P/AllRequests/week$week/${_uid! + "_" + lessonKey}'] = data;
+    updates['/Okullar/$_kurumId/$_termKey/P2P/AllRequests/week$week/${_uid + "_" + lessonKey}'] = data;
     updates['/Okullar/$_kurumId/$_termKey/P2P/SRequests/$_uid/week$week/$lessonKey'] = data;
 
     return _databaseProgramm.update(updates);
@@ -128,7 +128,7 @@ class P2PService {
   static Future<void> saveStudentInWeeklySimpleP2p(
     P2PSimpleWeekDataItem item,
     SimpeP2PDraftItem p2pDraftItem,
-    int? week,
+    int week,
     String? teacherKey,
     //? yeni kaydedilecekogrenci listesi. item icindeki eski ogrencilere zaten bildirim gittiginden yenileri gerekli
     List<String?> newStudentList,
@@ -195,10 +195,7 @@ class P2PService {
 
 //? Simple birebir haftalik programina gelen itemi yazar
   //? Simple birebir haftalik programda herhangi bir dersin capacitysini yada baska bilgisini degistirmek icin kullanilabilir
-  static Future<void> saveWeeklySimpleP2pItem(
-    P2PSimpleWeekDataItem item,
-    int week,
-  ) {
+  static Future<void> saveWeeklySimpleP2pItem(P2PSimpleWeekDataItem item, int week) {
     return AppVar.appBloc.firestore.setItemInPkg(
       ReferenceService.simpleP2PWeekData() + '/week$week',
       'data',

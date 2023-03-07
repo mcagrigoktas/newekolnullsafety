@@ -97,7 +97,7 @@ class PreRegistrationListController extends GetxController {
       update();
       final _item = newItem ?? selectedItem!;
 
-      await PreRegisterService.savePreRegister(_item.mapForSave(), _item.key).then((value) {
+      await PreRegisterService.savePreRegister(_item.mapForSave(), _item.key!).then((value) {
         OverAlert.saveSuc();
         newItem = null;
         update();
@@ -116,7 +116,7 @@ class PreRegistrationListController extends GetxController {
     if (selectedItem != null) {
       isSaving = true;
       update();
-      await PreRegisterService.changePreRegisterStatus(selectedItem!.key, PreRegisterStatus.values.indexOf(PreRegisterStatus.cancelled)).then((a) {
+      await PreRegisterService.changePreRegisterStatus(selectedItem!.key!, PreRegisterStatus.values.indexOf(PreRegisterStatus.cancelled)).then((a) {
         visibleScreen = VisibleScreen.main;
         selectedItem = null;
         OverAlert.deleteSuc();
@@ -134,7 +134,7 @@ class PreRegistrationListController extends GetxController {
 
     if (selectedItem != null) {
       OverLoading.show();
-      await PreRegisterService.changePreRegisterStatus(selectedItem!.key, PreRegisterStatus.values.indexOf(PreRegisterStatus.saved)).then((a) {
+      await PreRegisterService.changePreRegisterStatus(selectedItem!.key!, PreRegisterStatus.values.indexOf(PreRegisterStatus.saved)).then((a) {
         Fav.to(StudentList(preRegistrationData: selectedItem!.mapForSave()));
       }).catchError((error) {
         OverAlert.saveErr();

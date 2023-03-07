@@ -3,33 +3,33 @@ part of '../dataservice.dart';
 class MessageService {
   MessageService._();
 
-  static String? get _kurumId => AppVar.appBloc.hesapBilgileri.kurumID;
-  static String? get _termKey => AppVar.appBloc.hesapBilgileri.termKey;
+  static String get _kurumId => AppVar.appBloc.hesapBilgileri.kurumID!;
+  static String get _termKey => AppVar.appBloc.hesapBilgileri.termKey!;
   static Database get _databaseLogss => AppVar.appBloc.databaseLogs;
   static Database get _database22 => AppVar.appBloc.database2;
   static dynamic get _realTime => databaseTime;
-  static String? get _uid => AppVar.appBloc.hesapBilgileri.uid;
+  static String get _uid => AppVar.appBloc.hesapBilgileri.uid!;
   static Database get _databaseVersionss => AppVar.appBloc.databaseVersions;
 
 //! GETDATASERVICE
 
 // Mesajlar  Referansı
-  static Reference dbChats(String? targetKey, [String? ghostUid]) => Reference(_database22, 'Okullar/$_kurumId/$_termKey/Messages/Chats/${ghostUid ?? _uid}/$targetKey');
+  static Reference dbChats(String targetKey, [String? ghostUid]) => Reference(_database22, 'Okullar/$_kurumId/$_termKey/Messages/Chats/${ghostUid ?? _uid}/$targetKey');
 
   // Mesaj onizleme Referansı
   static Reference dbMessagesPreviewRef([ghostUid]) => Reference(_database22, 'Okullar/$_kurumId/$_termKey/Messages/MessagesPreview/${ghostUid ?? _uid}');
 
   //DatabaseReference dbMessageLoginTime(String targetKey) => databaseLogs.child("Okullar").child(kurumId).child(termKey).child("MessageIsSeen").child(targetKey);
-  static Reference dbMessageLoginTime(String? targetKey) => Reference(_databaseLogss, 'Okullar/$_kurumId/$_termKey/MessageIsSeen/$targetKey');
+  static Reference dbMessageLoginTime(String targetKey) => Reference(_databaseLogss, 'Okullar/$_kurumId/$_termKey/MessageIsSeen/$targetKey');
 
 //! SETDATASERVICE
 
 // (Gönfderllecek kişi keyleri,Gönferilecesk medsaj, Gönderen kişinin preview sayfasınındeğitirir. Map içinde göndereilek her kişinin keyine ait preview gelir.,gönderilecek kilinin preview sayfasını değilştirir.)
   static Future<void> sendMultipleMessage(
-      List<String?> keyList,
+      List<String> keyList,
       ChatModel message,
       //  Map messageData,
-      Map<String?, MesaggingPreview> ownMessagePreviewData,
+      Map<String, MesaggingPreview> ownMessagePreviewData,
       MesaggingPreview targetMessagePreviewData,
       {bool? forParentMessageMenu = false,
       String? existingKey,
@@ -105,7 +105,7 @@ class MessageService {
 //  }
 
   //,Mesajlar kismina giris yapildiginda zamanini kaydeder
-  static Future<void> setMessageLoginTime(String? userUid) => _databaseLogss.set("Okullar/$_kurumId/$_termKey/MessageIsSeen/$userUid", _realTime);
+  static Future<void> setMessageLoginTime(String userUid) => _databaseLogss.set("Okullar/$_kurumId/$_termKey/MessageIsSeen/$userUid", _realTime);
 
   //,Yeni mesaj geldiginin bilgisini siler
   static Future<void> setFalseNewMessage({required bool isParent, int? parentNo}) {

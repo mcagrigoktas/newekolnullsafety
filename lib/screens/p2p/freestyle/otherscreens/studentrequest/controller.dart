@@ -40,7 +40,7 @@ class StudentRequestController extends BaseController {
   Future<void> getLastRequest() async {
     if (existingP2PRequests[week] != null) return;
     startLoading();
-    await P2PService.dbGetStudentP2PRequest(AppVar.appBloc.hesapBilgileri.uid, lesson!.key, week).once().then((snap) {
+    await P2PService.dbGetStudentP2PRequest(AppVar.appBloc.hesapBilgileri.uid!, lesson!.key!, week!).once().then((snap) {
       // Buraya istersen ogrenci surekli bu datayi cekmemesi icin cache yazabilirsin
       if (snap?.value != null) {
         existingP2PRequests[week] = P2PRequest.fromJson(snap!.value, snap.key);
@@ -64,7 +64,7 @@ class StudentRequestController extends BaseController {
       if (Fav.noConnection()) return;
       startLoading();
 
-      await P2PService.setP2PStudentRequest(newP2PRequest.week, lesson!.key!, newP2PRequest.toJson()).then((value) {
+      await P2PService.setP2PStudentRequest(newP2PRequest.week!, lesson!.key!, newP2PRequest.toJson()).then((value) {
         Get.back();
         OverAlert.saveSuc();
       }).catchError((err) {

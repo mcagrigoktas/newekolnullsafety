@@ -12,7 +12,7 @@ class PortfolioService {
 
 //! GETDATASERVICE
   // Portfolyo Referansı
-  static Reference dbPortfolio(String? userKey) => Reference(_databaseProgramm, 'Okullar/$_kurumId/$_termKey/SPortfolio/$userKey');
+  static Reference dbPortfolio(String userKey) => Reference(_databaseProgramm, 'Okullar/$_kurumId/$_termKey/SPortfolio/$userKey');
 
 //! SETDATASERVICE
 //PortfollyoKayeder

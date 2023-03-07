@@ -160,7 +160,7 @@ class ReserveP2PController extends BaseController {
                         OverBottomSheet.closeBottomSheet();
                         OverLoading.show();
 
-                        await P2PService.saveStudentInWeeklySimpleP2p(_itemForSave, draftItem, selectedWeek, selectedTeacher, newStudentList, studentListForRemove).then((value) {
+                        await P2PService.saveStudentInWeeklySimpleP2p(_itemForSave, draftItem, selectedWeek!, selectedTeacher, newStudentList, studentListForRemove).then((value) {
                           OverAlert.saveSuc();
                         }).catchError((value) {
                           log(value);
@@ -283,7 +283,7 @@ class ReserveP2PController extends BaseController {
       await P2PService.saveStudentInWeeklySimpleP2p(
         _itemForSave,
         item,
-        selectedWeek,
+        selectedWeek!,
         selectedTeacher,
         cancelReserve ? [] : [AppVar.appBloc.hesapBilgileri.uid],
         !cancelReserve ? [] : [AppVar.appBloc.hesapBilgileri.uid],

@@ -3,8 +3,8 @@ part of '../dataservice.dart';
 class ProgramService {
   ProgramService._();
 
-  static String? get _kurumId => AppVar.appBloc.hesapBilgileri.kurumID;
-  static String? get _termKey => AppVar.appBloc.hesapBilgileri.termKey;
+  static String get _kurumId => AppVar.appBloc.hesapBilgileri.kurumID!;
+  static String get _termKey => AppVar.appBloc.hesapBilgileri.termKey!;
   static Database get _database11 => AppVar.appBloc.database1;
   static Database get _databaseProgramm => AppVar.appBloc.databaseProgram;
   static dynamic get _realTime => databaseTime;
@@ -57,7 +57,7 @@ class ProgramService {
   }
 
   // Programi taslak olarak kaydeder
-  static Future<void> saveTimetableProgram(Map? timetableData, String draftName) async {
+  static Future<void> saveTimetableProgram(Map timetableData, String draftName) async {
     return _databaseProgramm.set('Okullar/$_kurumId/$_termKey/TimeTables/Drafts/$draftName', timetableData);
   }
 
