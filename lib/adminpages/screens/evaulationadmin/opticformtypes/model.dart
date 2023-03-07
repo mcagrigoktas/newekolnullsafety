@@ -44,7 +44,7 @@ class OpticFormModel {
     for (var i = 0; i < examType.lessons!.length; i++) {
       final lesson = examType.lessons![i];
       if (lesson.seisonNo == seisonNo) {
-        lessonsData![lesson.key] = DataStartEnd(dataName: lesson.name, start: 0, end: 0);
+        lessonsData![lesson.key] = DataStartEnd(dataName: lesson.name!, start: 0, end: 0);
 
         for (var j = 0; j < lesson.wQuestionCount!; j++) {
           lessonsData![lesson.key! + '-w${j + 1}'] = DataStartEnd(dataName: lesson.name! + '-w${j + 1}:', start: 0, end: 0);
@@ -109,18 +109,16 @@ class OpticFormModel {
 }
 
 class DataStartEnd {
-  String? dataName;
-  int? start;
-  int? end;
+  String dataName;
+  int start;
+  int end;
 
-  DataStartEnd({this.dataName, this.start, this.end});
+  DataStartEnd({required this.dataName, required this.start, required this.end});
 
-  DataStartEnd.fromJson(Map snapshot) {
-    dataName = snapshot['dataName'];
-
-    start = snapshot['start'];
-    end = snapshot['end'];
-  }
+  DataStartEnd.fromJson(Map snapshot)
+      : dataName = snapshot['dataName'],
+        start = snapshot['start'],
+        end = snapshot['end'];
 
   Map<String, dynamic> mapForSave() {
     return {

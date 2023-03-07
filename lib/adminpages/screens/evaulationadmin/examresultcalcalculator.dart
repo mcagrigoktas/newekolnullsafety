@@ -152,7 +152,7 @@ class ExamResultCalculator {
 
             String? studentAnswers;
             if (rowString != null) {
-              studentAnswers = rowString.safeSubString(opticForm!.lessonsData![lesson.key]!.start! - 1, opticForm.lessonsData![lesson.key]!.end!)!.toLowerCase();
+              studentAnswers = rowString.safeSubString(opticForm!.lessonsData![lesson.key]!.start - 1, opticForm.lessonsData![lesson.key]!.end)!.toLowerCase();
             } else if (onlineStudentAnswer != null) {
               studentAnswers = onlineStudentAnswer[lesson.key!]?.toLowerCase();
             }
@@ -166,7 +166,7 @@ class ExamResultCalculator {
               realAnswers = answerEarningData.lessonanswers('bookLet' + bookletType!, lesson.key!).toLowerCase();
             } else {
               answerKeyDataFromOpticFrom['seison$sN']!['bookLet' + bookletType!] ??= '';
-              realAnswers = answerKeyDataFromOpticFrom['seison$sN']!['bookLet' + bookletType].safeSubString(opticForm!.lessonsData![lesson.key]!.start! - 1, opticForm.lessonsData![lesson.key]!.end!)!.toLowerCase();
+              realAnswers = answerKeyDataFromOpticFrom['seison$sN']!['bookLet' + bookletType].safeSubString(opticForm!.lessonsData![lesson.key]!.start - 1, opticForm.lessonsData![lesson.key]!.end)!.toLowerCase();
             }
 
             while (studentAnswers!.length < lesson.questionCount!) {
@@ -251,7 +251,7 @@ class ExamResultCalculator {
             for (var m = 0; m < lesson.wQuestionCount!; m++) {
               String? wStudentAnswers;
               if (rowString != null) {
-                wStudentAnswers = rowString.safeSubString(opticForm!.lessonsData![lesson.key! + '-w${m + 1}']!.start! - 1, opticForm.lessonsData![lesson.key! + '-w${m + 1}']!.end!);
+                wStudentAnswers = rowString.safeSubString(opticForm!.lessonsData![lesson.key! + '-w${m + 1}']!.start - 1, opticForm.lessonsData![lesson.key! + '-w${m + 1}']!.end);
               } else if (onlineStudentAnswer != null) {
                 wStudentAnswers = onlineStudentAnswer[lesson.key! + '-w${m + 1}'];
               }
@@ -265,7 +265,7 @@ class ExamResultCalculator {
                 wRealAnswers = answerEarningData.lessonWQuestionAnswer('bookLet' + bookletType, lesson.key!, m + 1);
               } else {
                 answerKeyDataFromOpticFrom['seison$sN']!['bookLet' + bookletType] ??= '';
-                wRealAnswers = answerKeyDataFromOpticFrom['seison$sN']!['bookLet' + bookletType].safeSubString(opticForm!.lessonsData![lesson.key! + '-w${m + 1}']!.start! - 1, opticForm.lessonsData![lesson.key! + '-w${m + 1}']!.end!);
+                wRealAnswers = answerKeyDataFromOpticFrom['seison$sN']!['bookLet' + bookletType].safeSubString(opticForm!.lessonsData![lesson.key! + '-w${m + 1}']!.start - 1, opticForm.lessonsData![lesson.key! + '-w${m + 1}']!.end);
               }
 
               if (isEarningsActive) testResult.earningResults![_earningListKeyMap[wEarning]] ??= {'d': 0, 'y': 0, 'b': 0};
@@ -325,9 +325,9 @@ class ExamResultCalculator {
 
         if (exam.formType.isOpticFormActive) {
           opticForm = opticForms!['seison$sN'];
-          studentNoLength = opticForm!.studentNumberData!.end! - opticForm.studentNumberData!.start! + 1;
-          studentIdLength = opticForm.studentIdData!.end! - opticForm.studentIdData!.start! + 1;
-          nameSurnameLength = opticForm.studentNameData!.end! - opticForm.studentNameData!.start! + 1;
+          studentNoLength = opticForm!.studentNumberData!.end - opticForm.studentNumberData!.start + 1;
+          studentIdLength = opticForm.studentIdData!.end - opticForm.studentIdData!.start + 1;
+          nameSurnameLength = opticForm.studentNameData!.end - opticForm.studentNameData!.start + 1;
 
           datText = await _downloadDatFile(kurumId, allKurumDatFiles[kurumId], sN);
 
@@ -336,9 +336,9 @@ class ExamResultCalculator {
           if (answerEarningData.answerKeyLocation == AnswerKeyLocation.opticForm) {
             for (var r = 0; r < rows.length; r++) {
               final rowString = rows[r];
-              final studentNoOnOpticForm = rowString.safeSubString(opticForm.studentNumberData!.start! - 1, opticForm.studentNumberData!.end!)!;
+              final studentNoOnOpticForm = rowString.safeSubString(opticForm.studentNumberData!.start - 1, opticForm.studentNumberData!.end)!;
               if (int.tryParse(studentNoOnOpticForm) == 0) {
-                final bookLetType = rowString.safeSubString(opticForm.bookletTypeData!.start! - 1, opticForm.bookletTypeData!.end!)!.trim();
+                final bookLetType = rowString.safeSubString(opticForm.bookletTypeData!.start - 1, opticForm.bookletTypeData!.end)!.trim();
                 answerKeyDataFromOpticFrom['seison$sN'] ??= {};
                 answerKeyDataFromOpticFrom['seison$sN']!['bookLet' + bookLetType] = rowString;
               }
@@ -350,14 +350,14 @@ class ExamResultCalculator {
 
             if (rowString.safeLength < 10) continue;
 
-            var studentNoOnOpticForm = rowString.safeSubString(opticForm.studentNumberData!.start! - 1, opticForm.studentNumberData!.end!)!;
-            var studentIdOnOpticForm = rowString.safeSubString(opticForm.studentIdData!.start! - 1, opticForm.studentIdData!.end!);
+            var studentNoOnOpticForm = rowString.safeSubString(opticForm.studentNumberData!.start - 1, opticForm.studentNumberData!.end)!;
+            var studentIdOnOpticForm = rowString.safeSubString(opticForm.studentIdData!.start - 1, opticForm.studentIdData!.end);
 
             if (int.tryParse(studentNoOnOpticForm) == 0) continue;
             //  if (studentNoOnOpticForm.trim() == '' && studentIdOnOpticForm.trim() == '') continue;
 
-            var studentNameOnOpticForm = rowString.safeSubString(opticForm.studentNameData!.start! - 1, opticForm.studentNameData!.end!);
-            var studentClassOnOpticForm = rowString.safeSubString(opticForm.studentClassData!.start! - 1, opticForm.studentClassData!.end!)!;
+            var studentNameOnOpticForm = rowString.safeSubString(opticForm.studentNameData!.start - 1, opticForm.studentNameData!.end);
+            var studentClassOnOpticForm = rowString.safeSubString(opticForm.studentClassData!.start - 1, opticForm.studentClassData!.end)!;
             if (studentClassOnOpticForm.trim().isEmpty) {
               studentClassOnOpticForm = 'noclass';
             }
@@ -365,8 +365,8 @@ class ExamResultCalculator {
             //[studentkey,studentno,studentname,studentclass]
             List<String?> studentInfo = _getStudentInfo(kurumId, allKurumStudents[kurumId]!, studentNoOnOpticForm.trim(), studentNameOnOpticForm, studentClassOnOpticForm, allKurumClass[kurumId], studentNoLength, nameSurnameLength, studentIdOnOpticForm!.trim(), studentIdLength);
 
-            final bookletType = rowString.safeSubString(opticForm.bookletTypeData!.start! - 1, opticForm.bookletTypeData!.end!)!.trim();
-            var studentSection = rowString.safeSubString(opticForm.studentSectionData!.start! - 1, opticForm.studentSectionData!.end!);
+            final bookletType = rowString.safeSubString(opticForm.bookletTypeData!.start - 1, opticForm.bookletTypeData!.end)!.trim();
+            var studentSection = rowString.safeSubString(opticForm.studentSectionData!.start - 1, opticForm.studentSectionData!.end);
 
             calcStudentResult(
               studentClass: studentInfo[3],

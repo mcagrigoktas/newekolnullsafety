@@ -218,14 +218,14 @@ class ExamDefine extends StatelessWidget {
                                             onSaved: (value) => controller.selectedItem?.date = value,
                                           ),
                                           controller.dataIsNew
-                                              ? AdvanceDropdown(
+                                              ? AdvanceDropdown<String?>(
                                                   searchbarEnableLength: 10,
                                                   name: 'examtype'.translate,
                                                   nullValueText: 'examtype'.translate,
                                                   initialValue: controller.selectedItem?.examType?.key,
                                                   items: controller.allExamType.map((e) => DropdownItem(value: e.key, name: e.name)).toList(),
                                                   validatorRules: ValidatorRules(req: true),
-                                                  onSaved: (dynamic value) {
+                                                  onSaved: (value) {
                                                     controller.selectedItem!.examTypeKey = value;
                                                     controller.selectedItem!.examTypeData = controller.allExamType.singleWhere((element) => element.key == value).mapForSave();
                                                   },
@@ -234,7 +234,7 @@ class ExamDefine extends StatelessWidget {
                                                   children: [('examtype'.translate + ': ').text.bold.make(), Flexible(child: controller.selectedItem?.examType?.name?.text.color(Fav.design.primaryText).make() ?? SizedBox())],
                                                 ).p16,
                                           controller.dataIsNew
-                                              ? AdvanceDropdown(
+                                              ? AdvanceDropdown<int>(
                                                   name: 'formtype'.translate,
                                                   initialValue: controller.selectedItem!.formTypeValue ?? 0,
                                                   items: [0, 1, 2]
@@ -243,7 +243,7 @@ class ExamDefine extends StatelessWidget {
                                                             name: 'formtype$e'.translate,
                                                           ))
                                                       .toList(),
-                                                  onSaved: (dynamic value) {
+                                                  onSaved: (value) {
                                                     controller.selectedItem!.formTypeValue = value;
                                                   },
                                                 )

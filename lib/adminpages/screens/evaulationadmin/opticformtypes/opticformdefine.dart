@@ -104,14 +104,14 @@ class OpticFormDefine extends StatelessWidget {
                                 opacity: controller.dataIsNew ? 1.0 : 0.75,
                                 child: AbsorbPointer(
                                   absorbing: !controller.dataIsNew,
-                                  child: AdvanceDropdown(
+                                  child: AdvanceDropdown<int>(
                                     name: 'seisonno'.translate,
                                     nullValueText: ''.translate,
                                     validatorRules: ValidatorRules(req: true, mustNumber: true, minValue: 1),
                                     iconData: Icons.alt_route_outlined,
                                     initialValue: controller.selectedItem?.seisonNo,
-                                    onSaved: (dynamic value) => controller.selectedItem!.seisonNo = value,
-                                    onChanged: (dynamic value) {
+                                    onSaved: (value) => controller.selectedItem!.seisonNo = value,
+                                    onChanged: (value) {
                                       controller.selectedItem = OpticFormModel.create(controller.examType!, controller.girisTuru, seisonNo: value);
                                       controller.update();
                                     },

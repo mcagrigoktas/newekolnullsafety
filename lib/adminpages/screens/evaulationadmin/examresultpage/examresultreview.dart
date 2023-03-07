@@ -100,11 +100,11 @@ class ExamResultReview extends StatelessWidget {
                     if (controller.girisTuru != EvaulationUserType.school)
                       SizedBox(
                         width: 200,
-                        child: AdvanceDropdown(
+                        child: AdvanceDropdown<String?>(
                           padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                           items: controller.allKurumAllStudentResults!.keys.map((e) => DropdownItem(name: e, value: e)).toList(),
                           initialValue: controller.kurumId,
-                          onChanged: (dynamic value) {
+                          onChanged: (value) {
                             controller.kurumId = value;
                             controller.update();
                           },
@@ -114,12 +114,12 @@ class ExamResultReview extends StatelessWidget {
                     else
                       SizedBox(
                         width: 200,
-                        child: AdvanceMultiSelectDropdown(
+                        child: AdvanceMultiSelectDropdown<String>(
                           padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                           items: controller.allClassList.map((e) => DropdownItem(name: e, value: e)).toList()..insert(0, DropdownItem(name: 'all'.translate, value: 'all')),
                           initialValue: controller.filteredClassList,
                           onChanged: (value) {
-                            controller.filteredClassList = value as List<String>;
+                            controller.filteredClassList = value;
                             controller.update();
                           },
                           name: 'classlist'.translate,
