@@ -82,7 +82,7 @@ class ReserveP2PController extends BaseController {
     List<String> rezerveList = existingItem?.studentListData?.keys.toList() ?? [];
 
     final List<String?> _teacherClassList = AppVar.appBloc.hesapBilgileri.gtT ? TeacherFunctions.getTeacherClassList() : [];
-    final _studentList = AppFunctions2.getStudentListForTeacherAndManager()!;
+    final _studentList = AppFunctions2.getStudentListForTeacherAndManager();
 
     final capacityDropdownItemList = Iterable.generate(25, (e) => e + 1).map((e) => DropdownItem(value: e, name: e == 0 ? 'close'.translate : '$e')).toList();
     if (AppVar.appBloc.hesapBilgileri.gtM) {

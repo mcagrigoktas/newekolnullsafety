@@ -8,7 +8,7 @@ import 'models.dart';
 
 //* Bazilarinda her iki eksende numara olabiliyor ona gore gelistirebilirsin burayi
 class DeferredMultiLineChart extends StatelessWidget {
-  final String? chartTitle;
+  final String chartTitle;
   final List<MultiLineChartData> data;
   final Map<String?, bool> olegandNames;
   final double lineWidth;
@@ -32,7 +32,7 @@ class DeferredMultiLineChart extends StatelessWidget {
     final _legandColor = olegandNamesKeys!.length == 1 ? MyPalette.getSmartRandomColor() : null;
     return SfCartesianChart(
       plotAreaBorderWidth: 0,
-      title: ChartTitle(text: chartTitle!, textStyle: TextStyle(color: _legandColor ?? Fav.design.primaryText)),
+      title: ChartTitle(text: chartTitle, textStyle: TextStyle(color: _legandColor ?? Fav.design.primaryText)),
       legend: Legend(
         isVisible: olegandNamesKeys!.length > 1,
         position: LegendPosition.auto,
@@ -54,8 +54,8 @@ class DeferredMultiLineChart extends StatelessWidget {
         dataSource: data,
         animationDuration: 555.0 + (111 * i),
         color: olegandNamesKeys!.length == 1 ? _legandColor : MyPalette.getChartColorFromCount(i),
-        xValueMapper: (MultiLineChartData item, _) => item.name!.replaceAll(' ', '\n'),
-        yValueMapper: (MultiLineChartData item, _) => item.values!.values.toList()[i],
+        xValueMapper: (MultiLineChartData item, _) => item.name.replaceAll(' ', '\n'),
+        yValueMapper: (MultiLineChartData item, _) => item.values.values.toList()[i],
         name: olegandNamesKeys![i],
         markerSettings: const MarkerSettings(isVisible: true),
       ));
@@ -112,8 +112,8 @@ class DeferredMultiColumnChart extends StatelessWidget {
             dataSource: data,
             animationDuration: 555.0 + (111 * i),
             color: MyPalette.getChartColorFromCount(i),
-            xValueMapper: (MultiColumnChartData item, _) => item.name!.replaceAll(' ', '\n'),
-            yValueMapper: (MultiColumnChartData item, _) => item.values!.values.toList()[i],
+            xValueMapper: (MultiColumnChartData item, _) => item.name.replaceAll(' ', '\n'),
+            yValueMapper: (MultiColumnChartData item, _) => item.values.values.toList()[i],
             name: olegandNamesKeys![i],
             borderRadius: BorderRadius.circular(6)),
       );

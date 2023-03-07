@@ -12,7 +12,7 @@ class MyColumnChart extends StatelessWidget {
   final double minYvalue;
   final double chartHeight;
   final bool minMaxYAuto;
-  final Map<String?, Map<String?, double?>> values;
+  final Map<String, Map<String, double>> values;
 
   MyColumnChart({
     required this.chartName,
@@ -55,12 +55,12 @@ class MyColumnChart extends StatelessWidget {
       var val = entries[i].value.entries.toList();
       xLegandNames.add(entries[i].key);
 
-      final Map<String?, double?> barRods = {};
+      final Map<String, double> barRods = {};
       for (var d = 0; d < val.length; d++) {
         oLegandNames[val[d].key] = true;
 
-        if (val[d].value! > max!) max = val[d].value;
-        if (val[d].value! < min!) min = val[d].value;
+        if (val[d].value > max!) max = val[d].value;
+        if (val[d].value < min!) min = val[d].value;
         chartWidth += lineWidth + lineMargin;
         barRods[val[d].key] = val[d].value;
       }

@@ -14,9 +14,9 @@ import '../../account_settings/case_names.dart';
 
 class PaymentPlanWidget extends StatefulWidget {
   final Map? data;
-  final String? studentKey;
-  final String? paymentTypeKey;
-  PaymentPlanWidget({this.data, this.studentKey, this.paymentTypeKey});
+  final String studentKey;
+  final String paymentTypeKey;
+  PaymentPlanWidget({this.data, required this.studentKey, required this.paymentTypeKey});
   @override
   _PaymentPlanWidgetState createState() => _PaymentPlanWidgetState();
 }
@@ -404,7 +404,7 @@ class _PaymentPlanWidgetState extends State<PaymentPlanWidget> {
     setState(() {
       isLoading = true;
     });
-    await AccountingService.birTaksidiDegistir(widget.paymentTypeKey, widget.studentKey, selecTedKey, taksitAdi, eskiTutar, newTutar).then((value) {
+    await AccountingService.birTaksidiDegistir(widget.paymentTypeKey, widget.studentKey, selecTedKey!, taksitAdi, eskiTutar!, newTutar!).then((value) {
       setState(() {
         isLoading = false;
       });

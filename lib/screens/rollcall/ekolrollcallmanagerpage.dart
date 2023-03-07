@@ -467,9 +467,9 @@ class RollcallExportHelper {
 //? Yazdirilmak istenen gunler [dayText]->['22.01.2022','23.01.2022'] dayData {'22.01.2022'}
   ///Buraya gelen datatada once sinif bilgisi icinde dersler icindede hangi ogrenci geldi hangisi gelmedi var
   ///burada ise bu ogrenci adi ve gelmedigi derslere ceriliyor
-  static List<List<String?>> _prepareData(List<String> dayTextList, Map<String, Map?> dayData) {
+  static List<List<String>> _prepareData(List<String> dayTextList, Map<String, Map?> dayData) {
     //{'studentKey':{'dayText':'data'}}
-    Map<String?, Map> studentDataDaysBayDay = {};
+    Map<String, Map> studentDataDaysBayDay = {};
 
     dayTextList.forEach((dayText) {
       final data = dayData[dayText];
@@ -494,14 +494,14 @@ class RollcallExportHelper {
         }
       }
     });
-    return (<List<String?>>[
+    return ([
       ...studentDataDaysBayDay.entries.map((e) {
-        var student = AppVar.appBloc.studentService!.dataListItem(e.key!);
+        var student = AppVar.appBloc.studentService!.dataListItem(e.key);
         if (student == null) return ['', 'erasedstudent'.translate, '', '', '', ''];
         return [
-          student.no,
+          student.no!,
           student.name ?? '?',
-          (AppVar.appBloc.classService!.dataListItem(student.class0!) ?? (Class()..name = '?')).name,
+          (AppVar.appBloc.classService!.dataListItem(student.class0!) ?? (Class()..name = '?')).name!,
           student.motherPhone ?? '?',
           student.fatherPhone ?? '?',
           ...dayTextList.map((dayText) {
@@ -523,7 +523,7 @@ class RollcallExportHelper {
         if (i1[2] == "classtype0".translate) return -1;
         if (i2[2] == "classtype0".translate) return 1;
 
-        return i1[2]!.compareTo(i2[2]!);
+        return i1[2].compareTo(i2[2]);
       });
   }
 

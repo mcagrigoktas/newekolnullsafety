@@ -16,7 +16,7 @@ class StudentFunctions {
   static List<Lesson> getLessonList() => AppVar.appBloc.lessonService!.dataList.where((lesson) => getClassList().map((sinif) => sinif.key).contains(lesson.classKey)).toList();
 
 //Ogrencinin gorebilelcegi tum ogretmen  listesi
-  static List<String?> listOfTeachersTheStudentCanSee() {
+  static List<String> listOfTeachersTheStudentCanSee() {
     final teacherKeyList = <String?>{};
 
     //Butun herkesi gorebilen ogretmenler
@@ -34,11 +34,11 @@ class StudentFunctions {
     });
 
     teacherKeyList.removeWhere((element) => element.safeLength < 1);
-    return teacherKeyList.toList();
+    return List<String>.from(teacherKeyList.toList());
   }
 
   //Ogrencinin rehber ogretmeni listesi
-  static List<String?> getGuidanceTecherList() {
+  static List<String> getGuidanceTecherList() {
     final teacherKeyList = <String?>{};
 
     AppVar.appBloc.classService!.dataList.where((sinif) => AppVar.appBloc.hesapBilgileri.classKeyList.contains(sinif.key)).forEach((sinif) {
@@ -47,7 +47,7 @@ class StudentFunctions {
     });
 
     teacherKeyList.removeWhere((element) => element.safeLength < 1);
-    return teacherKeyList.toList();
+    return List<String>.from(teacherKeyList.toList());
   }
 }
 
@@ -63,17 +63,17 @@ class TeacherFunctions {
   /// Ekid icin Ogretmen1 ve Ogretmen 2 si oldugu sinif yada o sinifa ait herhangi bir dersin ogretmeni oldugu sinifi gonderir
   /// Ekol icin herhangi bir inifin rehber ogretmeni ise yada o sinifa ait herhangi bir dersin ogretmeni oldugu sinifi gonderir
   /// Hem ekid hem ekl icin ogretmen butun siifnlari gorebilsin secili olursa gosterir
-  static List<String?> getTeacherClassList() {
+  static List<String> getTeacherClassList() {
     //Ekid ile ekol arasinda su anlik pek bir fark yok gibi ama yinede ayri yazildi
-    List<String?> classList = [];
+    List<String> classList = [];
 
     //Ogretmeni oldugu siniflaria bakiliyor
     if (AppVar.appBloc.hesapBilgileri.isEkid) {
       AppVar.appBloc.classService!.dataList.forEach((sinif) {
         if (AppVar.appBloc.hesapBilgileri.teacherSeeAllClass == true) {
-          classList.add(sinif.key);
+          classList.add(sinif.key!);
         } else if (sinif.classTeacher == AppVar.appBloc.hesapBilgileri.uid || sinif.classTeacher2 == AppVar.appBloc.hesapBilgileri.uid) {
-          classList.add(sinif.key);
+          classList.add(sinif.key!);
         }
       });
       if (AppVar.appBloc.hesapBilgileri.teacherSeeAllClass == true) {
@@ -82,16 +82,16 @@ class TeacherFunctions {
       //Dersine girdigi siniflara bakiliyor
       AppVar.appBloc.lessonService!.dataList.forEach((lesson) {
         if (lesson.teacher == AppVar.appBloc.hesapBilgileri.uid && !classList.contains(lesson.classKey)) {
-          classList.add(lesson.classKey);
+          classList.addIfNotNull(lesson.classKey);
         }
       });
     } else {
       //Ogretmeni oldugu siniflaria bakiliyor
       AppVar.appBloc.classService!.dataList.forEach((sinif) {
         if (AppVar.appBloc.hesapBilgileri.teacherSeeAllClass == true) {
-          classList.add(sinif.key);
+          classList.add(sinif.key!);
         } else if (sinif.classTeacher == AppVar.appBloc.hesapBilgileri.uid || sinif.classTeacher2 == AppVar.appBloc.hesapBilgileri.uid) {
-          classList.add(sinif.key);
+          classList.add(sinif.key!);
         }
       });
       if (AppVar.appBloc.hesapBilgileri.teacherSeeAllClass == true) {
@@ -100,11 +100,11 @@ class TeacherFunctions {
       //Dersine girdigi siniflara bakiliyor
       AppVar.appBloc.lessonService!.dataList.forEach((lesson) {
         if (lesson.teacher == AppVar.appBloc.hesapBilgileri.uid && !classList.contains(lesson.classKey)) {
-          classList.add(lesson.classKey);
+          classList.addIfNotNull(lesson.classKey);
         }
       });
     }
-    return classList..removeWhere((element) => element.toString() == 'null');
+    return classList;
   }
 
   ///Yukaridakinden tek farki sonucu Key olarak degil class olarak gondermesi
@@ -112,9 +112,9 @@ class TeacherFunctions {
   /// Ekid icin Ogretmen1 ve Ogretmen 2 si oldugu sinif yada o sinifa ait herhangi bir dersin ogretmeni oldugu sinifi gonderir
   /// Ekol icin herhangi bir inifin rehber ogretmeni ise yada o sinifa ait herhangi bir dersin ogretmeni oldugu sinifi gonderir
   /// Hem ekid hem ekl icin ogretmen butun siifnlari gorebilsin secili olursa gosterir
-  static List<Class?> getTeacherClassList2() {
-    final classList = getTeacherClassList().map((e) => AppVar.appBloc.classService!.dataListItem(e!)).toList();
-    return classList..removeWhere((element) => element.toString() == 'null');
+  static List<Class> getTeacherClassList2() {
+    final classList = getTeacherClassList().map((e) => AppVar.appBloc.classService!.dataListItem(e)).toList();
+    return List<Class>.from(classList..removeWhere((element) => element.toString() == 'null'));
   }
 
   ///Herhangi bir ogretmenin gorebilecegi tum ogrenci listesini gosterir. Butun ihtimalleri degerlendirir
@@ -137,10 +137,10 @@ class AppFunctions2 {
   AppFunctions2._();
 
   /// Herhangi bir ogretmen yada idarecinin gorebilecegi ogrenci listesini dondurur
-  static List<Student>? getStudentListForTeacherAndManager() {
+  static List<Student> getStudentListForTeacherAndManager() {
     if (AppVar.appBloc.hesapBilgileri.gtM) return AppVar.appBloc.studentService!.dataList;
     if (AppVar.appBloc.hesapBilgileri.gtT) return TeacherFunctions.getAllStudentList();
-    return null;
+    return [];
   }
 
   //Herhangi bir keyin fotografini bulur
@@ -216,12 +216,12 @@ class AppFunctions2 {
   }
 
 //? Icerisinde sinif listesi kisi listesi alluser keyi bulunan key listesinden bunla ilgili kullanicilarin key listesini dondurur
-  static List<String?> targetListToUidList(List<String?> targetList, {bool allUserKeyMeanAllStudent = false}) {
-    final List<String?> _uidList = [];
+  static List<String> targetListToUidList(List<String?> targetList, {bool allUserKeyMeanAllStudent = false}) {
+    final List<String> _uidList = [];
 
     AppVar.appBloc.studentService!.dataList.forEach((student) {
       if (targetList.any((element) => <String?>['alluser', student.key, ...student.classKeyList].contains(element))) {
-        _uidList.add(student.key);
+        _uidList.add(student.key!);
       }
     });
 
@@ -230,7 +230,7 @@ class AppFunctions2 {
             if (allUserKeyMeanAllStudent == false) 'alluser',
             manager.key,
           ].contains(element))) {
-        _uidList.add(manager.key);
+        _uidList.add(manager.key!);
       }
     });
     AppVar.appBloc.teacherService!.dataList.forEach((teacher) {
@@ -238,15 +238,15 @@ class AppFunctions2 {
             if (allUserKeyMeanAllStudent == false) 'alluser',
             teacher.key,
           ].contains(element))) {
-        _uidList.add(teacher.key);
+        _uidList.add(teacher.key!);
       }
     });
 
     return _uidList;
   }
 
-  static List<String?> getStudenKeytListThisClass(String? classKey) {
-    return AppVar.appBloc.studentService!.dataList.where((element) => element.classKeyList.contains(classKey)).map((e) => e.key).toList();
+  static List<String> getStudenKeytListThisClass(String classKey) {
+    return AppVar.appBloc.studentService!.dataList.where((element) => element.classKeyList.contains(classKey)).map((e) => e.key!).toList();
   }
 }
 
@@ -254,22 +254,22 @@ class AppFunctions {
   /// Herhangi bir ogretmenin rehberlik sinifini gonderir.
   /// Ekid icin Ogretmen1 ve Ogretmen 2 si oldugu sinif
   /// Ekol icin herhangi bir inifin rehber ogretmeni ise
-  List<String?> getGuidanceClassList() {
+  List<String> getGuidanceClassList() {
     //Ekid ile ekol arasinda su anlik pek bir fark yok gibi ama yinede ayri yazildi
-    List<String?> classList = [];
+    List<String> classList = [];
 
     //Ogretmeni oldugu siniflaria bakiliyor
     if (AppVar.appBloc.hesapBilgileri.isEkid) {
       AppVar.appBloc.classService!.dataList.forEach((sinif) {
         if (sinif.classTeacher == AppVar.appBloc.hesapBilgileri.uid || sinif.classTeacher2 == AppVar.appBloc.hesapBilgileri.uid) {
-          classList.add(sinif.key);
+          classList.add(sinif.key!);
         }
       });
     } else {
       //Ogretmeni oldugu siniflaria bakiliyor
       AppVar.appBloc.classService!.dataList.forEach((sinif) {
         if (sinif.classTeacher == AppVar.appBloc.hesapBilgileri.uid || sinif.classTeacher2 == AppVar.appBloc.hesapBilgileri.uid) {
-          classList.add(sinif.key);
+          classList.add(sinif.key!);
         }
       });
     }
@@ -285,34 +285,34 @@ class AppFunctions {
     if (AppVar.appBloc.lessonService!.dataList.any((lesson) => lesson.teacher == teacher.key && AppVar.appBloc.hesapBilgileri.classKeyList.contains(lesson.classKey))) return true;
 
     //ogretmen sinif ogretmenimi
-    if (whomStudentClassTeacher(AppVar.appBloc.hesapBilgileri.uid).contains(teacher.key)) return true;
+    if (whomStudentClassTeacher(AppVar.appBloc.hesapBilgileri.uid!).contains(teacher.key)) return true;
 
     return false;
   }
 
 //ogrencinin sinif ogretmeni kimler
-  List<String?> whomStudentClassTeacher(String? studentKey) {
+  List<String> whomStudentClassTeacher(String studentKey) {
     if (AppVar.appBloc.hesapBilgileri.isEkolOrUni) {
       List<String?> classList;
       if (AppVar.appBloc.hesapBilgileri.gtS) {
         classList = AppVar.appBloc.hesapBilgileri.classKeyList;
       } else {
-        Student? ogrenci = AppVar.appBloc.studentService!.dataListItem(studentKey!);
+        Student? ogrenci = AppVar.appBloc.studentService!.dataListItem(studentKey);
         if (ogrenci == null) return [];
         classList = ogrenci.classKeyList;
       }
       if (classList.isEmpty) return [];
 
-      return AppVar.appBloc.classService!.dataList.where((sinif) => classList.contains(sinif.key)).map((sinif) => sinif.classTeacher).toList()..removeWhere((teacherKey) => teacherKey == null || teacherKey == '');
+      return AppVar.appBloc.classService!.dataList.where((sinif) => classList.contains(sinif.key!)).map((sinif) => (sinif.classTeacher ?? '')).toList()..removeWhere((teacherKey) => teacherKey == '');
     } else if (AppVar.appBloc.hesapBilgileri.isEkid) {
-      List<String?> list = [];
+      List<String> list = [];
 
       String sinifKey;
 
       if (AppVar.appBloc.hesapBilgileri.gtS) {
         sinifKey = (AppVar.appBloc.hesapBilgileri.class0 ?? "");
       } else {
-        Student? student = AppVar.appBloc.studentService!.dataListItem(studentKey!);
+        Student? student = AppVar.appBloc.studentService!.dataListItem(studentKey);
         if (student == null) return list;
 
         sinifKey = student.class0 ?? "";
@@ -324,12 +324,9 @@ class AppFunctions {
       Class? sinif = AppVar.appBloc.classService!.dataListItem(sinifKey);
       if (sinif == null) return [];
 
-      if ((sinif.classTeacher?.length ?? 0) > 2) {
-        list.add(sinif.classTeacher);
-      }
-      if ((sinif.classTeacher2?.length ?? 0) > 2) {
-        list.add(sinif.classTeacher2);
-      }
+      list.addIfNotNull(sinif.classTeacher);
+      list.addIfNotNull(sinif.classTeacher2);
+
       return list;
     }
     return [];

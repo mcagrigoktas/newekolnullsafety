@@ -139,7 +139,9 @@ class _TermsState extends State<Terms> {
   Widget build(BuildContext context) {
     if (AppVar.appBloc.reviewTerm == true) {
       return Center(
-        child: ReviewTermScaffold(),
+        child: ReviewTermScaffold(
+          child: SizedBox(),
+        ),
       );
     }
 

@@ -18,12 +18,12 @@ class PrintKarneHelper {
       PRow<pw.Widget>(children: [
         pw.Expanded(
             child: pw.Column(crossAxisAlignment: pw.CrossAxisAlignment.start, children: [
-          PText(data.result.rSName, pdfTextColor: Fav.design.primary.toPdfColor, style: TextStyle(fontWeight: FontWeight.bold))(1),
-          PText(data.result.rSClass, pdfTextColor: PdfColors.black, style: TextStyle(fontSize: 8))(1),
+          PText(data.result.rSName!, pdfTextColor: Fav.design.primary.toPdfColor, style: TextStyle(fontWeight: FontWeight.bold))(1),
+          PText(data.result.rSClass!, pdfTextColor: PdfColors.black, style: TextStyle(fontSize: 8))(1),
         ])),
         pw.Expanded(
           child: pw.Column(children: [
-            PText(data.exam.name, maxLines: 1)(1),
+            PText(data.exam.name!, maxLines: 1)(1),
             PText(data.exam.date!.dateFormat('d-MMM-yyyy'), style: TextStyle(fontSize: 8))(1),
           ]),
         ),

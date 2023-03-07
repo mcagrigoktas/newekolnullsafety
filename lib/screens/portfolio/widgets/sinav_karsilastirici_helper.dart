@@ -60,14 +60,14 @@ class ExamComparator {
     int? maxValue;
 
     examListWithResults.forEach((e) {
-      Map<String?, double> _chartDataValues = {};
+      Map<String, double> _chartDataValues = {};
 
       for (var l = 0; l < e.examType.lessons!.length; l++) {
         final item = e.examType.lessons![l];
         final result = e.result.testResults![item.key];
         // if (item != null) {
         if (item.questionCount! > (maxValue ?? 0)) maxValue = item.questionCount;
-        _chartDataValues[item.name] = result?.n ?? 0;
+        _chartDataValues[item.name!] = result?.n ?? 0;
         _olegandNames[item.name] = true;
         //  }
       }
@@ -112,7 +112,7 @@ class ExamComparator {
       }
 
       widgetList.add(MultiLineChart(
-        chartTitle: lesson.name,
+        chartTitle: lesson.name!,
         data: _dataList,
         olegandNames: _olegandNames,
         lineWidth: 2,
@@ -149,7 +149,7 @@ class ExamComparator {
       }
 
       widgetList.add(MultiLineChart(
-        chartTitle: score.name,
+        chartTitle: score.name!,
         data: _dataList,
         olegandNames: _olegandNames,
         lineWidth: 2,

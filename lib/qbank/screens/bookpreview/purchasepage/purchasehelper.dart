@@ -4,7 +4,7 @@ import '../../../qbankbloc/getdataservice.dart';
 
 class PurchaseHelper {
   Future<void> reloadBooks() async {
-    return QBGetDataService.getBookPurchasedList(AppVar.qbankBloc.databaseSBB, AppVar.qbankBloc.hesapBilgileri.uid).once().then((snapshot) {
+    return QBGetDataService.getBookPurchasedList(AppVar.qbankBloc.databaseSBB, AppVar.qbankBloc.hesapBilgileri.uid!).once().then((snapshot) {
       List<PurchasedBookData> list = [];
       if (snapshot?.value != null) {
         (snapshot!.value as Map).forEach((key, value) {

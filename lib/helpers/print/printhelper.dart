@@ -37,12 +37,12 @@ class PrintHelper {
     await PrintLibraryHelper.printPdfDoc(doc);
   }
 
-  static Future<void> printMultiplePagePdf(List<pw.Widget?> pages, {pw.PageOrientation orientation = pw.PageOrientation.portrait, pw.Document? doc}) async {
+  static Future<void> printMultiplePagePdf(List<pw.Widget> pages, {pw.PageOrientation orientation = pw.PageOrientation.portrait, pw.Document? doc}) async {
     doc ??= pw.Document();
     final font1 = await rootBundle.load(Assets.fonts.sfuiTextMediumTTF);
     final font2 = await rootBundle.load(Assets.fonts.sfuiTextBoldTTF);
 
-    void setupPages(List<pw.Widget?> pageList) {
+    void setupPages(List<pw.Widget> pageList) {
       doc!.addPage(
         pw.MultiPage(
           pageTheme: pw.PageTheme(
@@ -55,7 +55,7 @@ class PrintHelper {
               italic: pw.Font.ttf(font1),
             ),
           ),
-          build: ((context) => pageList as List<pw.Widget>),
+          build: ((context) => pageList),
         ),
       );
     }
@@ -69,12 +69,12 @@ class PrintWidgetHelper {
   PrintWidgetHelper._();
 
   /// hazir Widgetlar
-  static pw.Widget keyValueWidget(key, value, {int valueFlex = 1, PdfColors? color}) {
+  static pw.Widget keyValueWidget(key, value, {int valueFlex = 1, PdfColor? color}) {
     return pw.Padding(
         padding: const pw.EdgeInsets.only(bottom: 2),
         child: pw.Row(children: [
           pw.Expanded(
-            child: pw.Container(width: double.infinity, alignment: pw.Alignment.center, color: color as PdfColor? ?? PdfColors.grey, child: pw.Text(key.toString(), style: pw.TextStyle(color: PdfColors.black, fontWeight: pw.FontWeight.bold))),
+            child: pw.Container(width: double.infinity, alignment: pw.Alignment.center, color: color ?? PdfColors.grey, child: pw.Text(key.toString(), style: pw.TextStyle(color: PdfColors.black, fontWeight: pw.FontWeight.bold))),
           ),
           pw.SizedBox(width: 16),
           pw.Expanded(
@@ -100,7 +100,7 @@ class PrintWidgetHelper {
 
   static pw.Widget myBorderedContainer({
     double? height,
-    String? text,
+    required String text,
     bool alignmentIsCenter = true,
     PdfColor color = PdfColors.black,
     bool bold = false,
@@ -114,7 +114,7 @@ class PrintWidgetHelper {
     if (rotate != 0) {
       return pw.LayoutBuilder(builder: (context, constraints) {
         pw.Widget _current = pw.Text(
-          text!,
+          text,
           maxLines: maxLines,
           textAlign: textAlign,
           style: pw.TextStyle(color: color, fontWeight: bold ? pw.FontWeight.bold : pw.FontWeight.normal, fontSize: fontSize),
@@ -141,7 +141,7 @@ class PrintWidgetHelper {
     }
 
     pw.Widget _current = pw.Text(
-      text!,
+      text,
       maxLines: maxLines,
       textAlign: textAlign,
       style: pw.TextStyle(color: color, fontWeight: bold ? pw.FontWeight.bold : pw.FontWeight.normal, fontSize: fontSize),
@@ -153,7 +153,7 @@ class PrintWidgetHelper {
     return pw.Container(height: height, decoration: pw.BoxDecoration(border: pw.Border.all(width: 1.0, color: color)), width: double.infinity, padding: pw.EdgeInsets.all(padding), alignment: alignmentIsCenter ? pw.Alignment.center : pw.Alignment.centerLeft, child: _current);
   }
 
-  static pw.Widget makeTable(List<String?> tableHeaders, List<List<dynamic>> data, {double headerFontSize = 10}) {
+  static pw.Widget makeTable(List<String> tableHeaders, List<List<dynamic>> data, {double headerFontSize = 10}) {
     var baseColor = PdfColors.blue;
     var _baseTextColor = PdfColors.white;
     var _darkColor = PdfColors.black;
@@ -171,7 +171,7 @@ class PrintWidgetHelper {
           border: pw.Border(
         bottom: pw.BorderSide(color: accentColor, width: .5),
       )),
-      headers: List<String?>.generate(tableHeaders.length, (col) => tableHeaders[col]),
+      headers: List<String>.generate(tableHeaders.length, (col) => tableHeaders[col]),
       data: data,
     );
   }

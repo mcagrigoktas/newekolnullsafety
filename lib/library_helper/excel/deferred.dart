@@ -40,10 +40,10 @@ class DeferredExcelLibraryHelper {
 
   static Future<List<int>?> export(List<List> data) async {
     var excel = xls.Excel.createExcel();
-    var sheet = excel.getDefaultSheet();
+    var sheet = excel.getDefaultSheet()!;
 
     data.forEach((element) {
-      excel.appendRow(sheet!, element);
+      excel.appendRow(sheet, element);
     });
 
     var _alphabat = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
@@ -77,7 +77,7 @@ class DeferredExcelLibraryHelper {
       ..._alphabat.map((e) => 'Z$e').toList(),
     ];
     for (var i = 0; i < data.first.length; i++) {
-      excel.updateCell(sheet!, xls.CellIndex.indexByString("${_exList[i]}1"), data.first[i], cellStyle: xls.CellStyle(backgroundColorHex: "#ff0000", fontColorHex: "#ffffff", bold: true, horizontalAlign: xls.HorizontalAlign.Center));
+      excel.updateCell(sheet, xls.CellIndex.indexByString("${_exList[i]}1"), data.first[i], cellStyle: xls.CellStyle(backgroundColorHex: "#ff0000", fontColorHex: "#ffffff", bold: true, horizontalAlign: xls.HorizontalAlign.Center));
     }
 
     return excel.encode();

@@ -12,10 +12,10 @@ import '../../../../services/dataservice.dart';
 import '../../account_settings/case_names.dart';
 
 class SinglePaymentWidget extends StatefulWidget {
-  final String? studentKey;
-  final String? paymentTypeKey;
+  final String studentKey;
+  final String paymentTypeKey;
   final Map? data;
-  SinglePaymentWidget({this.paymentTypeKey, this.studentKey, this.data});
+  SinglePaymentWidget({required this.paymentTypeKey, required this.studentKey, this.data});
   @override
   _SinglePaymentWidgetState createState() => _SinglePaymentWidgetState();
 }
@@ -381,7 +381,7 @@ class _SinglePaymentWidgetState extends State<SinglePaymentWidget> {
       return;
     }
 
-    await AccountingService.removeCustomPayment(widget.studentKey, selecTedTaksitKey).then((a) {
+    await AccountingService.removeCustomPayment(widget.studentKey, selecTedTaksitKey!).then((a) {
       selectedTaksit = null;
       selecTedTaksitKey = null;
       setState(() {

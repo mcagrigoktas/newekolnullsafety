@@ -46,9 +46,9 @@ class PSpacer<T> extends PM<T> {
 }
 
 class PExpanded<T> extends PM<T> {
-  final T? child;
+  final T child;
   final int flex;
-  PExpanded({this.child, this.flex = 1});
+  PExpanded({required this.child, this.flex = 1});
   @override
   Widget m() => Expanded(
         child: child as Widget,
@@ -77,7 +77,7 @@ class PExpanded<T> extends PM<T> {
 // }
 
 class PText<T> extends PM<T> {
-  final String? text;
+  final String text;
   final TextStyle? style;
   final PdfColor pdfTextColor;
   final int? maxLines;
@@ -85,12 +85,12 @@ class PText<T> extends PM<T> {
   PText(this.text, {this.style, this.pdfTextColor = PdfColors.black, this.maxLines, this.textAlign});
 
   @override
-  Widget m() => Text(text!, textAlign: textAlign, style: style);
+  Widget m() => Text(text, textAlign: textAlign, style: style);
 
   @override
   pw.Widget p() {
     return pw.Text(
-      text!,
+      text,
       maxLines: maxLines,
       textAlign: textAlign == null ? null : _PHelper.changeTextAlign(textAlign),
       style: pw.TextStyle(
@@ -139,11 +139,11 @@ class PContainer<T> extends PM<T> {
 }
 
 class PColumn<T> extends PM<T> {
-  final List<T>? children;
+  final List<T> children;
   final MainAxisAlignment mainAxisAlignment;
   final CrossAxisAlignment crossAxisAlignment;
 
-  PColumn({this.children, this.mainAxisAlignment = MainAxisAlignment.start, this.crossAxisAlignment = CrossAxisAlignment.center});
+  PColumn({required this.children, this.mainAxisAlignment = MainAxisAlignment.start, this.crossAxisAlignment = CrossAxisAlignment.center});
 
   @override
   Widget m() => Column(children: children as List<Widget>, mainAxisAlignment: mainAxisAlignment, crossAxisAlignment: crossAxisAlignment);
@@ -153,12 +153,12 @@ class PColumn<T> extends PM<T> {
 }
 
 class PRow<T> extends PM<T> {
-  final List<T>? children;
+  final List<T> children;
   final MainAxisAlignment mainAxisAlignment;
   final MainAxisSize mainAxisSize;
   final CrossAxisAlignment crossAxisAlignment;
 
-  PRow({this.children, this.mainAxisAlignment = MainAxisAlignment.start, this.crossAxisAlignment = CrossAxisAlignment.center, this.mainAxisSize = MainAxisSize.max});
+  PRow({required this.children, this.mainAxisAlignment = MainAxisAlignment.start, this.crossAxisAlignment = CrossAxisAlignment.center, this.mainAxisSize = MainAxisSize.max});
 
   @override
   Widget m() => Row(children: children as List<Widget>, mainAxisAlignment: mainAxisAlignment, crossAxisAlignment: crossAxisAlignment, mainAxisSize: mainAxisSize);
@@ -168,7 +168,7 @@ class PRow<T> extends PM<T> {
 }
 
 class PWrap<T> extends PM<T> {
-  final List<T>? children;
+  final List<T> children;
   final WrapAlignment alignment;
   final WrapCrossAlignment crossAxisAlignment;
   final WrapAlignment runAlignment;
@@ -177,7 +177,7 @@ class PWrap<T> extends PM<T> {
   final double runSpacing;
   final Axis direction;
 
-  PWrap({this.children, this.direction = Axis.horizontal, this.alignment = WrapAlignment.start, this.crossAxisAlignment = WrapCrossAlignment.start, this.runAlignment = WrapAlignment.start, this.spacing = 0, this.runSpacing = 0});
+  PWrap({required this.children, this.direction = Axis.horizontal, this.alignment = WrapAlignment.start, this.crossAxisAlignment = WrapCrossAlignment.start, this.runAlignment = WrapAlignment.start, this.spacing = 0, this.runSpacing = 0});
 
   @override
   Widget m() => Wrap(
@@ -204,14 +204,14 @@ class PWrap<T> extends PM<T> {
 
 //* Extension
 extension pWidgetExtension on PM {
-  T? stadium<T>({int type = 0, Color? background, EdgeInsets? padding}) {
+  T stadium<T>({int type = 0, Color? background, EdgeInsets? padding}) {
     return PContainer(
       padding: padding ?? const EdgeInsets.symmetric(vertical: 2, horizontal: 6),
       color: background ?? Colors.purpleAccent,
       pdfBackgroundColor: background == null ? PdfColors.purple : PdfColor(background.red / 255, background.green / 255, background.blue / 255, background.alpha / 255).flatten(),
       borderRadius: 24,
       child: this(type),
-    )(type) as T?;
+    )(type) as T;
   }
 }
 

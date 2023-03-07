@@ -85,20 +85,20 @@ class StudentAccounting extends StatelessWidget {
               Widget _childMenuWidget;
               if (controller.paymentTypeKey == 'custompayment') {
                 _childMenuWidget = SinglePaymentWidget(
-                  paymentTypeKey: controller.paymentTypeKey,
-                  studentKey: controller.selectedStudent!.key,
+                  paymentTypeKey: controller.paymentTypeKey!,
+                  studentKey: controller.selectedStudent!.key!,
                   data: (controller.data['PaymentPlans'] ?? {})[controller.paymentTypeKey],
                 );
               } else if ((controller.data['PaymentPlans']?.containsKey(controller.paymentTypeKey) ?? false) && (controller.data['PaymentPlans'][controller.paymentTypeKey]['aktif'] ?? true)) {
                 _childMenuWidget = PaymentPlanWidget(
-                  paymentTypeKey: controller.paymentTypeKey,
-                  studentKey: controller.selectedStudent!.key,
+                  paymentTypeKey: controller.paymentTypeKey!,
+                  studentKey: controller.selectedStudent!.key!,
                   data: controller.data['PaymentPlans'][controller.paymentTypeKey],
                 );
               } else if (controller.makeNewPlan) {
                 _childMenuWidget = NewPaymentPlanWidget(
-                  paymentTypeKey: controller.paymentTypeKey,
-                  studentKey: controller.selectedStudent!.key,
+                  paymentTypeKey: controller.paymentTypeKey!,
+                  studentKey: controller.selectedStudent!.key!,
                 );
               } else {
                 _childMenuWidget = _buildEmptyPaymenPlanWidgets();
@@ -163,7 +163,7 @@ class StudentAccounting extends StatelessWidget {
               iconData: Icons.note_add,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(9)),
               onPressed: () {
-                OverBottomSheet.show(BottomSheetPanel.child(child: AccountingNote(controller.selectedStudent!.key)));
+                OverBottomSheet.show(BottomSheetPanel.child(child: AccountingNote(controller.selectedStudent!.key!)));
               },
             ),
           ),

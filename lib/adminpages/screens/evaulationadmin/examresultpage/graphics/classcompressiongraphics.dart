@@ -13,8 +13,8 @@ class ClassScoreGraphics extends StatelessWidget {
 
   double maxValue = 0;
   double minValue = 0;
-  Map<String?, Map<String?, double?>> init() {
-    Map<String?, Map<String?, double?>> values = {};
+  Map<String, Map<String, double>> init() {
+    Map<String, Map<String, double>> values = {};
 
     final allScoreResultEntries = kurumAllStudentResults.entries.toList();
 
@@ -25,8 +25,8 @@ class ClassScoreGraphics extends StatelessWidget {
       for (var i = 0; i < allScoreResultEntries.length; i++) {
         final result = allScoreResultEntries[i].value!;
 
-        values[score.name] ??= {};
-        values[score.name]![result.rSClass] = result.scoreResults![score.key]!.classAwerage;
+        values[score.name!] ??= {};
+        values[score.name]![result.rSClass!] = result.scoreResults![score.key]!.classAwerage!;
       }
     }
     return values;

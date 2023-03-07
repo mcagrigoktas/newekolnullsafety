@@ -3,16 +3,16 @@ import 'package:flutter_math_fork/flutter_math.dart';
 
 class MathWidget extends StatelessWidget {
   final Color? color;
-  final String? data;
+  final String data;
   final TextStyle? textStyle;
   final double? fontSize;
   final bool bold;
-  MathWidget({this.color, this.data, this.textStyle, this.fontSize, this.bold = false});
+  MathWidget({this.color, required this.data, this.textStyle, this.fontSize, this.bold = false});
 
   @override
   Widget build(BuildContext context) {
     return Math.tex(
-      data!,
+      data,
       textStyle: TextStyle(
         fontSize: (fontSize ?? textStyle!.fontSize ?? 19) + 1,
         color: color,

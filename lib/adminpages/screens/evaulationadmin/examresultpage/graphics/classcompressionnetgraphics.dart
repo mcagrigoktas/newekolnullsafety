@@ -10,8 +10,8 @@ class ClassNetGraphics extends StatelessWidget {
   final ExamType? examType;
   ClassNetGraphics({this.kurumAllStudentResults, this.examType});
 
-  Map<String?, Map<String?, double>> init() {
-    Map<String?, Map<String?, double>> values = {};
+  Map<String, Map<String, double>> init() {
+    Map<String, Map<String, double>> values = {};
 
     final allScoreResultEntries = kurumAllStudentResults!.entries.toList();
 
@@ -20,8 +20,8 @@ class ClassNetGraphics extends StatelessWidget {
       for (var i = 0; i < allScoreResultEntries.length; i++) {
         final result = allScoreResultEntries[i].value!;
 
-        values[lesson.name] ??= {};
-        values[lesson.name]![result.rSClass] = //result.testResults[lesson.key].n;
+        values[lesson.name!] ??= {};
+        values[lesson.name]![result.rSClass!] = //result.testResults[lesson.key].n;
             (100 * result.testResults![lesson.key]!.n! ~/ lesson.questionCount!).toDouble();
       }
     }

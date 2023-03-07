@@ -10,10 +10,10 @@ import '../../../../models/allmodel.dart';
 import '../../../../services/dataservice.dart';
 
 class NewPaymentPlanWidget extends StatefulWidget {
-  final String? studentKey;
-  final String? paymentTypeKey;
+  final String studentKey;
+  final String paymentTypeKey;
 
-  NewPaymentPlanWidget({this.paymentTypeKey, this.studentKey});
+  NewPaymentPlanWidget({required this.paymentTypeKey, required this.studentKey});
   @override
   _NewPaymentPlanWidgetState createState() => _NewPaymentPlanWidgetState();
 }

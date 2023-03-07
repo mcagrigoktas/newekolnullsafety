@@ -50,7 +50,7 @@ class PortfolioPrintHelper {
                 flex: e[1] as int,
                 child: PrintWidgetHelper.myBorderedContainer(
                   padding: 2,
-                  text: e.first as String?,
+                  text: e.first as String,
                   height: 20,
                   bold: true,
                   maxLines: 1,
@@ -113,7 +113,7 @@ class PortfolioPrintHelper {
                 flex: e[1] as int,
                 child: PrintWidgetHelper.myBorderedContainer(
                   padding: 2,
-                  text: e.first as String?,
+                  text: e.first as String,
                   height: 20,
                   bold: true,
                   maxLines: 1,
@@ -144,7 +144,7 @@ class PortfolioPrintHelper {
                   flex: e[1] as int,
                   child: PrintWidgetHelper.myBorderedContainer(
                     padding: 2,
-                    text: e.first as String?,
+                    text: e.first as String,
                     height: 20,
                     bold: false,
                     maxLines: 1,
@@ -179,7 +179,7 @@ class PortfolioPrintHelper {
                 flex: e[1] as int,
                 child: PrintWidgetHelper.myBorderedContainer(
                   padding: 2,
-                  text: e.first as String?,
+                  text: e.first as String,
                   height: 20,
                   bold: true,
                   maxLines: 1,
@@ -233,7 +233,7 @@ class PortfolioPrintHelper {
                   flex: e[1] as int,
                   child: PrintWidgetHelper.myBorderedContainer(
                     padding: 2,
-                    text: e.first as String?,
+                    text: e.first as String,
                     height: 20,
                     bold: false,
                     maxLines: 1,
@@ -275,8 +275,8 @@ class PortfolioPrintHelper {
       final _examtypeHeaderWidget = pw.Row(children: [
         pw.SizedBox(width: 120),
         ...[
-          ...examtype.lessons!.map((e) => e.name).toList(),
-          ...examtype.scoring!.map((e) => e.name).toList(),
+          ...examtype.lessons!.map((e) => e.name!).toList(),
+          ...examtype.scoring!.map((e) => e.name!).toList(),
         ]
             .map(
               (e) => pw.Expanded(
@@ -298,7 +298,7 @@ class PortfolioPrintHelper {
       widgetList.add(_examtypeHeaderWidget);
       _thisExamTypeReports.forEach((examInfo) {
         final _examInfoWidget = pw.Row(children: [
-          pw.SizedBox(width: 120, height: 30, child: PrintWidgetHelper.myBorderedContainer(padding: 2, text: examInfo!.exam.name, height: 30, bold: true, alignmentIsCenter: true, fontSize: 10, textAlign: pw.TextAlign.center, maxLines: 2)),
+          pw.SizedBox(width: 120, height: 30, child: PrintWidgetHelper.myBorderedContainer(padding: 2, text: examInfo!.exam.name!, height: 30, bold: true, alignmentIsCenter: true, fontSize: 10, textAlign: pw.TextAlign.center, maxLines: 2)),
           ...[
             ...examtype.lessons!.map((lesson) {
               final result = examInfo.result.testResults![lesson.key]!;
@@ -338,8 +338,8 @@ class PortfolioPrintHelper {
               ['class'.translate, AppVar.appBloc.classService!.dataListItem(student.class0!)?.name ?? ''],
             ]
                 .map((e) => pw.Row(children: [
-                      pw.Expanded(child: PrintWidgetHelper.myBorderedContainer(padding: 4, text: e.first, height: 24, bold: true, fontSize: 10), flex: 2),
-                      pw.Expanded(child: PrintWidgetHelper.myBorderedContainer(padding: 4, text: e.last, height: 24, bold: false, alignmentIsCenter: false, fontSize: 10), flex: 5),
+                      pw.Expanded(child: PrintWidgetHelper.myBorderedContainer(padding: 4, text: e.first as String, height: 24, bold: true, fontSize: 10), flex: 2),
+                      pw.Expanded(child: PrintWidgetHelper.myBorderedContainer(padding: 4, text: e.last as String, height: 24, bold: false, alignmentIsCenter: false, fontSize: 10), flex: 5),
                     ]))
                 .toList(),
           ])),

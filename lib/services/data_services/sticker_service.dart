@@ -33,7 +33,7 @@ class StickerService {
     return _database33.update(updates).then((_) {
       _database11.set('Okullar/$_kurumId/SchoolData/Versions/$_termKey/StickerProfiles', _realTime);
       if (sendNotification == true) {
-        final _studentList = AppFunctions2.getStudenKeytListThisClass(stickerList.first.classKey);
+        final _studentList = AppFunctions2.getStudenKeytListThisClass(stickerList.first.classKey!);
         InAppNotificationService.sendSameInAppNotificationMultipleTarget(
           InAppNotification(
             title: AppVar.appBloc.hesapBilgileri.name,

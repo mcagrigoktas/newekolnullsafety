@@ -4,8 +4,8 @@ import 'package:mcg_extension/mcg_extension.dart';
 import '../../appbloc/appvar.dart';
 
 class ReviewTermScaffold extends StatelessWidget {
-  final Widget? child;
-  ReviewTermScaffold({this.child});
+  final Widget child;
+  ReviewTermScaffold({required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class ReviewTermScaffold extends StatelessWidget {
             ),
           ),
         ),
-        if (child != null) Expanded(child: child!),
+        Expanded(child: child),
       ],
     );
   }

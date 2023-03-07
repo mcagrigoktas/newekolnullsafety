@@ -38,7 +38,7 @@ class StudentAccountingController extends BaseController {
     if (selectedStudent != null) {
       await _studentDataSubscription?.cancel();
       startLoading();
-      _studentDataSubscription = AccountingService.dbStudentAccountingData(selectedStudent!.key).onValue().listen((event) {
+      _studentDataSubscription = AccountingService.dbStudentAccountingData(selectedStudent!.key!).onValue().listen((event) {
         data = (event?.value ?? {});
         stopLoading();
       });

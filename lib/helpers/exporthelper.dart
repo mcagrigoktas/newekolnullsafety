@@ -12,8 +12,8 @@ class ExportHelper {
     return date.dateFormat("d-MMM-yyyy");
   }
 
-  static List setupStudentList({String? studentKey, String? classKey = 'all'}) {
-    List data = AppVar.appBloc.studentService!.dataList
+  static List<List<dynamic>> setupStudentList({String? studentKey, String? classKey = 'all'}) {
+    List<List<dynamic>> data = AppVar.appBloc.studentService!.dataList
         .where((element) {
           if (studentKey != null) return element.key == studentKey;
           return true;
@@ -84,7 +84,7 @@ class ExportHelper {
   }
 
   static void exportStudentList({String? classKey}) {
-    ExcelLibraryHelper.export(setupStudentList(classKey: classKey) as List<List<dynamic>>, 'studentlist'.translate);
+    ExcelLibraryHelper.export(setupStudentList(classKey: classKey), 'studentlist'.translate);
   }
 
   static void exportSampleStudentList() {
@@ -128,11 +128,11 @@ class ExportHelper {
   }
 
   static void exportTeacherList() {
-    ExcelLibraryHelper.export(setupTeacherList() as List<List<dynamic>>, Words.teacherList);
+    ExcelLibraryHelper.export(setupTeacherList(), Words.teacherList);
   }
 
-  static List setupTeacherList() {
-    List data = AppVar.appBloc.teacherService!.dataList
+  static List<List<dynamic>> setupTeacherList() {
+    List<List<dynamic>> data = AppVar.appBloc.teacherService!.dataList
         .map((e) => [
               e.name,
               e.username,

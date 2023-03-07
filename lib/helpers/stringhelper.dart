@@ -9,5 +9,5 @@ class StringHelper {
   static const String acilim = 'Açılım Dijital';
   static const String taktikbende = 'Taktik Bende';
 
-  static String? schools = 'eYTOulrMuRkla'.unMix;
+  static String schools = 'eYTOulrMuRkla'.unMix!;
 }

@@ -8,7 +8,7 @@ import 'models.dart';
 const _pref_syncfusion_charts_loaded = 'd_syncfusion_charts';
 
 class MultiLineChart extends StatefulWidget {
-  final String? chartTitle;
+  final String chartTitle;
   final List<MultiLineChartData> data;
   final Map<String?, bool> olegandNames;
   final double lineWidth;

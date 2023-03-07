@@ -121,7 +121,7 @@ class PdfBookWithOpticController extends GetxController {
     if (sendStatistics && hesapBilgileri.uid.safeLength > 2) {
       Map<String, dynamic> statisticsData = {"ds": dogruSayisi, "ys": yanlisSayisi, "bs": bosSayisi, "sure": gecenSure.value};
 
-      QBSetDataService.sendStudentStatistics(statisticsData, book!.bookKey, testResultSaveKey, hesapBilgileri.uid);
+      QBSetDataService.sendStudentStatistics(statisticsData, book!.bookKey, testResultSaveKey!, hesapBilgileri.uid!);
 
       if (!AppVar.qbankBloc.hesapBilgileri.isQbank && AppVar.qbankBloc.hesapBilgileri.ekolUid.safeLength > 2) {
         QBSetDataService.sendSchoolTestStatistics(
@@ -129,9 +129,9 @@ class PdfBookWithOpticController extends GetxController {
               ..['answers'] = answerKeyData
               ..['realAnswers'] = icindekilerItem!.answerKey!.toJson(),
             book!.bookKey,
-            testResultSaveKey,
-            hesapBilgileri.kurumID,
-            hesapBilgileri.ekolUid);
+            testResultSaveKey!,
+            hesapBilgileri.kurumID!,
+            hesapBilgileri.ekolUid!);
       }
     }
     update();

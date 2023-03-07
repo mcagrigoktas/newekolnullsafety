@@ -31,7 +31,8 @@ class QuestionPageController extends Object with WidgetsBindingObserver, Questio
 
   final QBankHesapBilgileri? hesapBilgileri;
   final Kitap kitapBilgileri;
-  final String? testKey, testVersion;
+  final String testKey;
+  final String? testVersion;
   final IcindekilerItem? icindekilerItem;
   ScrollController scrollController = ScrollController();
   double? fontSize;
@@ -117,7 +118,7 @@ class QuestionPageController extends Object with WidgetsBindingObserver, Questio
 
   bool testPaused = false;
 
-  QuestionPageController({this.testKey, this.testVersion, this.hesapBilgileri, required this.kitapBilgileri, this.anlatim, this.debug, this.icindekilerItem}) {
+  QuestionPageController({required this.testKey, this.testVersion, this.hesapBilgileri, required this.kitapBilgileri, this.anlatim, this.debug, this.icindekilerItem}) {
     theme = temayiAyarla();
 
     theme!.bookColor = Color(int.parse('0xff${kitapBilgileri.primaryColor!.substring(1)}'));
@@ -156,7 +157,7 @@ class QuestionPageController extends Object with WidgetsBindingObserver, Questio
         _testiYazdir(snapShot!.value);
       });
     } else {
-      final oncedenKayitliTest = await Fav.securePreferences.getHiveMap('qbankTest_' + testKey! + AppConst.preferenecesBoxVersion.toString());
+      final oncedenKayitliTest = await Fav.securePreferences.getHiveMap('qbankTest_' + testKey + AppConst.preferenecesBoxVersion.toString());
       final bool sonVersiyonKayitlimi = (Fav.preferences.getString("${testKey}_version") ?? "") == testVersion;
       if (oncedenKayitliTest.isNotEmpty && sonVersiyonKayitlimi) {
         await _testiYazdir(oncedenKayitliTest);
@@ -168,7 +169,7 @@ class QuestionPageController extends Object with WidgetsBindingObserver, Questio
 
         var byteData = await (DownloadManager.downloadWithHttp('${DatabaseStarter.databaseConfig.questionBankUrlPrefix}/Books%2F${kitapBilgileri.bookKey}%2F$testKey?alt=media'));
         var data = json.decode(DownloadManager.convertText(byteData!));
-        await Fav.securePreferences.setHiveMap('qbankTest_' + testKey! + AppConst.preferenecesBoxVersion.toString(), data, clearExistingData: true);
+        await Fav.securePreferences.setHiveMap('qbankTest_' + testKey + AppConst.preferenecesBoxVersion.toString(), data, clearExistingData: true);
         Fav.preferences.setString("${testKey}_version", data["testInfo"]["version"]).unawaited;
         await _testiYazdir(data);
       }
@@ -201,10 +202,10 @@ class QuestionPageController extends Object with WidgetsBindingObserver, Questio
 
       int? userDenemeStartTime = Fav.preferences.getInt(icindekilerItem!.denemeKey + kitapBilgileri.bookKey + 'userStartTime');
 
-      userDenemeStartTime ??= (await QBGetDataService.getUserDenemeStartTime(kitapBilgileri.bookKey, icindekilerItem!.denemeKey, qbankBloc.hesapBilgileri.uid))!.value;
+      userDenemeStartTime ??= (await QBGetDataService.getUserDenemeStartTime(kitapBilgileri.bookKey, icindekilerItem!.denemeKey, qbankBloc.hesapBilgileri.uid!))!.value;
 
       if (userDenemeStartTime == null) {
-        await QBSetDataService.sendUserDenemeStartTime(realTime(), kitapBilgileri.bookKey, icindekilerItem!.denemeKey, qbankBloc.hesapBilgileri.uid).then((value) => Fav.preferences.setInt(icindekilerItem!.denemeKey + kitapBilgileri.bookKey + 'userStartTime', realTime()));
+        await QBSetDataService.sendUserDenemeStartTime(realTime(), kitapBilgileri.bookKey, icindekilerItem!.denemeKey, qbankBloc.hesapBilgileri.uid!).then((value) => Fav.preferences.setInt(icindekilerItem!.denemeKey + kitapBilgileri.bookKey + 'userStartTime', realTime()));
         userDenemeStartTime = realTime();
       } else {
         await Fav.preferences.setInt(icindekilerItem!.denemeKey + kitapBilgileri.bookKey + 'userStartTime', userDenemeStartTime);
@@ -391,10 +392,10 @@ class QuestionPageController extends Object with WidgetsBindingObserver, Questio
     if (sendStatistics && hesapBilgileri!.uid != null) {
       Map<String, dynamic> statisticsData = {"ds": dogruSayisi, "ys": yanlisSayisi, "bs": bosSayisi, "sure": gecenSure};
 
-      QBSetDataService.sendStudentStatistics(statisticsData, kitapBilgileri.bookKey, testKey, hesapBilgileri!.uid);
+      QBSetDataService.sendStudentStatistics(statisticsData, kitapBilgileri.bookKey, testKey, hesapBilgileri!.uid!);
 
       if (!qbankBloc.hesapBilgileri.isQbank && qbankBloc.hesapBilgileri.ekolUid.safeLength > 2) {
-        QBSetDataService.sendSchoolTestStatistics(statisticsData..['results'] = doruYanlisBosText, kitapBilgileri.bookKey, testKey, hesapBilgileri!.kurumID, hesapBilgileri!.ekolUid);
+        QBSetDataService.sendSchoolTestStatistics(statisticsData..['results'] = doruYanlisBosText, kitapBilgileri.bookKey, testKey, hesapBilgileri!.kurumID!, hesapBilgileri!.ekolUid!);
       }
     }
   }
@@ -402,7 +403,7 @@ class QuestionPageController extends Object with WidgetsBindingObserver, Questio
   void testiSifirla() {
     Fav.preferences.setBool("${testKey}_test_cozuldu", false);
 
-    Fav.preferences.setString(hesapBilgileri!.uid! + "_" + testKey!, "");
+    Fav.preferences.setString(hesapBilgileri!.uid! + "_" + testKey, "");
     gecenSure = 0;
     testCozuldu = false;
     dogruSayisi = 0;

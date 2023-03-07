@@ -3,10 +3,10 @@ part of '../dataservice.dart';
 class AccountingService {
   AccountingService._();
 
-  static String? get _kurumId => AppVar.appBloc.hesapBilgileri.kurumID;
-  static String? get _termKey => AppVar.appBloc.hesapBilgileri.termKey;
+  static String get _kurumId => AppVar.appBloc.hesapBilgileri.kurumID!;
+  static String get _termKey => AppVar.appBloc.hesapBilgileri.termKey!;
   static dynamic get _realTime => databaseTime;
-  static String? get _uid => AppVar.appBloc.hesapBilgileri.uid;
+  static String get _uid => AppVar.appBloc.hesapBilgileri.uid!;
   static Database get _database11 => AppVar.appBloc.database1;
   static Database get _databaseAccountingg => AppVar.appBloc.databaseAccounting;
 
@@ -15,7 +15,7 @@ class AccountingService {
   static Reference dbInvoiceNumber() => Reference(_databaseAccountingg, 'Okullar/$_kurumId/$_termKey/Kayitlar/faturaNo');
 
   //Ogrenci Muhasebe bilgilerini ceker
-  static Reference dbStudentAccountingData(String? studentKey) => Reference(_databaseAccountingg, 'Okullar/$_kurumId/$_termKey/StudentAccounting/$studentKey');
+  static Reference dbStudentAccountingData(String studentKey) => Reference(_databaseAccountingg, 'Okullar/$_kurumId/$_termKey/StudentAccounting/$studentKey');
 
   //veli Muhasebe bilgilerini kontrol eder
   static Reference dbStudentAccountingReviewData() => Reference(_databaseAccountingg, 'Okullar/$_kurumId/$_termKey/StudentAccounting/$_uid/PaymentPlans');
@@ -26,7 +26,7 @@ class AccountingService {
   //Butun makbuzlarin listesini ceker
   static Reference dbAllReceipt() => Reference(_databaseAccountingg, 'Okullar/$_kurumId/$_termKey/Logs/Faturalar');
 
-  static Reference dbAccountingNote(String? studentKey) => Reference(_databaseAccountingg, 'Okullar/$_kurumId/$_termKey/StudentAccounting/$studentKey/Notes');
+  static Reference dbAccountingNote(String studentKey) => Reference(_databaseAccountingg, 'Okullar/$_kurumId/$_termKey/StudentAccounting/$studentKey/Notes');
 
 //! SETDATASERVICE
 
@@ -47,20 +47,20 @@ class AccountingService {
   }
 
   ///Muhasebeci notu kaydeder
-  static Future<void> addAccountingNot(String? studentKey, List<String?> noteData) async {
+  static Future<void> addAccountingNot(String studentKey, List<String> noteData) async {
     return _databaseAccountingg.set('Okullar/$_kurumId/$_termKey/StudentAccounting/$studentKey/Notes', noteData);
   }
 
   //Tekli odeme kaydeder
-  static Future<void> addSinglePayment(String? paymentTypeKey, Map accountingData, String? studentKey) async {
+  static Future<void> addSinglePayment(String paymentTypeKey, Map accountingData, String studentKey) async {
     return _databaseAccountingg.push('Okullar/$_kurumId/$_termKey/StudentAccounting/$studentKey/PaymentPlans/$paymentTypeKey', accountingData).then((_) {
-      _sentNotificationToStudent(AppVar.appBloc.hesapBilgileri.name, 'addaccountingcontractnotify'.translate, studentKey);
+      _sentNotificationToStudent(AppVar.appBloc.hesapBilgileri.name!, 'addaccountingcontractnotify'.translate, studentKey);
     });
   }
 
   // Eger odeme sekli custompayment ise selectedKey odeme islemine ait itemin keyidir.
   // Eger odeme sekli custompayment degil ise selectedKey pesinat mi pesin ucretmi  yada taksit mi oldugunu ifade eder
-  static Future<void> payAccounting(String? paymentTypeKey, payData, faturaData, String? studentKey, String? selecTedKey /*pesinat taksitler*/, String? taksitName, int faturaNo) async {
+  static Future<void> payAccounting(String paymentTypeKey, payData, faturaData, String studentKey, String? selecTedKey /*pesinat taksitler*/, String? taksitName, int faturaNo) async {
     Map<String, dynamic> updates = {};
     if (paymentTypeKey == 'custompayment') {
       updates['/Okullar/$_kurumId/$_termKey/StudentAccounting/$studentKey/PaymentPlans/$paymentTypeKey/$selecTedKey/odemeler'] = payData;
@@ -75,13 +75,13 @@ class AccountingService {
     updates['/Okullar/$_kurumId/$_termKey/Logs/Faturalar/fatura$faturaNo'] = faturaData;
 
     return _databaseAccountingg.update(updates).then((_) {
-      _sentNotificationToStudent(AppVar.appBloc.hesapBilgileri.name, 'payaccountingnotify'.translate, studentKey);
+      _sentNotificationToStudent(AppVar.appBloc.hesapBilgileri.name!, 'payaccountingnotify'.translate, studentKey);
     });
   }
 
   // Eger odeme sekli custompayment ise selectedKey odeme islemine ait itemin keyidir.
   // Eger odeme sekli custompayment degil ise selectedKey pesinat mi pesin ucretmi  yada taksit mi oldugunu ifade eder
-  static Future<void> birTaksidiDegistir(String? paymentTypeKey, String? studentKey, String? selecTedKey, String? taksitName, double? eskiTutuar, double? yeniTutar) async {
+  static Future<void> birTaksidiDegistir(String paymentTypeKey, String studentKey, String selecTedKey, String? taksitName, double eskiTutuar, double yeniTutar) async {
     Map<String, dynamic> updates = {};
     if (selecTedKey == 'pesinat') {
       updates['/Okullar/$_kurumId/$_termKey/StudentAccounting/$studentKey/PaymentPlans/$paymentTypeKey/pesinat/tutar'] = yeniTutar;
@@ -96,38 +96,38 @@ class AccountingService {
     }
 
     return _databaseAccountingg.update(updates).then((_) {
-      _sentNotificationToStudent(AppVar.appBloc.hesapBilgileri.name, 'payaccountingchangenotify'.translate, studentKey);
+      _sentNotificationToStudent(AppVar.appBloc.hesapBilgileri.name!, 'payaccountingchangenotify'.translate, studentKey);
     });
   }
 
   /// Odemi plani olusmus bir ogrenci icin yeni taksit eklemesi yapar
   /// [taksitKey] taksitmodel naminin bir ekisigi olmali
-  static Future<void> addNewInstalament(String? paymentTypeKey, String? studentKey, String taksitKey, TaksitModel taksit) async {
+  static Future<void> addNewInstalament(String paymentTypeKey, String studentKey, String taksitKey, TaksitModel taksit) async {
     Map<String, dynamic> updates = {};
 
     updates['/Okullar/$_kurumId/$_termKey/StudentAccounting/$studentKey/PaymentPlans/$paymentTypeKey/taksitler/$taksitKey'] = taksit.mapForSave();
     updates['/Okullar/$_kurumId/$_termKey/StudentAccounting/$studentKey/PaymentPlans/$paymentTypeKey/notes/${4.makeKey}'] = 'installamentadd'.argsTranslate({'key': taksit.name, 'date': DateTime.now().dateFormat()});
 
     return _databaseAccountingg.update(updates).then((_) {
-      _sentNotificationToStudent(AppVar.appBloc.hesapBilgileri.name, 'payaccountingchangenotify'.translate, studentKey);
+      _sentNotificationToStudent(AppVar.appBloc.hesapBilgileri.name!, 'payaccountingchangenotify'.translate, studentKey);
     });
   }
 
   /// Odemi plani olusmus bir ogrenci icin son taksitte odeme alinmamissa son taksiti siler
   /// [taksitKey] taksitmodel naminin bir ekisigi olmali
-  static Future<void> deleteLastInstallament(String? paymentTypeKey, String? studentKey, String taksitKey) async {
+  static Future<void> deleteLastInstallament(String paymentTypeKey, String studentKey, String taksitKey) async {
     Map<String, dynamic> updates = {};
 
     updates['/Okullar/$_kurumId/$_termKey/StudentAccounting/$studentKey/PaymentPlans/$paymentTypeKey/taksitler/$taksitKey'] = null;
     updates['/Okullar/$_kurumId/$_termKey/StudentAccounting/$studentKey/PaymentPlans/$paymentTypeKey/notes/${4.makeKey}'] = 'installamentdelete'.argsTranslate({'key': int.tryParse(taksitKey)! + 1, 'date': DateTime.now().dateFormat()});
 
     return _databaseAccountingg.update(updates).then((_) {
-      _sentNotificationToStudent(AppVar.appBloc.hesapBilgileri.name, 'payaccountingchangenotify'.translate, studentKey);
+      _sentNotificationToStudent(AppVar.appBloc.hesapBilgileri.name!, 'payaccountingchangenotify'.translate, studentKey);
     });
   }
 
 // Yapilmis odemeyi siler
-  static Future<void> deletePayAccounting(String? paymentTypeKey, payData, String? studentKey, String? selecTedKey /*pesinat taksitler*/, String? taksitName, int? faturaNo) async {
+  static Future<void> deletePayAccounting(String paymentTypeKey, payData, String studentKey, String? selecTedKey /*pesinat taksitler*/, String? taksitName, int? faturaNo) async {
     Map<String, dynamic> updates = {};
     if (paymentTypeKey == 'custompayment') {
       updates['/Okullar/$_kurumId/$_termKey/StudentAccounting/$studentKey/PaymentPlans/$paymentTypeKey/$selecTedKey/odemeler'] = payData;
@@ -143,19 +143,19 @@ class AccountingService {
   }
 
 // Odeme sozlesmesi Siler
-  static Future<void> deleteAccountingContract(String? paymentTypeKey, String? studentKey) async {
+  static Future<void> deleteAccountingContract(String paymentTypeKey, String studentKey) async {
     return _databaseAccountingg.set('Okullar/$_kurumId/$_termKey/StudentAccounting/$studentKey/PaymentPlans/$paymentTypeKey/aktif', false);
   }
 
 // Custom odemeyi siler
-  static Future<void> removeCustomPayment(String? studentKey, String? itemKey) async {
+  static Future<void> removeCustomPayment(String studentKey, String itemKey) async {
     return _databaseAccountingg.set('Okullar/$_kurumId/$_termKey/StudentAccounting/$studentKey/PaymentPlans/custompayment/$itemKey/aktif', false);
   }
 
   // Odeme sozlesmesi kaydeder
-  static Future<void> addAccountingContract(String? paymentTypeKey, Map accountingData, String? studentKey) async {
+  static Future<void> addAccountingContract(String paymentTypeKey, Map accountingData, String studentKey) async {
     return _databaseAccountingg.set('Okullar/$_kurumId/$_termKey/StudentAccounting/$studentKey/PaymentPlans/$paymentTypeKey', accountingData).then((_) {
-      _sentNotificationToStudent(AppVar.appBloc.hesapBilgileri.name, 'addaccountingcontractnotify'.translate, studentKey);
+      _sentNotificationToStudent(AppVar.appBloc.hesapBilgileri.name!, 'addaccountingcontractnotify'.translate, studentKey);
     });
   }
 
@@ -168,7 +168,7 @@ class AccountingService {
   // Ogrenci Sozlesmesini kaydeder
   static Future<void> saveStudentContractTemplate(String info) => SchoolDataService.schoolInfoForManagerSaver('sct', info);
 
-  static Future<void> _sentNotificationToStudent(String? title, String message, String? studentKey) async {
+  static Future<void> _sentNotificationToStudent(String title, String message, String studentKey) async {
     await InAppNotificationService.sendInAppNotification(
       InAppNotification(
         title: title,

@@ -22,10 +22,10 @@ class PrintAccounting {
     var newColumnNames = List<String>.from(columnNames);
     newColumnNames[4] = 'date'.translate;
     newColumnNames.add('note'.translate);
-    List<String?> getRow(TaksitModel taksit) {
+    List<String> getRow(TaksitModel taksit) {
       double odenen = taksit.odemeler?.fold<double>(0.0, ((total, value) => total + value.miktar!)) ?? 0.0;
       return [
-        taksit.name,
+        taksit.name!,
         taksit.tarih!.dateFormat("d-MMM-yy"),
         taksit.tutar!.toStringAsFixed(2),
         odenen > 1 ? odenen.toStringAsFixed(2) : '_____',
@@ -34,7 +34,7 @@ class PrintAccounting {
       ];
     }
 
-    List<List<String?>> rows = [];
+    List<List<String>> rows = [];
     rows.add(getRow(paymentData.pesinat!));
 
     if (paymentData.odemeTuru == 0) {
@@ -47,7 +47,7 @@ class PrintAccounting {
 
     var studentData = ExportHelper.setupStudentList(studentKey: student.key);
     Map studentMap = {};
-    for (var i = 0; i < (studentData.first as List).length; i++) {
+    for (var i = 0; i < (studentData.first).length; i++) {
       if ([
         "studentno".translate,
         'namesurname'.translate,
@@ -188,8 +188,8 @@ class PrintAccounting {
           ['contractamount'.translate, paymentData.tutar!.toStringAsFixed(2)],
         ]
             .map<pw.Widget>(((e) => pw.Row(children: [
-                  pw.Expanded(child: PrintWidgetHelper.myBorderedContainer(padding: 4, text: e.first, height: 24, fontSize: 10), flex: 2),
-                  pw.Expanded(child: PrintWidgetHelper.myBorderedContainer(padding: 4, text: e.last, height: 24, bold: false, alignmentIsCenter: false, fontSize: 10), flex: 5),
+                  pw.Expanded(child: PrintWidgetHelper.myBorderedContainer(padding: 4, text: e.first as String, height: 24, fontSize: 10), flex: 2),
+                  pw.Expanded(child: PrintWidgetHelper.myBorderedContainer(padding: 4, text: e.last as String, height: 24, bold: false, alignmentIsCenter: false, fontSize: 10), flex: 5),
                 ])))
             .toList(),
         pw.SizedBox(height: 4),
@@ -203,10 +203,10 @@ class PrintAccounting {
     var newColumnNames = List<String>.from(columnNames);
     newColumnNames[4] = 'date'.translate;
     newColumnNames.add('note'.translate);
-    List<String?> getRow(TaksitModel taksit) {
+    List<String> getRow(TaksitModel taksit) {
       double odenen = taksit.odemeler?.fold<double>(0.0, ((total, value) => total + value.miktar!)) ?? 0.0;
       return [
-        taksit.name,
+        taksit.name!,
         taksit.tarih!.dateFormat("d-MMM-yy"),
         taksit.tutar!.toStringAsFixed(2),
         odenen > 1 ? odenen.toStringAsFixed(2) : '_____',
@@ -215,7 +215,7 @@ class PrintAccounting {
       ];
     }
 
-    List<List<String?>> rows = [];
+    List<List<String>> rows = [];
     rows.add(getRow(paymentData.pesinat!));
 
     if (paymentData.odemeTuru == 0) {
@@ -228,7 +228,7 @@ class PrintAccounting {
 
     var studentData = ExportHelper.setupStudentList(studentKey: student.key);
     Map studentMap = {};
-    for (var i = 0; i < (studentData.first as List).length; i++) {
+    for (var i = 0; i < (studentData.first).length; i++) {
       if ([
         "studentno".translate,
         'namesurname'.translate,
@@ -610,10 +610,10 @@ class PrintAccounting {
     if (cancel) return;
     final doc = pw.Document();
 
-    List<TaksitModel?> taksitList = [];
+    List<TaksitModel> taksitList = [];
 
     if (paymentData.odemeTuru == 0) {
-      taksitList.add(paymentData.pesinUcret);
+      taksitList.add(paymentData.pesinUcret!);
     } else {
       paymentData.taksitler!.forEach((taksit) {
         taksitList.add(taksit);
@@ -639,7 +639,7 @@ class PrintAccounting {
                         crossAxisAlignment: pw.CrossAxisAlignment.start,
                         children: [
                           pw.Text('voucherno'.translate + ': ${userData['voucherno']}', style: const pw.TextStyle(fontSize: 11)),
-                          pw.Text('vouchertl'.translate + ': ${e!.tutar!.toInt()}', style: const pw.TextStyle(fontSize: 11)),
+                          pw.Text('vouchertl'.translate + ': ${e.tutar!.toInt()}', style: const pw.TextStyle(fontSize: 11)),
                           pw.Text('vouchertl2'.translate + ': 0', style: const pw.TextStyle(fontSize: 11)),
                           pw.Text('vouchername'.translate + ': ${userData['vouchername']}', style: const pw.TextStyle(fontSize: 11)),
                           pw.Text('voucherexpiry'.translate + ': ${e.name}', style: const pw.TextStyle(fontSize: 11)),

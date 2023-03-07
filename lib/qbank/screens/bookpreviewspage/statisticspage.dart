@@ -40,7 +40,7 @@ class StatisticsPageState extends State<StatisticsPage> with SingleTickerProvide
 
     icindekilerList = widget.icindekilerData!.data;
     widget.uid ??= AppVar.qbankBloc.hesapBilgileri.uid;
-    QBGetDataService.getStudentBookStatistics(widget.kitap!.bookKey, widget.uid).then((snapshot) {
+    QBGetDataService.getStudentBookStatistics(widget.kitap!.bookKey, widget.uid!).then((snapshot) {
       if (snapshot!.value != null) {
         istatistikVerisi = snapshot.value;
       } else {

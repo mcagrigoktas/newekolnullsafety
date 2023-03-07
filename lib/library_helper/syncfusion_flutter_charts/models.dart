@@ -1,15 +1,15 @@
 class MultiLineChartData {
-  final Map<String?, double>? values;
-  final String? name;
+  final Map<String, double> values;
+  final String name;
 
-  MultiLineChartData({this.values, this.name});
+  MultiLineChartData({required this.values, required this.name});
 }
 
 class MultiColumnChartData {
-  final Map<String?, double?>? values;
-  final String? name;
+  final Map<String, double> values;
+  final String name;
 
-  MultiColumnChartData({this.values, this.name});
+  MultiColumnChartData({required this.values, required this.name});
 }
 
 class PieChartSampleData {

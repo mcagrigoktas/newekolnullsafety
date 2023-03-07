@@ -92,9 +92,9 @@ class _SignUpPageState extends State<SignUpPage> {
       'deviceList': [model],
     };
 
-    QBSetDataService.saveUserForMail(_username!, _password1, userData).then((_) {
+    QBSetDataService.saveUserForMail(_username!, _password1!, userData).then((_) {
       //bunun aynisi loginde de var ne guncelleyeceksen orayada yaz
-      (isGoogle ? QBGetDataService.getGoogleLoginData(_username!) : QBGetDataService.getLoginData(_username!, _password1)).then((snap) async {
+      (isGoogle ? QBGetDataService.getGoogleLoginData(_username!) : QBGetDataService.getLoginData(_username!, _password1!)).then((snap) async {
         if (snap!.value == null) {
           OverAlert.show(type: AlertType.danger, message: 'signuperr'.translate);
           return;

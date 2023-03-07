@@ -14,8 +14,8 @@ class InstutionScoreGraphics extends StatelessWidget {
 
   double maxValue = 0;
   double minValue = 0;
-  Map<String?, Map<String, double>> init() {
-    Map<String?, Map<String, double>> values = {};
+  Map<String, Map<String, double>> init() {
+    Map<String, Map<String, double>> values = {};
 
     final scoreResult = kurumAllStudentResults.entries.first.value;
 
@@ -23,7 +23,7 @@ class InstutionScoreGraphics extends StatelessWidget {
       final score = examType.scoring![i];
       if ((score.maxValue ?? 500) > maxValue) maxValue = score.maxValue ?? 500;
       if ((score.minValue ?? -100) < minValue) minValue = score.minValue ?? -100;
-      values[score.name] ??= {};
+      values[score.name!] ??= {};
       values[score.name]!['school'.translate] = scoreResult!.scoreResults![score.key]!.schoolAwerage!.toDouble();
       values[score.name]!['general'.translate] = scoreResult.scoreResults![score.key]!.generalAwerage!.toDouble();
     }

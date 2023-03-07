@@ -121,7 +121,7 @@ class _SignInPageState extends State<SignInPage> with TickerProviderStateMixin {
 
     String model = await DeviceManager.getDeviceModel();
 
-    (isGoogle ? QBGetDataService.getGoogleLoginData(_username!) : QBGetDataService.getLoginData(_username!, _password1)).then((snap) async {
+    (isGoogle ? QBGetDataService.getGoogleLoginData(_username!) : QBGetDataService.getLoginData(_username!, _password1!)).then((snap) async {
       if (snap!.value == null) {
         setState(() {
           _isLoading = false;

@@ -18,11 +18,11 @@ class QbankAppBloc extends Object {
 
   final Database databaseSBB = Database(databaseUrl: DatabaseStarter.databaseConfig.rtdbSB);
   final Database databaseLogss = Database(databaseUrl: DatabaseStarter.databaseConfig.rtdbLogs);
-  MiniFetcher? bookListFecther;
+  MiniFetcher<Kitap>? bookListFecther;
 
   String packageName = '';
 
-  List<Kitap> get getKitapListesi => makeFilteredBookList(bookListFecther!.dataList as List<Kitap>);
+  List<Kitap> get getKitapListesi => makeFilteredBookList(bookListFecther!.dataList);
   Map<String, String> bookPriceCache = {};
   final bool isEkol;
 

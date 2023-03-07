@@ -7,13 +7,13 @@ import 'printhelper.dart';
 class OtherPrint {
   OtherPrint._();
 
-  static void printFirstLoginList(Map? loginData) {
+  static void printFirstLoginList(Map loginData) {
     final doc = pw.Document();
 
     PrintHelper.printMultiplePagePdf(
       [
         PrintWidgetHelper.myTextContainer(text: 'firstloginlist'.translate),
-        PrintWidgetHelper.makeTable(['name'.translate, 'state'.translate], AppVar.appBloc.studentService!.dataList.map((e) => [e.name, loginData![e.key] == true ? 'yes'.translate : 'no'.translate]).toList())
+        PrintWidgetHelper.makeTable(['name'.translate, 'state'.translate], AppVar.appBloc.studentService!.dataList.map((e) => [e.name, loginData[e.key] == true ? 'yes'.translate : 'no'.translate]).toList())
       ],
       doc: doc,
     );
@@ -28,7 +28,7 @@ class OtherPrint {
   //   );
   // }
 
-  static void printQbankTestStatistics(List<List<String?>> data) {
+  static void printQbankTestStatistics(List<List<String>> data) {
     final doc = pw.Document();
     PrintHelper.printMultiplePagePdf(
       [
@@ -50,7 +50,7 @@ class OtherPrint {
     ], doc: doc);
   }
 
-  static Future<void> printSurveyResult(List<List<String?>> data) async {
+  static Future<void> printSurveyResult(List<List<String>> data) async {
     data.forEach((element) {
       element.forEach((el) {
         if (el.startsWithHttp) element[element.indexOf(el)] = 'picture'.translate;

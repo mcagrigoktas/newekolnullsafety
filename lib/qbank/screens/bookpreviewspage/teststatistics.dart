@@ -53,7 +53,7 @@ class _TestStatisticsPageState extends State<TestStatisticsPage> with AppFunctio
     setState(() {
       isLoading = true;
     });
-    QBGetDataService.getSchoolTestStatistics(widget.book!.bookKey, widget.testKey, AppVar.qbankBloc.hesapBilgileri.kurumID).then((snap) {
+    QBGetDataService.getSchoolTestStatistics(widget.book!.bookKey, widget.testKey!, AppVar.qbankBloc.hesapBilgileri.kurumID!).then((snap) {
       if (snap?.value == null) {
         OverAlert.show(type: AlertType.danger, message: 'neverstudentusetest'.translate);
       } else {
@@ -79,11 +79,11 @@ class _TestStatisticsPageState extends State<TestStatisticsPage> with AppFunctio
     return result.replaceAll('D', '+').replaceAll('Y', '-').replaceAll('B', '?');
   }
 
-  List<List<String?>> getData() {
+  List<List<String>> getData() {
     return AppVar.appBloc.studentService!.dataList
         .where((stuent) => stuent.classKeyList.contains(classKey))
         .map((e) => [
-              e.name,
+              e.name!,
               ((statisticsData![e.key] ?? {})['ds'] ?? '-').toString(),
               ((statisticsData![e.key] ?? {})['ys'] ?? '-').toString(),
               ((statisticsData![e.key] ?? {})['bs'] ?? '-').toString(),

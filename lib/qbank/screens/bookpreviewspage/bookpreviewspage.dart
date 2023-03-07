@@ -53,7 +53,7 @@ class BooksPreviewPageState extends State<BooksPreviewPage> {
     } else {
       if (Fav.noConnection()) return;
 
-      final _controller = QuestionPageController(debug: widget.debug, testKey: item.testKey, testVersion: widget.icindekilerModel!.testVersions[item.testKey!], hesapBilgileri: AppVar.qbankBloc.hesapBilgileri, kitapBilgileri: widget.kitap!, anlatim: true, icindekilerItem: item);
+      final _controller = QuestionPageController(debug: widget.debug, testKey: item.testKey!, testVersion: widget.icindekilerModel!.testVersions[item.testKey!], hesapBilgileri: AppVar.qbankBloc.hesapBilgileri, kitapBilgileri: widget.kitap!, anlatim: true, icindekilerItem: item);
       await Fav.to(TestPage(), binding: BindingsBuilder(() => Get.put<QuestionPageController>(_controller)));
       _controller.dispose();
       100.wait.then((_) {

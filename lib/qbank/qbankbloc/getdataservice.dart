@@ -19,14 +19,14 @@ class QBGetDataService {
 
 // mail adresinde yad google adresinden giris yapmak icib kullanici verilerinni getirir
   // Future<DataSnapshot> getLoginData(String mail, String password) => AppVar.qbankBloc.databaseSB.child("Users").child('MailUsers').child(mail.replaceAll('.', ':')).child(password).once();
-  static Future<Snap?> getLoginData(String mail, String? password) => AppVar.qbankBloc.databaseSBB.once('Users/MailUsers/${mail.replaceAll('.', ':')}/$password');
+  static Future<Snap?> getLoginData(String mail, String password) => AppVar.qbankBloc.databaseSBB.once('Users/MailUsers/${mail.replaceAll('.', ':')}/$password');
 
   //Future<DataSnapshot> getGoogleLoginData(String mail) => AppVar.qbankBloc.databaseSB.child("Users").child('GmailUsers').child(mail.replaceAll('.', ':')).once();
   static Future<Snap?> getGoogleLoginData(String mail) => AppVar.qbankBloc.databaseSBB.once('Users/GmailUsers/${mail.replaceAll('.', ':')}');
 
   // Kullanıcı kişisel bilgilerini çeker.
   //Future<DataSnapshot> getUserInfo(DatabaseReference database, String uid) => AppVar.qbankBloc.databaseSB.child("UserData").child(uid).once();
-  static Future<Snap?> getUserInfo(Database database, String? uid) => AppVar.qbankBloc.databaseSBB.once('UserData/$uid');
+  static Future<Snap?> getUserInfo(Database database, String uid) => AppVar.qbankBloc.databaseSBB.once('UserData/$uid');
 
   // Kitap satin alirkenki sonuclari takip etmek icin
   // DatabaseReference getBookPurchasedResult(DatabaseReference database, String uid, String bookKey) => AppVar.qbankBloc.databaseSB.child("UserData").child(uid).child('bookList').child(bookKey);
@@ -34,7 +34,7 @@ class QBGetDataService {
 
   // Kullanicinin tum satin aldigi kitaplari getirir
   //DatabaseReference getBookPurchasedList(DatabaseReference database, String uid) => AppVar.qbankBloc.databaseSB.child("UserData").child(uid).child('bookList');
-  static Reference getBookPurchasedList(Database database, String? uid) => Reference(AppVar.qbankBloc.databaseSBB, 'UserData/$uid/bookList');
+  static Reference getBookPurchasedList(Database database, String uid) => Reference(AppVar.qbankBloc.databaseSBB, 'UserData/$uid/bookList');
 
   // Kullanicinin hangi uid ile marketten satin aldigini ceker guvenlik icin
   //DatabaseReference getPurchasedUid(String uid, String purchaseId) => AppVar.qbankBloc.databaseSB.child("PurchaseDatas").child('AppStoreData').child(purchaseId);
@@ -46,21 +46,21 @@ class QBGetDataService {
 
   // Editorler için soruların girilirken sürekli yenilenmesi için testi sürekli çeker.
   //Stream<Event> streamTest(String bookKey, String testKey) => FirebaseDatabase(databaseURL: "https://elseifsorubankasi.firebaseio.com").reference().child("TaslakKitaplar").child(bookKey).child(testKey).onValue;
-  static Stream<Snap?> streamTest(String bookKey, String? testKey) => Database(databaseUrl: DatabaseStarter.databaseConfig.draftBooksUrl).onValue("TaslakKitaplar/$bookKey/$testKey");
+  static Stream<Snap?> streamTest(String bookKey, String testKey) => Database(databaseUrl: DatabaseStarter.databaseConfig.draftBooksUrl).onValue("TaslakKitaplar/$bookKey/$testKey");
 
   // Firestoredan herhangi bir kişinin herhangi bir kitabı için istatistikleri getirir.
   //Future<DataSnapshot> getStudentBookStatistics(String bookKey, String uid) => AppVar.qbankBloc.databaseSB.child("UserData").child(uid).child("Statistics").child(bookKey).once();
-  static Future<Snap?> getStudentBookStatistics(String bookKey, String? uid) => AppVar.qbankBloc.databaseSBB.once('UserData/$uid/Statistics/$bookKey');
+  static Future<Snap?> getStudentBookStatistics(String bookKey, String uid) => AppVar.qbankBloc.databaseSBB.once('UserData/$uid/Statistics/$bookKey');
 
   // Ekol icin testteki istatistiğini ogretmenlerin gorebilecegi sekilde ceker.
 //  Future<DataSnapshot> getSchoolTestStatistics(String bookKey, String testKey, String kurumId) {
 //    return AppVar.qbankBloc.databaseLogs.child('Okullar').child(kurumId).child('SchoolTestStatistics').child(bookKey).child(testKey).once();
 //  }
-  static Future<Snap?> getSchoolTestStatistics(String bookKey, String? testKey, String? kurumId) {
+  static Future<Snap?> getSchoolTestStatistics(String bookKey, String testKey, String kurumId) {
     return AppVar.qbankBloc.databaseLogss.once('Okullar/$kurumId/SchoolTestStatistics/$bookKey/$testKey');
   }
 
-  static Future<Snap?> getUserDenemeStartTime(String bookKey, String denemeKey, String? uid) {
+  static Future<Snap?> getUserDenemeStartTime(String bookKey, String denemeKey, String uid) {
     return AppVar.qbankBloc.databaseSBB.once('OtherData/DenemeData/${(denemeKey + bookKey).toFirebaseSafeKey}/UserData/${uid.toFirebaseSafeKey}/startTime');
   }
 

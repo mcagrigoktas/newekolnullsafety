@@ -18,7 +18,7 @@ class FirstLoginList extends StatefulWidget {
 }
 
 class _FirstLoginListState extends State<FirstLoginList> {
-  Map? _loginData;
+  late Map? _loginData;
   late List<Student> _studentList;
   int _loginCount = 0;
   @override
@@ -40,9 +40,7 @@ class _FirstLoginListState extends State<FirstLoginList> {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      topBar: TopBar(
-        leadingTitle: 'menu1'.translate,
-      ),
+      topBar: TopBar(leadingTitle: 'menu1'.translate),
       topActions: _loginData == null
           ? TopActionsTitle(title: 'firstloginlist'.translate)
           : TopActionsTitleWithChild(
@@ -58,7 +56,7 @@ class _FirstLoginListState extends State<FirstLoginList> {
                   MyMiniRaisedButton(
                     text: Words.print,
                     onPressed: () {
-                      OtherPrint.printFirstLoginList(_loginData);
+                      OtherPrint.printFirstLoginList(_loginData!);
                     },
                     iconData: Icons.print,
                   ),

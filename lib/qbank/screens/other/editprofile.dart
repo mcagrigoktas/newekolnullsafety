@@ -31,7 +31,7 @@ class _QbankEditProfilePageState extends State<QbankEditProfilePage> {
         isLoading = true;
       });
 
-      QBSetDataService.setProfieInfo(AppVar.qbankBloc.hesapBilgileri.uid, imgUrl, name).then((result) {
+      QBSetDataService.setProfieInfo(AppVar.qbankBloc.hesapBilgileri.uid!, imgUrl, name).then((result) {
         setState(() {
           isLoading = false;
         });

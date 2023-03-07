@@ -191,7 +191,7 @@ class _BookReviewState extends State<BookReview> with PurchaseHelper {
       }
     }
 
-    await QBSetDataService.buyBook(AppVar.qbankBloc.hesapBilgileri.uid, widget.book!.bookKey, purchasedBookData.mapForSave(), trimpurchaseId: purchaseDetails == null ? null : trimPurchaseId(purchaseDetails.purchaseID)).then((_) async {
+    await QBSetDataService.buyBook(AppVar.qbankBloc.hesapBilgileri.uid!, widget.book!.bookKey, purchasedBookData.mapForSave(), trimpurchaseId: purchaseDetails == null ? null : trimPurchaseId(purchaseDetails.purchaseID)).then((_) async {
       if (status == 10) {
         await reloadBooks();
         setState(() {

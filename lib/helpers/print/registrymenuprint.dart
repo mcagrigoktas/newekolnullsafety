@@ -129,10 +129,10 @@ class RegistryMenuPrint {
                                               .where((student) {
                                                 return printData['class'] == 'all' || student.classKeyList.any((classname) => classname == printData['class']);
                                               })
-                                              .map((student) => List<String?>.from((printData['printlist'] as List).map((e) {
+                                              .map((student) => List<String>.from((printData['printlist'] as List).map((e) {
                                                     return studentDataHelper[e]!.last(student);
                                                   }).toList())
-                                                    ..insert(0, student.name))
+                                                    ..insert(0, student.name!))
                                               .toList())
                                     ], doc: doc);
 
@@ -211,10 +211,10 @@ class RegistryMenuPrint {
                                         PrintWidgetHelper.makeTable(
                                             List<String>.from((printData['printlist'] as List).map((e) => teacherDataHelper[e]!.first).toList()..insert(0, 'name'.translate)),
                                             AppVar.appBloc.teacherService!.dataList
-                                                .map((teacher) => List<String?>.from((printData['printlist'] as List).map((e) {
+                                                .map((teacher) => List<String>.from((printData['printlist'] as List).map((e) {
                                                       return teacherDataHelper[e]!.last(teacher);
                                                     }).toList())
-                                                      ..insert(0, teacher.name))
+                                                      ..insert(0, teacher.name!))
                                                 .toList())
                                       ],
                                       doc: doc,
@@ -309,10 +309,10 @@ class RegistryMenuPrint {
                                           List<String>.from((printData['printlist'] as List).map((e) => preRegisterDataHelper[e]!.first).toList()..insert(0, 'name'.translate)),
                                           preRegisterList
                                               .where((student) => student.status == printData['state'])
-                                              .map((student) => List<String?>.from((printData['printlist'] as List).map((e) {
+                                              .map((student) => List<String>.from((printData['printlist'] as List).map((e) {
                                                     return preRegisterDataHelper[e]!.last(student);
                                                   }).toList())
-                                                    ..insert(0, student.name))
+                                                    ..insert(0, student.name!))
                                               .toList())
                                     ], orientation: pw.PageOrientation.landscape, doc: doc);
 

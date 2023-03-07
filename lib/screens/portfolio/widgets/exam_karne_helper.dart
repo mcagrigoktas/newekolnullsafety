@@ -955,8 +955,9 @@ class EarningItenCell<T> {
       borderRadius: 4 * scale,
       color: background,
       pdfBackgroundColor: PdfColor(0, 0, 0, 0.02).flatten(), //background == null ? null : background.toPdfColor.flatten(),
-      child:
-          text == null ? null : PCenter<T>(child: PText<T>(text, textAlign: textAlign, style: TextStyle(fontSize: fontSize * scale, fontWeight: bold ? FontWeight.bold : FontWeight.normal, color: Fav.design.primaryText), pdfTextColor: pdfTextColor as PdfColor? ?? PdfColors.black)(type))(type))(type);
+      child: text == null
+          ? null
+          : PCenter<T>(child: PText<T>(text!, textAlign: textAlign, style: TextStyle(fontSize: fontSize * scale, fontWeight: bold ? FontWeight.bold : FontWeight.normal, color: Fav.design.primaryText), pdfTextColor: pdfTextColor as PdfColor? ?? PdfColors.black)(type))(type))(type);
 
   EarningItenCell({this.width, this.height, this.text, this.background, this.textAlign, this.fontSize = 14, this.bold = false, this.pdfTextColor, this.scale = 1, this.margin, this.padding});
 }
@@ -983,7 +984,7 @@ class LessonResultCell<T> {
       borderRadius: 4 * scale,
       color: background,
       pdfBackgroundColor: PdfColor(0, 0, 0, 0.02).flatten(), //background == null ? null : background.toPdfColor.flatten(),
-      child: text == null ? null : PText(text, textAlign: TextAlign.center, style: TextStyle(fontSize: fontSize * scale, fontWeight: bold ? FontWeight.bold : FontWeight.normal, color: Fav.design.primaryText), pdfTextColor: pdfTextColor as PdfColor? ?? PdfColors.black)(type))(type);
+      child: text == null ? null : PText(text!, textAlign: TextAlign.center, style: TextStyle(fontSize: fontSize * scale, fontWeight: bold ? FontWeight.bold : FontWeight.normal, color: Fav.design.primaryText), pdfTextColor: pdfTextColor as PdfColor? ?? PdfColors.black)(type))(type);
 
   LessonResultCell({this.width, this.height, this.text, this.background, this.fontSize = 14, this.bold = false, this.pdfTextColor, this.scale = 1, this.alignment, this.margin, this.padding});
 }

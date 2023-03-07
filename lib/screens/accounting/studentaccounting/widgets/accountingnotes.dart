@@ -6,7 +6,7 @@ import '../../../../localization/usefully_words.dart';
 import '../../../../services/dataservice.dart';
 
 class AccountingNote extends StatefulWidget {
-  final String? studentKey;
+  final String studentKey;
   AccountingNote(this.studentKey);
 
   @override
@@ -17,13 +17,13 @@ class _AccountingNoteState extends State<AccountingNote> {
   GlobalKey<FormState> formkey = GlobalKey();
 
   var isLoading = true;
-  List<String?> data = [];
+  List<String> data = [];
   @override
   void initState() {
     super.initState();
 
     AccountingService.dbAccountingNote(widget.studentKey).once().then((snap) {
-      if (snap?.value != null) data = List<String?>.from(snap!.value);
+      if (snap?.value != null) data = List<String>.from(snap!.value);
       setState(() {
         isLoading = false;
         formkey = GlobalKey();
@@ -65,7 +65,7 @@ class _AccountingNoteState extends State<AccountingNote> {
                         maxLines: null,
                         labelText: 'note'.translate + ' ${i + 1}:',
                         onSaved: (value) {
-                          data.add(value);
+                          data.add(value ?? '');
                         },
                         initialValue: data.length > i ? data[i] : '',
                       ),

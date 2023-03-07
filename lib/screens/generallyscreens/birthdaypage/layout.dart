@@ -35,7 +35,7 @@ class BirthDayHelper {
     _now = DateTime.now();
     List<_BirtdayModel> _itemList = [];
 
-    AppFunctions2.getStudentListForTeacherAndManager()!.forEach((student) {
+    AppFunctions2.getStudentListForTeacherAndManager().forEach((student) {
       if (student.birthday != null && student.birthday! > 0) {
         _itemList.add(_calcDaysForBirthDayPage(student.name, student.birthday!));
       }
@@ -87,7 +87,7 @@ class BirthDayHelper {
     _now = DateTime.now();
     List<_BirtdayModel> _itemList = [];
 
-    AppFunctions2.getStudentListForTeacherAndManager()!.forEach((student) {
+    AppFunctions2.getStudentListForTeacherAndManager().forEach((student) {
       if (student.birthday != null && student.birthday! > 0) {
         _itemList.addIfNotNull(_calcDaysForAgenda(student.name, student.birthday!));
       }

@@ -32,7 +32,7 @@ class SendResult {
         'token': kIsWeb ? '' : await FirebaseHelper.getToken(),
       },
       'resultData': box.toMap()
-    }, bookKey, icindekilerItem.denemeKey, AppVar.qbankBloc.hesapBilgileri.uid)
+    }, bookKey, icindekilerItem.denemeKey, AppVar.qbankBloc.hesapBilgileri.uid!)
         .then((value) async {
       if (showOverlay) await OverLoading.close();
       await Fav.preferences.setBool(icindekilerItem.denemeKey + 'sonucgonderildi', true);
