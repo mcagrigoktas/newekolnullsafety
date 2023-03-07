@@ -21,23 +21,23 @@ class ExamResultReviewHelper {
   static ExamResultViewController get _controller => Get.find<ExamResultViewController>();
 
   static Future<void> exportExcel() async {
-    await ExcelLibraryHelper.export(_controller.getExcelFile(), _controller.exam!.name!);
+    await ExcelLibraryHelper.export(_controller.getExcelFile(), _controller.exam.name!);
     OverAlert.saveSuc();
   }
 
   static Future<void> printReportCards(List<String> filteredClassList, {double earnintItemFontSize = 10}) async {
     Map<String, String?> reversedEarninKeyMap = {};
-    if (_controller.examResultBigData!.earningIsActive!) {
-      reversedEarninKeyMap = _controller.examResultBigData!.earninKeyMap!.map((key, value) => MapEntry(value, key));
+    if (_controller.examResultBigData.earningIsActive!) {
+      reversedEarninKeyMap = _controller.examResultBigData.earninKeyMap!.map((key, value) => MapEntry(value, key));
     }
 
     PrintKarneHelper.printFullKarne(
         (_controller.allKurumAllStudentResults![_controller.kurumId]!.entries.toList()..sort((i1, i2) => i1.value!.rSClass!.compareTo(i2.value!.rSClass!)))
             .where((item) => filteredClassList.contains('all') || filteredClassList.contains(item.value!.rSClass))
             .map((e) => PortfolioExamReport({
-                  'examType': _controller.examType!.mapForStudent(),
+                  'examType': _controller.examType.mapForStudent(),
                   'examData': e.value!.mapForSave(),
-                  'exam': _controller.exam!.mapForStudent(),
+                  'exam': _controller.exam.mapForStudent(),
                   'earningResultKeyMap': reversedEarninKeyMap,
                 }))
             .toList(),

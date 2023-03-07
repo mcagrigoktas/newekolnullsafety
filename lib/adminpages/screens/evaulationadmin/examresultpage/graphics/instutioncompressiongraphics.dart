@@ -8,19 +8,19 @@ import '../../examtypes/model.dart';
 import 'my_column_chart.dart';
 
 class InstutionScoreGraphics extends StatelessWidget {
-  final Map<String?, ResultModel?>? kurumAllStudentResults;
-  final ExamType? examType;
-  InstutionScoreGraphics({this.kurumAllStudentResults, this.examType});
+  final Map<String?, ResultModel?> kurumAllStudentResults;
+  final ExamType examType;
+  InstutionScoreGraphics({required this.kurumAllStudentResults, required this.examType});
 
   double maxValue = 0;
   double minValue = 0;
   Map<String?, Map<String, double>> init() {
     Map<String?, Map<String, double>> values = {};
 
-    final scoreResult = kurumAllStudentResults!.entries.first.value;
+    final scoreResult = kurumAllStudentResults.entries.first.value;
 
-    for (var i = 0; i < examType!.scoring!.length; i++) {
-      final score = examType!.scoring![i];
+    for (var i = 0; i < examType.scoring!.length; i++) {
+      final score = examType.scoring![i];
       if ((score.maxValue ?? 500) > maxValue) maxValue = score.maxValue ?? 500;
       if ((score.minValue ?? -100) < minValue) minValue = score.minValue ?? -100;
       values[score.name] ??= {};

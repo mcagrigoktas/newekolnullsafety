@@ -22,14 +22,14 @@ class ExamResultReview extends StatelessWidget {
     return GetBuilder<ExamResultViewController>(builder: (controller) {
       if (controller.errorText != null) {
         return AppScaffold(
-          topBar: TopBar(leadingTitle: controller.exam!.name),
+          topBar: TopBar(leadingTitle: controller.exam.name),
           topActions: TopActionsTitle(title: 'viewexamresult'.translate),
           body: Body.child(child: EmptyState(text: controller.errorText.toString())),
         );
       }
 
       return AppScaffold(
-        topBar: TopBar(leadingTitle: controller.exam!.name, middle: 'viewexamresult'.translate.text.color(Fav.design.primary).bold.make(), trailingActions: [
+        topBar: TopBar(leadingTitle: controller.exam.name, middle: 'viewexamresult'.translate.text.color(Fav.design.primary).bold.make(), trailingActions: [
           QudsPopupButton(
             backgroundColor: Fav.design.scaffold.background,
             child: Padding(padding: const EdgeInsets.all(8.0), child: Icon(Icons.more_vert, color: Fav.design.primaryText)),
@@ -59,7 +59,7 @@ class ExamResultReview extends StatelessWidget {
                 }),
               ]),
               QudsPopupMenuSection(titleText: 'printreportcards'.translate, leading: Icons.card_membership_outlined.icon.color(Fav.design.primaryText).make(), subItems: [
-                if (controller.examResultBigData!.earningIsActive!)
+                if (controller.examResultBigData.earningIsActive!)
                   QudsPopupMenuWidget(builder: (ctx) {
                     return MyTextField(
                       labelText: 'eIFontSize'.translate,
@@ -131,7 +131,7 @@ class ExamResultReview extends StatelessWidget {
                         iconData: Icons.search,
                         context: context,
                         miniChip: true,
-                        items: controller.examType!.lessons!.map((e) => MyMultiSelectItem<String>(e.key!, e.name!)).toList(),
+                        items: controller.examType.lessons!.map((e) => MyMultiSelectItem<String>(e.key!, e.name!)).toList(),
                         initialValue: controller.filtrLessonList,
                         title: 'lesson'.translate,
                         name: 'lesson'.translate,
@@ -203,7 +203,7 @@ class ExamStatisticsPage extends StatelessWidget {
 
     return AppScaffold(
       topBar: TopBar(
-        leadingTitle: controller.exam!.name,
+        leadingTitle: controller.exam.name,
       ),
       topActions: TopActionsTitle(
         title: 'statistics'.translate,
@@ -215,18 +215,18 @@ class ExamStatisticsPage extends StatelessWidget {
               children: [
                 ///Ogrenci datadan geldigini false yaparsan okulu kendi icinde kiyasllayan grafik cikar
                 StudentLessonPerformanceGraphics(
-                  resultModel: controller.allKurumAllStudentResults![controller.kurumId]!.entries.first.value,
+                  resultModel: controller.allKurumAllStudentResults![controller.kurumId]!.entries.first.value!,
                   examType: controller.examType,
                   comingFromStudentsChart: false,
                 ),
                 16.heightBox,
                 InstutionScoreGraphics(
-                  kurumAllStudentResults: controller.allKurumAllStudentResults![controller.kurumId],
+                  kurumAllStudentResults: controller.allKurumAllStudentResults![controller.kurumId]!,
                   examType: controller.examType,
                 ),
                 16.heightBox,
                 ClassScoreGraphics(
-                  kurumAllStudentResults: controller.allKurumAllStudentResults![controller.kurumId],
+                  kurumAllStudentResults: controller.allKurumAllStudentResults![controller.kurumId]!,
                   examType: controller.examType,
                 ),
                 16.heightBox,
@@ -235,7 +235,7 @@ class ExamStatisticsPage extends StatelessWidget {
                   examType: controller.examType,
                 ),
                 16.heightBox,
-                if (controller.examResultBigData!.earningIsActive!) EarningStatistics(),
+                if (controller.examResultBigData.earningIsActive!) EarningStatistics(),
               ],
             )),
     );

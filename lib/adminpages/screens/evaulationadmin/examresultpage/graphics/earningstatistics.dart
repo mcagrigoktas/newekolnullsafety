@@ -19,7 +19,7 @@ class EarningStatistics extends StatelessWidget {
         )
         .toList();
 
-    final allLessonEarningEntries = controller.examResultBigData!.earningResult!.entries.toList();
+    final allLessonEarningEntries = controller.examResultBigData.earningResult!.entries.toList();
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: SizedBox(

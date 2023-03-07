@@ -356,7 +356,7 @@ class ExamController extends GetxController {
       OverAlert.show(message: 'examresulterr'.translate);
       return;
     }
-    await Fav.to(ExamResultReview(), binding: BindingsBuilder(() => Get.put<ExamResultViewController>(ExamResultViewController(examResultBigData: data, girisTuru: girisTuru, examType: selectedItem!.examType, exam: selectedItem))));
+    await Fav.to(ExamResultReview(), binding: BindingsBuilder(() => Get.put<ExamResultViewController>(ExamResultViewController(examResultBigData: data, girisTuru: girisTuru, examType: selectedItem!.examType!, exam: selectedItem!))));
   }
 
   Future<void> sendResult() async {

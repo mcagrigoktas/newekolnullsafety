@@ -7,19 +7,19 @@ import 'my_column_chart.dart';
 
 // ignore: must_be_immutable
 class ClassScoreGraphics extends StatelessWidget {
-  final Map<String?, ResultModel?>? kurumAllStudentResults;
-  final ExamType? examType;
-  ClassScoreGraphics({this.kurumAllStudentResults, this.examType});
+  final Map<String?, ResultModel?> kurumAllStudentResults;
+  final ExamType examType;
+  ClassScoreGraphics({required this.kurumAllStudentResults, required this.examType});
 
   double maxValue = 0;
   double minValue = 0;
   Map<String?, Map<String?, double?>> init() {
     Map<String?, Map<String?, double?>> values = {};
 
-    final allScoreResultEntries = kurumAllStudentResults!.entries.toList();
+    final allScoreResultEntries = kurumAllStudentResults.entries.toList();
 
-    for (var s = 0; s < examType!.scoring!.length; s++) {
-      final score = examType!.scoring![s];
+    for (var s = 0; s < examType.scoring!.length; s++) {
+      final score = examType.scoring![s];
       if ((score.maxValue ?? 500) > maxValue) maxValue = score.maxValue ?? 500;
       if ((score.minValue ?? -100) < minValue) minValue = score.minValue ?? -100;
       for (var i = 0; i < allScoreResultEntries.length; i++) {

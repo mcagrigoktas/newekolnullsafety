@@ -7,19 +7,19 @@ import '../../../../../library_helper/syncfusion_flutter_charts/eager.dart';
 import '../../../../../library_helper/syncfusion_flutter_charts/models.dart';
 
 class MyColumnChart extends StatelessWidget {
-  final String? chartName;
-  final double? maxYvalue;
-  final double? minYvalue;
-  final double? chartHeight;
+  final String chartName;
+  final double maxYvalue;
+  final double minYvalue;
+  final double chartHeight;
   final bool minMaxYAuto;
-  final Map<String?, Map<String?, double?>>? values;
+  final Map<String?, Map<String?, double?>> values;
 
   MyColumnChart({
-    this.chartName,
-    this.maxYvalue,
-    this.minYvalue,
-    this.chartHeight,
-    this.values,
+    required this.chartName,
+    required this.maxYvalue,
+    required this.minYvalue,
+    required this.chartHeight,
+    required this.values,
     this.minMaxYAuto = false,
   });
 
@@ -49,7 +49,7 @@ class MyColumnChart extends StatelessWidget {
     oLegandNames.clear();
 
     chartWidth = 0;
-    final entries = values!.entries.toList();
+    final entries = values.entries.toList();
 
     for (var i = 0; i < entries.length; i++) {
       var val = entries[i].value.entries.toList();

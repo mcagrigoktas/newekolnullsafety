@@ -174,7 +174,7 @@ class AnswerKeyDetail extends StatelessWidget {
                                                   }).toList()
                                                 ],
                                                 // initialValue: 'original',
-                                                onChanged: (dynamic value) {
+                                                onChanged: (value) {
                                                   controller.earningListContent[j] = controller.allEarningItems!.dataList.singleWhereOrNull((element) => element.key == value)?.content ?? _examTypeLesson.earninglist;
                                                   controller.update();
                                                 },
@@ -288,7 +288,7 @@ class AnswerKeyDetail extends StatelessWidget {
                                               ))
                                           .toList(),
                                       initialValue: controller.answerEarningMap!.datas['bookLet${controller.noToBooklet(i)}' + controller.examType!.lessons![j].key! + '-w${t + 1}' + 'earnings'],
-                                      onSaved: (dynamic value) {
+                                      onSaved: (value) {
                                         controller.answerEarningMap!.datas['bookLet${controller.noToBooklet(i)}' + controller.examType!.lessons![j].key! + '-w${t + 1}' + 'earnings'] = value;
                                       },
                                     ),
