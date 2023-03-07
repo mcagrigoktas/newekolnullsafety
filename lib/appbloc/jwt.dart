@@ -7,18 +7,18 @@ import 'appvar.dart';
 import 'databaseconfig.dart';
 
 class JWTData {
-  JWTAlgorithm? algorithm;
-  JWTKey? jwtKey;
-  JWT? jwt;
+  JWTAlgorithm algorithm;
+  JWTKey jwtKey;
+  JWT jwt;
 
-  JWTData({this.algorithm, this.jwt, this.jwtKey});
+  JWTData({required this.algorithm, required this.jwt, required this.jwtKey});
 }
 
 class Jwt {
   static String _makeToken(JWTData data) {
-    return data.jwt!.sign(
-      data.jwtKey!,
-      algorithm: data.algorithm!,
+    return data.jwt.sign(
+      data.jwtKey,
+      algorithm: data.algorithm,
     );
   }
 

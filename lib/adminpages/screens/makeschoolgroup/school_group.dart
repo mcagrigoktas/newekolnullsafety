@@ -1,16 +1,14 @@
 import 'package:mcg_extension/mcg_extension.dart';
 
 class SchoolGroup {
-  String? key;
+  late String key;
   String? name;
   String? exp;
   List<String>? schoolIdList;
   List<String>? existingIdList;
   List<String>? generalManagersWhoCanSee;
-  bool? aktif;
-  SchoolGroupForWhat? forWhat;
-
-  SchoolGroup();
+  late bool aktif;
+  late SchoolGroupForWhat forWhat;
 
   SchoolGroup.createNew() {
     key = 'SchoolGroup' + 6.makeKey;
@@ -18,10 +16,10 @@ class SchoolGroup {
     forWhat = SchoolGroupForWhat.education;
   }
 
-  SchoolGroup.fromJson(Map snapshot, String this.key) {
+  SchoolGroup.fromJson(Map snapshot, this.key) {
     aktif = snapshot['aktif'] ?? true;
-    forWhat = J.jEnum(snapshot['forWhat'], SchoolGroupForWhat.values, SchoolGroupForWhat.education);
-    final decryptedData = (snapshot['enc'] as String?)!.decrypt(key!)!;
+    forWhat = J.jEnum(snapshot['forWhat'], SchoolGroupForWhat.values, SchoolGroupForWhat.education)!;
+    final decryptedData = (snapshot['enc'] as String?)!.decrypt(key)!;
 
     name = decryptedData['name'];
     exp = decryptedData['exp'];
@@ -33,7 +31,7 @@ class SchoolGroup {
   Map<String, dynamic> mapForSave() {
     final data = <String, dynamic>{
       'aktif': aktif,
-      'forWhat': forWhat!.name,
+      'forWhat': forWhat.name,
     };
 
     data['enc'] = {
@@ -42,7 +40,7 @@ class SchoolGroup {
       "sL": schoolIdList,
       "eSL": existingIdList,
       "gmL": generalManagersWhoCanSee,
-    }.encrypt(key!);
+    }.encrypt(key);
 
     return data;
   }

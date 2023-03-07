@@ -190,11 +190,11 @@ class _OpenSchoolInfoPageState extends State<OpenSchoolInfoPage> {
                         serverId = value;
                       },
                     ),
-                    AdvanceDropdown(
+                    AdvanceDropdown<String?>(
                       validatorRules: ValidatorRules(req: true),
                       name: 'School Type',
                       iconData: MdiIcons.formatListBulletedType,
-                      onSaved: (dynamic value) {
+                      onSaved: (value) {
                         schoolType = value;
                       },
                       items: [

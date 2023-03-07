@@ -55,7 +55,7 @@ class SalesContractsController extends GetxController {
   }
 
   Future<void> _init() async {
-    final _personFetcher = MiniFetchers.getFetcher(MiniFetcherKeys.schoolPersons)!;
+    final _personFetcher = MiniFetchers.getFetcher(MiniFetcherKeys.schoolPersons);
 
     dataPackage = PkgFireBox(
         boxKeyWithoutVersionNo: ReferenceService.salesContractCollectionRef().removeNonEnglishCharacter!,

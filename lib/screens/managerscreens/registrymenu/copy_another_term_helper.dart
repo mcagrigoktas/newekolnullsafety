@@ -287,7 +287,7 @@ class CopyFromAnotherTermHelper {
     if (_selectedOpticFormKey == null) return;
     final _selectedOpticForm = _existingOpticFormFetcher.dataListItem(_selectedOpticFormKey);
 
-    if (_thisTermOpticFormFetcher!.dataList.any((element) => element.key == _selectedOpticFormKey)) {
+    if (_thisTermOpticFormFetcher.dataList.any((element) => element.key == _selectedOpticFormKey)) {
       OverAlert.show(message: 'savecopyusererr2'.translate);
       await _existingOpticFormFetcher.dispose();
       return;

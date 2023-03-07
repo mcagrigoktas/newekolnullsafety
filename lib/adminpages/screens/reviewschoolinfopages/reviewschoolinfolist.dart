@@ -8,9 +8,9 @@ import '../../models.dart';
 
 class ReviewSchoolInfoList extends StatefulWidget {
   final String? islemYapilacakKey;
-  final Function? onTap;
+  final Function(String) onTap;
 
-  ReviewSchoolInfoList({this.islemYapilacakKey, this.onTap});
+  ReviewSchoolInfoList({this.islemYapilacakKey, required this.onTap});
 
   @override
   ReviewSchoolInfoListState createState() {
@@ -69,7 +69,7 @@ class ReviewSchoolInfoListState extends State<ReviewSchoolInfoList> {
                   return MyCupertinoListTile(
                     maxLines: 2,
                     onTap: () {
-                      widget.onTap!(item.key);
+                      widget.onTap(item.key);
                     },
                     title: item.key + ' / ' + item.timeStamp!.dateFormat("d-MM-yy"),
                     isSelected: widget.islemYapilacakKey == item.key,

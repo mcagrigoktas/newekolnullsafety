@@ -27,7 +27,7 @@ class MakeSchoolGroupController extends GetxController {
 
   MakeSchoolGroupController();
 
-  PkgFireBox? dataPackage;
+  late PkgFireBox dataPackage;
   final List<SuperManagerModel> superManagerList = [];
   final List<ServerListItemModel> serverList = [];
 
@@ -64,10 +64,10 @@ class MakeSchoolGroupController extends GetxController {
         filterDeletedData: true,
         parsePkg: (key, value) => SchoolGroup.fromJson(value, key),
         sortFunction: (a, b) => (a as SchoolGroup).name!.compareTo((b as SchoolGroup).name!));
-    await dataPackage!.init();
+    await dataPackage.init();
 
-    _refreshSubscription = dataPackage!.refresh.listen((value) {
-      itemList = dataPackage!.dataList<SchoolGroup>();
+    _refreshSubscription = dataPackage.refresh.listen((value) {
+      itemList = dataPackage.dataList<SchoolGroup>();
       makeFilter(filteredText);
       isPageLoading = false;
       update();
@@ -88,7 +88,7 @@ class MakeSchoolGroupController extends GetxController {
   @override
   void onClose() {
     _refreshSubscription?.cancel();
-    dataPackage?.dispose();
+    dataPackage.dispose();
     super.onClose();
   }
 
@@ -134,11 +134,11 @@ class MakeSchoolGroupController extends GetxController {
 
       Map<String, dynamic> _updates = {};
       _item.schoolIdList!.forEach((element) {
-        _updates['/Okullar/$element/SchoolData/Info/gmgl/${_item.forWhat!.name}/${_item.key}'] = isDelete ? null : true;
+        _updates['/Okullar/$element/SchoolData/Info/gmgl/${_item.forWhat.name}/${_item.key}'] = isDelete ? null : true;
         _updates['/Okullar/$element/SchoolData/Versions/SchoolInfo'] = databaseTime;
       });
       _item.existingIdList!.where((element) => !_item.schoolIdList!.contains(element)).forEach((element) {
-        _updates['/Okullar/$element/SchoolData/Info/gmgl/${_item.forWhat!.name}/${_item.key}'] = null;
+        _updates['/Okullar/$element/SchoolData/Info/gmgl/${_item.forWhat.name}/${_item.key}'] = null;
         _updates['/Okullar/$element/SchoolData/Versions/SchoolInfo'] = databaseTime;
       });
       _item.existingIdList ??= [];
@@ -146,7 +146,7 @@ class MakeSchoolGroupController extends GetxController {
 
       isSaving = true;
       update();
-      await Future.wait([dataPackage!.sendDatabase('Groups', 'data', _item.key!, _item.mapForSave()), AppVar.appBloc.database1.update(_updates)]).then((value) {
+      await Future.wait([dataPackage.sendDatabase('Groups', 'data', _item.key, _item.mapForSave()), AppVar.appBloc.database1.update(_updates)]).then((value) {
         OverAlert.saveSuc();
         newItem = null;
         if (newItem != null) {

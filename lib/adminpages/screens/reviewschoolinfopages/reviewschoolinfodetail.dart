@@ -119,17 +119,17 @@ class ReviewSchoolInfoDetailState extends State<ReviewSchoolInfoDetail> {
 }
 
 class StatisticWidget extends StatelessWidget {
-  final int? count;
-  final String? name;
-  final Color? bgColor;
-  StatisticWidget({this.name, this.count, this.bgColor});
+  final int count;
+  final String name;
+  final Color bgColor;
+  StatisticWidget({required this.name, required this.count, required this.bgColor});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16),
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(12), color: bgColor, boxShadow: [BoxShadow(color: bgColor!)]),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(12), color: bgColor, boxShadow: [BoxShadow(color: bgColor)]),
       child: Column(
         children: <Widget>[
           CircleAvatar(
@@ -142,7 +142,7 @@ class StatisticWidget extends StatelessWidget {
           ),
           16.heightBox,
           Text(
-            name!,
+            name,
             style: const TextStyle(color: Colors.white, fontSize: 18),
           ),
         ],

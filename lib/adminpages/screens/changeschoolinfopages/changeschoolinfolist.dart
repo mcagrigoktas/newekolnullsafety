@@ -9,9 +9,9 @@ import '../../models.dart';
 
 class ChangeSchoolInfoList extends StatefulWidget {
   final String? islemYapilacakKey;
-  final Function? onTap;
+  final Function(String, String) onTap;
 
-  ChangeSchoolInfoList({this.islemYapilacakKey, this.onTap});
+  ChangeSchoolInfoList({this.islemYapilacakKey, required this.onTap});
 
   @override
   ChangeSchoolInfoListState createState() {
@@ -83,7 +83,7 @@ class ChangeSchoolInfoListState extends State<ChangeSchoolInfoList> {
                   var item = filteredList[index];
                   return MyCupertinoListTile(
                     onTap: () {
-                      widget.onTap!(item.key, item.saver);
+                      widget.onTap(item.key, item.saver!);
                     },
                     title: item.key + ' / ' + item.timeStamp!.dateFormat("d-MM-yy"),
                     isSelected: widget.islemYapilacakKey == item.key,
