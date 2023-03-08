@@ -96,7 +96,7 @@ class MakeSchoolGroup extends StatelessWidget {
                                   },
                                   items: [
                                     [SchoolGroupForWhat.education, 'EducationList']
-                                  ].map((e) => DropdownItem<SchoolGroupForWhat>(name: e.last as String?, value: e.first as SchoolGroupForWhat?)).toList(),
+                                  ].map((e) => DropdownItem<SchoolGroupForWhat>(name: e.last as String, value: e.first as SchoolGroupForWhat)).toList(),
                                 ),
                                 'Kaydedildikten Sonra Degistirilemez. Dikkatli secin'.text.color(Colors.amber).fontSize(10).make()
                               ],
@@ -134,7 +134,7 @@ class MakeSchoolGroup extends StatelessWidget {
                           MyMultiSelect(
                             iconData: MdiIcons.viewList,
                             context: context,
-                            items: controller.superManagerList.map((e) => MyMultiSelectItem(e.superManagerServerId, e.superManagerServerId!)).toList() as List<MyMultiSelectItem<String>>,
+                            items: controller.superManagerList.map((e) => MyMultiSelectItem(e.superManagerServerId!, e.superManagerServerId!)).toList(),
                             title: 'Hangi genel mudurlukler bu grubu gorebilsin',
                             initialValue: controller.itemData!.generalManagersWhoCanSee!,
                             onSaved: (value) {

@@ -225,10 +225,10 @@ class StudentImportHelper {
                     .map((e) => [
                           (itemList.indexOf(e) + 1).toString(),
                           e.name,
-                          e.no,
-                          e.username,
-                          e.password,
-                          e.class0 != null ? appFunctions.classKeyToName(e.class0!) : '',
+                          e.no!,
+                          e.username!,
+                          e.password!,
+                          e.class0 != null ? (appFunctions.classKeyToName(e.class0!) ?? '') : '',
                           e.tc ?? '',
                           e.fatherName ?? '',
                           e.motherName ?? '',
@@ -241,7 +241,7 @@ class StudentImportHelper {
                           e.adress ?? '',
                           e.explanation ?? '--'
                         ])
-                    .toList() as List<List<String>>
+                    .toList()
                   ..insert(
                     0,
                     [

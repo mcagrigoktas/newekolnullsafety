@@ -42,7 +42,7 @@ class _DailyReportStudentScreenState extends State<DailyReportStudentScreen> {
       2: (DateTime.now().millisecondsSinceEpoch - 86400000 * 2).dateFormat("EE"),
       3: (DateTime.now().millisecondsSinceEpoch - 86400000 * 3).dateFormat("EE"),
       4: (DateTime.now().millisecondsSinceEpoch - 86400000 * 4).dateFormat("EE"),
-    }.map(((key, value) => MapEntry(key, ConstrainedBox(constraints: BoxConstraints(maxWidth: context.screenWidth / 5 - 2), child: Align(alignment: Alignment.center, child: Text(value, maxLines: 1))))) as MapEntry<int, Widget> Function(int, dynamic));
+    }.map(((key, value) => MapEntry(key, ConstrainedBox(constraints: BoxConstraints(maxWidth: context.screenWidth / 5 - 2), child: Align(alignment: Alignment.center, child: Text(value, maxLines: 1))))));
 
     final _daysSegmentedWidget = CupertinoSlidingSegmentedControl<int>(
       children: pickerDayList,

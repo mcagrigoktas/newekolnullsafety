@@ -60,7 +60,7 @@ class ReserveP2PController extends BaseController {
   }
 
   //? Ogretmen listesi icin gerekli filtrelemeleri yapar
-  List<DropdownItem> dropDownItemList = [];
+  List<DropdownItem<String>> dropDownItemList = [];
   void setupTeacherDropdownItemList() {
     if (AppVar.appBloc.hesapBilgileri.gtM || UserPermissionList.hasStudentOtherTeacherP2PRequest()) {
       dropDownItemList = AppVar.appBloc.teacherService!.dataList.map((e) => DropdownItem(value: e.key, name: e.name)).toList();

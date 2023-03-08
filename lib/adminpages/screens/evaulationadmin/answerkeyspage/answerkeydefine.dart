@@ -57,7 +57,7 @@ class AnswerKeyDefine extends StatelessWidget {
                         child: Column(
                           children: [
                             'earningsIsActive'.translate.text.fontSize(10).make(),
-                            CupertinoSlidingSegmentedControl(
+                            CupertinoSlidingSegmentedControl<bool>(
                               children: {
                                 false: 'no'.translate.text.make(),
                                 true: 'yes'.translate.text.make(),

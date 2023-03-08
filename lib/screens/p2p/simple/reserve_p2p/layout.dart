@@ -45,7 +45,7 @@ class ReserveP2PLayout extends StatelessWidget {
                         name: Words.teacherList,
                         onChanged: controller.teacherChange,
                         initialValue: controller.selectedTeacher,
-                        items: controller.dropDownItemList as List<DropdownItem<String>>,
+                        items: controller.dropDownItemList,
                       ),
                   ],
                 )),

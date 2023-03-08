@@ -294,7 +294,7 @@ class _VideoChatAppointmentState extends State<VideoChatAppointment> with AppFun
   Future<void> _operTargetList(VideoLessonProgramModel? item) async {
     if (Fav.noConnection()) return;
 
-    final List listviewChildren = AppVar.appBloc.studentService!.dataList.where((ogrenci) {
+    final List<Widget> listviewChildren = AppVar.appBloc.studentService!.dataList.where((ogrenci) {
       return item!.targetList!.any((itemm) => ["alluser", ...ogrenci.classKeyList, ogrenci.key].contains(itemm));
     }).map((ogrenci) {
       return ListTile(title: Text(ogrenci.name, style: TextStyle(color: Fav.design.primaryText)));
@@ -324,7 +324,7 @@ class _VideoChatAppointmentState extends State<VideoChatAppointment> with AppFun
         builder: (context) {
           return ListView(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            children: listviewChildren as List<Widget>,
+            children: listviewChildren,
           );
         },
       );

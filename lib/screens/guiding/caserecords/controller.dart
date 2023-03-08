@@ -177,11 +177,11 @@ class CaseRecordsController extends ResponsivePageController<CaseRecordModel> {
                               },
                             ),
                             if (selectedItem!.targetList!.length > 2)
-                              AdvanceMultiSelectDropdown(
+                              AdvanceMultiSelectDropdown<String>(
                                 name: 'participants'.translate,
                                 initialValue: selectedItem!.targetList,
                                 onSaved: (value) {
-                                  newItem!.targetList = value as List<String>?;
+                                  newItem!.targetList = value;
                                 },
                                 validatorRules: ValidatorRules(minLength: 1),
                                 items: selectedItem!.targetListIsClassList == true

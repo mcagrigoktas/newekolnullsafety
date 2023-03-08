@@ -155,40 +155,40 @@ class AgendaItemDataSource extends CalendarDataSource<Appointment> {
 
   @override
   DateTime getStartTime(int index) {
-    return itemList![index]!.startTime;
+    return itemList[index].startTime;
   }
 
   @override
   DateTime getEndTime(int index) {
-    return itemList![index]!.endTime;
+    return itemList[index].endTime;
   }
 
   @override
   String getSubject(int index) {
-    return itemList![index]!.subject;
+    return itemList[index].subject;
   }
 
   @override
   Color getColor(int index) {
-    return itemList![index]!.color;
+    return itemList[index].color;
   }
 
   @override
   bool isAllDay(int index) {
-    return itemList![index]!.isAllDay;
+    return itemList[index].isAllDay;
   }
 
   @override
   String? getRecurrenceRule(int index) {
-    return itemList![index]!.recurrenceRule;
+    return itemList[index].recurrenceRule;
   }
 
   @override
   List<Object>? getResourceIds(int index) {
-    return itemList![index]!.resourceIds;
+    return itemList[index].resourceIds;
   }
 
-  List<Appointment?>? get itemList => appointments as List<Appointment?>?;
+  List<Appointment> get itemList => List<Appointment>.from(appointments!);
 }
 
 class RecurrenceRule {

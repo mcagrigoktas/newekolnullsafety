@@ -7,10 +7,10 @@ class Education {
   String? name;
   String? exp;
   List? data;
-  List<String?>? serverIdList;
+  List<String>? serverIdList;
 
   /// [fullServerIdList] daha once gonderilmis ama listeden kaldirilmis server id leride icerir
-  List<String?>? fullServerIdList;
+  List<String>? fullServerIdList;
   List<String>? classLevelList;
   String? pdf1;
   String? saver;
@@ -39,7 +39,7 @@ class Education {
     data = snapshot['data'];
     pdf1 = snapshot['pdf1'];
     serverIdList = List<String>.from(snapshot['serverIdList'] ?? []);
-    fullServerIdList = List<String?>.from(snapshot['fServerIdList'] ?? serverIdList!);
+    fullServerIdList = List<String>.from(snapshot['fServerIdList'] ?? serverIdList!);
     classLevelList = List<String>.from(snapshot['classLevelList'] ?? ['0']);
     aktif = snapshot['aktif'];
     saver = snapshot['saver'];

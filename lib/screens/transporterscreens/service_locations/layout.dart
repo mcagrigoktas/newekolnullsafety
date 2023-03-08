@@ -79,7 +79,6 @@ class _ServiceLocationsScreenState extends State<ServiceLocationsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    log(_isLoading);
     return AppScaffold(
       topBar: TopBar(leadingTitle: 'menu1'.translate),
       body: _isLoading
@@ -106,7 +105,7 @@ class _ServiceLocationsScreenState extends State<ServiceLocationsScreen> {
                         }).map<Marker>((e) {
                           final color = MyPalette.getChartColorFromCount(widget.transporterList.indexOf(e));
                           return Marker(
-                            point: LatLng((locationDatas[e.key] as List).first, (locationDatas[e.key] as List).last),
+                            point: LatLng((locationDatas[e.key])!.first, (locationDatas[e.key])!.last),
                             width: 50,
                             height: 50,
                             builder: (context) => _Marker(color: color, size: 40),
@@ -125,7 +124,7 @@ class _ServiceLocationsScreenState extends State<ServiceLocationsScreen> {
           ...widget.transporterList
               .map((e) => GestureDetector(
                     onTap: () {
-                      if (locationDatas[e.key] is List) _mapController.move(LatLng((locationDatas[e.key] as List).first, (locationDatas[e.key] as List).last), 15.0);
+                      if (locationDatas[e.key] != null) _mapController.move(LatLng((locationDatas[e.key]!).first, (locationDatas[e.key]!).last), 15.0);
                     },
                     child: Row(
                       mainAxisSize: MainAxisSize.min,

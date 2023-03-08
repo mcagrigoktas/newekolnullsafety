@@ -93,8 +93,8 @@ class EducationList extends StatelessWidget {
                                           iconData: Icons.search,
                                           context: context,
                                           miniChip: true,
-                                          items: controller.schoolPackageList.map((e) => MyMultiSelectItem(e.key, e.name!)).toList() as List<MyMultiSelectItem<String>>,
-                                          initialValue: controller.itemData!.serverIdList as List<String>? ?? [],
+                                          items: controller.schoolPackageList.map((e) => MyMultiSelectItem(e.key!, e.name!)).toList(),
+                                          initialValue: controller.itemData!.serverIdList ?? [],
                                           title: 'choosetarget'.translate,
                                           name: 'choosetarget'.translate,
                                           onSaved: (value) {

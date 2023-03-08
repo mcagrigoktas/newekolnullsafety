@@ -185,7 +185,7 @@ class EducationListController extends GetxController {
         final _allKururms = _item.fullServerIdList!.fold<List<String?>>([], (p, e) {
           final _schoolGroup = schoolPackageList.firstWhereOrNull((element) => element.key == e);
           if (_schoolGroup == null) {
-            if (e!.startsWith('739') || e.startsWith('SchoolGroup')) {
+            if (e.startsWith('739') || e.startsWith('SchoolGroup')) {
               return p;
             } else {
               return p..add(e);
@@ -210,7 +210,7 @@ class EducationListController extends GetxController {
       update();
       await Future.wait(<Future>[
         dataPackage!.sendDatabase(_item.key!, 'data', _item.key!, _item.toJson()),
-        if (isPublish) AppVar.appBloc.firestore.setItemInPkg('${ReferenceService.publicEducationListRef()}/${_item.key}', 'data', _item.key!, _item.toJson(), targetList: _item.fullServerIdList as List<String>?),
+        if (isPublish) AppVar.appBloc.firestore.setItemInPkg('${ReferenceService.publicEducationListRef()}/${_item.key}', 'data', _item.key!, _item.toJson(), targetList: _item.fullServerIdList),
       ]).then((value) {
         if (updates.isNotEmpty) AppVar.appBloc.database1.update(updates);
         OverAlert.saveSuc();

@@ -117,7 +117,7 @@ class _DailyReportTeacherScreenState extends State<DailyReportTeacherScreen> wit
     Map logs = logsValue?.value ?? {};
 
     int allCount = 0, count = 0;
-    final List listviewChildren = AppVar.appBloc.studentService!.dataList.where((student) {
+    final List<Widget> listviewChildren = AppVar.appBloc.studentService!.dataList.where((student) {
       if (AppVar.appBloc.hesapBilgileri.gtM) return true;
 
       if (AppVar.appBloc.hesapBilgileri.gtT) return teacherClassList.any((item) => student.classKeyList.contains(item));
@@ -151,7 +151,7 @@ class _DailyReportTeacherScreenState extends State<DailyReportTeacherScreen> wit
       await showModalBottomSheet(
         context: context,
         builder: (context) {
-          return ListView(padding: const EdgeInsets.symmetric(horizontal: 16.0), children: listviewChildren as List<Widget>);
+          return ListView(padding: const EdgeInsets.symmetric(horizontal: 16.0), children: listviewChildren);
         },
       );
     }

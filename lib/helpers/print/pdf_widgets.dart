@@ -123,7 +123,7 @@ class PContainer<T> extends PM<T> {
         width: width,
         height: height,
         decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(borderRadius)),
-        child: child as dynamic,
+        child: child as Widget,
       );
 
   @override
@@ -134,7 +134,7 @@ class PContainer<T> extends PM<T> {
         width: width,
         height: height,
         decoration: pw.BoxDecoration(color: pdfBackgroundColor, borderRadius: pw.BorderRadius.circular(borderRadius)),
-        child: child as dynamic,
+        child: child as pw.Widget,
       );
 }
 

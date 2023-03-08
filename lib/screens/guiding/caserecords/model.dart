@@ -9,7 +9,7 @@ class CaseRecordModel extends ResponsivePageBaseItem {
   String? content;
   bool? aktif;
   bool targetListIsClassList = false;
-  List<String?>? teacherList;
+  List<String>? teacherList;
   int? startDate;
   int? endDate;
   bool? isClosed;
@@ -19,7 +19,7 @@ class CaseRecordModel extends ResponsivePageBaseItem {
   List<CaseRecordItem>? items;
   bool? hasSensitiveData;
 
-  CaseRecordModel.create(String? defaultTeacherKey) {
+  CaseRecordModel.create(String defaultTeacherKey) {
     key = 6.makeKey;
     content = '';
     aktif = true;

@@ -141,10 +141,10 @@ class CaseRecordPage extends StatelessWidget {
                                       controller.update();
                                     },
                                   ),
-                                  AdvanceMultiSelectDropdown(
+                                  AdvanceMultiSelectDropdown<String>(
                                       key: ValueKey('CasDW${controller.itemData!.targetListIsClassList}'),
                                       onSaved: (value) {
-                                        controller.itemData!.targetList = value as List<String>?;
+                                        controller.itemData!.targetList = value;
                                       },
                                       validatorRules: ValidatorRules(req: true, minLength: 1),
                                       name: controller.itemData!.targetListIsClassList == true ? 'chooseclass'.translate : 'choosestudent'.translate,
@@ -159,9 +159,9 @@ class CaseRecordPage extends StatelessWidget {
                                             }).toList()),
                                 ],
                               ),
-                              AdvanceMultiSelectDropdown(
+                              AdvanceMultiSelectDropdown<String>(
                                 onSaved: (value) {
-                                  controller.itemData!.teacherList = value as List<String?>?;
+                                  controller.itemData!.teacherList = value;
                                 },
                                 validatorRules: ValidatorRules(req: true, minLength: 1),
                                 name: 'chooseteacher'.translate,

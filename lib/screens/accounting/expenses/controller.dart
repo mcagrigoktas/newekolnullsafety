@@ -58,7 +58,7 @@ class ExpensesController extends GetxController {
     });
     await 500.wait;
 
-    personList = (_personFetcher.dataList as List<Person>? ?? []);
+    personList = ((_personFetcher.dataList as List<Person>?) ?? []);
     isPageLoading = false;
     update();
   }

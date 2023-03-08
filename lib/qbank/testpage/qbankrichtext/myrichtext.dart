@@ -57,7 +57,7 @@ class MyRichText extends StatelessWidget with QuestionWidget {
     } else if (text.contains(RegExp("#w|#p|<img|<sup|<sub|<ov"))) {
       current = inlineWidget(text);
     } else {
-      current = RichText(text: TextSpan(children: onlyText(text) as List<InlineSpan>?));
+      current = RichText(text: TextSpan(children: onlyText(text)));
     }
     return current;
   }
@@ -80,10 +80,10 @@ class MyRichText extends StatelessWidget with QuestionWidget {
     );
   }
 
-  List<TextSpan?> onlyText(String text) {
+  List<TextSpan> onlyText(String text) {
     text = text.replaceAll("<br>", "\n");
 
-    List<TextSpan?> listText = [];
+    List<TextSpan> listText = [];
     int endIndex = 0;
 
     var allMatch = regExp.allMatches(text);

@@ -33,8 +33,8 @@ class AnswerKeyController extends GetxController {
     update();
   }
 
-  void changeEarningIsActive(dynamic value) {
-    answerEarningMap!.earningsIsActive = value as bool?;
+  void changeEarningIsActive(bool? value) {
+    answerEarningMap!.earningsIsActive = value!;
     update();
   }
 

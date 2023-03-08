@@ -167,15 +167,15 @@ class TeacherImportHelper {
                     .map((e) => [
                           (itemList.indexOf(e) + 1).toString(),
                           e.name,
-                          e.username,
-                          e.password,
+                          e.username!,
+                          e.password!,
                           e.tc ?? '',
                           e.phone ?? '',
                           e.mail ?? '',
                           e.adress ?? '',
                           e.explanation ?? '--',
                         ])
-                    .toList() as List<List<String>>
+                    .toList()
                   ..insert(
                     0,
                     [
