@@ -112,11 +112,11 @@ class EkolPushNotificationService {
   }
 
   static Future<void> sendSingleNotification(String baslik, String icerik, String targetKey, NotificationArgs tag,
-      {String? sound, String? channel, bool? forParentMessageMenu = false, bool forParentOtherMenu = false, String? parentVisibleCodeForNotification, List<String?>? sendOnlyThisTokenList}) async {
+      {String? sound, String? channel, bool? forParentMessageMenu = false, bool forParentOtherMenu = false, String? parentVisibleCodeForNotification, List<String>? sendOnlyThisTokenList}) async {
     var sendingTokenList = sendOnlyThisTokenList ?? (_getTokenList([targetKey], forParentMessageMenu: forParentMessageMenu, forParentOtherMenu: forParentOtherMenu, parentVisibleCode: parentVisibleCodeForNotification)).item1;
     if (sendingTokenList.isEmpty) return;
 
-    await FirebaseFunctionService.sendTokenListNotification(baslik, icerik, sendingTokenList as List<String>, sound: sound, tag: (tag..addUid(targetKey)), channel: channel);
+    await FirebaseFunctionService.sendTokenListNotification(baslik, icerik, sendingTokenList, sound: sound, tag: (tag..addUid(targetKey)), channel: channel);
   }
 }
 

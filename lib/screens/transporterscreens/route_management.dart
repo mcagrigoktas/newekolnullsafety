@@ -25,7 +25,7 @@ class TransportingMainRoutes {
     return Fav.guardTo(student_screen_transporter_info.StudentScreenTransporterInfo());
   }
 
-  static Future<void>? goServiceLocationScreen({List<Transporter>? transporterList}) async {
+  static Future<void>? goServiceLocationScreen({required List<Transporter> transporterList}) async {
     OverLoading.show();
     await service_locations.loadLibrary();
     await OverLoading.close();

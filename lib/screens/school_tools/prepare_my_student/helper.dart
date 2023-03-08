@@ -31,9 +31,11 @@ class PrepareMyStudentHelper {
             await Future.wait(_techerlist
                     .map((e) => InAppNotificationService.sendInAppNotification(
                           InAppNotification(type: NotificationType.prepareStudent)
-                            ..argument = InAppNotificationArgument.addTokenAndCheck(
-                              token: _token,
-                            ).toJson()
+                            ..argument = _token == null
+                                ? null
+                                : InAppNotificationArgument.addTokenAndCheck(
+                                    token: _token,
+                                  ).toJson()
                             ..key = AppVar.appBloc.hesapBilgileri.uid + 'pms1'
                             ..senderKey = AppVar.appBloc.hesapBilgileri.uid
                             ..title = AppVar.appBloc.hesapBilgileri.name
@@ -60,9 +62,11 @@ class PrepareMyStudentHelper {
             await Future.wait(_techerlist
                     .map((e) => InAppNotificationService.sendInAppNotification(
                           InAppNotification(type: NotificationType.iamcame)
-                            ..argument = InAppNotificationArgument.addTokenAndCheck(
-                              token: _token,
-                            ).toJson()
+                            ..argument = _token == null
+                                ? null
+                                : InAppNotificationArgument.addTokenAndCheck(
+                                    token: _token,
+                                  ).toJson()
                             ..key = AppVar.appBloc.hesapBilgileri.uid + 'pms2'
                             ..senderKey = AppVar.appBloc.hesapBilgileri.uid
                             ..title = AppVar.appBloc.hesapBilgileri.name

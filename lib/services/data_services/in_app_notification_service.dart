@@ -14,7 +14,7 @@ class InAppNotificationService {
   static Reference dbInAppNotificationsRef() => Reference(_database33, 'Okullar/$_kurumId/$_termKey/Notifications/$_uid');
 
 //! SETDATASERVICE
-  static Future<void> sendInAppNotification(InAppNotification notification, String targetUid, {String notificationTag = 'notify', List<String?>? sendOnlyThisTokenList}) {
+  static Future<void> sendInAppNotification(InAppNotification notification, String targetUid, {String notificationTag = 'notify', List<String>? sendOnlyThisTokenList}) {
     notification.lastUpdate = _realTime;
     return _database33.set('Okullar/$_kurumId/$_termKey/Notifications/$targetUid/${notification.key}', notification.toJson(notification.key!)).then((value) {
       EkolPushNotificationService.sendSingleNotification(notification.title!, notification.content!, targetUid, NotificationArgs(tag: notificationTag), forParentOtherMenu: notification.forParentOtherMenu == true, sendOnlyThisTokenList: sendOnlyThisTokenList);

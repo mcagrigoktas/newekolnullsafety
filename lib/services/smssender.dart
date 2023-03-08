@@ -121,7 +121,7 @@ class SmsSender {
       }
     } else {
       if (dataList.length == 1) {
-        await sendSMS(message: dataList.first.message!, recipients: dataList.first.numbers as List<String>);
+        await sendSMS(message: dataList.first.message!, recipients: dataList.first.numbers!);
       } else {
         final SmsModel? _result = await (OverBottomSheet.show(BottomSheetPanel.list(
             multipleItemBackgrounds: true,

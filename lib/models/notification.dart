@@ -159,17 +159,13 @@ enum PageName {
 
 class InAppNotificationArgument {
   //? Bildirimi gonderenin tokeni gelirse sadece o tokene geri bildirim atmak icin
-  String? token;
+  String token;
 
-  InAppNotificationArgument.addTokenAndCheck({this.token});
+  InAppNotificationArgument.addTokenAndCheck({required this.token});
 
-  InAppNotificationArgument.fromJson(Map snapshot) {
-    token = snapshot['token'];
-  }
+  InAppNotificationArgument.fromJson(Map snapshot) : token = snapshot['token'] ?? '';
 
   Map<String, dynamic> toJson() {
-    return {
-      'token': token,
-    };
+    return {'token': token};
   }
 }

@@ -68,7 +68,7 @@ class TransporterListController extends GetxController {
     formKey = GlobalKey<FormState>();
     selectedItem = null;
     visibleScreen = VisibleScreen.detail;
-    newItem = Transporter()..key = 7.makeKey;
+    newItem = Transporter.create(7.makeKey);
     update();
   }
 

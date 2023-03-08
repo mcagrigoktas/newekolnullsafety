@@ -63,7 +63,7 @@ class _StudentScreenTransporterInfoState extends State<StudentScreenTransporterI
                                   ..content = 't_s_nc_2'.translate
                                   ..senderKey = AppVar.appBloc.hesapBilgileri.uid;
                                 OverLoading.show();
-                                await InAppNotificationService.sendInAppNotification(_notification, _transporter.key!).then((value) {
+                                await InAppNotificationService.sendInAppNotification(_notification, _transporter.key).then((value) {
                                   OverAlert.saveSuc();
                                 }).catchError((err) {
                                   OverAlert.saveErr();

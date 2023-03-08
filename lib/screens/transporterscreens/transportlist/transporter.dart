@@ -1,8 +1,9 @@
 import 'package:mcg_database/mcg_database.dart';
 import 'package:mcg_extension/mcg_extension.dart';
 
-class Transporter extends DatabaseItem {
-  String? key;
+class Transporter extends DatabaseItem implements Reliable {
+  String key;
+  bool aktif = true;
   String? username;
   String? password;
   String? profileName;
@@ -12,13 +13,13 @@ class Transporter extends DatabaseItem {
   String? driverPhone;
   String? employeePhone;
   String? plate;
-  bool? aktif = true;
+
   int? lastUpdate;
 
-  Transporter();
+  Transporter.create(this.key);
 
   Transporter.fromJson(Map snapshot, this.key) {
-    aktif = snapshot['aktif'];
+    aktif = snapshot['aktif'] ?? true;
     lastUpdate = snapshot['lastUpdate'];
     profileName = snapshot['pn'] ?? snapshot['profileName'];
 
@@ -33,7 +34,7 @@ class Transporter extends DatabaseItem {
     //notcrypted
 
     if (snapshot['enc'] != null) {
-      final decryptedData = (snapshot['enc'] as String?)!.decrypt(key!)!;
+      final decryptedData = (snapshot['enc'] as String?)!.decrypt(key)!;
       username = decryptedData['u'];
       password = decryptedData['p'];
       profileName ??= decryptedData['pn'] ?? decryptedData['profileName'];
@@ -69,4 +70,7 @@ class Transporter extends DatabaseItem {
 
   @override
   bool active() => aktif != false;
+
+  @override
+  bool get isReliable => lastUpdate is int;
 }

@@ -13,8 +13,8 @@ import '../../../flavors/dbconfigs/other/init_helpers.dart';
 import '../../../models/allmodel.dart';
 
 class ServiceLocationsScreen extends StatefulWidget {
-  final List<Transporter>? transporterList;
-  ServiceLocationsScreen({this.transporterList});
+  final List<Transporter> transporterList;
+  ServiceLocationsScreen({required this.transporterList});
 
   @override
   State<ServiceLocationsScreen> createState() => _ServiceLocationsScreenState();
@@ -22,7 +22,7 @@ class ServiceLocationsScreen extends StatefulWidget {
 
 class _ServiceLocationsScreenState extends State<ServiceLocationsScreen> {
   bool _isLoading = true;
-  MapController? _mapController;
+  late MapController _mapController;
   StreamSubscription? _subscription;
 
   @override
@@ -41,20 +41,19 @@ class _ServiceLocationsScreenState extends State<ServiceLocationsScreen> {
     super.dispose();
   }
 
-  Map? setupDummyData() {
-    return isDebugMode ? AppVar.appBloc.transporterService!.dataList.fold<Map>({}, (p, e) => p..[e.key] = [37.178466 + 0.059199 * (20.random) / 20, 28.294858 + 0.134067 * (20.random) / 20]) : null;
+  Map<String, List<double>> setupDummyData() {
+    return AppVar.appBloc.transporterService!.dataList.fold<Map<String, List<double>>>({}, (p, e) => p..[e.key] = [37.178466 + 0.059199 * (20.random) / 20, 28.294858 + 0.134067 * (20.random) / 20]);
   }
 
-  Map? locationDatas = {};
+  var locationDatas = <String, List<double>>{};
 
   void fetchLocations() {
     FirebaseInitHelper.getLogsApp().then((firebaseLogsApp) {
-      if (widget.transporterList!.length == 1) {
-        _subscription = Database(app: firebaseLogsApp).onValue('Okullar/${AppVar.appBloc.hesapBilgileri.kurumID}/${AppVar.appBloc.hesapBilgileri.termKey}/TransporterLocations/${widget.transporterList!.first.key}').listen((event) {
+      if (widget.transporterList.length == 1) {
+        _subscription = Database(app: firebaseLogsApp).onValue('Okullar/${AppVar.appBloc.hesapBilgileri.kurumID}/${AppVar.appBloc.hesapBilgileri.termKey}/TransporterLocations/${widget.transporterList.first.key}').listen((event) {
           final _value = event?.value;
-          if (_value != null) {
-            locationDatas ??= {};
-            locationDatas![widget.transporterList!.first.key] = _value;
+          if (_value is List) {
+            locationDatas[widget.transporterList.first.key] = List<double>.from(_value);
             setState(() {
               _isLoading = false;
             });
@@ -62,7 +61,14 @@ class _ServiceLocationsScreenState extends State<ServiceLocationsScreen> {
         });
       } else {
         _subscription = Database(app: firebaseLogsApp).onValue('Okullar/${AppVar.appBloc.hesapBilgileri.kurumID}/${AppVar.appBloc.hesapBilgileri.termKey}/TransporterLocations').listen((event) {
-          locationDatas = event?.value ?? setupDummyData();
+          if (event?.value is Map) {
+            (event?.value as Map).forEach((key, value) {
+              locationDatas[key.toString()] = List<double>.from(value);
+            });
+          } else {
+            locationDatas = setupDummyData();
+          }
+
           setState(() {
             _isLoading = false;
           });
@@ -78,7 +84,7 @@ class _ServiceLocationsScreenState extends State<ServiceLocationsScreen> {
       topBar: TopBar(leadingTitle: 'menu1'.translate),
       body: _isLoading
           ? Body.circularProgressIndicator()
-          : locationDatas == null || locationDatas!.isEmpty
+          : locationDatas.isEmpty
               ? Body.child(
                   child: EmptyState(
                   emptyStateWidget: EmptyStateWidget.NORECORDS,
@@ -87,7 +93,7 @@ class _ServiceLocationsScreenState extends State<ServiceLocationsScreen> {
                   child: FlutterMap(
                   mapController: _mapController,
                   options: MapOptions(
-                    center: LatLng((locationDatas!.values.first as List).first, (locationDatas!.values.first as List).last),
+                    center: LatLng((locationDatas.values.first).first, (locationDatas.values.first).last),
                     zoom: 14.0,
                     maxZoom: 18.0,
                   ),
@@ -95,12 +101,12 @@ class _ServiceLocationsScreenState extends State<ServiceLocationsScreen> {
                     TileLayer(urlTemplate: "https://tile.openstreetmap.org/{z}/{x}/{y}.png"),
                     MarkerLayer(
                       markers: [
-                        ...((widget.transporterList!.where((e) {
-                          return locationDatas!.containsKey(e.key) != false;
+                        ...((widget.transporterList.where((e) {
+                          return locationDatas.containsKey(e.key) != false;
                         }).map<Marker>((e) {
-                          final color = MyPalette.getChartColorFromCount(widget.transporterList!.indexOf(e));
+                          final color = MyPalette.getChartColorFromCount(widget.transporterList.indexOf(e));
                           return Marker(
-                            point: LatLng((locationDatas![e.key] as List).first, (locationDatas![e.key] as List).last),
+                            point: LatLng((locationDatas[e.key] as List).first, (locationDatas[e.key] as List).last),
                             width: 50,
                             height: 50,
                             builder: (context) => _Marker(color: color, size: 40),
@@ -116,15 +122,15 @@ class _ServiceLocationsScreenState extends State<ServiceLocationsScreen> {
         spacing: 8,
         alignment: WrapAlignment.center,
         children: [
-          ...widget.transporterList!
+          ...widget.transporterList
               .map((e) => GestureDetector(
                     onTap: () {
-                      if (locationDatas![e.key] is List) _mapController!.move(LatLng((locationDatas![e.key] as List).first, (locationDatas![e.key] as List).last), 15.0);
+                      if (locationDatas[e.key] is List) _mapController.move(LatLng((locationDatas[e.key] as List).first, (locationDatas[e.key] as List).last), 15.0);
                     },
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        _Legand(MyPalette.getChartColorFromCount(widget.transporterList!.indexOf(e)), 40),
+                        _Legand(MyPalette.getChartColorFromCount(widget.transporterList.indexOf(e)), 40),
                         8.widthBox,
                         e.profileName.safeSubString(0, 20).text.make(),
                       ],

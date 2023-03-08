@@ -32,7 +32,7 @@ class TransportService {
       checkListValues["GirisTuru"] = 90;
       checkListValues["UID"] = transporter.key;
 
-      _updates['/Okullar/$_kurumId/$_termKey/Transporters/' + transporter.key!] = transporter.mapForSave(transporter.key!)..['lastUpdate'] = _realTime;
+      _updates['/Okullar/$_kurumId/$_termKey/Transporters/' + transporter.key] = transporter.mapForSave(transporter.key)..['lastUpdate'] = _realTime;
       _updates['/Okullar/$_kurumId/CheckList/' + transporter.username! + transporter.password!] = checkListValues;
     });
 
