@@ -62,7 +62,7 @@ class TimeTablePrintHelper {
                     child: Padding(
                         padding: EdgeInsets.all(1),
                         child: Row(children: [
-                          Expanded(child: Text(teacher.name!, maxLines: 1, style: TextStyle(fontSize: 6))),
+                          Expanded(child: Text(teacher.name, maxLines: 1, style: TextStyle(fontSize: 6))),
                           Text(_teacherProgramList.length.toString(), style: TextStyle(fontSize: 6)),
                         ])),
                   ),
@@ -136,7 +136,7 @@ class TimeTablePrintHelper {
               Expanded(child: Center(child: Text(DateTime.now().millisecondsSinceEpoch.dateFormat('d-MM-yyyy'), style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12)))),
             ]),
             SizedBox(height: 4),
-            Center(child: Text('dear'.translate + ' : ' + turkish.toUpperCase(teacher.name!), style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12))),
+            Center(child: Text('dear'.translate + ' : ' + turkish.toUpperCase(teacher.name), style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12))),
             Text(
                 't_p_content'.argsTranslate({
                   'term': Fav.preferences.getString('t_p_h3', AppVar.appBloc.hesapBilgileri.termKey),

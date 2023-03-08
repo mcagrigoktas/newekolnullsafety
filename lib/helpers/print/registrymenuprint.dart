@@ -214,7 +214,7 @@ class RegistryMenuPrint {
                                                 .map((teacher) => List<String>.from((printData['printlist'] as List).map((e) {
                                                       return teacherDataHelper[e]!.last(teacher);
                                                     }).toList())
-                                                      ..insert(0, teacher.name!))
+                                                      ..insert(0, teacher.name))
                                                 .toList())
                                       ],
                                       doc: doc,

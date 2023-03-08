@@ -149,7 +149,7 @@ class CheckClassProgramController extends GetxController {
 
       if (lesson != null) {
         final String name = lesson.name!;
-        final String teacherName = AppVar.appBloc.teacherService!.dataList.singleWhere((teacher) => lesson.teacher == teacher.key, orElse: () => Teacher()..name = '-').name!;
+        final String teacherName = AppVar.appBloc.teacherService!.dataList.singleWhereOrNull((teacher) => lesson.teacher == teacher.key)?.name ?? '-';
         sinifSaatSayisi[name + '*-*' + teacherName] = (sinifSaatSayisi[name + '*-*' + teacherName] ?? 0) + 1;
       }
 

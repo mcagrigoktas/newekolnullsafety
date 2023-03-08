@@ -72,7 +72,7 @@ class _TargetListWidgetState extends State<TargetListWidget> with AppFunctions {
                     if (AppVar.appBloc.hesapBilgileri.gtT && (teacherClassList.any((item) => ogrenci.classKeyList.contains(item)))) return true;
                     return false;
                   })
-                  .map((sinif) => MyMultiSelectItem<String>(sinif.key!, sinif.name!))
+                  .map((sinif) => MyMultiSelectItem<String>(sinif.key, sinif.name))
                   .toList(),
           title: dropdownValue.translate,
           initialValue: state.value ?? [],

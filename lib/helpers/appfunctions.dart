@@ -238,7 +238,7 @@ class AppFunctions2 {
             if (allUserKeyMeanAllStudent == false) 'alluser',
             teacher.key,
           ].contains(element))) {
-        _uidList.add(teacher.key!);
+        _uidList.add(teacher.key);
       }
     });
 

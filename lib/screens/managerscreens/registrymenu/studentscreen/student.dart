@@ -2,7 +2,7 @@ import 'package:mcg_database/mcg_database.dart';
 import 'package:mcg_extension/mcg_extension.dart';
 
 class Student extends DatabaseItem implements Reliable {
-  String key = '';
+  String key;
   String name = '';
   bool aktif = true;
 
@@ -44,7 +44,7 @@ class Student extends DatabaseItem implements Reliable {
   Map? flavorad;
   Map? otherdata;
 
-  Student();
+  Student.create(this.key);
 
   Student.fromJson(Map snapshot, this.key) {
     aktif = snapshot['aktif'] ?? true;

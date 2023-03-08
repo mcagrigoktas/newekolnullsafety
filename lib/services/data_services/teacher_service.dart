@@ -43,7 +43,7 @@ class TeacherService {
       checkListValues["GirisTuru"] = 20;
       checkListValues["UID"] = teacher.key;
 
-      _updates['/Okullar/$_kurumId/$_termKey/Teachers/' + teacher.key!] = teacher.mapForSave(teacher.key!)..['lastUpdate'] = _realTime;
+      _updates['/Okullar/$_kurumId/$_termKey/Teachers/' + teacher.key] = teacher.mapForSave(teacher.key)..['lastUpdate'] = _realTime;
       _updates['/Okullar/$_kurumId/CheckList/' + teacher.username! + teacher.password!] = checkListValues;
     });
 

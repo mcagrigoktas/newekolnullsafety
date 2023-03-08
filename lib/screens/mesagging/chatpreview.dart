@@ -128,7 +128,7 @@ class _ChatPreviewState extends State<ChatPreview> with AppFunctions {
         itemBuilder: (context) {
           return AppVar.appBloc.teacherService!.dataList
               .map((teacher) => PopupMenuItem(
-                    child: Text(teacher.name!, style: TextStyle(color: Fav.design.primaryText)),
+                    child: Text(teacher.name, style: TextStyle(color: Fav.design.primaryText)),
                     value: teacher.key,
                   ))
               .toList();

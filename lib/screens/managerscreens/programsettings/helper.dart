@@ -300,7 +300,7 @@ class ProgramHelper {
         final _teacher = _emptyTacherList[index];
         return Container(
           color: Fav.design.primaryText.withAlpha(index.isEven ? 10 : 0),
-          child: Text(_teacher.name!, style: TextStyle(color: Fav.design.primaryText, fontSize: 14)).px16.py8,
+          child: Text(_teacher.name, style: TextStyle(color: Fav.design.primaryText, fontSize: 14)).px16.py8,
         );
       },
       itemCount: _emptyTacherList.length,

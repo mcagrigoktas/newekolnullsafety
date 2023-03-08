@@ -83,7 +83,7 @@ class TeacherListController extends GetxController {
     do {
       newDataKey = 5.makeKey;
     } while (AppVar.appBloc.teacherService!.dataList.any((teacher) => teacher.key == newDataKey));
-    newItem = Teacher()..key = newDataKey;
+    newItem = Teacher.create(newDataKey);
     update();
   }
 
@@ -103,7 +103,7 @@ class TeacherListController extends GetxController {
       update();
       final _item = newItem ?? selectedItem!;
 
-      await TeacherService.saveTeacher(_item, _item.key!).then((value) {
+      await TeacherService.saveTeacher(_item, _item.key).then((value) {
         OverAlert.saveSuc();
         newItem = null;
         update();
@@ -154,7 +154,7 @@ class TeacherListController extends GetxController {
     if (selectedItem != null) {
       isSaving = true;
       update();
-      await TeacherService.deleteTeacher(selectedItem!.key!).then((a) {
+      await TeacherService.deleteTeacher(selectedItem!.key).then((a) {
         visibleScreen = VisibleScreen.main;
         selectedItem = null;
         OverAlert.deleteSuc();

@@ -50,7 +50,7 @@ class ClassListController extends GetxController {
       return DropdownMenuItem(
           value: teacher.key,
           child: Text(
-            teacher.name!,
+            teacher.name,
             style: TextStyle(color: Fav.design.primaryText),
           ));
     }).toList();

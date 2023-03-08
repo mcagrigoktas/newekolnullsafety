@@ -54,9 +54,8 @@ class StudentImportHelper {
         _key = 4.makeKey;
       } while (_liste.any((item) => item.key == _key));
 
-      final _item = Student();
+      final _item = Student.create(_key);
       _item.aktif = true;
-      _item.key = _key;
       _item.lastUpdate = databaseTime;
 
       String _studentName = '';

@@ -87,9 +87,9 @@ class TeacherProgramPrint extends StatelessWidget {
             items: [
               ...AppVar.appBloc.teacherService!.dataList
                   .map(
-                    (e) => MyMultiSelectItem(e.key, e.name!),
+                    (e) => MyMultiSelectItem(e.key, e.name),
                   )
-                  .toList() as Iterable<MyMultiSelectItem<String>>
+                  .toList()
             ],
             onChanged: (value) {
               Fav.writeSeasonCache('t_p_o', value);

@@ -45,9 +45,8 @@ class TeacherImportHelper {
         key = 5.makeKey;
       } while (liste.any((item) => item.key == key));
 
-      final item = Teacher();
+      final item = Teacher.create(key);
       item.aktif = true;
-      item.key = key;
       item.lastUpdate = databaseTime;
       item.color = 'ff0000';
       item.seeAllClass = false;

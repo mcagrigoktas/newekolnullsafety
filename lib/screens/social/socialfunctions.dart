@@ -25,7 +25,7 @@ class SocialFunctions {
 //herkesle paylasilmissa tum ogretmenler ekleniyor
     AppVar.appBloc.teacherService!.dataList.forEach((teacher) {
       if (targetList!.contains("alluser")) {
-        contactList.add(teacher.key!);
+        contactList.add(teacher.key);
       }
     });
 // sinif ogretmenleri ekleniyor

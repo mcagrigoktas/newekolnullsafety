@@ -25,7 +25,7 @@ class LessonListController extends GetxController {
 
   final classListDropdown = AppVar.appBloc.classService!.dataList.map((sinif) => DropdownItem(name: sinif.name, value: sinif.key)).toList();
   final classListDropdown2 = AppVar.appBloc.classService!.dataList.map((sinif) => DropdownMenuItem(child: Text(sinif.name!, maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(color: Fav.design.primaryText)), value: sinif.key)).toList();
-  final teacherListDropdown = AppVar.appBloc.teacherService!.dataList.map((teacher) => DropdownMenuItem(value: teacher.key, child: Text(teacher.name!, maxLines: 1, style: TextStyle(color: Fav.design.primaryText)))).toList()
+  final teacherListDropdown = AppVar.appBloc.teacherService!.dataList.map((teacher) => DropdownMenuItem(value: teacher.key, child: Text(teacher.name, maxLines: 1, style: TextStyle(color: Fav.design.primaryText)))).toList()
     ..insert(
         0,
         DropdownMenuItem(

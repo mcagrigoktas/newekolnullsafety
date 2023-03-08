@@ -38,7 +38,7 @@ class AscExportHelper {
     }, nest: () {
       AppVar.appBloc.teacherService!.dataList.forEach((teacher) {
         _builder.element('teacher', attributes: {
-          'id': teacher.key!,
+          'id': teacher.key,
           'name': teacher.name.changeTurkishCharacter!,
           'short': teacher.name.changeTurkishCharacter.onlyCapitalLetters!,
         });

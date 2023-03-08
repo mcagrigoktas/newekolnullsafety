@@ -58,7 +58,7 @@ class P2PService {
       if (data.aktif!) {
         EkolPushNotificationService.sendMultipleNotification(
           'p2pstudentnotify1'.translate,
-          AppVar.appBloc.teacherService!.dataListItem(data.teacherKey!)!.name! + ' ' + McgFunctions.getDayNameFromDayOfWeek(data.day! + 1) + ' ' + data.startTime!.timeToString,
+          AppVar.appBloc.teacherService!.dataListItem(data.teacherKey!)!.name + ' ' + McgFunctions.getDayNameFromDayOfWeek(data.day! + 1) + ' ' + data.startTime!.timeToString,
           data.studentList!,
           NotificationArgs(tag: 'portfolio'),
         );
@@ -170,7 +170,7 @@ class P2PService {
         if (newStudentList.isNotEmpty) {
           EkolPushNotificationService.sendMultipleNotification(
             'p2pstudentnotify1'.translate,
-            AppVar.appBloc.teacherService!.dataListItem(item.teacherKey)!.name! + ' ' + McgFunctions.getDayNameFromDayOfWeek(item.dayNo!) + ' ' + item.lessonStartTime!.timeToString,
+            AppVar.appBloc.teacherService!.dataListItem(item.teacherKey)!.name + ' ' + McgFunctions.getDayNameFromDayOfWeek(item.dayNo!) + ' ' + item.lessonStartTime!.timeToString,
             newStudentList,
             NotificationArgs(tag: 'portfolio'),
           );

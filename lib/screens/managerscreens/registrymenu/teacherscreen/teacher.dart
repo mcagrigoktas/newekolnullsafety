@@ -1,8 +1,10 @@
 import 'package:mcg_database/mcg_database.dart';
 import 'package:mcg_extension/mcg_extension.dart';
 
-class Teacher extends DatabaseItem {
-  String? name;
+class Teacher extends DatabaseItem implements Reliable {
+  String key;
+  String name = '';
+
   String? username;
   String? password;
   int? birthday;
@@ -11,7 +13,7 @@ class Teacher extends DatabaseItem {
   String? adress;
   String? explanation;
   String? imgUrl;
-  String? key;
+
   String? tc;
   String? color;
   bool aktif = true;
@@ -22,7 +24,7 @@ class Teacher extends DatabaseItem {
   bool? passwordChangedByUser;
   // int teacherType;
 
-  Teacher();
+  Teacher.create(this.key);
 
   Teacher.fromJson(Map snapshot, this.key) {
     aktif = snapshot['aktif'] ?? true;
@@ -48,7 +50,7 @@ class Teacher extends DatabaseItem {
     //notcrypted
 
     if (snapshot['enc'] != null) {
-      final decryptedData = (snapshot['enc'] as String?)!.decrypt(key!)!;
+      final decryptedData = (snapshot['enc'] as String?)!.decrypt(key)!;
 
       name = decryptedData['name'];
       explanation = decryptedData['explanation'];
@@ -92,8 +94,11 @@ class Teacher extends DatabaseItem {
     return data;
   }
 
-  String get getSearchText => (name! + explanation.toString()).toSearchCase();
+  String get getSearchText => (name + explanation.toString()).toSearchCase();
 
   @override
   bool active() => aktif != false;
+
+  @override
+  bool get isReliable => key.safeLength > 1 && name.safeLength > 1;
 }

@@ -510,9 +510,9 @@ class AppblocDefineServiceHelper {
       "${_hesapBilgileri.kurumID}${_hesapBilgileri.termKey}Teachers",
       queryRefForRealtimeDB: TeacherService.dbTeacherListRef(),
       jsonParse: (key, value) => Teacher.fromJson(value, key),
-      removeFunction: (a) => a.name == null,
+      removeFunction: (a) => !a.isReliable,
       sortFunction: (Teacher a, Teacher b) {
-        return 'lang'.translate == 'tr' ? turkish.comparator(a.name!.toLowerCase(), b.name!.toLowerCase()) : (a.name!.toLowerCase()).compareTo(b.name!.toLowerCase());
+        return 'lang'.translate == 'tr' ? turkish.comparator(a.name.toLowerCase(), b.name.toLowerCase()) : (a.name.toLowerCase()).compareTo(b.name.toLowerCase());
       },
       lastUpdateKey: 'lastUpdate',
       bundleConfig: bundleConfig,

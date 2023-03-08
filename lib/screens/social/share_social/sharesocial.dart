@@ -69,7 +69,7 @@ class _ShareSocialState extends State<ShareSocial> with SocialFunctions {
 
       Set<String> teacherList = {};
       // butun herkese gonderilecekse ogretmenlerin hepsi kaydediliyor
-      if (_data.targetList!.contains("alluser")) teacherList = AppVar.appBloc.teacherService!.dataList.map((teacher) => teacher.key!).toSet();
+      if (_data.targetList!.contains("alluser")) teacherList = AppVar.appBloc.teacherService!.dataList.map((teacher) => teacher.key).toSet();
 
       // paylasimi yapan ogretmense kendi hesabina  kaydedilmesi icin ekleniyor
       if (AppVar.appBloc.hesapBilgileri.gtT) teacherList.add(AppVar.appBloc.hesapBilgileri.uid);

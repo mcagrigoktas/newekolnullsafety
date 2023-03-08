@@ -38,8 +38,7 @@ class StudentListController extends GetxController {
       });
     } else if (preRegistrationData != null) {
       tcController.text = preRegistrationData['tc'];
-      newItem = Student()
-        ..key = _makeKey()
+      newItem = Student.create(_makeKey())
         ..name = preRegistrationData['name']
         ..birthday = preRegistrationData['birthday']
         ..genre = preRegistrationData['gender']
@@ -166,7 +165,7 @@ class StudentListController extends GetxController {
     selectedItem = null;
     visibleScreen = VisibleScreen.detail;
 
-    newItem = Student()..key = _makeKey();
+    newItem = Student.create(_makeKey());
     usernameController.text = "";
     passwordController.text = "";
     tcController.text = "";
