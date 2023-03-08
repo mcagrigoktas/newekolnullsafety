@@ -71,7 +71,7 @@ class BatchMessagesState extends State<BatchMessages> {
 
       Map<String, MesaggingPreview> _ownPreviewMap = {};
       List<String> _keyList = [];
-      List<String?> _phoneList = [];
+      List<String> _phoneList = [];
 
       void _addManagerAndTeacherList() {
         _keyList.addAll(AppVar.appBloc.teacherService!.dataList.where((teacher) {
@@ -79,7 +79,7 @@ class BatchMessagesState extends State<BatchMessages> {
           return true;
         }).map((teacher) {
           _ownPreviewMap[teacher.key] = MesaggingPreview(senderName: teacher.name, senderImgUrl: teacher.imgUrl, senderKey: teacher.key, timeStamp: databaseTime, lastMessage: _message);
-          if (teacher.phone.safeLength > 4) _phoneList.add(teacher.phone);
+          if (teacher.phone.safeLength > 4) _phoneList.add(teacher.phone!);
           return teacher.key;
         }).toList());
         _keyList.addAll(AppVar.appBloc.managerService!.dataList.where((manager) {
@@ -87,7 +87,7 @@ class BatchMessagesState extends State<BatchMessages> {
           return true;
         }).map((manager) {
           _ownPreviewMap[manager.key] = MesaggingPreview(senderName: manager.name, senderImgUrl: manager.imgUrl, senderKey: manager.key, timeStamp: databaseTime, lastMessage: _message);
-          if (manager.phone.safeLength > 4) _phoneList.add(manager.phone);
+          if (manager.phone.safeLength > 4) _phoneList.add(manager.phone!);
           return manager.key;
         }).toList());
       }
@@ -105,12 +105,12 @@ class BatchMessagesState extends State<BatchMessages> {
         }).map((student) {
           _ownPreviewMap[student.key] = MesaggingPreview(senderName: student.name, senderImgUrl: student.imgUrl, senderKey: student.key, timeStamp: databaseTime, lastMessage: _message);
           if (AppVar.appBloc.hesapBilgileri.isEkid) {
-            if (student.motherPhone.safeLength > 4) _phoneList.add(student.motherPhone);
-            if (student.fatherPhone.safeLength > 4) _phoneList.add(student.fatherPhone);
+            if (student.motherPhone.safeLength > 4) _phoneList.add(student.motherPhone!);
+            if (student.fatherPhone.safeLength > 4) _phoneList.add(student.fatherPhone!);
           } else {
-            if (_isParent == true && student.motherPhone.safeLength > 4) _phoneList.add(student.motherPhone);
-            if (_isParent == true && student.fatherPhone.safeLength > 4) _phoneList.add(student.fatherPhone);
-            if (_isParent == false && student.studentPhone.safeLength > 4) _phoneList.add(student.studentPhone);
+            if (_isParent == true && student.motherPhone.safeLength > 4) _phoneList.add(student.motherPhone!);
+            if (_isParent == true && student.fatherPhone.safeLength > 4) _phoneList.add(student.fatherPhone!);
+            if (_isParent == false && student.studentPhone.safeLength > 4) _phoneList.add(student.studentPhone!);
           }
 
           return student.key;

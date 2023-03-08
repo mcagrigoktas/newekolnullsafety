@@ -151,9 +151,9 @@ class ManagerListController extends GetxController {
     if (selectedItem == null) return;
     formKey.currentState!.save();
 
-    List<String?> recipents = [];
+    List<String> recipents = [];
     if ((selectedItem!.phone ?? '').length > 5) {
-      recipents.add(selectedItem!.phone);
+      recipents.add(selectedItem!.phone!);
     }
 
     List<UserAccountSmsModel> smsModelList = [];

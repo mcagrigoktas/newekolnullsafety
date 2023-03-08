@@ -370,13 +370,13 @@ class StudentSmsPrepare {
         final _smsModelParent2 = UserAccountSmsModel(username: student.username, password: student.parentPassword2, kurumId: AppVar.appBloc.hesapBilgileri.kurumID, numbers: []);
 
         if (student.studentPhone.safeLength > 5) {
-          _smsModelParent1.numbers!.add(student.studentPhone);
+          _smsModelParent1.numbers!.add(student.studentPhone!);
         }
         if (student.motherPhone.safeLength > 5) {
-          _smsModelParent1.numbers!.add(student.motherPhone);
+          _smsModelParent1.numbers!.add(student.motherPhone!);
         }
         if (student.fatherPhone.safeLength > 5) {
-          _smsModelParent2.numbers!.add(student.fatherPhone);
+          _smsModelParent2.numbers!.add(student.fatherPhone!);
         }
 
         if (_smsModelParent1.password.safeLength > 5) _smsModelList.add(_smsModelParent1);
@@ -385,13 +385,13 @@ class StudentSmsPrepare {
         final _smsModel = UserAccountSmsModel(username: student.username, password: student.password, kurumId: AppVar.appBloc.hesapBilgileri.kurumID, numbers: []);
 
         if (student.motherPhone.safeLength > 5) {
-          _smsModel.numbers!.add(student.motherPhone);
+          _smsModel.numbers!.add(student.motherPhone!);
         }
         if (student.fatherPhone.safeLength > 5) {
-          _smsModel.numbers!.add(student.fatherPhone);
+          _smsModel.numbers!.add(student.fatherPhone!);
         }
         if (student.studentPhone.safeLength > 5) {
-          _smsModel.numbers!.add(student.studentPhone);
+          _smsModel.numbers!.add(student.studentPhone!);
         }
         _smsModelList.add(_smsModel);
       }
@@ -402,13 +402,13 @@ class StudentSmsPrepare {
         final _smsModelStudent = UserAccountSmsModel(username: student.username, password: student.password, kurumId: AppVar.appBloc.hesapBilgileri.kurumID, numbers: []);
 
         if (student.studentPhone.safeLength > 5) {
-          _smsModelStudent.numbers!.add(student.studentPhone);
+          _smsModelStudent.numbers!.add(student.studentPhone!);
         }
         if (student.motherPhone.safeLength > 5) {
-          _smsModelParent.numbers!.add(student.motherPhone);
+          _smsModelParent.numbers!.add(student.motherPhone!);
         }
         if (student.fatherPhone.safeLength > 5) {
-          _smsModelParent2.numbers!.add(student.fatherPhone);
+          _smsModelParent2.numbers!.add(student.fatherPhone!);
         }
 
         if (_smsModelParent.password.safeLength > 5) _smsModelList.add(_smsModelParent);
@@ -419,13 +419,13 @@ class StudentSmsPrepare {
         final _smsModelStudent = UserAccountSmsModel(username: student.username, password: student.password, kurumId: AppVar.appBloc.hesapBilgileri.kurumID, numbers: []);
 
         if (student.motherPhone.safeLength > 5) {
-          _smsModelParent.numbers!.add(student.motherPhone);
+          _smsModelParent.numbers!.add(student.motherPhone!);
         }
         if (student.fatherPhone.safeLength > 5) {
-          _smsModelParent.numbers!.add(student.fatherPhone);
+          _smsModelParent.numbers!.add(student.fatherPhone!);
         }
         if (student.studentPhone.safeLength > 5) {
-          _smsModelStudent.numbers!.add(student.studentPhone);
+          _smsModelStudent.numbers!.add(student.studentPhone!);
         }
 
         if (_smsModelParent.password.safeLength > 5) _smsModelList.add(_smsModelParent);
@@ -443,13 +443,13 @@ class StudentSmsPrepare {
       final _smsModel = UserAccountSmsModel(username: student.username, password: student.password, kurumId: AppVar.appBloc.hesapBilgileri.kurumID, numbers: []);
 
       if (student.motherPhone.safeLength > 5) {
-        _smsModel.numbers!.add(student.motherPhone);
+        _smsModel.numbers!.add(student.motherPhone!);
       }
       if (student.fatherPhone.safeLength > 5) {
-        _smsModel.numbers!.add(student.fatherPhone);
+        _smsModel.numbers!.add(student.fatherPhone!);
       }
       if (student.studentPhone.safeLength > 5) {
-        _smsModel.numbers!.add(student.studentPhone);
+        _smsModel.numbers!.add(student.studentPhone!);
       }
       _smsModelList.add(_smsModel);
     } else {
@@ -457,13 +457,13 @@ class StudentSmsPrepare {
       final _smsModelStudent = UserAccountSmsModel(username: student.username, password: student.password, kurumId: AppVar.appBloc.hesapBilgileri.kurumID, numbers: []);
 
       if (student.motherPhone.safeLength > 5) {
-        _smsModelParent.numbers!.add(student.motherPhone);
+        _smsModelParent.numbers!.add(student.motherPhone!);
       }
       if (student.fatherPhone.safeLength > 5) {
-        _smsModelParent.numbers!.add(student.fatherPhone);
+        _smsModelParent.numbers!.add(student.fatherPhone!);
       }
       if (student.studentPhone.safeLength > 5) {
-        _smsModelStudent.numbers!.add(student.studentPhone);
+        _smsModelStudent.numbers!.add(student.studentPhone!);
       }
 
       _smsModelList.add(_smsModelParent);

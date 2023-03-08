@@ -430,28 +430,28 @@ class ChatScreenState extends State<ChatScreen> with AppFunctions {
 
   Future<bool> _sendMessageWithSms(String _message) async {
     if (_message.isEmpty) return false;
-    final _numbers = <String?>[];
+    final _numbers = <String>[];
 
     if (widget.mesaggingPreview!.targetGirisTuru == 10) {
       final _manager = AppVar.appBloc.managerService!.dataListItem(_targetKey);
-      if (_manager != null && _manager.phone.safeLength > 4) _numbers.add(_manager.phone);
+      if (_manager != null && _manager.phone.safeLength > 4) _numbers.add(_manager.phone!);
     } else if (widget.mesaggingPreview!.targetGirisTuru == 20) {
       final _teacher = AppVar.appBloc.teacherService!.dataListItem(_targetKey);
-      if (_teacher != null && _teacher.phone.safeLength > 4) _numbers.add(_teacher.phone);
+      if (_teacher != null && _teacher.phone.safeLength > 4) _numbers.add(_teacher.phone!);
     } else if (widget.mesaggingPreview!.targetGirisTuru == 30) {
       final _student = AppVar.appBloc.studentService!.dataListItem(_targetKey);
       if (_student != null) {
         if (AppVar.appBloc.hesapBilgileri.isEkid) {
           _numbers.addAll([
-            if (_student.fatherPhone.safeLength > 4) _student.fatherPhone,
-            if (_student.motherPhone.safeLength > 4) _student.motherPhone,
+            if (_student.fatherPhone.safeLength > 4) _student.fatherPhone!,
+            if (_student.motherPhone.safeLength > 4) _student.motherPhone!,
           ]);
         } else if (_pageType == 0) {
-          if (_student.studentPhone.safeLength > 4) _numbers.add(_student.studentPhone);
+          if (_student.studentPhone.safeLength > 4) _numbers.add(_student.studentPhone!);
         } else if (_pageType == 1) {
           _numbers.addAll([
-            if (_student.fatherPhone.safeLength > 4) _student.fatherPhone,
-            if (_student.motherPhone.safeLength > 4) _student.motherPhone,
+            if (_student.fatherPhone.safeLength > 4) _student.fatherPhone!,
+            if (_student.motherPhone.safeLength > 4) _student.motherPhone!,
           ]);
         }
       }

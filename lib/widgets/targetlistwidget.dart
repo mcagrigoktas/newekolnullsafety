@@ -186,7 +186,7 @@ class _SuperManagerTargetListWidgetState extends State<SuperManagerTargetListWid
           padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
           iconData: MdiIcons.fileTree,
           name: dropdownValue.translate,
-          items: Get.find<SuperManagerController>().serverList!.map((sinif) => MyMultiSelectItem(sinif.serverId, sinif.schoolName!)).toList() as List<MyMultiSelectItem<String>>,
+          items: Get.find<SuperManagerController>().serverList!.map((sinif) => MyMultiSelectItem(sinif.serverId!, sinif.schoolName!)).toList(),
           title: dropdownValue.translate,
           initialValue: [],
           validatorRules: ValidatorRules(req: false),

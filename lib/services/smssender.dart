@@ -11,7 +11,7 @@ import '../models/models.dart';
 import '../screens/managerscreens/schoolsettings/models/mutlu_cell.dart';
 
 class UserAccountSmsModel {
-  List<String?>? numbers;
+  List<String>? numbers;
   String? username;
   String? password;
   String? kurumId;
@@ -89,7 +89,7 @@ class AppLinkHelper {
 }
 
 class SmsModel {
-  List<String?>? numbers;
+  List<String>? numbers;
   String? message;
 
   SmsModel({required this.message, required this.numbers});
@@ -123,7 +123,7 @@ class SmsSender {
       if (dataList.length == 1) {
         await sendSMS(message: dataList.first.message!, recipients: dataList.first.numbers as List<String>);
       } else {
-        final SmsModel _result = await (OverBottomSheet.show(BottomSheetPanel.list(
+        final SmsModel? _result = await (OverBottomSheet.show(BottomSheetPanel.list(
             multipleItemBackgrounds: true,
             title: 'anitemchoose'.translate,
             items: dataList
@@ -131,7 +131,7 @@ class SmsSender {
                   (e) => BottomSheetItem(name: e.message!, value: e, suffix: e.numbers!.join('\n').text.make()),
                 )
                 .toList())));
-        await sendSMS(message: _result.message!, recipients: _result.numbers as List<String>);
+        if (_result != null) await sendSMS(message: _result.message!, recipients: _result.numbers!);
       }
     }
     return true;
@@ -173,7 +173,7 @@ class SmsSender {
     var _mutluCellXmLPrefix = '<?xml version="1.0" encoding="UTF-8"?> <smspack ka="' + _mutluCellConfig.username! + '" pwd="' + _mutluCellConfig.password! + '" org="' + _mutluCellConfig.originator! + '"  charset="turkish"> ';
     var mutluCellMessagesPack = '';
     dataList.forEach((smsModel) {
-      mutluCellMessagesPack += ' <mesaj> <metin>' + smsModel.message! + '</metin> <nums>' + smsModel.numbers!.fold<String>('', (p, e) => p + (p == '' ? '' : ',') + e!) + '</nums></mesaj> ';
+      mutluCellMessagesPack += ' <mesaj> <metin>' + smsModel.message! + '</metin> <nums>' + smsModel.numbers!.fold<String>('', (p, e) => p + (p == '' ? '' : ',') + e) + '</nums></mesaj> ';
     });
     if (mutluCellMessagesPack.isEmpty) {
       OverAlert.show(type: AlertType.danger, message: 'couldntfindphone'.translate);

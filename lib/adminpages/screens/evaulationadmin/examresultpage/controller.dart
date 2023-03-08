@@ -1029,9 +1029,9 @@ class ExamResultViewController extends GetxController {
           result.add(SmsModel(
             message: text.trim(),
             numbers: [
-              if (_student.motherPhone.safeLength > 6) _student.motherPhone,
-              if (_student.fatherPhone.safeLength > 6) _student.fatherPhone,
-              if (_student.studentPhone.safeLength > 6) _student.studentPhone,
+              if (_student.motherPhone.safeLength > 6) _student.motherPhone!,
+              if (_student.fatherPhone.safeLength > 6) _student.fatherPhone!,
+              if (_student.studentPhone.safeLength > 6) _student.studentPhone!,
             ],
           ));
         }
