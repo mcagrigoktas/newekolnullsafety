@@ -29,7 +29,7 @@ class ShareSocial extends StatefulWidget {
 }
 
 class _ShareSocialState extends State<ShareSocial> with SocialFunctions {
-  SocialItem _data = SocialItem();
+  SocialItem _data = SocialItem.create(Generator.keyWithTimeStamp());
   final _formKey = GlobalKey<FormState>();
   //final _qualityValue = 1;
   int _typeIndex = 0;
@@ -48,7 +48,7 @@ class _ShareSocialState extends State<ShareSocial> with SocialFunctions {
   }
 
   void _submit() {
-    _data = SocialItem();
+    _data = SocialItem.create(Generator.keyWithTimeStamp());
     if (_formKey.currentState!.checkAndSave()) {
       if (Fav.noConnection()) return;
 

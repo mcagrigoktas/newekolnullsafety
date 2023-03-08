@@ -454,8 +454,7 @@ class ExamController extends GetxController {
         if (res == null) return;
       }
 
-      final announcement = Announcement()
-        ..key = selectedItem!.key
+      final announcement = Announcement.create(selectedItem!.key!)
         ..title = selectedItem!.existinAnnouncementData['title'] ?? selectedItem!.name
         ..content = selectedItem!.existinAnnouncementData['content'] ?? selectedItem!.explanation
         ..targetList = selectedItem!.existinAnnouncementData['targetList'] == null ? null : List<String>.from(selectedItem!.existinAnnouncementData['targetList'])

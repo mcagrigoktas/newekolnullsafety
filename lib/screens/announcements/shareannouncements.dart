@@ -32,7 +32,7 @@ class _ShareAnnouncementsState extends State<ShareAnnouncements> with AppFunctio
   void initState() {
     super.initState();
 
-    _data = widget.existingAnnouncement ?? Announcement();
+    _data = widget.existingAnnouncement ?? Announcement.create(Generator.keyWithTimeStamp());
   }
 
   void submit() {
@@ -75,7 +75,7 @@ class _ShareAnnouncementsState extends State<ShareAnnouncements> with AppFunctio
       _data.senderKey = AppVar.appBloc.hesapBilgileri.uid;
       _data.senderName = AppVar.appBloc.hesapBilgileri.name;
 
-      AnnouncementService.saveAnnouncement(_data, _data.key).then((a) async {
+      AnnouncementService.saveAnnouncement(_data, isNew: widget.existingAnnouncement == null).then((a) async {
         setState(() {
           isLoading = false;
         });

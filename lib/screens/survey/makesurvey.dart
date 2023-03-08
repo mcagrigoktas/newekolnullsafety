@@ -23,7 +23,7 @@ class SurveyEdit extends StatefulWidget {
 class _SurveyEditState extends State<SurveyEdit> {
   // final Map _data = {};
   late Survey survey;
-  final Announcement _dataAnnouncement = Announcement();
+  final Announcement _dataAnnouncement = Announcement.create(Generator.keyWithTimeStamp());
   var formKey = GlobalKey<FormState>();
   List<SurveyItem>? surveyList = [];
   bool isLoading = false;
@@ -62,7 +62,7 @@ class _SurveyEditState extends State<SurveyEdit> {
     _dataAnnouncement.senderKey = AppVar.appBloc.hesapBilgileri.uid;
     _dataAnnouncement.senderName = AppVar.appBloc.hesapBilgileri.name;
 
-    AnnouncementService.saveAnnouncement(_dataAnnouncement, null).then((a) {
+    AnnouncementService.saveAnnouncement(_dataAnnouncement, isNew: true).then((a) {
       setState(() {
         isLoading = false;
       });

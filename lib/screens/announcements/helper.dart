@@ -118,7 +118,7 @@ class AnnouncementHelper {
             endTime: _finishDate,
             color: GlassIcons.exam.color!,
             subject: _item.examInfo!['name'],
-            resourceIds: ResourceIdRule(AgendaGroup.exam, otherKeys: [_item.key!]).idList,
+            resourceIds: ResourceIdRule(AgendaGroup.exam, otherKeys: [_item.key]).idList,
           );
           _agendaItemList.add(_appointment);
         }

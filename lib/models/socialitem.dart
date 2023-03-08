@@ -5,8 +5,8 @@ import 'package:mcg_database/mcg_database.dart';
 import 'package:mcg_extension/mcg_extension.dart';
 
 class SocialItem extends DatabaseItem {
-  String? key;
-  bool? aktif = true;
+  String key;
+  bool aktif = true;
   String? content;
   List<String>? imgList;
   List<String>? targetList;
@@ -19,7 +19,7 @@ class SocialItem extends DatabaseItem {
   String? videoLink;
   String? videoThumb;
 
-  SocialItem();
+  SocialItem.create(this.key);
 
   bool get isVideo => !isPhoto && (youtubeLink.safeLength > 6 || videoLink.safeLength > 6);
   bool get isPhoto => imgList != null && imgList!.isNotEmpty;
@@ -30,7 +30,7 @@ class SocialItem extends DatabaseItem {
           : 0;
 
   SocialItem.fromJson(Map snapshot, this.key) {
-    aktif = snapshot['aktif'];
+    aktif = snapshot['aktif'] ?? true;
     timeStamp = snapshot['timeStamp'];
     isPublish = snapshot['isPublish'];
 
@@ -47,7 +47,7 @@ class SocialItem extends DatabaseItem {
     //notcrypted
 
     if (snapshot['enc'] != null) {
-      final decryptedData = (snapshot['enc'] as String?)!.decrypt(key!)!;
+      final decryptedData = (snapshot['enc'] as String?)!.decrypt(key)!;
       youtubeLink = decryptedData['youtubeLink'];
       content = decryptedData['content'];
       targetList = decryptedData['targetList'] == null ? null : List<String>.from(decryptedData['targetList']);
@@ -78,7 +78,7 @@ class SocialItem extends DatabaseItem {
     //notcrypted
 
     if (snapshot['enc'] != null) {
-      final decryptedData = (snapshot['enc'] as String?)!.decrypt(key!)!;
+      final decryptedData = (snapshot['enc'] as String?)!.decrypt(key)!;
       youtubeLink = decryptedData['youtubeLink'];
       content = decryptedData['content'];
       targetList = decryptedData['targetList'] == null ? null : List<String>.from(decryptedData['targetList']);

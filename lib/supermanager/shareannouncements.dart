@@ -32,7 +32,7 @@ class _ShareSuperManagerAnnouncementsState extends State<ShareSuperManagerAnnoun
   @override
   void initState() {
     super.initState();
-    _data = widget.existingAnnouncement ?? Announcement();
+    _data = widget.existingAnnouncement ?? Announcement.create(Generator.keyWithTimeStamp());
   }
 
   late List<SuperManagerSchoolInfoModel> choosedServerList;

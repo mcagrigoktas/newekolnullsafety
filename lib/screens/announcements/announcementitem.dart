@@ -58,7 +58,7 @@ class AnnouncementItem extends StatelessWidget {
             elevation: 0,
             text: "enterexam".translate + (examEntries.length > 1 ? (' ' + 'seison'.translate + ': $seisonNo') : ''),
             onPressed: () {
-              Fav.guardTo(OlineExamMain(), binding: BindingsBuilder(() => Get.put<OnlineExamController>(OnlineExamController(announcement!.extraData, announcement!.key!, int.tryParse(seisonNo)))));
+              Fav.guardTo(OlineExamMain(), binding: BindingsBuilder(() => Get.put<OnlineExamController>(OnlineExamController(announcement!.extraData, announcement!.key, int.tryParse(seisonNo)))));
             },
             color: const Color(0xffE7E9F6),
             iconData: MdiIcons.accountQuestion,
@@ -77,7 +77,7 @@ class AnnouncementItem extends StatelessWidget {
           child: AspectRatio(
             aspectRatio: 1,
             child: Swiper(
-              key: PageStorageKey(announcement!.key! + 'annonucement'),
+              key: PageStorageKey(announcement!.key + 'annonucement'),
               itemBuilder: (BuildContext context, int index) {
                 return Hero(
                     tag: announcement!.imgList![index],

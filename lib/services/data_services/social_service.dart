@@ -19,7 +19,7 @@ class SocialService {
 //! SETDATASERVICE
   // Sosyal Ağa İtem Kaydeder
   static Future<void> saveSocialItem(SocialItem socialItem, List<String> managerList, List<String> teacherList, List<String> studentList, String tur /*SocialNetwork-Video*/, bool? isPublish) async {
-    String key = _database22.pushKey('Okullar/$_kurumId/SocialNetwork/$_kurumId');
+    String key = socialItem.key;
     Map<String, dynamic> updatesSocial = {};
     Map<String, dynamic> updatesSocialVersion = {};
     final socialData = socialItem.mapForSave(key);

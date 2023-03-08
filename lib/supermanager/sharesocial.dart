@@ -25,7 +25,7 @@ class ShareSocial extends StatefulWidget {
 }
 
 class _ShareSocialState extends State<ShareSocial> with SocialFunctions {
-  SocialItem _data = SocialItem();
+  SocialItem _data = SocialItem.create(Generator.keyWithTimeStamp());
   var formKey = GlobalKey<FormState>();
   int qualityValue = 1;
 
@@ -54,7 +54,7 @@ class _ShareSocialState extends State<ShareSocial> with SocialFunctions {
     if (formKey.currentState!.validate()) {
       if (Fav.noConnection()) return;
 
-      _data = SocialItem();
+      _data = SocialItem.create(Generator.keyWithTimeStamp());
       formKey.currentState!.save();
 
       if (tur == SocialFileType.YoutubeVideo && _data.youtubeLink.getYoutubeIdFromUrl == null) {

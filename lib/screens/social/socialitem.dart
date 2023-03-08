@@ -49,7 +49,7 @@ class SocialItemWidget extends StatelessWidget with SocialFunctions {
 
     OverLoading.show();
     var contactList = targetListToContactList(targetList: item!.targetList, senderKey: item.senderKey);
-    await SocialService.deleteSocialItem(item.key!, tur, contactList).then((_) {
+    await SocialService.deleteSocialItem(item.key, tur, contactList).then((_) {
       OverLoading.close(state: true);
       //   OverAlert.deleteSuc();
     }).catchError((_) {

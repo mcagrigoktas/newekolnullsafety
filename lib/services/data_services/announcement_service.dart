@@ -20,8 +20,8 @@ class AnnouncementService {
 
 //! SETDATASERVICE
   // Duyuru Kaydeder
-  static Future<void> saveAnnouncement(Announcement announcement, String? existingKey) async {
-    String pushKey = existingKey ?? _database22.pushKey('${StringHelper.schools}/$_kurumId/$_termKey/Announcements');
+  static Future<void> saveAnnouncement(Announcement announcement, {bool isNew = true}) async {
+    String pushKey = announcement.key;
 
     return _database22.set('${StringHelper.schools}/$_kurumId/$_termKey/Announcements/$pushKey', announcement.mapForSave(pushKey)).then((_) {
       if (announcement.isPublish == true) {
@@ -30,7 +30,7 @@ class AnnouncementService {
         sendUnpublishedItemNotify(announcement.senderName!, 'publishthisannouncement'.argsTranslate({'title': announcement.title}));
       }
       _database11.set('${StringHelper.schools}/$_kurumId/SchoolData/Versions/$_termKey/${VersionListEnum.announcements}', _realTime);
-      if (existingKey == null) LogHelper.addLog('Announcements', _uid);
+      if (isNew) LogHelper.addLog('Announcements', _uid);
     });
   }
 

@@ -4,7 +4,7 @@ import 'package:mcg_extension/mcg_extension.dart';
 import '../../adminpages/screens/evaulationadmin/exams/model.dart';
 
 class Announcement extends DatabaseItem {
-  String? key;
+  String key;
   bool aktif = true;
   String? title;
   dynamic timeStamp;
@@ -22,7 +22,7 @@ class Announcement extends DatabaseItem {
   Map? extraData;
   dynamic createTime;
 
-  Announcement();
+  Announcement.create(this.key);
 
   Announcement.fromJson(Map snapshot, this.key) {
     aktif = snapshot['aktif'] ?? true;
@@ -45,7 +45,7 @@ class Announcement extends DatabaseItem {
     //notcrypted
 
     if (snapshot['enc'] != null) {
-      final decryptedData = (snapshot['enc'] as String?)!.decrypt(key!)!;
+      final decryptedData = (snapshot['enc'] as String?)!.decrypt(key)!;
       title = decryptedData['title'];
       content = decryptedData['content'];
       targetList = decryptedData['targetList'] == null ? null : List<String>.from(decryptedData['targetList']);
@@ -91,7 +91,7 @@ class Announcement extends DatabaseItem {
   }
 
   //String get getDateText => (timeStamp is int) ? (timeStamp as int).dateFormat("d-MMM, HH:mm") : '';
-  String get getCreteTimeText => (createTime is int) ? (createTime as int?)!.dateFormat("d-MMM, HH:mm") : '';
+  String get getCreteTimeText => (createTime is int) ? (createTime as int).dateFormat("d-MMM, HH:mm") : '';
 
   Map? get onlineForms {
     if (extraData == null) return null;
