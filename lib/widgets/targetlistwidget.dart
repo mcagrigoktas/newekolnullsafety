@@ -64,7 +64,7 @@ class _TargetListWidgetState extends State<TargetListWidget> with AppFunctions {
                     if (AppVar.appBloc.hesapBilgileri.gtT && teacherClassList.contains(sinif.key)) return true;
                     return false;
                   })
-                  .map((sinif) => MyMultiSelectItem<String>(sinif.key!, sinif.name!))
+                  .map((sinif) => MyMultiSelectItem<String>(sinif.key, sinif.name))
                   .toList()
               : AppVar.appBloc.studentService!.dataList
                   .where((ogrenci) {

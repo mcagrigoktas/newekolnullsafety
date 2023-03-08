@@ -111,7 +111,7 @@ class StudentImportHelper {
         // Ogrenci Sinifi
         if (_nameNo == '7') {
           if (_data.length > 1) {
-            _item.class0 = AppVar.appBloc.classService!.dataList.firstWhereOrNull((element) => element.name!.toLowerCase().trim() == _data.toLowerCase().trim() && element.classType == 0)?.key;
+            _item.class0 = AppVar.appBloc.classService!.dataList.firstWhereOrNull((element) => element.name.toLowerCase().trim() == _data.toLowerCase().trim() && element.classType == 0)?.key;
           }
         }
 

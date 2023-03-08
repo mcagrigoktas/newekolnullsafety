@@ -238,7 +238,7 @@ class _MakeRemoteLessonProgramState extends State<MakeRemoteLessonProgram> {
     _newBroadcastData = await LiveBroadCastHelper.createZoomMeeting(
       zakAndZas.first,
       zakAndZas.last!,
-      topic: widget.lesson!.name! + ' ' + (AppVar.appBloc.teacherService!.dataListItem(widget.lesson!.teacher!)?.name).toString(),
+      topic: widget.lesson!.name + ' ' + (AppVar.appBloc.teacherService!.dataListItem(widget.lesson!.teacher!)?.name).toString(),
     );
     setState(() {
       _zoomLinkCreated = true;

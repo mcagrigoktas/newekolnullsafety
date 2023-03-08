@@ -1,8 +1,11 @@
 import 'package:mcg_database/mcg_database.dart';
 import 'package:mcg_extension/mcg_extension.dart';
 
-class Lesson extends DatabaseItem {
-  String? name;
+class Lesson extends DatabaseItem implements Reliable {
+  String name = '';
+  String key;
+  bool aktif = true;
+
   String? longName;
   String? classKey;
   String? teacher;
@@ -10,8 +13,7 @@ class Lesson extends DatabaseItem {
   String? distribution;
   String? color;
   String? explanation;
-  String? key;
-  bool? aktif = true;
+
   int? lastUpdate;
   bool? remoteLessonActive;
   int? livebroadcasturltype;
@@ -20,10 +22,10 @@ class Lesson extends DatabaseItem {
   String? branch;
   //Map extraData;
 
-  Lesson();
+  Lesson.create(this.key);
 
   Lesson.fromJson(Map snapshot, this.key) {
-    aktif = snapshot['aktif'];
+    aktif = snapshot['aktif'] ?? true;
     lastUpdate = snapshot['lastUpdate'];
     remoteLessonActive = snapshot['remoteLessonActive'] ?? false;
     livebroadcasturltype = snapshot['livebroadcasturltype'];
@@ -31,7 +33,7 @@ class Lesson extends DatabaseItem {
     broadcastData = snapshot['broadcastData'];
 
     ///notcrypted
-    name = snapshot['name'];
+    name = snapshot['name'] ?? '';
     longName = snapshot['longName'];
     classKey = snapshot['classKey'];
     teacher = snapshot['teacher'];
@@ -45,7 +47,7 @@ class Lesson extends DatabaseItem {
     //notcrypted
 
     if (snapshot['enc'] != null) {
-      final decryptedData = (snapshot['enc'] as String?)!.decrypt(key!)!;
+      final decryptedData = (snapshot['enc'] as String?)!.decrypt(key)!;
       name = decryptedData['name'];
       longName = decryptedData['longName'];
       classKey = decryptedData['classKey'];
@@ -91,4 +93,7 @@ class Lesson extends DatabaseItem {
 
   @override
   bool active() => aktif != false;
+
+  @override
+  bool get isReliable => key.safeLength > 1 && name.safeLength > 1;
 }

@@ -71,9 +71,9 @@ class TeacherFunctions {
     if (AppVar.appBloc.hesapBilgileri.isEkid) {
       AppVar.appBloc.classService!.dataList.forEach((sinif) {
         if (AppVar.appBloc.hesapBilgileri.teacherSeeAllClass == true) {
-          classList.add(sinif.key!);
+          classList.add(sinif.key);
         } else if (sinif.classTeacher == AppVar.appBloc.hesapBilgileri.uid || sinif.classTeacher2 == AppVar.appBloc.hesapBilgileri.uid) {
-          classList.add(sinif.key!);
+          classList.add(sinif.key);
         }
       });
       if (AppVar.appBloc.hesapBilgileri.teacherSeeAllClass == true) {
@@ -89,9 +89,9 @@ class TeacherFunctions {
       //Ogretmeni oldugu siniflaria bakiliyor
       AppVar.appBloc.classService!.dataList.forEach((sinif) {
         if (AppVar.appBloc.hesapBilgileri.teacherSeeAllClass == true) {
-          classList.add(sinif.key!);
+          classList.add(sinif.key);
         } else if (sinif.classTeacher == AppVar.appBloc.hesapBilgileri.uid || sinif.classTeacher2 == AppVar.appBloc.hesapBilgileri.uid) {
-          classList.add(sinif.key!);
+          classList.add(sinif.key);
         }
       });
       if (AppVar.appBloc.hesapBilgileri.teacherSeeAllClass == true) {
@@ -230,7 +230,7 @@ class AppFunctions2 {
             if (allUserKeyMeanAllStudent == false) 'alluser',
             manager.key,
           ].contains(element))) {
-        _uidList.add(manager.key!);
+        _uidList.add(manager.key);
       }
     });
     AppVar.appBloc.teacherService!.dataList.forEach((teacher) {
@@ -262,14 +262,14 @@ class AppFunctions {
     if (AppVar.appBloc.hesapBilgileri.isEkid) {
       AppVar.appBloc.classService!.dataList.forEach((sinif) {
         if (sinif.classTeacher == AppVar.appBloc.hesapBilgileri.uid || sinif.classTeacher2 == AppVar.appBloc.hesapBilgileri.uid) {
-          classList.add(sinif.key!);
+          classList.add(sinif.key);
         }
       });
     } else {
       //Ogretmeni oldugu siniflaria bakiliyor
       AppVar.appBloc.classService!.dataList.forEach((sinif) {
         if (sinif.classTeacher == AppVar.appBloc.hesapBilgileri.uid || sinif.classTeacher2 == AppVar.appBloc.hesapBilgileri.uid) {
-          classList.add(sinif.key!);
+          classList.add(sinif.key);
         }
       });
     }
@@ -303,7 +303,7 @@ class AppFunctions {
       }
       if (classList.isEmpty) return [];
 
-      return AppVar.appBloc.classService!.dataList.where((sinif) => classList.contains(sinif.key!)).map((sinif) => (sinif.classTeacher ?? '')).toList()..removeWhere((teacherKey) => teacherKey == '');
+      return AppVar.appBloc.classService!.dataList.where((sinif) => classList.contains(sinif.key)).map((sinif) => (sinif.classTeacher ?? '')).toList()..removeWhere((teacherKey) => teacherKey == '');
     } else if (AppVar.appBloc.hesapBilgileri.isEkid) {
       List<String> list = [];
 

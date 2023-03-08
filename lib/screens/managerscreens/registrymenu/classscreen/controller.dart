@@ -98,9 +98,7 @@ class ClassListController extends GetxController {
     do {
       newDataKey = 3.makeKey;
     } while (AppVar.appBloc.classService!.dataList.any((sinif) => sinif.key == newDataKey));
-    newItem = Class()
-      ..key = newDataKey
-      ..classType = 0;
+    newItem = Class.create(newDataKey)..classType = 0;
     isCourseClass = newItem!.classType == 0;
     update();
   }
@@ -131,7 +129,7 @@ class ClassListController extends GetxController {
       isSaving = true;
       update();
 
-      await ClassService.saveClass(_item, _item.key!).then((a) {
+      await ClassService.saveClass(_item, _item.key).then((a) {
         OverAlert.saveSuc();
         newItem = null;
         update();
@@ -150,7 +148,7 @@ class ClassListController extends GetxController {
     if (selectedItem != null) {
       isSaving = true;
       update();
-      await ClassService.deleteClass(selectedItem!.key!).then((a) {
+      await ClassService.deleteClass(selectedItem!.key).then((a) {
         visibleScreen = VisibleScreen.main;
         selectedItem = null;
         OverAlert.deleteSuc();

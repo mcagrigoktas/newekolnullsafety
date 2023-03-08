@@ -218,7 +218,7 @@ class _EditDailyReportState extends State<EditDailyReport> {
       ),
       topActions: TopActionsTitleWithChild(
         title: TopActionsTitle(title: "dailyreportedit".translate),
-        child: ("editdailyimporthintprefix".translate + " " + _sinif.name! + " " + "editdailyimporthintsufix".translate).text.center.make(),
+        child: ("editdailyimporthintprefix".translate + " " + _sinif.name + " " + "editdailyimporthintsufix".translate).text.center.make(),
       ),
       body: Body(
           singleChildScroll: MyForm(

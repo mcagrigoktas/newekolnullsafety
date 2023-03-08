@@ -20,7 +20,7 @@ class SocialFunctions {
 
 //idareciler ekleniyor
     AppVar.appBloc.managerService!.dataList.forEach((manager) {
-      contactList.add(manager.key!);
+      contactList.add(manager.key);
     });
 //herkesle paylasilmissa tum ogretmenler ekleniyor
     AppVar.appBloc.teacherService!.dataList.forEach((teacher) {

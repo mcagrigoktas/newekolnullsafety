@@ -4,6 +4,7 @@ import 'package:mcg_extension/mcg_extension.dart';
 class Teacher extends DatabaseItem implements Reliable {
   String key;
   String name = '';
+  bool aktif = true;
 
   String? username;
   String? password;
@@ -16,7 +17,7 @@ class Teacher extends DatabaseItem implements Reliable {
 
   String? tc;
   String? color;
-  bool aktif = true;
+
   bool? seeAllClass;
   dynamic lastUpdate;
   Map? otherData;
@@ -34,7 +35,7 @@ class Teacher extends DatabaseItem implements Reliable {
     passwordChangedByUser = snapshot['pCU'] ?? false;
 
     ///notcrypted
-    name = snapshot['name'];
+    name = snapshot['name'] ?? '';
     explanation = snapshot['explanation'];
     password = snapshot['password'];
     username = snapshot['username'];

@@ -43,7 +43,7 @@ class _TeacherTimeTableNewState extends State<TeacherTimeTableNew> {
           children: _lessonList
               .map<Widget>((lesson) => TimeTableLessonCellWidget(
                     onTap: () {
-                      Fav.to(LessonDetailTeacher(lesson: AppVar.appBloc.lessonService!.dataListItem(lesson.key!), classKey: lesson.classKey));
+                      Fav.to(LessonDetailTeacher(lesson: AppVar.appBloc.lessonService!.dataListItem(lesson.key), classKey: lesson.classKey));
                     },
                     boxColor: lesson.color.parseColor,
                     text1: AppVar.appBloc.classService!.dataListItem(lesson.classKey!)?.name ?? '',
@@ -169,7 +169,7 @@ class _TeacherTimeTableNewState extends State<TeacherTimeTableNew> {
               textAlign: TextAlign.center,
               text: TextSpan(children: [
                 TextSpan(text: AppVar.appBloc.classService!.dataListItem(item.lesson!.classKey!)?.name ?? '', style: TextStyle(color: Colors.white, fontSize: 14)),
-                TextSpan(text: '\n' + item.lesson!.name!, style: TextStyle(color: Colors.white, fontSize: 9, fontWeight: FontWeight.bold)),
+                TextSpan(text: '\n' + item.lesson!.name, style: TextStyle(color: Colors.white, fontSize: 9, fontWeight: FontWeight.bold)),
               ]),
             ),
       onTap: item == null

@@ -287,7 +287,7 @@ class _ClassProgramNames extends StatelessWidget {
       height: timeTableSettings!.cellHeight,
       margin: const EdgeInsets.all(1),
       child: Text(
-        sinif!.name!.length > 5 ? sinif!.name!.substring(0, 5) : sinif!.name!,
+        sinif!.name.length > 5 ? sinif!.name.substring(0, 5) : sinif!.name,
         style: TextStyle(color: Fav.design.primaryText),
       ),
     );

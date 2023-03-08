@@ -88,7 +88,7 @@ class EkolPushNotificationService {
         uidList.add(teacher.key);
       });
       AppVar.appBloc.managerService!.dataList.where((manager) => tergetList.contains(manager.key)).forEach((manager) {
-        uidList.add(manager.key!);
+        uidList.add(manager.key);
       });
       if (uidList.isEmpty) return;
       var sendingTokenData = _getTokenList(uidList, forParentMessageMenu: forParentMessageMenu, forParentOtherMenu: forParentOtherMenu, parentVisibleCode: parentVisibleCodeForNotification);

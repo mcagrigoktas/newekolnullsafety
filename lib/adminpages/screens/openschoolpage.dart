@@ -84,7 +84,7 @@ class _OpenSchoolInfoPageState extends State<OpenSchoolInfoPage> {
 
       updates['/${StringHelper.schools}/$serverId/CheckList/${mail! + password!}'] = {'GirisTuru': 10, 'UID': 'Manager1'};
 
-      final manager = Manager()
+      final manager = Manager.create('Manager1')
         ..aktif = true
         ..username = mail
         ..password = password

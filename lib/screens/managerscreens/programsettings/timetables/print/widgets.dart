@@ -160,9 +160,9 @@ class ClassProgramPrint extends StatelessWidget {
               ...AppVar.appBloc.classService!.dataList
                   .where((element) => element.classType == 0)
                   .map(
-                    (e) => MyMultiSelectItem(e.key, e.name!),
+                    (e) => MyMultiSelectItem(e.key, e.name),
                   )
-                  .toList() as Iterable<MyMultiSelectItem<String>>
+                  .toList()
             ],
             onChanged: (value) {
               Fav.writeSeasonCache('t_p_c1', value);
@@ -176,9 +176,9 @@ class ClassProgramPrint extends StatelessWidget {
               ...AppVar.appBloc.classService!.dataList
                   .where((element) => element.classType != 0)
                   .map(
-                    (e) => MyMultiSelectItem(e.key, e.name!),
+                    (e) => MyMultiSelectItem(e.key, e.name),
                   )
-                  .toList() as Iterable<MyMultiSelectItem<String>>
+                  .toList()
             ],
             onChanged: (value) {
               Fav.writeSeasonCache('t_p_c2', value);
@@ -189,8 +189,8 @@ class ClassProgramPrint extends StatelessWidget {
         MyRaisedButton(
             onPressed: () {
               TimeTablePrintHelper.printClassProgram([
-                ...Fav.readSeasonCache('t_p_c1', []) as Iterable<String>,
-                ...Fav.readSeasonCache('t_p_c2', []) as Iterable<String>,
+                ...Fav.readSeasonCache<List<String>>('t_p_c1', [])!,
+                ...Fav.readSeasonCache<List<String>>('t_p_c2', [])!,
               ]);
             },
             text: Words.print)

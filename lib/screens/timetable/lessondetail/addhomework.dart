@@ -92,7 +92,7 @@ class _AddHomeWorkState extends State<AddHomeWork> {
         return;
       }
 
-      HomeWorkService.saveHomeWork(_data.mapForSave(), teacherHomeWorkSharing, widget.sinif!.key!, widget.lesson!.key, contactlist, _data.teacherKey!).then((a) async {
+      HomeWorkService.saveHomeWork(_data.mapForSave(), teacherHomeWorkSharing, widget.sinif!.key, widget.lesson!.key, contactlist, _data.teacherKey!).then((a) async {
         if (teacherHomeWorkSharing) {
           EkolPushNotificationService.sendMultipleNotification(HomeWorkHelper.getNotificationHeader(widget.tur) + ': ' + _data.title!, _data.content, contactlist, NotificationArgs(tag: 'homework')).unawaited;
         }

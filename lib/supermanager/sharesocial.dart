@@ -75,7 +75,7 @@ class _ShareSocialState extends State<ShareSocial> with SocialFunctions {
 
       ///Burda degisiklik yaparsan social functiondada yapman lazim
       //Butun yoneticiler burda listeye ekleniyor
-      List<String> managerList = AppVar.appBloc.managerService!.dataList.map((manager) => manager.key!).toList();
+      List<String> managerList = AppVar.appBloc.managerService!.dataList.map((manager) => manager.key).toList();
 
       List<String> teacherList = [];
       // butun herkese gonderilecekse ogretmenlerin hepsi kaydediliyor

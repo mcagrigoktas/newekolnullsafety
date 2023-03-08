@@ -70,7 +70,7 @@ class _EkolRollCallTeacherState extends State<EkolRollCallTeacher> {
 
     final String dateKey = time!.dateFormat("d-MM-yyyy");
 
-    RollCallService.addEkolRollCall(dateKey, widget.sinif.key!, lessonNo, widget.lesson!.key! + 'LN:' + lessonNo.toString(), rollCallDataForTeacher, studentData).then((_) {
+    RollCallService.addEkolRollCall(dateKey, widget.sinif.key, lessonNo, widget.lesson!.key + 'LN:' + lessonNo.toString(), rollCallDataForTeacher, studentData).then((_) {
       OverAlert.show(message: 'rollcallsavehint'.argsTranslate({'className': widget.sinif.name, 'no': lessonNo, 'lessonName': widget.lesson!.longName}));
       setState(() {
         isLoading = false;
@@ -165,7 +165,7 @@ class _EkolRollCallTeacherState extends State<EkolRollCallTeacher> {
       });
       rollCallDataForTeacher = {};
       final String dateKey = (time ?? DateTime.now()).dateFormat("d-MM-yyyy");
-      RollCallService.dbGetEkolRollCall(dateKey, widget.sinif.key!, widget.lesson!.key! + 'LN:' + lessonNo.toString()).once().then((snap) {
+      RollCallService.dbGetEkolRollCall(dateKey, widget.sinif.key, widget.lesson!.key + 'LN:' + lessonNo.toString()).once().then((snap) {
         rollCallDataForTeacher = snap?.value ?? {};
         rollCallDataForTeacherExistingData = Map.from(snap?.value ?? {});
         formKey = GlobalKey();

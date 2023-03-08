@@ -78,7 +78,7 @@ class ManagerListController extends GetxController {
     formKey = GlobalKey<FormState>();
     selectedItem = null;
     visibleScreen = VisibleScreen.detail;
-    newItem = Manager()..key = 7.makeKey;
+    newItem = Manager.create(7.makeKey);
     update();
   }
 
@@ -115,7 +115,7 @@ class ManagerListController extends GetxController {
     if (selectedItem != null) {
       isSaving = true;
       update();
-      await ManagerService.deleteManager(selectedItem!.key!).then((a) {
+      await ManagerService.deleteManager(selectedItem!.key).then((a) {
         visibleScreen = VisibleScreen.main;
         selectedItem = null;
         OverAlert.deleteSuc();

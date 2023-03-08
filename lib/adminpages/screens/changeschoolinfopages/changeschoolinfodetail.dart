@@ -145,7 +145,7 @@ class ChangeSchoolInfoDetailState extends State<ChangeSchoolInfoDetail> {
             ..password = saveManagerPassword
             ..lastUpdate = databaseTime
             ..phone = saveManagerPhone
-            ..name = saveManagerName)
+            ..name = saveManagerName!)
           .mapForSave('Manager1');
 
       await AppVar.appBloc.database1.update(updates).then((_) async {

@@ -53,7 +53,7 @@ class AscExportHelper {
     }, nest: () {
       AppVar.appBloc.classService!.dataList.forEach((sinif) {
         _builder.element('class', attributes: {
-          'id': sinif.key!,
+          'id': sinif.key,
           'name': sinif.longName.changeTurkishCharacter!,
           'short': sinif.name.changeTurkishCharacter!,
         });
@@ -71,7 +71,7 @@ class AscExportHelper {
         final _class = AppVar.appBloc.classService!.dataListItem(_classKey);
         if (_class != null && _class.aktif != false) {
           _builder.element('subject', attributes: {
-            'id': lesson.key!,
+            'id': lesson.key,
             'name': lesson.longName.changeTurkishCharacter!,
             'short': lesson.name.changeTurkishCharacter!,
           });
@@ -94,9 +94,9 @@ class AscExportHelper {
             _cardSize = int.tryParse(lesson.distribution!.substring(0, 1));
           }
           _builder.element('lesson', attributes: {
-            'id': "L" + lesson.key!,
+            'id': "L" + lesson.key,
             'classids': lesson.classKey!,
-            'subjectid': lesson.key!,
+            'subjectid': lesson.key,
             'periodspercard': (_cardSize ?? ((lesson.count ?? 1) > 1 ? 2 : 1)).toString(),
             'periodsperweek': "${(lesson.count ?? 1)}.0",
             'teacherids': lesson.teacher!,

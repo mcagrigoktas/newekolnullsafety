@@ -49,7 +49,7 @@ class _LessonDetailTeacherState extends State<LessonDetailTeacher> {
       ),
       BottomSheetGroup(
         items: [
-          BottomSheetItem(name: (sinif.name ?? '') + ' ' + 'weeklytimetable'.translate, value: 5, icon: Icons.table_chart_sharp),
+          BottomSheetItem(name: (sinif.name) + ' ' + 'weeklytimetable'.translate, value: 5, icon: Icons.table_chart_sharp),
         ],
       ),
     ]));
@@ -180,7 +180,7 @@ class _LessonDetailTeacherState extends State<LessonDetailTeacher> {
       ),
       topBar: TopBar(middle: sinif.name.text.bold.make(), leadingTitle: widget.previousMenuName ?? 'back'.translate, trailingActions: [BroadcastHelper.broadcastLessonStartWidget(widget.lesson!)]),
       topActions: TopActionsTitle(title: widget.lesson!.longName!),
-      body: Body.child(child: HomeWorkList(hwList: hwList )),
+      body: Body.child(child: HomeWorkList(hwList: hwList)),
     );
   }
 }

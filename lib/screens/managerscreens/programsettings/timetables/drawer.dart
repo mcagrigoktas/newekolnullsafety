@@ -151,7 +151,7 @@ class DrawerWidget extends StatelessWidget {
             name: 'visibleclass0'.translate,
             initialValue: List<String>.from(_controller.timeTableSettings.visibleClass!),
             context: context,
-            items: AppVar.appBloc.classService!.dataList.map((sinif) => MyMultiSelectItem(sinif.key, sinif.name! + (sinif.classType == 1 ? ('(' + ('classtype1').translate.substring(0, 1)) + ')' : ''))).toList() as List<MyMultiSelectItem<String>>,
+            items: AppVar.appBloc.classService!.dataList.map((sinif) => MyMultiSelectItem(sinif.key, sinif.name + (sinif.classType == 1 ? ('(' + ('classtype1').translate.substring(0, 1)) + ')' : ''))).toList(),
             title: 'visibleclass0'.translate,
             iconData: MdiIcons.eyeCheckOutline,
             onChanged: (value) {

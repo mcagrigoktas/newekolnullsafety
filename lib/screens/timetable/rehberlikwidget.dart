@@ -27,7 +27,7 @@ class _RehberlikWidgetState extends State<RehberlikWidget> {
                   padding: Inset.hv(8, 4),
                   decoration: BoxDecoration(color: Colors.amber, borderRadius: BorderRadius.circular(4.0), boxShadow: [BoxShadow(color: Colors.amber.withAlpha(180), blurRadius: 1)]),
                   margin: const EdgeInsets.all(1),
-                  child: Text(sinif.name!, style: const TextStyle(color: Colors.white)),
+                  child: Text(sinif.name, style: const TextStyle(color: Colors.white)),
                 ))
             .toList(),
       );
@@ -46,7 +46,7 @@ class _RehberlikWidgetState extends State<RehberlikWidget> {
           padding: Inset.hv(8, 4),
           decoration: BoxDecoration(color: Colors.amber, borderRadius: BorderRadius.circular(4.0), boxShadow: [BoxShadow(color: Colors.amber.withAlpha(180), blurRadius: 1)]),
           margin: const EdgeInsets.all(1),
-          child: Text(_sinif.name! + _teacherName, style: const TextStyle(color: Colors.white)),
+          child: Text(_sinif.name + _teacherName, style: const TextStyle(color: Colors.white)),
         );
       }
     }

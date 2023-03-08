@@ -58,7 +58,7 @@ class BroadcastHelper {
   }
 
   static Widget broadcastLessonStartWidget(Lesson existingLesson) {
-    final Lesson lesson = AppVar.appBloc.lessonService!.dataListItem(existingLesson.key!)!;
+    final Lesson lesson = AppVar.appBloc.lessonService!.dataListItem(existingLesson.key)!;
     if (lesson.remoteLessonActive != true) return const SizedBox();
     if (lesson.livebroadcasturltype == 4 || lesson.livebroadcasturltype == 5) {
       if (lesson.broadcastLink.safeLength < 6 || AppVar.appBloc.schoolInfoService!.singleData!.livedomainlist.safeLength < 5) return const SizedBox();
@@ -84,10 +84,10 @@ class BroadcastHelper {
           channelName = lesson.broadcastLink!.split('-*-').last;
         } else if (lesson.livebroadcasturltype == 9) {
           broadcastData = lesson.broadcastData;
-          channelName = lesson.key! + 'livelessonkey';
+          channelName = lesson.key + 'livelessonkey';
         } else {
           broadcastLink = lesson.broadcastLink;
-          channelName = lesson.key! + 'livelessonkey';
+          channelName = lesson.key + 'livelessonkey';
         }
 
         if (broadcastLink.safeLength < 6 && broadcastData == null) return OverAlert.show(type: AlertType.danger, message: 'errliveurl'.translate);

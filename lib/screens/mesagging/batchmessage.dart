@@ -86,9 +86,9 @@ class BatchMessagesState extends State<BatchMessages> {
           if (AppVar.appBloc.hesapBilgileri.gtM && AppVar.appBloc.hesapBilgileri.uid == manager.key) return false;
           return true;
         }).map((manager) {
-          _ownPreviewMap[manager.key!] = MesaggingPreview(senderName: manager.name, senderImgUrl: manager.imgUrl, senderKey: manager.key, timeStamp: databaseTime, lastMessage: _message);
+          _ownPreviewMap[manager.key] = MesaggingPreview(senderName: manager.name, senderImgUrl: manager.imgUrl, senderKey: manager.key, timeStamp: databaseTime, lastMessage: _message);
           if (manager.phone.safeLength > 4) _phoneList.add(manager.phone);
-          return manager.key!;
+          return manager.key;
         }).toList());
       }
 

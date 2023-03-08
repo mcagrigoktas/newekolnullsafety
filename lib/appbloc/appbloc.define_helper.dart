@@ -471,9 +471,9 @@ class AppblocDefineServiceHelper {
       "${_hesapBilgileri.kurumID}${_hesapBilgileri.termKey}Lessons",
       queryRefForRealtimeDB: LessonService.dbLessonListRef(),
       jsonParse: (key, value) => Lesson.fromJson(value, key),
-      removeFunction: (a) => a.name == null,
+      removeFunction: (a) => !a.isReliable,
       sortFunction: (Lesson a, Lesson b) {
-        return 'lang'.translate == 'tr' ? turkish.comparator(a.name!.toLowerCase(), b.name!.toLowerCase()) : (a.name!.toLowerCase()).compareTo(b.name!.toLowerCase());
+        return 'lang'.translate == 'tr' ? turkish.comparator(a.name.toLowerCase(), b.name.toLowerCase()) : (a.name.toLowerCase()).compareTo(b.name.toLowerCase());
       },
       lastUpdateKey: 'lastUpdate',
       bundleConfig: bundleConfig,
@@ -486,9 +486,9 @@ class AppblocDefineServiceHelper {
       "${_hesapBilgileri.kurumID}${_hesapBilgileri.termKey}Classes",
       queryRefForRealtimeDB: ClassService.dbClassListRef(),
       jsonParse: (key, value) => Class.fromJson(value, key),
-      removeFunction: (a) => a.name == null,
+      removeFunction: (a) => !a.isReliable,
       sortFunction: (Class a, Class b) {
-        return 'lang'.translate == 'tr' ? turkish.comparator(a.name!.toLowerCase(), b.name!.toLowerCase()) : (a.name!.toLowerCase()).compareTo(b.name!.toLowerCase());
+        return 'lang'.translate == 'tr' ? turkish.comparator(a.name.toLowerCase(), b.name.toLowerCase()) : (a.name.toLowerCase()).compareTo(b.name.toLowerCase());
       },
       lastUpdateKey: 'lastUpdate',
       bundleConfig: bundleConfig,
@@ -525,9 +525,9 @@ class AppblocDefineServiceHelper {
       "${_hesapBilgileri.kurumID}Managers",
       queryRefForRealtimeDB: ManagerService.dbManagerListRef(),
       jsonParse: (key, value) => Manager.fromJson(value, key),
-      removeFunction: (a) => a.name == null,
+      removeFunction: (a) => !a.isReliable,
       sortFunction: (Manager a, Manager b) {
-        return 'lang'.translate == 'tr' ? turkish.comparator(a.name!.toLowerCase(), b.name!.toLowerCase()) : (a.name!.toLowerCase()).compareTo(b.name!.toLowerCase());
+        return 'lang'.translate == 'tr' ? turkish.comparator(a.name.toLowerCase(), b.name.toLowerCase()) : (a.name.toLowerCase()).compareTo(b.name.toLowerCase());
       },
       lastUpdateKey: 'lastUpdate',
       bundleConfig: bundleConfig,
@@ -545,7 +545,7 @@ class AppblocDefineServiceHelper {
               ? <String>[
                   'alluser',
                   AppVar.appBloc.hesapBilgileri.uid,
-                  ...AppVar.appBloc.classService!.dataList.fold<List<String>>([], (p, e) => e.classTeacher == AppVar.appBloc.hesapBilgileri.uid || e.classTeacher2 == AppVar.appBloc.hesapBilgileri.uid ? (p..add(e.key!)) : p),
+                  ...AppVar.appBloc.classService!.dataList.fold<List<String>>([], (p, e) => e.classTeacher == AppVar.appBloc.hesapBilgileri.uid || e.classTeacher2 == AppVar.appBloc.hesapBilgileri.uid ? (p..add(e.key)) : p),
                 ]
               : <String>[
                   'alluser',

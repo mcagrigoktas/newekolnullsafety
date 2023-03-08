@@ -103,7 +103,7 @@ class _EkolRollCallManagerPageState extends State<EkolRollCallManagerPage> {
 
       listWidget.add(ExpansionTile(
         title: Text(
-          sinif != null ? sinif.name! : 'classnameerr'.translate,
+          sinif != null ? sinif.name : 'classnameerr'.translate,
           style: const TextStyle(fontWeight: FontWeight.bold),
         ),
         children: calcLessonList(value, classKey),
@@ -501,7 +501,7 @@ class RollcallExportHelper {
         return [
           student.no!,
           student.name,
-          (AppVar.appBloc.classService!.dataListItem(student.class0!) ?? (Class()..name = '?')).name!,
+          (AppVar.appBloc.classService!.dataListItem(student.class0!))?.name ?? '?',
           student.motherPhone ?? '?',
           student.fatherPhone ?? '?',
           ...dayTextList.map((dayText) {
@@ -606,7 +606,7 @@ class RollcallExportHelper {
         return <String?>[
           student.no,
           student.name,
-          (AppVar.appBloc.classService!.dataListItem(student.class0!) ?? (Class()..name = '?')).name,
+          (AppVar.appBloc.classService!.dataListItem(student.class0!))?.name ?? '?',
           (e.value['days'] as Set).length.toString(),
           (e.value['lessons'] as Map).entries.fold(0, (dynamic p, e) => p + e.value).toString(),
           (e.value['days'] as Set).fold<String>('', ((p, e) => p + e + ' ')),

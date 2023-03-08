@@ -406,7 +406,7 @@ class AnnonuncementItemHelper {
                           margin: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 2.0),
                           padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
                           decoration: const ShapeDecoration(color: Colors.amber, shape: StadiumBorder()),
-                          child: Text(sinif.name!, style: const TextStyle(color: Colors.black87)),
+                          child: Text(sinif.name, style: const TextStyle(color: Colors.black87)),
                         );
                       }).toList(),
                     ),

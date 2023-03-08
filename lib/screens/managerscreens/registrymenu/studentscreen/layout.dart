@@ -316,7 +316,7 @@ class StudentList extends StatelessWidget {
                                           iconData: MdiIcons.humanMaleBoard,
                                           color: Colors.black,
                                           items: AppVar.appBloc.classService!.dataList.where((sinif) => sinif.classType == int.tryParse(item.key.replaceAll('t', ''))).map((sinif) {
-                                            return DropdownMenuItem(value: sinif.key, child: Text(sinif.name!, style: TextStyle(color: Fav.design.primaryText)));
+                                            return DropdownMenuItem(value: sinif.key, child: Text(sinif.name, style: TextStyle(color: Fav.design.primaryText)));
                                           }).toList()
                                             ..insert(0, DropdownMenuItem(value: null, child: Text("secimyapilmamis".translate, style: TextStyle(color: Fav.design.textField.hint)))),
                                           onSaved: (value) {

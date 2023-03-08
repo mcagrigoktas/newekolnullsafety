@@ -91,7 +91,7 @@ class CheckTeacherProgramController extends GetxController {
 
     if (data2 != null) {
       toplamDersSaati++;
-      var sinifAdi = AppVar.appBloc.classService!.dataList.singleWhere((sinif) => data2.lesson!.classKey == sinif.key, orElse: () => Class()..name = '-').name;
+      var sinifAdi = AppVar.appBloc.classService!.dataList.singleWhereOrNull((sinif) => data2.lesson!.classKey == sinif.key)?.name ?? '-';
       sinifSaatSayisi[sinifAdi] = (sinifSaatSayisi[sinifAdi] ?? 0) + 1;
     }
 
@@ -106,8 +106,8 @@ class CheckTeacherProgramController extends GetxController {
       child: RichText(
         textAlign: TextAlign.center,
         text: TextSpan(children: [
-          TextSpan(text: AppVar.appBloc.classService!.dataList.singleWhere((sinif) => sinif.key == (data2?.lesson?.classKey), orElse: () => Class()..name = '').name, style: TextStyle(color: Colors.white, fontSize: 14)),
-          TextSpan(text: data2 == null ? '' : ('\n' + data2.lesson!.name!), style: TextStyle(color: Colors.white, fontSize: 11)),
+          TextSpan(text: AppVar.appBloc.classService!.dataList.singleWhereOrNull((sinif) => sinif.key == (data2?.lesson?.classKey))?.name ?? '', style: TextStyle(color: Colors.white, fontSize: 14)),
+          TextSpan(text: data2 == null ? '' : ('\n' + data2.lesson!.name), style: TextStyle(color: Colors.white, fontSize: 11)),
         ]),
       ),
     );

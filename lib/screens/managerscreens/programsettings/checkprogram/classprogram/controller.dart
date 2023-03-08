@@ -148,7 +148,7 @@ class CheckClassProgramController extends GetxController {
       var lesson = AppVar.appBloc.lessonService!.dataList.singleWhereOrNull((lesson) => lesson.key == _lessonKey);
 
       if (lesson != null) {
-        final String name = lesson.name!;
+        final String name = lesson.name;
         final String teacherName = AppVar.appBloc.teacherService!.dataList.singleWhereOrNull((teacher) => lesson.teacher == teacher.key)?.name ?? '-';
         sinifSaatSayisi[name + '*-*' + teacherName] = (sinifSaatSayisi[name + '*-*' + teacherName] ?? 0) + 1;
       }
@@ -161,7 +161,7 @@ class CheckClassProgramController extends GetxController {
         height: timeTableSettings.cellHeight,
         horizantalMargin: 1,
         verticalMargin: 1,
-        child: Text(lesson == null ? '' : lesson.name!, style: TextStyle(color: Colors.white)),
+        child: Text(lesson == null ? '' : lesson.name, style: TextStyle(color: Colors.white)),
       );
     }
   }

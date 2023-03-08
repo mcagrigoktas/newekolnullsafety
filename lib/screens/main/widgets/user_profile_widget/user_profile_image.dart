@@ -22,7 +22,7 @@ class UserProfileImage extends StatelessWidget {
     String resultText = '';
     AppVar.appBloc.classService!.dataList.forEach((sinif) {
       if (AppVar.appBloc.hesapBilgileri.classKeyList.contains(sinif.key)) {
-        resultText += sinif.name! + ' ';
+        resultText += sinif.name + ' ';
       }
     });
     if (resultText.length < 2) {

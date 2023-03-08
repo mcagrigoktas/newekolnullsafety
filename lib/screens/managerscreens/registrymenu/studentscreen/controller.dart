@@ -82,13 +82,13 @@ class StudentListController extends GetxController {
 
     if (MenuList.hasTimeTable()) {
       etudClassDropDownList = AppVar.appBloc.classService!.dataList.where((sinif) => sinif.classType == 1).map((sinif) {
-        return DropdownMenuItem(value: sinif.key, child: Text(sinif.name!, style: TextStyle(color: Fav.design.primaryText)));
+        return DropdownMenuItem(value: sinif.key, child: Text(sinif.name, style: TextStyle(color: Fav.design.primaryText)));
       }).toList();
       etudClassDropDownList!.insert(0, DropdownMenuItem(value: null, child: Text("secimyapilmamis".translate, style: TextStyle(color: Fav.design.textField.hint))));
     }
 
     classDropDownList = AppVar.appBloc.classService!.dataList.where((sinif) => sinif.classType == 0).map((sinif) {
-      return DropdownMenuItem(value: sinif.key, child: Text(sinif.name!, style: TextStyle(color: Fav.design.primaryText)));
+      return DropdownMenuItem(value: sinif.key, child: Text(sinif.name, style: TextStyle(color: Fav.design.primaryText)));
     }).toList();
 
     // if (AppVar.appBloc.hesapBilgileri.gtT) {

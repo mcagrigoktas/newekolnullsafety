@@ -30,7 +30,7 @@ class LessonService {
     Map<String, dynamic> updates = {};
 
     itemList.forEach((lesson) {
-      updates['/Okullar/$_kurumId/$_termKey/Lessons/' + lesson.key!] = lesson.mapForSave(lesson.key)..['lastUpdate'] = _realTime;
+      updates['/Okullar/$_kurumId/$_termKey/Lessons/' + lesson.key] = lesson.mapForSave(lesson.key)..['lastUpdate'] = _realTime;
     });
     updates['/Okullar/$_kurumId/SchoolData/Versions/$_termKey/Lessons'] = _realTime;
 

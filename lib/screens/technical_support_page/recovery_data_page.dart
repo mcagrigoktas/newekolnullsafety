@@ -97,7 +97,7 @@ class _RecoverPageState extends State<RecoverPage> {
         }
         if (widget.tur == 1) {
           Class sinif = Class.fromJson(value, key);
-          if (!sinif.aktif!) infoList.add(RecoverData(key: sinif.key, name: sinif.name, data2: ''));
+          if (!sinif.aktif) infoList.add(RecoverData(key: sinif.key, name: sinif.name, data2: ''));
         }
         if (widget.tur == 2) {
           Teacher teacher = Teacher.fromJson(value, key);
@@ -105,7 +105,7 @@ class _RecoverPageState extends State<RecoverPage> {
         }
         if (widget.tur == 3) {
           Lesson lesson = Lesson.fromJson(value, key);
-          if (!lesson.aktif!) infoList.add(RecoverData(key: lesson.key, name: lesson.name, data2: getClassName(lesson.classKey)));
+          if (!lesson.aktif) infoList.add(RecoverData(key: lesson.key, name: lesson.name, data2: getClassName(lesson.classKey)));
         }
       });
       infoList.sort((a, b) => a.name!.compareTo(b.name!));

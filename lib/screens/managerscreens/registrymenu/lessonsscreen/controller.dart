@@ -24,7 +24,7 @@ class LessonListController extends GetxController {
   var formKey = GlobalKey<FormState>();
 
   final classListDropdown = AppVar.appBloc.classService!.dataList.map((sinif) => DropdownItem(name: sinif.name, value: sinif.key)).toList();
-  final classListDropdown2 = AppVar.appBloc.classService!.dataList.map((sinif) => DropdownMenuItem(child: Text(sinif.name!, maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(color: Fav.design.primaryText)), value: sinif.key)).toList();
+  final classListDropdown2 = AppVar.appBloc.classService!.dataList.map((sinif) => DropdownMenuItem(child: Text(sinif.name, maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(color: Fav.design.primaryText)), value: sinif.key)).toList();
   final teacherListDropdown = AppVar.appBloc.teacherService!.dataList.map((teacher) => DropdownMenuItem(value: teacher.key, child: Text(teacher.name, maxLines: 1, style: TextStyle(color: Fav.design.primaryText)))).toList()
     ..insert(
         0,
@@ -90,7 +90,7 @@ class LessonListController extends GetxController {
       newDataKey = 3.makeKey;
     } while (AppVar.appBloc.lessonService!.dataList.any((lesson) => lesson.key == newDataKey));
 
-    newItem = Lesson()..key = newDataKey;
+    newItem = Lesson.create(newDataKey);
     newItem!.classKey = filteredClassKey['filteredClassKey'];
     update();
   }
@@ -111,7 +111,7 @@ class LessonListController extends GetxController {
       update();
       final _item = newItem ?? selectedItem!;
 
-      await LessonService.saveLesson(_item, _item.key!).then((value) {
+      await LessonService.saveLesson(_item, _item.key).then((value) {
         OverAlert.saveSuc();
         newItem = null;
         filteredClassKey['filteredClassKey'] = _item.classKey;
@@ -131,7 +131,7 @@ class LessonListController extends GetxController {
     if (selectedItem != null) {
       isSaving = true;
       update();
-      await LessonService.deleteLesson(selectedItem!.key!).then((a) {
+      await LessonService.deleteLesson(selectedItem!.key).then((a) {
         visibleScreen = VisibleScreen.main;
         selectedItem = null;
         OverAlert.deleteSuc();

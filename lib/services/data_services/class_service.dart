@@ -28,7 +28,7 @@ class ClassService {
     Map<String, dynamic> updates = {};
 
     itemList.forEach((sinif) {
-      updates['/Okullar/$_kurumId/$_termKey/Classes/' + sinif.key!] = sinif.mapForSave(sinif.key)..['lastUpdate'] = _realTime;
+      updates['/Okullar/$_kurumId/$_termKey/Classes/' + sinif.key] = sinif.mapForSave(sinif.key)..['lastUpdate'] = _realTime;
     });
 
     updates['/Okullar/$_kurumId/SchoolData/Versions/$_termKey/Classes'] = _realTime;

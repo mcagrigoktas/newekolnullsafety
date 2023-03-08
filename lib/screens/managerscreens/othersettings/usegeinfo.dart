@@ -110,7 +110,7 @@ class _UsageInfoState extends State<UsageInfo> with AppFunctions {
         }
         return (menuData[user.key] ?? 0).toString();
       }).toList()
-        ..insert(0, user.name! /*whatIsThisName(AppVar.appBloc, user.key)*/));
+        ..insert(0, user.name /*whatIsThisName(AppVar.appBloc, user.key)*/));
     });
 
     (widget.teacherList ?? AppVar.appBloc.teacherService!.dataList).forEach((user) {

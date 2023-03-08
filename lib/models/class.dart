@@ -1,27 +1,31 @@
 import 'package:mcg_database/mcg_database.dart';
 import 'package:mcg_extension/mcg_extension.dart';
 
-class Class extends DatabaseItem {
-  String? name;
+class Class extends DatabaseItem implements Reliable {
+  String key;
+  String name = '';
+  bool aktif = true;
+
   String? longName;
   String? explanation;
   String? classTeacher;
   String? classTeacher2;
   String? imgUrl;
-  String? key;
+
   //0 Normal sinif 1. Etud sinifi
   int? classType;
-  bool? aktif = true;
+
   String? classLevel;
   int? lastUpdate;
-  Class();
+
+  Class.create(this.key);
 
   Class.fromJson(Map snapshot, this.key) {
-    aktif = snapshot['aktif'];
+    aktif = snapshot['aktif'] ?? true;
     lastUpdate = snapshot['lastUpdate'];
 
     ///notcrypted
-    name = snapshot['name'];
+    name = snapshot['name'] ?? '';
     longName = snapshot['longName'];
     explanation = snapshot['explanation'];
     classTeacher = snapshot['classTeacher'] ?? snapshot['teacher1'];
@@ -32,7 +36,7 @@ class Class extends DatabaseItem {
     //notcrypted
 
     if (snapshot['enc'] != null) {
-      final decryptedData = (snapshot['enc'] as String?)!.decrypt(key!)!;
+      final decryptedData = (snapshot['enc'] as String?)!.decrypt(key)!;
       name = decryptedData['name'];
       longName = decryptedData['longName'];
       explanation = decryptedData['explanation'];
@@ -68,4 +72,7 @@ class Class extends DatabaseItem {
 
   @override
   bool active() => aktif != false;
+
+  @override
+  bool get isReliable => key.safeLength > 1 && name.safeLength > 1;
 }

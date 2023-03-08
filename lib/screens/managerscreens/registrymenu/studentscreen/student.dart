@@ -55,7 +55,7 @@ class Student extends DatabaseItem implements Reliable {
     parent2PasswordChangedByUser = snapshot['pCU2'] ?? false;
 
     ///notcrypted
-    name = snapshot['name'];
+    name = snapshot['name'] ?? '';
     no = snapshot['no'];
     tc = snapshot['tc'];
     username = snapshot['username'];

@@ -78,7 +78,7 @@ class RegistryMenuPrint {
                             iconData: Icons.class_,
                             name: 'classlist'.translate,
                             canvasColor: Fav.design.dropdown.canvas,
-                            items: AppVar.appBloc.classService!.dataList.map((sinif) => DropdownMenuItem(child: Text(sinif.name!, maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(color: Fav.design.primaryText)), value: sinif.key)).toList()
+                            items: AppVar.appBloc.classService!.dataList.map((sinif) => DropdownMenuItem(child: Text(sinif.name, maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(color: Fav.design.primaryText)), value: sinif.key)).toList()
                               ..insert(0, DropdownMenuItem(child: Text('all'.translate, maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(color: Fav.design.primaryText.withAlpha(150))), value: 'all'))
                             //  ..add(DropdownMenuItem(child: Text( 'noclassstudent'), maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(color:  Fav.design.primaryText)), value: 'noclass'))
                             ,

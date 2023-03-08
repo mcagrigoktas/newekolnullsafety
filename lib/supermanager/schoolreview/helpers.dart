@@ -26,9 +26,9 @@ class SuperManagerMiniFetchers {
         multipleData: true,
         queryRef: Reference(AppVar.appBloc.database1, 'Okullar/$kurumId/Managers'),
         jsonParse: (key, value) => Manager.fromJson(value, key),
-        removeFunction: (a) => a.name == null,
+        removeFunction: (a) => !a.isReliable,
         sortFunction: (Manager a, Manager b) {
-          return turkish.comparator(a.name!.toLowerCase(), b.name!.toLowerCase());
+          return turkish.comparator(a.name.toLowerCase(), b.name.toLowerCase());
         },
         lastUpdateKey: 'lastUpdate',
         filterDeletedData: true,
@@ -70,9 +70,9 @@ class SuperManagerMiniFetchers {
     return MiniFetcher<Class>("$kurumId${termKey}Classes", FetchType.ONCE,
         queryRef: Reference(AppVar.appBloc.database1, 'Okullar/$kurumId/$termKey/Classes'),
         jsonParse: (key, value) => Class.fromJson(value, key),
-        removeFunction: (a) => a.name == null,
+        removeFunction: (a) => !a.isReliable,
         sortFunction: (Class a, Class b) {
-          return turkish.comparator(a.name!.toLowerCase(), b.name!.toLowerCase());
+          return turkish.comparator(a.name.toLowerCase(), b.name.toLowerCase());
         },
         multipleData: true,
         lastUpdateKey: 'lastUpdate',
@@ -85,9 +85,9 @@ class SuperManagerMiniFetchers {
     return MiniFetcher<Lesson>("$kurumId${termKey}Lessons", FetchType.ONCE,
         queryRef: Reference(AppVar.appBloc.database1, 'Okullar/$kurumId/$termKey/Lessons'),
         jsonParse: (key, value) => Lesson.fromJson(value, key),
-        removeFunction: (a) => a.name == null,
+        removeFunction: (a) => !a.isReliable,
         sortFunction: (Lesson a, Lesson b) {
-          return turkish.comparator(a.name!.toLowerCase(), b.name!.toLowerCase());
+          return turkish.comparator(a.name.toLowerCase(), b.name.toLowerCase());
         },
         multipleData: true,
         lastUpdateKey: 'lastUpdate',

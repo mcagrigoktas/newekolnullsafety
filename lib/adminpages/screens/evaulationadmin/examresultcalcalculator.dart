@@ -598,7 +598,7 @@ class ExamResultCalculator {
 //{kurumId,{studentNo : student.key} }
   static final Map<String?, Map<String, String>> _allKurumClassNameKeyMap = {};
   static String? _getClassName(String? kurumId, List<Class> classList, String? classKey) {
-    _allKurumClassNameKeyMap[kurumId] ??= classList.fold(<String, String>{}, (p, e) => p..[e.key!] = e.name!);
+    _allKurumClassNameKeyMap[kurumId] ??= classList.fold(<String, String>{}, (p, e) => p..[e.key] = e.name);
 
     return _allKurumClassNameKeyMap[kurumId]![classKey];
   }

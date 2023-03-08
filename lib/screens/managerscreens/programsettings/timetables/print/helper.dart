@@ -81,7 +81,7 @@ class TimeTablePrintHelper {
                                     _item == null
                                         ? Text('-', style: TextStyle(fontSize: 4))
                                         : Column(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center, children: [
-                                            Text(_item.lesson!.name!, style: TextStyle(fontSize: 4)),
+                                            Text(_item.lesson!.name, style: TextStyle(fontSize: 4)),
                                             Text(AppVar.appBloc.classService!.dataListItem(_item.lesson!.classKey!)?.name ?? '', style: TextStyle(fontSize: 4)),
                                           ]),
                                     'r',
@@ -180,7 +180,7 @@ class TimeTablePrintHelper {
                               _item == null
                                   ? Text('-', style: TextStyle(fontSize: 4))
                                   : Column(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center, children: [
-                                      Text(_item.lesson!.name!, style: TextStyle(fontSize: 10)),
+                                      Text(_item.lesson!.name, style: TextStyle(fontSize: 10)),
                                       Text(AppVar.appBloc.classService!.dataListItem(_item.lesson!.classKey!)?.name ?? '', style: TextStyle(fontSize: 10)),
                                     ]),
                               'rb',
@@ -279,7 +279,7 @@ class TimeTablePrintHelper {
                                 ? Text('-', style: TextStyle(fontSize: 4))
                                 : _item.lesson != null
                                     ? Column(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center, children: [
-                                        Text(_item.lesson!.name!, style: TextStyle(fontSize: 10)),
+                                        Text(_item.lesson!.name, style: TextStyle(fontSize: 10)),
                                         Text(AppVar.appBloc.classService!.dataListItem(_item.lesson!.classKey!)?.name ?? '', style: TextStyle(fontSize: 10)),
                                       ])
                                     : Column(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center, children: [
@@ -305,7 +305,7 @@ class TimeTablePrintHelper {
                 Row(children: [
                   SizedBox(width: 120, child: Text('class'.translate, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12))),
                   Text(': '.translate, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
-                  Text(sinif.name!, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
+                  Text(sinif.name, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
                 ]),
                 Row(children: [
                   SizedBox(width: 120, child: Text('classteacher'.translate, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12))),
