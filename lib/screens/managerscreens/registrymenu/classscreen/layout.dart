@@ -279,7 +279,7 @@ class ClassList extends StatelessWidget {
                                               .where((e) => e.classKeyList.contains(controller.selectedItem!.key))
                                               .map((e) => Center(
                                                     child: Text(
-                                                      e.name!,
+                                                      e.name,
                                                       style: TextStyle(color: Fav.design.primaryText, fontSize: 13),
                                                     ).p4,
                                                   ))

@@ -153,7 +153,7 @@ class _EkidRollCallTeacherState extends State<EkidRollCallTeacher> {
                                     radius: 18,
                                   ),
                                 if (student.imgUrl?.startsWith('http') ?? false) 8.widthBox,
-                                Expanded(flex: 2, child: Text(student.name!, style: TextStyle(color: Fav.design.primaryText))),
+                                Expanded(flex: 2, child: Text(student.name, style: TextStyle(color: Fav.design.primaryText))),
                                 8.widthBox,
                                 MyDropDownFieldOld(
                                   onSaved: (value) {

@@ -231,7 +231,7 @@ class StudentListController extends GetxController {
         _item.parentPassword1 = _item.password! + '-' + (3.makeKey).toUpperCase();
       }
 
-      await StudentService.saveStudent(_item, _item.key!, addBundle: true).then((value) {
+      await StudentService.saveStudent(_item, _item.key, addBundle: true).then((value) {
         String? _studentKey = _item.key;
         mailListesineEkle(_item);
         OverAlert.saveSuc();
@@ -290,7 +290,7 @@ class StudentListController extends GetxController {
     if (selectedItem != null) {
       isSaving = true;
       update();
-      await StudentService.deleteStudent(selectedItem!.key!).then((a) {
+      await StudentService.deleteStudent(selectedItem!.key).then((a) {
         visibleScreen = VisibleScreen.main;
         selectedItem = null;
         OverAlert.deleteSuc();

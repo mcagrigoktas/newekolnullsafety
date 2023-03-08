@@ -157,7 +157,7 @@ class OnlineLessonController extends GetxController {
         await ExcelLibraryHelper.export(
             targetList.fold<List<List<String?>>>([
               ['name'.translate, '']
-            ], (p, e) => p..add([e.name, rollCallStudentresult[e.key!] == true ? 'rollcall0'.translate : 'rollcall1'.translate])),
+            ], (p, e) => p..add([e.name, rollCallStudentresult[e.key] == true ? 'rollcall0'.translate : 'rollcall1'.translate])),
             'rollcallstudentreview'.translate);
         closeOpenedPanel();
       }
@@ -256,7 +256,7 @@ class OnlineLessonController extends GetxController {
       targetList.sort((a, b) {
         final aIsOnLine = onlineUsers.any((element) => element.uid == a.key);
         final bIsOnLine = onlineUsers.any((element) => element.uid == b.key);
-        if (aIsOnLine == bIsOnLine) return a.name!.compareTo(b.name!);
+        if (aIsOnLine == bIsOnLine) return a.name.compareTo(b.name);
         return aIsOnLine ? -1 : 1;
       });
       update();

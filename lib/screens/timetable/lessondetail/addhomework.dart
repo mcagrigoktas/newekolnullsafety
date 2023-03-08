@@ -86,7 +86,7 @@ class _AddHomeWorkState extends State<AddHomeWork> {
       _data.lessonKey = widget.lesson!.key;
       _data.tur = widget.tur;
 
-      List<String> contactlist = AppVar.appBloc.studentService!.dataList.where((student) => student.classKeyList.contains(widget.sinif!.key)).map((student) => student.key!).toList();
+      List<String> contactlist = AppVar.appBloc.studentService!.dataList.where((student) => student.classKeyList.contains(widget.sinif!.key)).map((student) => student.key).toList();
       if (contactlist.isEmpty) {
         OverAlert.show(type: AlertType.danger, message: 'nostudent'.translate);
         return;

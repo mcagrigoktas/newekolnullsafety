@@ -190,7 +190,7 @@ class TransporterList extends StatelessWidget {
                                               .where((e) => e.transporter == controller.selectedItem!.key)
                                               .map((e) => Center(
                                                     child: Text(
-                                                      e.name!,
+                                                      e.name,
                                                       style: TextStyle(color: Fav.design.primaryText, fontSize: 13),
                                                     ).p4,
                                                   ))

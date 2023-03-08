@@ -18,7 +18,7 @@ class TokenAndNotificationListenerService {
 
     _requestPermission();
     _firebaseCloudMessagingListeners();
-    if (AppVar.appBloc.hesapBilgileri.isGood) {
+    if (AppVar.appBloc.hesapBilgileri.isReliable) {
       _saveToken();
       _subscribeTopic();
     }

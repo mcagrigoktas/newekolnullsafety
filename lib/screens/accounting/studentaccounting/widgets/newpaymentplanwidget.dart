@@ -202,7 +202,7 @@ class _NewPaymentPlanWidgetState extends State<NewPaymentPlanWidget> {
                         textAlign: TextAlign.end,
                         onChanged: (text) {
                           setState(() {
-                            _baslangicUcreti = double.tryParse(text!) ?? 0;
+                            _baslangicUcreti = double.tryParse(text) ?? 0;
                             _startPriceChanged();
                           });
                         },
@@ -263,7 +263,7 @@ class _NewPaymentPlanWidgetState extends State<NewPaymentPlanWidget> {
                                 textAlign: TextAlign.end,
                                 onChanged: (text) {
                                   setState(() {
-                                    e.value = double.tryParse(text!) ?? 0;
+                                    e.value = double.tryParse(text) ?? 0;
                                     _startPriceChanged();
                                   });
                                 },
@@ -335,7 +335,7 @@ class _NewPaymentPlanWidgetState extends State<NewPaymentPlanWidget> {
                         //  initialValue: discount.oran.toString(),
                         onChanged: (text) {
                           setState(() {
-                            discount.oran = (int.tryParse(text!) ?? 0);
+                            discount.oran = (int.tryParse(text) ?? 0);
                             _indirimChanged();
                           });
                         },
@@ -363,7 +363,7 @@ class _NewPaymentPlanWidgetState extends State<NewPaymentPlanWidget> {
                 textAlign: TextAlign.end,
                 onChanged: (text) {
                   setState(() {
-                    _sozlesmeTutari = double.tryParse(text!) ?? 0;
+                    _sozlesmeTutari = double.tryParse(text) ?? 0;
                     _sozlesmeTutariChanged();
                   });
                 },
@@ -392,7 +392,7 @@ class _NewPaymentPlanWidgetState extends State<NewPaymentPlanWidget> {
               MyTextFormField(
                 onChanged: (text) {
                   setState(() {
-                    _pesinat.tutar = double.tryParse(text!) ?? 0;
+                    _pesinat.tutar = double.tryParse(text) ?? 0;
                     _pesinatChanged();
                   });
                 },
@@ -477,7 +477,7 @@ class _NewPaymentPlanWidgetState extends State<NewPaymentPlanWidget> {
                                   controller: _controllerList[i],
                                   onChanged: (text) {
                                     setState(() {
-                                      _taksitListesi![i].tutar = double.tryParse(text!) ?? 0;
+                                      _taksitListesi![i].tutar = double.tryParse(text) ?? 0;
                                       _taksitChanged();
                                     });
                                   },

@@ -15,7 +15,7 @@ class SocialFunctions {
       }
       return false;
     }).map((student) {
-      return student.key!;
+      return student.key;
     }).toList();
 
 //idareciler ekleniyor

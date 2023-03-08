@@ -152,7 +152,7 @@ class PersonsList extends StatelessWidget {
                                 labelText: "mail".translate,
                                 iconData: MdiIcons.at,
                                 onSaved: (value) {
-                                  controller.personData!.mail = value?.trim();
+                                  controller.personData!.mail = value.trim();
                                 },
                               ),
                               MyTextFormField(
@@ -220,7 +220,7 @@ class PersonsList extends StatelessWidget {
                                         labelText: "mail".translate,
                                         iconData: MdiIcons.at,
                                         onSaved: (value) {
-                                          controller.personData!.contactMail = value?.trim();
+                                          controller.personData!.contactMail = value.trim();
                                         },
                                       ),
                                       MyTextFormField(

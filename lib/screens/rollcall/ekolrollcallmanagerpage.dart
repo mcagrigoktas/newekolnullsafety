@@ -160,7 +160,7 @@ class _EkolRollCallManagerPageState extends State<EkolRollCallManagerPage> {
           notificationKeyList[studentKey] = student.name;
         }
         listWidget.add(Padding(
-          key: Key(student.name!),
+          key: Key(student.name),
           padding: const EdgeInsets.only(left: 24, top: 12.0, bottom: 12),
           child: Row(
             children: <Widget>[
@@ -170,7 +170,7 @@ class _EkolRollCallManagerPageState extends State<EkolRollCallManagerPage> {
                   radius: 18,
                 ),
               if (student.imgUrl?.startsWithHttp ?? false) 8.widthBox,
-              Expanded(flex: 2, child: Text(student.name ?? 'studentnameerr'.translate, style: TextStyle(color: Fav.design.primaryText))),
+              Expanded(flex: 2, child: Text(student.name, style: TextStyle(color: Fav.design.primaryText))),
               8.widthBox,
               MyDropDownFieldOld(
                 onChanged: (val) {
@@ -500,7 +500,7 @@ class RollcallExportHelper {
         if (student == null) return ['', 'erasedstudent'.translate, '', '', '', ''];
         return [
           student.no!,
-          student.name ?? '?',
+          student.name,
           (AppVar.appBloc.classService!.dataListItem(student.class0!) ?? (Class()..name = '?')).name!,
           student.motherPhone ?? '?',
           student.fatherPhone ?? '?',
@@ -605,7 +605,7 @@ class RollcallExportHelper {
 
         return <String?>[
           student.no,
-          student.name ?? '?',
+          student.name,
           (AppVar.appBloc.classService!.dataListItem(student.class0!) ?? (Class()..name = '?')).name,
           (e.value['days'] as Set).length.toString(),
           (e.value['lessons'] as Map).entries.fold(0, (dynamic p, e) => p + e.value).toString(),

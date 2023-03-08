@@ -64,7 +64,7 @@ class P2PService {
         );
 
         if (UserPermissionList.sendP2PNotificationToTehacer() == true) {
-          var _studentName = AppVar.appBloc.studentService!.dataListItem(data.studentList!.first)!.name!;
+          var _studentName = AppVar.appBloc.studentService!.dataListItem(data.studentList!.first)!.name;
           if (data.studentList!.length > 1) {
             _studentName += ' +${data.studentList!.length - 1} ${"person".translate}';
           }
@@ -95,12 +95,12 @@ class P2PService {
     return _databaseProgramm.update(updates).then((_) {
       if (r == false) {
         EkolPushNotificationService.sendSingleNotification(
-          student.name!,
+          student.name,
           'p2prollcall1'.argsTranslate({
             'time': model.startTime!.timeToString,
             'name': (AppVar.appBloc.teacherService!.dataListItem(model.teacherKey!)?.name ?? ''),
           }),
-          studentKey!,
+          studentKey,
           NotificationArgs(tag: 'portfolio'),
         );
       }
@@ -176,7 +176,7 @@ class P2PService {
           );
 
           if (UserPermissionList.sendP2PNotificationToTehacer() == true) {
-            var _studentName = AppVar.appBloc.studentService!.dataListItem(newStudentList.first!)!.name!;
+            var _studentName = AppVar.appBloc.studentService!.dataListItem(newStudentList.first!)!.name;
             if (newStudentList.length > 1) {
               _studentName += ' +${newStudentList.length - 1} ${"person".translate}';
             }

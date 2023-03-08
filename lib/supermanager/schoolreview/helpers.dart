@@ -55,9 +55,9 @@ class SuperManagerMiniFetchers {
     return MiniFetcher<Student>("$kurumId${termKey}Students", FetchType.ONCE,
         queryRef: Reference(AppVar.appBloc.database1, 'Okullar/$kurumId/$termKey/Students'),
         jsonParse: (key, value) => Student.fromJson(value, key),
-        removeFunction: (a) => a.name == null,
+        removeFunction: (a) => !a.isReliable,
         sortFunction: (Student a, Student b) {
-          return turkish.comparator(a.name!.toLowerCase(), b.name!.toLowerCase());
+          return turkish.comparator(a.name.toLowerCase(), b.name.toLowerCase());
         },
         multipleData: true,
         lastUpdateKey: 'lastUpdate',

@@ -104,7 +104,7 @@ class _FirstLoginListState extends State<FirstLoginList> {
               itemBuilder: (context, index) {
                 return ListTile(
                   title: Text(
-                    _studentList[index].name!,
+                    _studentList[index].name,
                     style: TextStyle(color: Fav.design.primaryText),
                   ),
                   trailing: Icon(

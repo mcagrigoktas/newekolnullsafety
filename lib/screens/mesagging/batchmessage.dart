@@ -103,7 +103,7 @@ class BatchMessagesState extends State<BatchMessages> {
           }
           return false;
         }).map((student) {
-          _ownPreviewMap[student.key!] = MesaggingPreview(senderName: student.name, senderImgUrl: student.imgUrl, senderKey: student.key, timeStamp: databaseTime, lastMessage: _message);
+          _ownPreviewMap[student.key] = MesaggingPreview(senderName: student.name, senderImgUrl: student.imgUrl, senderKey: student.key, timeStamp: databaseTime, lastMessage: _message);
           if (AppVar.appBloc.hesapBilgileri.isEkid) {
             if (student.motherPhone.safeLength > 4) _phoneList.add(student.motherPhone);
             if (student.fatherPhone.safeLength > 4) _phoneList.add(student.fatherPhone);
@@ -113,7 +113,7 @@ class BatchMessagesState extends State<BatchMessages> {
             if (_isParent == false && student.studentPhone.safeLength > 4) _phoneList.add(student.studentPhone);
           }
 
-          return student.key!;
+          return student.key;
         }).toList());
       }
       // if (!_targetList.contains('onlyteachers')) {

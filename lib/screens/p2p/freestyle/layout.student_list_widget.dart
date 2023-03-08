@@ -100,7 +100,7 @@ class _P2PStudentListState extends State<P2PStudentList> {
                 .icon
                 .onPressed(() {
                   if (controller.selectedStudentList.isEmpty) {
-                    controller.selectedStudentList.addAll(AppVar.appBloc.studentService!.dataList.where((element) => element.classKeyList.contains(_filteredStudentClassKey)).map((e) => e.key!).toList());
+                    controller.selectedStudentList.addAll(AppVar.appBloc.studentService!.dataList.where((element) => element.classKeyList.contains(_filteredStudentClassKey)).map((e) => e.key).toList());
                   } else {
                     controller.selectedStudentList.clear();
                   }
@@ -136,12 +136,12 @@ class _P2PStudentListState extends State<P2PStudentList> {
                     children: [
                       Expanded(child: current),
                       QudsPopupButton(
-                        key: ValueKey(item.key! + 'p2p'),
+                        key: ValueKey(item.key + 'p2p'),
                         backgroundColor: Fav.design.scaffold.background,
                         itemBuilder: (context) {
                           return [
                             QudsPopupMenuWidget(builder: (context) {
-                              final _student = AppVar.appBloc.studentService!.dataListItem(item.key!)!;
+                              final _student = AppVar.appBloc.studentService!.dataListItem(item.key)!;
                               final _class = AppVar.appBloc.classService!.dataListItem(_student.class0!);
 
                               List<Widget> _eventList = [];

@@ -221,7 +221,7 @@ class AppFunctions2 {
 
     AppVar.appBloc.studentService!.dataList.forEach((student) {
       if (targetList.any((element) => <String?>['alluser', student.key, ...student.classKeyList].contains(element))) {
-        _uidList.add(student.key!);
+        _uidList.add(student.key);
       }
     });
 
@@ -246,7 +246,7 @@ class AppFunctions2 {
   }
 
   static List<String> getStudenKeytListThisClass(String classKey) {
-    return AppVar.appBloc.studentService!.dataList.where((element) => element.classKeyList.contains(classKey)).map((e) => e.key!).toList();
+    return AppVar.appBloc.studentService!.dataList.where((element) => element.classKeyList.contains(classKey)).map((e) => e.key).toList();
   }
 }
 

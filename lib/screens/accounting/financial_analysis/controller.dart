@@ -310,7 +310,7 @@ class FinancialAnalysisController extends GetxController {
                 final double _kalanTutar = payment.tutar! - _odennenTutar;
                 if (_kalanTutar > 0) {
                   _studendAccountingDataList.add(AccountFullLog(
-                    name: _student.name! + ' ' + payment.name!,
+                    name: _student.name + ' ' + payment.name!,
                     accountLogType: AccountLogType.ST,
                     amount: _kalanTutar,
                     date: payment.tarih,
@@ -320,7 +320,7 @@ class FinancialAnalysisController extends GetxController {
                 }
                 payment.odemeler?.forEach((element) {
                   _studendAccountingDataList.add(AccountFullLog(
-                    name: _student.name! + ' ' + payment.name!,
+                    name: _student.name + ' ' + payment.name!,
                     accountLogType: AccountLogType.ST,
                     amount: element.miktar,
                     date: element.tarih,
@@ -355,7 +355,7 @@ class FinancialAnalysisController extends GetxController {
                   if (payment.aktif != false) {
                     if (_kalanTutar > 0) {
                       _studendAccountingDataList.add(AccountFullLog(
-                        name: _student.name! + ' ' + _realPaymentName!,
+                        name: _student.name + ' ' + _realPaymentName!,
                         accountLogType: AccountLogType.ST,
                         amount: _kalanTutar,
                         date: payment.tarih,
@@ -365,7 +365,7 @@ class FinancialAnalysisController extends GetxController {
                     }
                     payment.odemeler?.forEach((element) {
                       _studendAccountingDataList.add(AccountFullLog(
-                        name: _student.name! + ' ' + _realPaymentName! + ' (${payment.tarih!.dateFormat("d-MMM-yyyy")})',
+                        name: _student.name + ' ' + _realPaymentName! + ' (${payment.tarih!.dateFormat("d-MMM-yyyy")})',
                         accountLogType: AccountLogType.ST,
                         amount: element.miktar,
                         date: element.tarih,

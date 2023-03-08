@@ -145,7 +145,7 @@ class CaseRecordsController extends ResponsivePageController<CaseRecordModel> {
                                     validatorRules: ValidatorRules(req: false, mustInt: true),
                                     maxLines: 1,
                                     onSaved: (value) {
-                                      newItem!.duration = int.tryParse(value!);
+                                      newItem!.duration = int.tryParse(value);
                                     },
                                   ),
                                 ),

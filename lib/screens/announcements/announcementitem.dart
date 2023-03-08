@@ -377,7 +377,7 @@ class AnnonuncementItemHelper {
         child: Row(
           children: [
             12.widthBox,
-            Expanded(child: Text(ogrenci.name!, style: TextStyle(color: Fav.design.primaryText, fontSize: 14))),
+            Expanded(child: Text(ogrenci.name, style: TextStyle(color: Fav.design.primaryText, fontSize: 14))),
             4.widthBox,
             Icon(Icons.done_all, color: seen ? Colors.blueAccent : Fav.design.primaryText.withAlpha(35)),
             12.widthBox,

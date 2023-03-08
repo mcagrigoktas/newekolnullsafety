@@ -311,7 +311,7 @@ class EkolPrintHelper {
           color: PdfColor(0, 0, 0, 0.02).flatten(),
           child: pw.Row(children: [
             pw.Expanded(flex: 1, child: pw.Text('name'.translate + ':', style: pw.TextStyle(fontWeight: pw.FontWeight.bold))),
-            pw.Expanded(flex: 1, child: pw.Padding(padding: const pw.EdgeInsets.symmetric(vertical: 4, horizontal: 16), child: pw.Text(student.name!))),
+            pw.Expanded(flex: 1, child: pw.Padding(padding: const pw.EdgeInsets.symmetric(vertical: 4, horizontal: 16), child: pw.Text(student.name))),
           ]),
         ),
         pw.Container(

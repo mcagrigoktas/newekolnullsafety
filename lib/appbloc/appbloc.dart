@@ -60,7 +60,7 @@ class AppBloc {
   Future<bool> initAccount() async {
     hesapBilgileri.setHesapBilgileri();
     ThemeHelper.setEkolTheme(hesapBilgileri);
-    if (!hesapBilgileri.isGood) return false;
+    if (!hesapBilgileri.isReliable) return false;
 
     final _isSignInSuccess = await AppblocAuthHelper.signInWithToken();
     if (_isSignInSuccess != true) AppblocAuthHelper.sendSignInError();
@@ -69,7 +69,7 @@ class AppBloc {
   }
 
   Future<void> init() async {
-    if (!hesapBilgileri.isGood) return;
+    if (!hesapBilgileri.isReliable) return;
 
     if (restartExtraData != null) {
       if (restartExtraData!['reviewterm'] != null) {
@@ -136,7 +136,7 @@ class AppBloc {
   bool _startedData = false;
 
   void _startDataServices() {
-    if (hesapBilgileri.isGood == false || _startedData) return;
+    if (hesapBilgileri.isReliable == false || _startedData) return;
     _startedData = true;
     _subscribeSchoolVersions();
     _subscribePersonalVersions();

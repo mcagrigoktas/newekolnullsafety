@@ -184,7 +184,7 @@ class _MakeVideoChatProgramState extends State<MakeVideoChatProgram> {
                     iconData: MdiIcons.calculator,
                     validatorRules: ValidatorRules(req: true, minLength: 1, mustNumber: true, minValue: 1),
                     onSaved: (value) {
-                      _data.lessonCount = int.parse(value!);
+                      _data.lessonCount = int.parse(value);
                     },
                   ),
                   MyTextFormField(
@@ -194,7 +194,7 @@ class _MakeVideoChatProgramState extends State<MakeVideoChatProgram> {
                     hintText: 'minutehint'.translate,
                     validatorRules: ValidatorRules(req: true, minLength: 1, mustNumber: true, minValue: 4),
                     onSaved: (value) {
-                      _data.lessonDuration = int.parse(value!);
+                      _data.lessonDuration = int.parse(value);
                     },
                   ),
                   MyTextFormField(
@@ -203,7 +203,7 @@ class _MakeVideoChatProgramState extends State<MakeVideoChatProgram> {
                     iconData: MdiIcons.clock,
                     validatorRules: ValidatorRules(req: true, minLength: 1, mustNumber: true),
                     onSaved: (value) {
-                      _data.pauseDuration = int.parse(value!);
+                      _data.pauseDuration = int.parse(value);
                     },
                     initialValue: '0',
                     keyboardType: TextInputType.number,
@@ -213,7 +213,7 @@ class _MakeVideoChatProgramState extends State<MakeVideoChatProgram> {
                     iconData: MdiIcons.coffee,
                     validatorRules: ValidatorRules(req: true, minLength: 1, mustNumber: true),
                     onSaved: (value) {
-                      _data.lessonCountForBreak = int.parse(value!);
+                      _data.lessonCountForBreak = int.parse(value);
                     },
                     initialValue: '0',
                     keyboardType: TextInputType.number,
@@ -224,7 +224,7 @@ class _MakeVideoChatProgramState extends State<MakeVideoChatProgram> {
                     iconData: MdiIcons.clock,
                     validatorRules: ValidatorRules(req: true, minLength: 1, mustNumber: true),
                     onSaved: (value) {
-                      _data.breakDuration = int.parse(value!);
+                      _data.breakDuration = int.parse(value);
                     },
                     initialValue: '0',
                     keyboardType: TextInputType.number,
@@ -237,7 +237,7 @@ class _MakeVideoChatProgramState extends State<MakeVideoChatProgram> {
                         iconData: MdiIcons.calendar,
                         validatorRules: ValidatorRules(req: true, minLength: 1, mustNumber: true),
                         onSaved: (value) {
-                          _data.blockDay = int.parse(value!);
+                          _data.blockDay = int.parse(value);
                         },
                         initialValue: '10',
                         keyboardType: TextInputType.number,

@@ -88,10 +88,10 @@ class NewContract extends StatelessWidget {
                             validatorRules: ValidatorRules(mustNumber: true, minValue: 1, req: true),
                             initialValue: controller.itemData!.installaments[_i].amount!.toStringAsFixed(2),
                             onChanged: (value) {
-                              controller.itemData!.installaments[_i].amount = double.tryParse(value!);
+                              controller.itemData!.installaments[_i].amount = double.tryParse(value);
                               controller.newContracTotal.value = controller.itemData!.installaments.fold<double>(0.0, (p, e) => p + (e.amount ?? 0.0));
                             },
-                            onSaved: (value) => controller.itemData!.installaments[_i].amount = double.tryParse(value!),
+                            onSaved: (value) => controller.itemData!.installaments[_i].amount = double.tryParse(value),
                           ),
                         ),
                         if (isWeb)

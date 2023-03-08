@@ -58,7 +58,7 @@ class StudentList extends StatelessWidget {
                       Expanded(
                         child: Column(
                           children: [
-                            Text(controller.targetList[index].name!, style: TextStyle(color: Fav.design.accentText)),
+                            Text(controller.targetList[index].name, style: TextStyle(color: Fav.design.accentText)),
                             //   if (onlineItems != null) Text(onlineItems.getDevice, style: TextStyle(color: Fav.design.accentText, fontSize: 8)),
                           ],
                         ),

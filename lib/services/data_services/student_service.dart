@@ -80,7 +80,7 @@ class StudentService {
             if (_userGirisTuru == 30 && _userGirisUID == newStudent.key) {
               //Bisey Yapma
             } else {
-              _sameUsernameErrorText += newStudent.name! + '\n';
+              _sameUsernameErrorText += newStudent.name + '\n';
             }
           }
         });
@@ -115,7 +115,7 @@ class StudentService {
         _parent2CheckListValues["parentNo"] = 2;
       }
 
-      updates['/Okullar/$_kurumId/$_termKey/Students/' + student.key!] = student.mapForSave(student.key!)..['lastUpdate'] = _realTime;
+      updates['/Okullar/$_kurumId/$_termKey/Students/' + student.key] = student.mapForSave(student.key)..['lastUpdate'] = _realTime;
       updates['/Okullar/$_kurumId/CheckList/' + student.username! + student.password!] = checkListValues;
 
       //? Veli 1 ve 2

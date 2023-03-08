@@ -65,7 +65,7 @@ class _AccountingNoteState extends State<AccountingNote> {
                         maxLines: null,
                         labelText: 'note'.translate + ' ${i + 1}:',
                         onSaved: (value) {
-                          data.add(value ?? '');
+                          data.add(value);
                         },
                         initialValue: data.length > i ? data[i] : '',
                       ),

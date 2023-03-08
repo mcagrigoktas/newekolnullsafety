@@ -72,14 +72,14 @@ class RollCallMenuStarter extends StatelessWidget {
                     child: ListView.builder(
                       padding: EdgeInsets.zero,
                       itemBuilder: (context, index) {
-                        final isUserOnLine = controller.rollCallStudentresult[controller.targetList[index].key!] == true;
+                        final isUserOnLine = controller.rollCallStudentresult[controller.targetList[index].key] == true;
 
                         return Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
                           child: Row(
                             children: [
                               Expanded(
-                                child: Text(controller.targetList[index].name!, style: TextStyle(color: Fav.design.accentText)),
+                                child: Text(controller.targetList[index].name, style: TextStyle(color: Fav.design.accentText)),
                               ),
                               'here'.translate.text.color(Colors.white).bold.make().stadium(background: isUserOnLine ? Colors.green : Colors.grey),
                             ],

@@ -41,10 +41,10 @@ class BirthDayHelper {
       }
 
       if (student.motherBirthday != null && student.motherBirthday! > 0) {
-        _itemList.add(_calcDaysForBirthDayPage(student.name! + ' (' + 'mother'.translate + ')', student.motherBirthday!));
+        _itemList.add(_calcDaysForBirthDayPage(student.name + ' (' + 'mother'.translate + ')', student.motherBirthday!));
       }
       if (student.fatherBirthday != null && student.fatherBirthday! > 0) {
-        _itemList.add(_calcDaysForBirthDayPage(student.name! + ' (' + 'father'.translate + ')', student.fatherBirthday!));
+        _itemList.add(_calcDaysForBirthDayPage(student.name + ' (' + 'father'.translate + ')', student.fatherBirthday!));
       }
     });
 
@@ -93,11 +93,11 @@ class BirthDayHelper {
       }
 
       if (student.motherBirthday != null && student.motherBirthday! > 0) {
-        _itemList.addIfNotNull(_calcDaysForAgenda(student.name! + ' (' + 'mother'.translate + ')', student.motherBirthday!));
+        _itemList.addIfNotNull(_calcDaysForAgenda(student.name + ' (' + 'mother'.translate + ')', student.motherBirthday!));
       }
 
       if (student.fatherBirthday != null && student.fatherBirthday! > 0) {
-        _itemList.addIfNotNull(_calcDaysForAgenda(student.name! + ' (' + 'father'.translate + ')', student.fatherBirthday!));
+        _itemList.addIfNotNull(_calcDaysForAgenda(student.name + ' (' + 'father'.translate + ')', student.fatherBirthday!));
       }
     });
 

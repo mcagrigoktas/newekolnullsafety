@@ -105,7 +105,7 @@ class _ShareSocialState extends State<ShareSocial> with SocialFunctions {
 
         return false;
       }).map((student) {
-        return student.key!;
+        return student.key;
       }).toList();
 
       OverLoading.show();

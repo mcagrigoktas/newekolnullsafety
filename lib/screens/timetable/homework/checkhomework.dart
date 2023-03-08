@@ -153,7 +153,7 @@ class _CheckHomeWorkState extends State<CheckHomeWork> {
                                           radius: 12.0,
                                         )),
                                   Expanded(
-                                    child: Text(student.name!, style: TextStyle(color: Fav.design.primaryText)),
+                                    child: Text(student.name, style: TextStyle(color: Fav.design.primaryText)),
                                   ),
                                   8.widthBox,
                                   if (checktype == 0)

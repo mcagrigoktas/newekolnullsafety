@@ -81,7 +81,7 @@ class EkolPushNotificationService {
 
       if (AppVar.appBloc.studentService != null) {
         AppVar.appBloc.studentService!.dataList.where((student) => tergetList.contains(student.key) || tergetList.any((item) => student.classKeyList.contains(item))).forEach((student) {
-          uidList.add(student.key!);
+          uidList.add(student.key);
         });
       }
       AppVar.appBloc.teacherService!.dataList.where((teacher) => tergetList.contains(teacher.key) || tergetList.contains('onlyteachers')).forEach((teacher) {

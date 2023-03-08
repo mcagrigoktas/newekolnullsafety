@@ -1,10 +1,11 @@
 import 'package:mcg_database/mcg_database.dart';
 import 'package:mcg_extension/mcg_extension.dart';
 
-class Student extends DatabaseItem {
-  String? key;
+class Student extends DatabaseItem implements Reliable {
+  String key = '';
+  String name = '';
   bool aktif = true;
-  String? name;
+
   String? no;
   String? tc;
   String? username;
@@ -90,7 +91,7 @@ class Student extends DatabaseItem {
     //notcrypted
 
     if (snapshot['enc'] != null) {
-      final decryptedData = (snapshot['enc'] as String?)!.decrypt(key!)!;
+      final decryptedData = (snapshot['enc'] as String?)!.decrypt(key)!;
 
       name = decryptedData['name'];
       no = decryptedData['no'];
@@ -182,7 +183,7 @@ class Student extends DatabaseItem {
     return data;
   }
 
-  String getSearchText() => (name! +
+  String getSearchText() => (name +
           no.toString() +
           explanation.toString() +
           // DateFormat(  "dateformat")).format(DateTime.fromMillisecondsSinceEpoch(birthday))+
@@ -195,6 +196,9 @@ class Student extends DatabaseItem {
 
   @override
   bool active() => aktif != false;
+
+  @override
+  bool get isReliable => key.safeLength > 1 && name.safeLength > 1;
 }
 
 extension StudentExtension on Student {

@@ -230,7 +230,7 @@ class StudentList extends StatelessWidget {
                                                     iconData: MdiIcons.key,
                                                     validatorRules: ValidatorRules(req: true, minLength: 6, noGap: true, firebaseSafe: true),
                                                     onSaved: (value) {
-                                                      controller.itemData!.password = value?.trim();
+                                                      controller.itemData!.password = value.trim();
                                                     },
                                                   ),
                                                 ),
@@ -468,7 +468,7 @@ class StudentList extends StatelessWidget {
                                             labelText: "father".translate + " " + "mail".translate,
                                             iconData: MdiIcons.at,
                                             onSaved: (value) {
-                                              controller.itemData!.fatherMail = value?.trim();
+                                              controller.itemData!.fatherMail = value.trim();
                                             },
                                           ),
                                       ],
@@ -517,7 +517,7 @@ class StudentList extends StatelessWidget {
                                             labelText: "mother".translate + " " + "mail".translate,
                                             iconData: MdiIcons.at,
                                             onSaved: (value) {
-                                              controller.itemData!.motherMail = value?.trim();
+                                              controller.itemData!.motherMail = value.trim();
                                             },
                                           ),
                                       ],
@@ -557,7 +557,7 @@ class StudentList extends StatelessWidget {
                                               iconData: MdiIcons.key,
                                               validatorRules: ValidatorRules(),
                                               onSaved: (value) {
-                                                controller.itemData!.parentPassword1 = value?.trim();
+                                                controller.itemData!.parentPassword1 = value.trim();
                                               },
                                             ),
                                           ),
@@ -572,7 +572,7 @@ class StudentList extends StatelessWidget {
                                               iconData: MdiIcons.key,
                                               validatorRules: ValidatorRules(),
                                               onSaved: (value) {
-                                                controller.itemData!.parentPassword2 = value?.trim();
+                                                controller.itemData!.parentPassword2 = value.trim();
                                               },
                                             ),
                                           )
@@ -639,7 +639,7 @@ class StudentList extends StatelessWidget {
                     ),
                     onSelected: (value) async {
                       if (value == 0) {
-                        var sure = await Over.sure(message: controller.selectedItem!.name! + '\n' + 'deleterecorderr'.translate);
+                        var sure = await Over.sure(message: controller.selectedItem!.name + '\n' + 'deleterecorderr'.translate);
                         if (sure == true) await controller.delete();
                       }
                       // else if (value == 1) {

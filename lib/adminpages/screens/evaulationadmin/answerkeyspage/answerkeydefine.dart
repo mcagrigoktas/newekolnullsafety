@@ -116,7 +116,7 @@ class AnswerKeyDetail extends StatelessWidget {
                       validatorRules: ValidatorRules(req: true, minLength: 1),
                       initialValue: controller.answerEarningMap!.datas['bookLet${controller.noToBooklet(i)}' + 'name'] ?? controller.noToBooklet(i),
                       onSaved: (value) {
-                        controller.answerEarningMap!.datas['bookLet${controller.noToBooklet(i)}' + 'name'] = value?.toString().trim();
+                        controller.answerEarningMap!.datas['bookLet${controller.noToBooklet(i)}' + 'name'] = value.toString().trim();
                       },
                     ),
                     Column(

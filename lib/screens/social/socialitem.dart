@@ -66,7 +66,7 @@ class SocialItemWidget extends StatelessWidget with SocialFunctions {
       _allCount++;
       return Container(
         color: Fav.design.primaryText.withAlpha(_allCount.isEven ? 10 : 0),
-        child: Text(ogrenci.name!, style: TextStyle(color: Fav.design.primaryText, fontSize: 14)).px12,
+        child: Text(ogrenci.name, style: TextStyle(color: Fav.design.primaryText, fontSize: 14)).px12,
       );
     }).toList();
 

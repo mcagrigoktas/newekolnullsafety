@@ -317,7 +317,7 @@ class ChangeSchoolInfoDetailState extends State<ChangeSchoolInfoDetail> {
                                   iconData: MdiIcons.ambulance,
                                   keyboardType: TextInputType.number,
                                   onSaved: (value) {
-                                    studentCount = int.tryParse(value!) ?? 10000;
+                                    studentCount = int.tryParse(value) ?? 10000;
                                   },
                                 ),
                               ),
@@ -327,7 +327,7 @@ class ChangeSchoolInfoDetailState extends State<ChangeSchoolInfoDetail> {
                                 iconData: MdiIcons.ambulance,
                                 keyboardType: TextInputType.number,
                                 onSaved: (value) {
-                                  videoDuration = int.tryParse(value!) ?? 60;
+                                  videoDuration = int.tryParse(value) ?? 60;
                                 },
                               ),
                             ],
@@ -430,7 +430,7 @@ class ChangeSchoolInfoDetailState extends State<ChangeSchoolInfoDetail> {
                                   keyboardType: TextInputType.number,
                                   validatorRules: ValidatorRules(minValue: 10, mustNumber: true, req: true),
                                   onSaved: (value) {
-                                    studentCount = int.tryParse(value!) ?? 10000;
+                                    studentCount = int.tryParse(value) ?? 10000;
                                   },
                                 ),
                                 MyDatePicker(

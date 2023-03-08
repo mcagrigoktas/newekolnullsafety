@@ -43,7 +43,7 @@ class TransporterStudentDialog extends StatelessWidget {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    controller.makeStudentHere(student.key!);
+                    controller.makeStudentHere(student.key);
                     Get.back();
                   },
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.green, fixedSize: Size(_buttonWidth, 96)),
@@ -52,7 +52,7 @@ class TransporterStudentDialog extends StatelessWidget {
                 32.widthBox,
                 ElevatedButton(
                   onPressed: () {
-                    controller.makeStudentAbsent(student.key!);
+                    controller.makeStudentAbsent(student.key);
                     Get.back();
                   },
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.red, fixedSize: Size(_buttonWidth, 96)),

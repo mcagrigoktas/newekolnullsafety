@@ -99,7 +99,7 @@ class BusRideController extends BaseController {
   }
 
   void saveOrderList() {
-    Fav.preferences.setStringList(orderPreferencesKey, studentList.map((e) => e.key).toList() as List<String>);
+    Fav.preferences.setStringList(orderPreferencesKey, studentList.map((e) => e.key).toList());
   }
 
   void makeSturdy() {
@@ -168,10 +168,10 @@ class BusRideController extends BaseController {
     (notificationCacheData[student.key] ??= {})['c'] = true;
     Fav.securePreferences.setMap(notificationPreferencesKey, notificationCacheData);
     final _inAppNotification = InAppNotification(type: NotificationType.service)
-      ..key = student.key! + 'sc'
+      ..key = student.key + 'sc'
       ..title = 'transportnot'.translate
       ..content = 'transportcomingnot'.translate;
-    InAppNotificationService.sendInAppNotification(_inAppNotification, student.key!);
+    InAppNotificationService.sendInAppNotification(_inAppNotification, student.key);
     update();
   }
 
@@ -181,10 +181,10 @@ class BusRideController extends BaseController {
     (notificationCacheData[student.key] ??= {})['w'] = true;
     Fav.securePreferences.setMap(notificationPreferencesKey, notificationCacheData);
     final _inAppNotification = InAppNotification(type: NotificationType.service)
-      ..key = student.key! + 'sw'
+      ..key = student.key + 'sw'
       ..title = 'transportnot'.translate
       ..content = 'transportcamenot'.translate;
-    InAppNotificationService.sendInAppNotification(_inAppNotification, student.key!);
+    InAppNotificationService.sendInAppNotification(_inAppNotification, student.key);
     update();
   }
 
@@ -197,7 +197,7 @@ class BusRideController extends BaseController {
       final _location = await Geolocator.getCurrentPosition(timeLimit: 3.seconds);
       _student.setLatitude(_location.latitude);
       _student.setLongitude(_location.longitude);
-      await StudentService.saveStudent(_student, _student.key!);
+      await StudentService.saveStudent(_student, _student.key);
       await OverLoading.close();
       OverAlert.saveSuc();
     } catch (err) {

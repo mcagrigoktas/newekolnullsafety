@@ -89,7 +89,7 @@ class StudentCircleList extends StatelessWidget {
                     showInitialTextAbovePicture: true,
                     borderColor: Fav.design.primary.withAlpha(100),
                     initialsText: Text(
-                      studentList![index].name!,
+                      studentList![index].name,
                       textAlign: TextAlign.center,
                       maxLines: 2,
                       overflow: TextOverflow.fade,

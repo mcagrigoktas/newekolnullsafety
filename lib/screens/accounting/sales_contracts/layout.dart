@@ -186,7 +186,7 @@ class SalesContracts extends StatelessWidget {
                                 textAlign: TextAlign.end,
                                 validatorRules: ValidatorRules(req: true, mustNumber: true, minLength: 1, minValue: 1, maxValue: controller.selectedInstallament!.kalan),
                                 onChanged: (value) {
-                                  controller.payOff!.miktar = double.tryParse(value!);
+                                  controller.payOff!.miktar = double.tryParse(value);
                                 },
                                 labelText: ''.translate,
                                 initialValue: controller.payOff!.miktar.toString(),

@@ -184,7 +184,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
             _student.parentPassword2 = _newPasword;
             _student.parent2PasswordChangedByUser = true;
           }
-          StudentService.saveStudent(_student, _student.key!).then((value) {
+          StudentService.saveStudent(_student, _student.key).then((value) {
             _changeLoading(false);
             Get.back();
             OverAlert.show(message: 'passwordchangesuc'.translate, autoClose: false, type: AlertType.successful);

@@ -373,7 +373,7 @@ class _PaymentPlanWidgetState extends State<PaymentPlanWidget> {
               validatorRules: ValidatorRules(req: true, mustNumber: true, minValue: odenen),
               initialValue: selectedTaksit!.tutar.toString(),
               onSaved: (value) {
-                newTutar = double.tryParse(value!);
+                newTutar = double.tryParse(value);
               }),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -443,7 +443,7 @@ class _PaymentPlanWidgetState extends State<PaymentPlanWidget> {
               validatorRules: ValidatorRules(req: true, mustNumber: true, minValue: 0.1),
               initialValue: _newTutar.toString(),
               onSaved: (value) {
-                _newTutar = double.tryParse(value!);
+                _newTutar = double.tryParse(value);
               }),
           MyDatePicker(
             onSaved: (value) {

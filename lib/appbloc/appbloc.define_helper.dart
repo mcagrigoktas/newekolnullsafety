@@ -456,9 +456,9 @@ class AppblocDefineServiceHelper {
       "${_hesapBilgileri.kurumID}${_hesapBilgileri.termKey}Students",
       queryRefForRealtimeDB: StudentService.dbStudentListRef(),
       jsonParse: (key, value) => Student.fromJson(value, key),
-      removeFunction: (a) => a.name == null,
+      removeFunction: (a) => !a.isReliable,
       sortFunction: (Student a, Student b) {
-        return 'lang'.translate == 'tr' ? turkish.comparator(a.name!.toLowerCase(), b.name!.toLowerCase()) : (a.name!.toLowerCase()).compareTo(b.name!.toLowerCase());
+        return 'lang'.translate == 'tr' ? turkish.comparator(a.name.toLowerCase(), b.name.toLowerCase()) : (a.name.toLowerCase()).compareTo(b.name.toLowerCase());
       },
       lastUpdateKey: 'lastUpdate',
       bundleConfig: bundleConfig,

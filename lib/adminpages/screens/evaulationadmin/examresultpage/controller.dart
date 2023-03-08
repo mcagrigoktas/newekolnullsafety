@@ -1013,7 +1013,7 @@ class ExamResultViewController extends GetxController {
         final _student = AppVar.appBloc.studentService!.dataListItem(item.studentKey ?? '-?-');
 
         if (_student != null) {
-          String text = _student.name! + ' ' + exam.name! + ' ';
+          String text = _student.name + ' ' + exam.name! + ' ';
 
           for (var l = 0; l < examType.lessons!.length; l++) {
             text += examType.lessons![l].name.safeSubString(0, 3)!.toUpperCase() + ':' + item.testResults![examType.lessons![l].key]!.n!.toStringAsFixedRemoveZero(1) + ' ';

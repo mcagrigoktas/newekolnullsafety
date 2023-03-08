@@ -208,7 +208,7 @@ class ExamDefine extends StatelessWidget {
                                             validatorRules: ValidatorRules(),
                                             iconData: Icons.devices,
                                             initialValue: controller.selectedItem?.explanation,
-                                            onSaved: (value) => controller.selectedItem!.explanation = value ?? '',
+                                            onSaved: (value) => controller.selectedItem!.explanation = value,
                                           ),
                                           MyDateTimePicker(
                                             title: 'date'.translate,

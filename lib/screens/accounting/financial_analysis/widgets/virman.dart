@@ -68,7 +68,7 @@ class VirmanPage extends StatelessWidget {
                     textAlign: TextAlign.end,
                     validatorRules: ValidatorRules(req: true, mustNumber: true, minLength: 1, minValue: _controller.virmanPageType == VirmanType.change ? 0 : -100000000),
                     onSaved: (value) {
-                      _controller.virmanItemForSave!.enteringAmount = double.tryParse(value!);
+                      _controller.virmanItemForSave!.enteringAmount = double.tryParse(value);
                     },
                     labelText: ''.translate,
                     initialValue: _controller.virmanItemForSave!.enteringAmount!.toStringAsFixed(2),

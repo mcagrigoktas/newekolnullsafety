@@ -122,7 +122,7 @@ class _SinglePaymentWidgetState extends State<SinglePaymentWidget> {
                 labelText: 'price'.translate,
                 validatorRules: ValidatorRules(req: true, mustNumber: true, minLength: 1),
                 onSaved: (value) {
-                  taksit.tutar = double.tryParse(value!);
+                  taksit.tutar = double.tryParse(value);
                 },
               ),
             ],

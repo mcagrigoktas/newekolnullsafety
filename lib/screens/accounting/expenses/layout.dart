@@ -215,10 +215,10 @@ class Expenses extends StatelessWidget {
                                               initialValue: item.count.toString(),
                                               validatorRules: ValidatorRules(req: true, minValue: 1, mustInt: true),
                                               onSaved: (value) {
-                                                item.count = int.tryParse(value!);
+                                                item.count = int.tryParse(value);
                                               },
                                               onChanged: (value) {
-                                                item.count = int.tryParse(value!);
+                                                item.count = int.tryParse(value);
                                                 item.countTotalValue();
                                                 controller.update(['totalValue']);
                                               },
@@ -228,10 +228,10 @@ class Expenses extends StatelessWidget {
                                               initialValue: item.unitPrice.toString(),
                                               validatorRules: ValidatorRules(req: true, minValue: 1, mustNumber: true),
                                               onSaved: (value) {
-                                                item.unitPrice = double.tryParse(value!);
+                                                item.unitPrice = double.tryParse(value);
                                               },
                                               onChanged: (value) {
-                                                item.unitPrice = double.tryParse(value!);
+                                                item.unitPrice = double.tryParse(value);
                                                 item.countTotalValue();
                                                 controller.update(['totalValue']);
                                               },

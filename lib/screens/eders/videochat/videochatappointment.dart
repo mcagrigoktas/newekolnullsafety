@@ -297,7 +297,7 @@ class _VideoChatAppointmentState extends State<VideoChatAppointment> with AppFun
     final List listviewChildren = AppVar.appBloc.studentService!.dataList.where((ogrenci) {
       return item!.targetList!.any((itemm) => ["alluser", ...ogrenci.classKeyList, ogrenci.key].contains(itemm));
     }).map((ogrenci) {
-      return ListTile(title: Text(ogrenci.name!, style: TextStyle(color: Fav.design.primaryText)));
+      return ListTile(title: Text(ogrenci.name, style: TextStyle(color: Fav.design.primaryText)));
     }).toList();
 
     if (listviewChildren.isNotEmpty) {

@@ -7,7 +7,7 @@ import '../qbank/models/models.dart';
 import '../screens/main/widgets/user_profile_widget/user_image_helper.dart';
 import 'allmodel.dart';
 
-class HesapBilgileri {
+class HesapBilgileri implements Reliable {
   static const String _preferencesKey = 'ekolUserM';
 
   bool girisYapildi = false;
@@ -184,7 +184,8 @@ class HesapBilgileri {
   bool get gtTransporter => girisTuru == 90;
   bool get gtMT => girisTuru == 20 || girisTuru == 10;
 
-  bool get isGood => termKey.safeLength > 2 && uid.safeLength > 2 && kurumID.safeLength > 4 && girisYapildi;
+  @override
+  bool get isReliable => termKey.safeLength > 2 && uid.safeLength > 2 && kurumID.safeLength > 4 && girisYapildi;
   bool get isSturdy => (termKey.safeLength > 2 && uid.safeLength > 2 && kurumID.safeLength > 4) || (kurumID.safeLength > 4 && username.safeLength > 4 && password.safeLength > 4 && kurumID.startsWith('739'));
 
   String? get zoomApiKey => otherData['zoomApiKey'];

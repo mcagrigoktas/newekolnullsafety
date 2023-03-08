@@ -131,7 +131,7 @@ class MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     if (_appInited == false) return Container(color: Fav.design.scaffold.background);
 
-    if (AppVar.appBloc.hesapBilgileri.isGood == false) {
+    if (AppVar.appBloc.hesapBilgileri.isReliable == false) {
       if (isDebugMode || (isWeb && AppVar.appConfig.flavorType == FlavorType.speedsis)) return WebSiteLayout();
       return EkolSignInPage();
     }

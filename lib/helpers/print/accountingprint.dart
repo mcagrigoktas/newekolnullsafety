@@ -388,7 +388,7 @@ class PrintAccounting {
         decoration: const pw.BoxDecoration(border: pw.Border(bottom: pw.BorderSide(color: PdfColors.blue, width: 1), right: pw.BorderSide(color: PdfColors.blue, width: 1), left: pw.BorderSide(color: PdfColors.blue, width: 1))),
         child: pw.Row(children: [
           pw.Expanded(flex: 2, child: pw.Container(decoration: const pw.BoxDecoration(border: pw.Border(right: pw.BorderSide(color: PdfColors.blue, width: 1))), child: pw.Text('name'.translate + ':', style: pw.TextStyle(fontWeight: pw.FontWeight.bold)))),
-          pw.Expanded(flex: 1, child: pw.Padding(padding: const pw.EdgeInsets.symmetric(vertical: 4, horizontal: 16), child: pw.Text(student.name!))),
+          pw.Expanded(flex: 1, child: pw.Padding(padding: const pw.EdgeInsets.symmetric(vertical: 4, horizontal: 16), child: pw.Text(student.name))),
         ]),
       ),
       pw.Container(
@@ -489,7 +489,7 @@ class PrintAccounting {
                               initialValue: Fav.preferences.getString('vouchercompnyname') ?? AppVar.appBloc.schoolInfoService!.singleData!.name,
                               onSaved: (value) {
                                 userData['vouchercompnyname'] = value;
-                                Fav.preferences.setString('vouchercompnyname', value!);
+                                Fav.preferences.setString('vouchercompnyname', value);
                               }),
                           MyTextFormField(
                               labelText: 'voucherno'.translate,

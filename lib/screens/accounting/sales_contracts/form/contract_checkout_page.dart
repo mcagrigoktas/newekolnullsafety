@@ -216,7 +216,7 @@ class ContractCheckoutPage extends StatelessWidget {
                               validatorRules: ValidatorRules(req: true, mustNumber: true, minValue: installament.paid.minLimit(1)),
                               initialValue: installament.amount!.toStringAsFixed(2),
                               onSaved: (value) {
-                                if (double.tryParse(value!) != null) {
+                                if (double.tryParse(value) != null) {
                                   installament.amount = double.tryParse(value);
                                 }
                               }),

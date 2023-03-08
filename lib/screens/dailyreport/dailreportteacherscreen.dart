@@ -130,7 +130,7 @@ class _DailyReportTeacherScreenState extends State<DailyReportTeacherScreen> wit
         count++;
       }
       return ListTile(
-        title: Text(ogrenci.name!, style: TextStyle(color: Fav.design.primaryText)),
+        title: Text(ogrenci.name, style: TextStyle(color: Fav.design.primaryText)),
         trailing: Icon(Icons.done_all, color: sended ? Fav.design.customDesign4.primary : Fav.design.customDesign4.primary.withAlpha(30)),
       );
     }).toList();
@@ -621,7 +621,7 @@ class _DailyReportTeacherScreenState extends State<DailyReportTeacherScreen> wit
               maxLines: null,
               onSaved: (value) {
                 _sendingStudentReportData["teacherNote"] = value;
-                Fav.preferences.addLimitedStringList("teacherNote", value!);
+                Fav.preferences.addLimitedStringList("teacherNote", value);
                 _savingStudentReportData['teacherNote'] = value;
               },
               suffixIcon: Icons.content_paste.icon.color(Fav.design.disablePrimary).padding(12).size(16).onPressed(() async {

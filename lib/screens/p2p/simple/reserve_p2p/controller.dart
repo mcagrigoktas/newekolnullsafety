@@ -154,7 +154,7 @@ class ReserveP2PController extends BaseController {
                         studentListForRemove.forEach((element) {
                           _itemForSave.removeThisStudent(element);
                         });
-                        _itemForSave.addThisStudents(newStudentList.fold<Map<String, String>>({}, (p, e) => p..[e] = AppVar.appBloc.studentService!.dataListItem(e)!.name!));
+                        _itemForSave.addThisStudents(newStudentList.fold<Map<String, String>>({}, (p, e) => p..[e] = AppVar.appBloc.studentService!.dataListItem(e)!.name));
 
                         _itemForSave.maxStudentCount = capacity.clamp(_itemForSave.studentListData?.length ?? 1, 25);
                         OverBottomSheet.closeBottomSheet();

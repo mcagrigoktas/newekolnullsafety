@@ -83,7 +83,7 @@ class _TestStatisticsPageState extends State<TestStatisticsPage> with AppFunctio
     return AppVar.appBloc.studentService!.dataList
         .where((stuent) => stuent.classKeyList.contains(classKey))
         .map((e) => [
-              e.name!,
+              e.name,
               ((statisticsData![e.key] ?? {})['ds'] ?? '-').toString(),
               ((statisticsData![e.key] ?? {})['ys'] ?? '-').toString(),
               ((statisticsData![e.key] ?? {})['bs'] ?? '-').toString(),

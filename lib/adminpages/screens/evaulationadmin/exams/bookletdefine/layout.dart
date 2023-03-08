@@ -102,7 +102,7 @@ class OnlineFormDefine extends StatelessWidget {
                           MyTextFormField(
                             initialValue: (controller.model!.examFormEkstraTime ?? 0).toString(),
                             onSaved: (value) {
-                              controller.model!.examFormEkstraTime = int.tryParse(value!);
+                              controller.model!.examFormEkstraTime = int.tryParse(value);
                             },
                             iconData: Icons.alt_route,
                             validatorRules: ValidatorRules(mustNumber: true, minValue: 0, req: true),
@@ -132,7 +132,7 @@ class OnlineFormDefine extends StatelessWidget {
                             MyTextFormField(
                               initialValue: (controller.model!.examBookLetExtraPage ?? 0).toString(),
                               onSaved: (value) {
-                                controller.model!.examBookLetExtraPage = int.tryParse(value!);
+                                controller.model!.examBookLetExtraPage = int.tryParse(value);
                               },
                               iconData: Icons.alt_route,
                               validatorRules: ValidatorRules(mustNumber: true, minValue: 0, req: true),
@@ -168,7 +168,7 @@ class OnlineFormDefine extends StatelessWidget {
                                             initialValue: controller.model!.lessonBookLetFiles![controller.examType!.lessons![l].key] == null ? null : controller.model!.lessonBookLetFiles![controller.examType!.lessons![l].key]!.startPageNo.toString(),
                                             onSaved: (value) {
                                               controller.model!.lessonBookLetFiles![controller.examType!.lessons![l].key] ??= BookLetFile();
-                                              controller.model!.lessonBookLetFiles![controller.examType!.lessons![l].key]!.startPageNo = int.tryParse(value!);
+                                              controller.model!.lessonBookLetFiles![controller.examType!.lessons![l].key]!.startPageNo = int.tryParse(value);
                                             },
                                             iconData: Icons.alt_route,
                                             validatorRules: ValidatorRules(mustNumber: true, minValue: 0, req: true),
@@ -181,7 +181,7 @@ class OnlineFormDefine extends StatelessWidget {
                                             initialValue: controller.model!.lessonBookLetFiles![controller.examType!.lessons![l].key] == null ? null : controller.model!.lessonBookLetFiles![controller.examType!.lessons![l].key]!.endPageNo.toString(),
                                             onSaved: (value) {
                                               controller.model!.lessonBookLetFiles![controller.examType!.lessons![l].key] ??= BookLetFile();
-                                              controller.model!.lessonBookLetFiles![controller.examType!.lessons![l].key]!.endPageNo = int.tryParse(value!);
+                                              controller.model!.lessonBookLetFiles![controller.examType!.lessons![l].key]!.endPageNo = int.tryParse(value);
                                             },
                                             iconData: Icons.alt_route,
                                             validatorRules: ValidatorRules(mustNumber: true, minValue: 0, req: true),
@@ -194,7 +194,7 @@ class OnlineFormDefine extends StatelessWidget {
                                             initialValue: controller.model!.lessonBookLetFiles![controller.examType!.lessons![l].key] == null ? '1' : controller.model!.lessonBookLetFiles![controller.examType!.lessons![l].key]!.firstQuestionNo.toString(),
                                             onSaved: (value) {
                                               controller.model!.lessonBookLetFiles![controller.examType!.lessons![l].key] ??= BookLetFile();
-                                              controller.model!.lessonBookLetFiles![controller.examType!.lessons![l].key]!.firstQuestionNo = int.tryParse(value!);
+                                              controller.model!.lessonBookLetFiles![controller.examType!.lessons![l].key]!.firstQuestionNo = int.tryParse(value);
                                             },
                                             iconData: Icons.alt_route,
                                             validatorRules: ValidatorRules(mustNumber: true, minValue: 0, req: true),

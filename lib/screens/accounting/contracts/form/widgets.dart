@@ -93,10 +93,10 @@ class ContractAmount extends StatelessWidget {
     return MyTextFormField(
       textAlign: TextAlign.end,
       onChanged: (text) {
-        controller.itemData!.contractAmount = double.tryParse(text!);
+        controller.itemData!.contractAmount = double.tryParse(text);
       },
       onSaved: (text) {
-        controller.itemData!.contractAmount = double.tryParse(text!);
+        controller.itemData!.contractAmount = double.tryParse(text);
       },
       initialValue: controller.itemData!.contractAmount!.toStringAsFixed(2),
       labelText: 'contractamount'.translate,

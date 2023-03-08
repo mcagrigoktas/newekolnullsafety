@@ -119,11 +119,11 @@ class NewContract extends StatelessWidget {
                                 validatorRules: ValidatorRules(mustNumber: true, minValue: 1, req: true),
                                 initialValue: controller.itemData!.products![_i].amount!.toStringAsFixed(2),
                                 onChanged: (value) {
-                                  controller.itemData!.products![_i].amount = double.tryParse(value!) ?? 0.0;
+                                  controller.itemData!.products![_i].amount = double.tryParse(value) ?? 0.0;
                                   controller.newContracAmountTotal.value = controller.itemData!.products!.fold<double>(0.0, (p, e) => p + (e.net));
                                   controller.update();
                                 },
-                                onSaved: (value) => controller.itemData!.products![_i].amount = double.tryParse(value!),
+                                onSaved: (value) => controller.itemData!.products![_i].amount = double.tryParse(value),
                               ),
                             ),
                             Expanded(
@@ -134,11 +134,11 @@ class NewContract extends StatelessWidget {
                                 validatorRules: ValidatorRules(mustNumber: true, minValue: 0, req: true),
                                 initialValue: controller.itemData!.products![_i].discount!.toStringAsFixed(2),
                                 onChanged: (value) {
-                                  controller.itemData!.products![_i].discount = double.tryParse(value!) ?? 0.0;
+                                  controller.itemData!.products![_i].discount = double.tryParse(value) ?? 0.0;
                                   controller.newContracAmountTotal.value = controller.itemData!.products!.fold<double>(0.0, (p, e) => p + (e.net));
                                   controller.update();
                                 },
-                                onSaved: (value) => controller.itemData!.products![_i].discount = double.tryParse(value!),
+                                onSaved: (value) => controller.itemData!.products![_i].discount = double.tryParse(value),
                               ),
                             ),
                             Expanded(
@@ -149,11 +149,11 @@ class NewContract extends StatelessWidget {
                                 validatorRules: ValidatorRules(mustNumber: true, minValue: 0, req: true),
                                 initialValue: controller.itemData!.products![_i].amount!.toStringAsFixed(2),
                                 onChanged: (value) {
-                                  controller.itemData!.products![_i].tax = double.tryParse(value!) ?? 0.0;
+                                  controller.itemData!.products![_i].tax = double.tryParse(value) ?? 0.0;
                                   controller.newContracAmountTotal.value = controller.itemData!.products!.fold<double>(0.0, (p, e) => p + (e.net));
                                   controller.update();
                                 },
-                                onSaved: (value) => controller.itemData!.products![_i].tax = double.tryParse(value!),
+                                onSaved: (value) => controller.itemData!.products![_i].tax = double.tryParse(value),
                               ),
                             ),
                             Expanded(
@@ -293,10 +293,10 @@ class NewContract extends StatelessWidget {
                             validatorRules: ValidatorRules(mustNumber: true, minValue: 1, req: true),
                             initialValue: controller.itemData!.installaments[_i].amount!.toStringAsFixed(2),
                             onChanged: (value) {
-                              controller.itemData!.installaments[_i].amount = double.tryParse(value!);
+                              controller.itemData!.installaments[_i].amount = double.tryParse(value);
                               controller.newContracAmountTotal.value = controller.itemData!.installaments.fold<double>(0.0, (p, e) => p + (e.amount ?? 0.0));
                             },
-                            onSaved: (value) => controller.itemData!.installaments[_i].amount = double.tryParse(value!),
+                            onSaved: (value) => controller.itemData!.installaments[_i].amount = double.tryParse(value),
                           ),
                         ),
                         Expanded(

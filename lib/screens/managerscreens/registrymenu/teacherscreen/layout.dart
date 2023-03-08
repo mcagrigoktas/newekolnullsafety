@@ -224,7 +224,7 @@ class TeacherList extends StatelessWidget {
                                 labelText: "mail".translate,
                                 iconData: MdiIcons.at,
                                 onSaved: (value) {
-                                  controller.itemData!.mail = value?.trim();
+                                  controller.itemData!.mail = value.trim();
                                 },
                               ),
                               MyTextFormField(
