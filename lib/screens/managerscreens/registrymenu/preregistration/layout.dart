@@ -72,7 +72,7 @@ class PreRegistrationList extends StatelessWidget {
             _leftBody = controller.newItem != null
                 ? null
                 : Body.listviewBuilder(
-                    pageStorageKey: AppVar.appBloc.hesapBilgileri.kurumID! + 'preregister',
+                    pageStorageKey: AppVar.appBloc.hesapBilgileri.kurumID + 'preregister',
                     listviewFirstWidget: Column(
                       children: [
                         MySearchBar(

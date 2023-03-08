@@ -3,9 +3,9 @@ part of '../dataservice.dart';
 class LiveBroadCastService {
   LiveBroadCastService._();
 
-  static String get _uid => AppVar.appBloc.hesapBilgileri.uid!;
-  static String get _kurumId => AppVar.appBloc.hesapBilgileri.kurumID!;
-  static String get _termKey => AppVar.appBloc.hesapBilgileri.termKey!;
+  static String get _uid => AppVar.appBloc.hesapBilgileri.uid;
+  static String get _kurumId => AppVar.appBloc.hesapBilgileri.kurumID;
+  static String get _termKey => AppVar.appBloc.hesapBilgileri.termKey;
   static dynamic get _realTime => databaseTime;
   static Database get _database11 => AppVar.appBloc.database1;
   static Database get _database33 => AppVar.appBloc.database3;

@@ -163,7 +163,7 @@ class ExamController extends GetxController {
     if (formKey.currentState!.checkAndSave()) {
       //    if (dataIsNew && selectedItem.seisonDatFiles.isEmpty) selectedItem.addExamDatFiles();
 
-      if (dataIsNew && girisTuru == EvaulationUserType.school) selectedItem!.kurumIdList = [AppVar.appBloc.hesapBilgileri.kurumID!];
+      if (dataIsNew && girisTuru == EvaulationUserType.school) selectedItem!.kurumIdList = [AppVar.appBloc.hesapBilgileri.kurumID];
 
       if (dataIsNew) {
         selectedItem!.userType = girisTuru;
@@ -202,7 +202,7 @@ class ExamController extends GetxController {
   Future<bool> copyExamGlobalToSchool() async {
     final _newExam = Exam.fromJson(selectedItem!.mapForSave(), selectedItem!.key);
 
-    _newExam.kurumIdList = [AppVar.appBloc.hesapBilgileri.kurumID!];
+    _newExam.kurumIdList = [AppVar.appBloc.hesapBilgileri.kurumID];
     _newExam.userType = EvaulationUserType.school;
     _newExam.savedBy = AppVar.appBloc.hesapBilgileri.uid;
 
@@ -264,10 +264,10 @@ class ExamController extends GetxController {
     String saveLocation;
     if (girisTuru == EvaulationUserType.school) {
       allKurumStudents = {
-        AppVar.appBloc.hesapBilgileri.kurumID!: AppVar.appBloc.studentService!.dataList,
+        AppVar.appBloc.hesapBilgileri.kurumID: AppVar.appBloc.studentService!.dataList,
       };
       allKurumClass = {
-        AppVar.appBloc.hesapBilgileri.kurumID!: AppVar.appBloc.classService!.dataList,
+        AppVar.appBloc.hesapBilgileri.kurumID: AppVar.appBloc.classService!.dataList,
       };
       saveLocation = "${AppVar.appBloc.hesapBilgileri.kurumID}/${AppVar.appBloc.hesapBilgileri.termKey}/ExamFiles";
     } else if (girisTuru == EvaulationUserType.supermanager) {

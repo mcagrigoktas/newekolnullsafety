@@ -27,7 +27,7 @@ class ZoomHelper {
       'name': AppVar.appBloc.hesapBilgileri.name.changeTurkishCharacter.removeNonEnglishCharacter,
       'pwd': password,
       'role': isHost == true ? 1 : 0,
-      'email': AppVar.appBloc.hesapBilgileri.uid!.toLowerCase() + '@user.com',
+      'email': AppVar.appBloc.hesapBilgileri.uid.toLowerCase() + '@user.com',
       'lang': "en-US",
       'signature': "",
       'china': 0,
@@ -47,7 +47,7 @@ class ZoomHelper {
         domain: domain,
         name: AppVar.appBloc.hesapBilgileri.name! +
             '*' +
-            AppVar.appBloc.hesapBilgileri.uid! +
+            AppVar.appBloc.hesapBilgileri.uid +
             '*' +
             (kIsWeb
                 ? 'W'
@@ -56,7 +56,7 @@ class ZoomHelper {
                     : 'I'),
         id: AppVar.appBloc.hesapBilgileri.name! +
             '*' +
-            AppVar.appBloc.hesapBilgileri.uid! +
+            AppVar.appBloc.hesapBilgileri.uid +
             '*' +
             (kIsWeb
                 ? 'W'

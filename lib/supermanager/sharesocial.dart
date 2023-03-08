@@ -38,7 +38,7 @@ class _ShareSocialState extends State<ShareSocial> with SocialFunctions {
   void initState() {
     super.initState();
 
-    saveLocation = AppVar.appBloc.hesapBilgileri.kurumID! + '/' + AppVar.appBloc.hesapBilgileri.termKey! + '/' + saveLocation + "/" + DateTime.now().dateFormat("yyyy-MM");
+    saveLocation = AppVar.appBloc.hesapBilgileri.kurumID + '/' + AppVar.appBloc.hesapBilgileri.termKey + '/' + saveLocation + "/" + DateTime.now().dateFormat("yyyy-MM");
     if (widget.youtubeUrl != null) {
       tur = SocialFileType.YoutubeVideo;
     }
@@ -82,7 +82,7 @@ class _ShareSocialState extends State<ShareSocial> with SocialFunctions {
       if (_data.targetList!.contains("alluser")) teacherList = AppVar.appBloc.teacherService!.dataList.map((teacher) => teacher.key!).toList();
 
       // paylasimi yapan ogretmense kendi hesabina  kaydedilmesi icin ekleniyor
-      if (AppVar.appBloc.hesapBilgileri.gtT && !teacherList.contains(AppVar.appBloc.hesapBilgileri.uid)) teacherList.add(AppVar.appBloc.hesapBilgileri.uid!);
+      if (AppVar.appBloc.hesapBilgileri.gtT && !teacherList.contains(AppVar.appBloc.hesapBilgileri.uid)) teacherList.add(AppVar.appBloc.hesapBilgileri.uid);
 
       // Ekidde Ogretmen paylasirken yardimici ogretmeni varsa onun hesabinada yazar yada idareci paylasirken her iki ogretmenede yazar
       if (AppVar.appBloc.hesapBilgileri.isEkid) {

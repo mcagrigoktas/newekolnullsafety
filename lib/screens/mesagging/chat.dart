@@ -135,12 +135,12 @@ class ChatScreenState extends State<ChatScreen> with AppFunctions {
           if (widget.ghost == false) {
             if (AppVar.appBloc.hesapBilgileri.gtS && AppVar.appBloc.hesapBilgileri.isParent) {
               if (AppVar.appBloc.hesapBilgileri.parentNo == 2) {
-                MessageService.setMessageLoginTime(AppVar.appBloc.hesapBilgileri.uid! + 'parent2');
+                MessageService.setMessageLoginTime(AppVar.appBloc.hesapBilgileri.uid + 'parent2');
               } else {
-                MessageService.setMessageLoginTime(AppVar.appBloc.hesapBilgileri.uid! + 'parent');
+                MessageService.setMessageLoginTime(AppVar.appBloc.hesapBilgileri.uid + 'parent');
               }
             } else {
-              MessageService.setMessageLoginTime(AppVar.appBloc.hesapBilgileri.uid!);
+              MessageService.setMessageLoginTime(AppVar.appBloc.hesapBilgileri.uid);
             }
           }
         });
@@ -638,7 +638,7 @@ class ChatScreenState extends State<ChatScreen> with AppFunctions {
   //   sendMessage(imageUrl: request);
   // }
 
-  String getSaveLocation(String type) => "aa_MF" + '/' + DateTime.now().dateFormat("yyyy-MM") + '/' + type + '/' + AppVar.appBloc.hesapBilgileri.kurumID!;
+  String getSaveLocation(String type) => "aa_MF" + '/' + DateTime.now().dateFormat("yyyy-MM") + '/' + type + '/' + AppVar.appBloc.hesapBilgileri.kurumID;
 
   Future<void> _sendMultiplePhoto() async {
     if (Fav.noConnection()) return;

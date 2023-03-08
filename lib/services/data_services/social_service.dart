@@ -3,9 +3,9 @@ part of '../dataservice.dart';
 class SocialService {
   SocialService._();
 
-  static String get _kurumId => AppVar.appBloc.hesapBilgileri.kurumID!;
-  static String get _uid => AppVar.appBloc.hesapBilgileri.uid!;
-  static String get _termKey => AppVar.appBloc.hesapBilgileri.termKey!;
+  static String get _kurumId => AppVar.appBloc.hesapBilgileri.kurumID;
+  static String get _uid => AppVar.appBloc.hesapBilgileri.uid;
+  static String get _termKey => AppVar.appBloc.hesapBilgileri.termKey;
   static Database get _database22 => AppVar.appBloc.database2;
   static dynamic get _realTime => databaseTime;
   static Database get _databaseVersionss => AppVar.appBloc.databaseVersions;

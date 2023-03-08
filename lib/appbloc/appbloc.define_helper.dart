@@ -77,7 +77,7 @@ class AppblocDefineServiceHelper {
     if (_hesapBilgileri.gtS || _hesapBilgileri.gtT) {
       _appBloc.portfolioService = MultipleDataFCS<Portfolio>(
         "${_hesapBilgileri.kurumID}${_hesapBilgileri.uid}${_hesapBilgileri.termKey}Portfolio",
-        queryRefForRealtimeDB: PortfolioService.dbPortfolio(_hesapBilgileri.uid!),
+        queryRefForRealtimeDB: PortfolioService.dbPortfolio(_hesapBilgileri.uid),
         jsonParse: (key, value) => Portfolio.fromJson(value, key),
         lastUpdateKey: 'lastUpdate',
         sortFunction: (Portfolio a, Portfolio b) => b.lastUpdate - a.lastUpdate,
@@ -194,7 +194,7 @@ class AppblocDefineServiceHelper {
 
     if (_hesapBilgileri.gtT) {
       _appBloc.videoChatTeacherService = MultipleDataFCS<VideoLessonProgramModel>("${_hesapBilgileri.kurumID}${_hesapBilgileri.uid}${_hesapBilgileri.termKey}VideoLessonProgramModel",
-          queryRefForRealtimeDB: VideoChatService.dbGetTeacherVideoLessons(_hesapBilgileri.uid!),
+          queryRefForRealtimeDB: VideoChatService.dbGetTeacherVideoLessons(_hesapBilgileri.uid),
           jsonParse: (key, value) => VideoLessonProgramModel.fromJson(value, key),
           sortFunction: (VideoLessonProgramModel a, VideoLessonProgramModel b) {
             return b.startTime! - a.startTime!;
@@ -225,7 +225,7 @@ class AppblocDefineServiceHelper {
     final _girisTuruKey = LoginScreenGirisTuruHelper.girisTuruKey(_hesapBilgileri.girisTuru);
     _appBloc.userInfoChangeService = SingleDataFCS(
       "${_hesapBilgileri.kurumID}${_hesapBilgileri.uid}${_hesapBilgileri.termKey}UserInfoChangeService",
-      queryRef: UserInfoService.dbGetUserInfo(_hesapBilgileri.kurumID!, _girisTuruKey, _hesapBilgileri.uid!, _hesapBilgileri.termKey),
+      queryRef: UserInfoService.dbGetUserInfo(_hesapBilgileri.kurumID, _girisTuruKey, _hesapBilgileri.uid, _hesapBilgileri.termKey),
       getValueAfterOnlyDatabaseQuery: _parseUserInfo,
     );
     await _appBloc.userInfoChangeService!.init();
@@ -410,7 +410,7 @@ class AppblocDefineServiceHelper {
       if (_hesapBilgileri.gtM) {
         if (_appBloc.reviewTerm) return;
         _appBloc.appConfig.ekolRestartApp!(true);
-        _hesapBilgileri.termKey = _schoolInfoServiceData.activeTerm;
+        _hesapBilgileri.termKey = _schoolInfoServiceData.activeTerm!;
 
         //      Fav.preferences.setString("hessapBilgileri", hesapBilgileri.toString());
       } else {
@@ -544,12 +544,12 @@ class AppblocDefineServiceHelper {
           : AppVar.appBloc.hesapBilgileri.gtT
               ? <String>[
                   'alluser',
-                  AppVar.appBloc.hesapBilgileri.uid!,
+                  AppVar.appBloc.hesapBilgileri.uid,
                   ...AppVar.appBloc.classService!.dataList.fold<List<String>>([], (p, e) => e.classTeacher == AppVar.appBloc.hesapBilgileri.uid || e.classTeacher2 == AppVar.appBloc.hesapBilgileri.uid ? (p..add(e.key!)) : p),
                 ]
               : <String>[
                   'alluser',
-                  AppVar.appBloc.hesapBilgileri.uid!,
+                  AppVar.appBloc.hesapBilgileri.uid,
                   ...AppVar.appBloc.hesapBilgileri.classKeyList,
                 ];
 

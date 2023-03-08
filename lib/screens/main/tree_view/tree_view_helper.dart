@@ -213,7 +213,7 @@ class TreeViewHelper {
   static Future<void> _openServiceRollCallPageForManager() async {
     OverLoading.show();
     MiniFetcher<BusRideModel> existingBusRides = MiniFetcher<BusRideModel>(
-      AppVar.appBloc.hesapBilgileri.kurumID! + AppVar.appBloc.hesapBilgileri.termKey! + 'ServiceRollCallListAllVehicle',
+      AppVar.appBloc.hesapBilgileri.kurumID + AppVar.appBloc.hesapBilgileri.termKey + 'ServiceRollCallListAllVehicle',
       FetchType.ONCE,
       multipleData: true,
       lastUpdateKey: 'lastUpdate',

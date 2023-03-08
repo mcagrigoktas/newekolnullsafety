@@ -74,7 +74,7 @@ class EkolPushNotificationService {
 
   static Future<void> sendMultipleNotification(String? baslik, String? icerik, List<String?> tergetList, NotificationArgs tag, {String? sound, String? channel, bool? forParentMessageMenu = false, bool forParentOtherMenu = false, String? parentVisibleCodeForNotification}) async {
     if (tergetList.contains('alluser')) {
-      await FirebaseFunctionService.sendTopicNotification(baslik!, icerik!, AppVar.appBloc.hesapBilgileri.kurumID! + 'pushnotification', sound: sound, tag: (tag..addUid('all')), channel: channel);
+      await FirebaseFunctionService.sendTopicNotification(baslik!, icerik!, AppVar.appBloc.hesapBilgileri.kurumID + 'pushnotification', sound: sound, tag: (tag..addUid('all')), channel: channel);
     } else {
       log(tergetList);
       List<String> uidList = [];

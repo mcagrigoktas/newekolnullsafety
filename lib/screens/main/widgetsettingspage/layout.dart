@@ -65,7 +65,7 @@ class WidgetSettingsPage extends StatelessWidget {
                           if (_isLargeScreen) _nameWidget = Expanded(child: _nameWidget, flex: 1);
                           Widget _photoWidget = MyPhotoUploadWidget(
                             initialValue: e.linkWidgetImageUrl,
-                            saveLocation: AppVar.appBloc.hesapBilgileri.kurumID! + '/' + "WidgetFiles",
+                            saveLocation: AppVar.appBloc.hesapBilgileri.kurumID + '/' + "WidgetFiles",
                             validatorRules: ValidatorRules(req: true, minLength: 3),
                             onSaved: (value) {
                               if (value != null) {

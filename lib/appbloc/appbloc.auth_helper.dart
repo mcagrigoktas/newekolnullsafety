@@ -18,7 +18,7 @@ class AppblocAuthHelper {
 
     //todo Super managerde yapilmali
     if (_hesapBilgileri.gtT || _hesapBilgileri.gtS || _hesapBilgileri.gtM || _hesapBilgileri.gtTransporter) {
-      final userUid = _hesapBilgileri.kurumID! + '_' + _hesapBilgileri.girisTuru.toString() + '_' + _hesapBilgileri.uid!;
+      final userUid = _hesapBilgileri.kurumID + '_' + _hesapBilgileri.girisTuru.toString() + '_' + _hesapBilgileri.uid;
       if (_auth.currentUser?.uid == userUid) return true;
       Fav.writeSeasonCache('signinlogData', Fav.readSeasonCache('signinlogData') + '1-');
       if (_auth.currentUser != null) await _auth.signOut();
@@ -37,12 +37,12 @@ class AppblocAuthHelper {
 
       Fav.writeSeasonCache('signinlogData', Fav.readSeasonCache('signinlogData') + '3-');
       final newToken = await Jwt.getUserAuthToken(
-        uid: _hesapBilgileri.uid!,
+        uid: _hesapBilgileri.uid,
         girisTuru: _hesapBilgileri.girisTuru,
         iM: _hesapBilgileri.gtM,
         iS: _hesapBilgileri.gtS,
         iT: _hesapBilgileri.gtT,
-        kurumID: _hesapBilgileri.kurumID!,
+        kurumID: _hesapBilgileri.kurumID,
       );
       Fav.writeSeasonCache('signinlogData', Fav.readSeasonCache('signinlogData') + '4-');
       if (newToken.safeLength > 0) {
@@ -70,14 +70,14 @@ class AppblocAuthHelper {
     log('SigninLoginData: ' + Fav.readSeasonCache('signinlogData', '')!);
     Fav.timeGuardFunction('NonAuthLogin2', 15.days, () {
       _appBloc.firestore.updateFullField('DeveloperLogs/NonAuthUser', {
-        _hesapBilgileri.kurumID!: {_hesapBilgileri.uid! + ' ' + _hesapBilgileri.name!: Fav.readSeasonCache('signinlogData', '')! + platformName}
+        _hesapBilgileri.kurumID: {_hesapBilgileri.uid + ' ' + _hesapBilgileri.name!: Fav.readSeasonCache('signinlogData', '')! + platformName}
       });
     }, usePreferences: true);
   }
 
   static void afterUserLoginProcess() {
     if (_hesapBilgileri.gtM) {
-      Fav.timeGuardFunction(_hesapBilgileri.kurumID! + 'managerLogin', 3.days, () {
+      Fav.timeGuardFunction(_hesapBilgileri.kurumID + 'managerLogin', 3.days, () {
         SignInOutService.saveManagerLoginedTime();
       }, usePreferences: true);
     }

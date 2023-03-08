@@ -36,7 +36,7 @@ class _ShareSocialState extends State<ShareSocial> with SocialFunctions {
 
   String get _uploadType => (_typeIndex == 0) ? "SocialNetwork" : "Video";
   String get _uploadTypeForSaveLocation => (_typeIndex == 0) ? "Img" : "Vid";
-  String get _saveLocation => "aa_SF" + '/' + DateTime.now().dateFormat("yyyy-MM") + '/' + _uploadTypeForSaveLocation + '/' + AppVar.appBloc.hesapBilgileri.kurumID!;
+  String get _saveLocation => "aa_SF" + '/' + DateTime.now().dateFormat("yyyy-MM") + '/' + _uploadTypeForSaveLocation + '/' + AppVar.appBloc.hesapBilgileri.kurumID;
 
   @override
   void initState() {
@@ -72,7 +72,7 @@ class _ShareSocialState extends State<ShareSocial> with SocialFunctions {
       if (_data.targetList!.contains("alluser")) teacherList = AppVar.appBloc.teacherService!.dataList.map((teacher) => teacher.key!).toSet();
 
       // paylasimi yapan ogretmense kendi hesabina  kaydedilmesi icin ekleniyor
-      if (AppVar.appBloc.hesapBilgileri.gtT) teacherList.add(AppVar.appBloc.hesapBilgileri.uid!);
+      if (AppVar.appBloc.hesapBilgileri.gtT) teacherList.add(AppVar.appBloc.hesapBilgileri.uid);
 
       // Ekidde Ogretmen paylasirken yardimici ogretmeni varsa onun hesabinada yazar yada idareci paylasirken her iki ogretmenede yazar
       if (AppVar.appBloc.hesapBilgileri.isEkid) {

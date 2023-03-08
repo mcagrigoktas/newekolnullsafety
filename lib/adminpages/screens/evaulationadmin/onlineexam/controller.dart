@@ -55,7 +55,7 @@ class OnlineExamController extends GetxController {
     return answers.replaceAll(' ', '').length;
   }
 
-  String get preferencesSaveKey => isBookletReviewing ? 'reviewKey$examKey' : examKey + AppVar.appBloc.hesapBilgileri.girisTuru.toString() + AppVar.appBloc.hesapBilgileri.uid! + 'answerKeyDataSeison$seisonNo';
+  String get preferencesSaveKey => isBookletReviewing ? 'reviewKey$examKey' : examKey + AppVar.appBloc.hesapBilgileri.girisTuru.toString() + AppVar.appBloc.hesapBilgileri.uid + 'answerKeyDataSeison$seisonNo';
 
   Uint8List? activePdfData;
   String? activeLessonKey;
@@ -255,7 +255,7 @@ class OnlineExamController extends GetxController {
     return const SizedBox();
   }
 
-  String get sendDataPreferencesKey => AppVar.appBloc.hesapBilgileri.kurumID! + AppVar.appBloc.hesapBilgileri.uid! + examKey + 'seison$seisonNo' + 'sendedStudentExamData';
+  String get sendDataPreferencesKey => AppVar.appBloc.hesapBilgileri.kurumID + AppVar.appBloc.hesapBilgileri.uid + examKey + 'seison$seisonNo' + 'sendedStudentExamData';
   bool? get dataSended => Fav.preferences.getBool(sendDataPreferencesKey, false);
 
   Future<void> sendExamDataForReview() async {

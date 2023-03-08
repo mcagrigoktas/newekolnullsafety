@@ -285,7 +285,7 @@ class AppFunctions {
     if (AppVar.appBloc.lessonService!.dataList.any((lesson) => lesson.teacher == teacher.key && AppVar.appBloc.hesapBilgileri.classKeyList.contains(lesson.classKey))) return true;
 
     //ogretmen sinif ogretmenimi
-    if (whomStudentClassTeacher(AppVar.appBloc.hesapBilgileri.uid!).contains(teacher.key)) return true;
+    if (whomStudentClassTeacher(AppVar.appBloc.hesapBilgileri.uid).contains(teacher.key)) return true;
 
     return false;
   }

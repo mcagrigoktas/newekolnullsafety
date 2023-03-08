@@ -20,9 +20,9 @@ class EducationContentController extends GetxController {
     treeViewController = IndexedTreeViewController<EducationNode>();
     initialRoot = EducationNode.fromJson({'n': 'Root', 'key': 'root', 'c': 0, 'i': education!.data});
 
-    if (AppVar.appBloc.hesapBilgileri.kurumID != null) {
+    if (AppVar.appBloc.hesapBilgileri.kurumID.safeLength > 3) {
       //Onizlemeden gelen hata vermemesi icin
-      Fav.preferences.addLimitedStringList(AppVar.appBloc.hesapBilgileri.kurumID! + AppVar.appBloc.hesapBilgileri.uid! + 'favoritesEducationItems', education!.key!, maxNumber: 3);
+      Fav.preferences.addLimitedStringList(AppVar.appBloc.hesapBilgileri.kurumID + AppVar.appBloc.hesapBilgileri.uid + 'favoritesEducationItems', education!.key!, maxNumber: 3);
     }
 
     super.onInit();

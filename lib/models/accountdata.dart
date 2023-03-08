@@ -10,21 +10,25 @@ import 'allmodel.dart';
 class HesapBilgileri {
   static const String _preferencesKey = 'ekolUserM';
 
+  bool girisYapildi = false;
+  String termKey = '';
+  String kurumID = '';
+  String uid = '';
+  int girisTuru = -1; //200 super manager 10 manager 20 ogretmen 30 ogrenci 40 veli 90 servis
+
   int? demoTime;
   String? signInToken;
-  String? kurumID;
+
   String? genelMudurlukId;
   String? name = "";
   String? imgUrl = "";
-  int? girisTuru = -1; //200 super manager 10 manager 20 ogretmen 30 ogrenci 40 veli 90 servis
-  String? uid;
-  bool? girisYapildi = false;
+
   String? class0 = "sinifiyok";
 // String class1 = "sinifiyok";
   Map<String, String?> groupList = {};
   bool? teacherSeeAllClass;
   List<String> authorityList = [];
-  String? termKey;
+
   String? username;
   String? password;
   String schoolType = 'ekol';
@@ -73,16 +77,19 @@ class HesapBilgileri {
   }
 
   void setHesapBilgileri({String? accountInfo}) {
-    String hesapBilgileri = accountInfo ?? readPreferences()!;
+    String hesapBilgileri = accountInfo ?? readPreferences();
 
     if (hesapBilgileri.isEmpty) return;
 
     Map hesapBilgileriMap = json.decode(hesapBilgileri);
     termKey = hesapBilgileriMap["termKey"];
+    uid = hesapBilgileriMap["uid"];
+    kurumID = hesapBilgileriMap["kurumID"];
+    girisTuru = hesapBilgileriMap["girisTuru"];
+
     name = hesapBilgileriMap["name"];
     imgUrl = hesapBilgileriMap["imgUrl"];
-    girisTuru = hesapBilgileriMap["girisTuru"];
-    uid = hesapBilgileriMap["uid"];
+
     girisYapildi = hesapBilgileriMap["girisYapildi"];
     class0 = hesapBilgileriMap["class0"] == null || hesapBilgileriMap["class0"] == '' ? "sinifiyok" : hesapBilgileriMap["class0"];
     groupList = hesapBilgileriMap['groupList'] != null ? Map<String, String?>.from(hesapBilgileriMap['groupList']) : Map<String, String?>.from({});
@@ -92,7 +99,7 @@ class HesapBilgileri {
     //  class1= hesapBilgileriMap["class1"] ==null || hesapBilgileriMap["class1"]=='' ? "sinifiyok" : hesapBilgileriMap["class1"];
     teacherSeeAllClass = hesapBilgileriMap["teacherSeeAllClass"] ?? false;
     authorityList = List<String>.from(hesapBilgileriMap["authorityList"] ?? []);
-    kurumID = hesapBilgileriMap["kurumID"];
+
     genelMudurlukId = hesapBilgileriMap["genelMudurlukId"];
     signInToken = hesapBilgileriMap["signInToken"];
     username = hesapBilgileriMap["username"];
@@ -108,20 +115,20 @@ class HesapBilgileri {
     userData = hesapBilgileriMap["userData"];
   }
 
-  String? readPreferences() {
+  String readPreferences() {
     //tododelete 29 temmuz 2023
     final existingData = Fav.preferences.getString(_preferencesKey);
     if (existingData != null && existingData.safeLength > 3) {
       Fav.securePreferences.setString(_preferencesKey, existingData);
       Fav.preferences.remove(_preferencesKey);
-      return existingData.unMix;
+      return existingData.unMix!;
     }
-    return Fav.securePreferences.getString(_preferencesKey, '');
+    return Fav.securePreferences.getString(_preferencesKey, '')!;
   }
 
   Future<bool> savePreferences() async {
     await Fav.securePreferences.setString(_preferencesKey, toString());
-    await Fav.securePreferences.addItemToMap(UserImageHelper.ekolAllUserPrefKey, kurumID! + uid!, toString());
+    await Fav.securePreferences.addItemToMap(UserImageHelper.ekolAllUserPrefKey, kurumID + uid, toString());
     return true;
   }
 
@@ -130,21 +137,24 @@ class HesapBilgileri {
   }
 
   void reset() {
+    kurumID = '';
+    uid = '';
+    termKey = '';
+    girisTuru = -1;
+
     teacherSeeAllClass = false;
     username = null;
     password = null;
-    kurumID = null;
     genelMudurlukId = null;
     signInToken = null;
     name = "";
     imgUrl = "";
-    girisTuru = -1;
-    uid = null;
+
     girisYapildi = false;
     class0 = "sinifiyok";
     groupList = {};
     authorityList.clear();
-    termKey = null;
+
     schoolType = 'ekid';
     demoTime = null;
     isParent = false;
@@ -159,7 +169,7 @@ class HesapBilgileri {
 
   String get shortName => name == null ? '' : name!.split(" ").first;
 
-  String get qbankUid => kurumID! + girisTuru.toString() + uid!;
+  String get qbankUid => kurumID + girisTuru.toString() + uid;
 
   bool get isEkid => schoolType == 'ekid';
   bool get isEkol => schoolType == 'ekol';
@@ -174,14 +184,14 @@ class HesapBilgileri {
   bool get gtTransporter => girisTuru == 90;
   bool get gtMT => girisTuru == 20 || girisTuru == 10;
 
-  bool get isGood => termKey.safeLength > 2 && uid.safeLength > 2 && kurumID.safeLength > 4 && girisYapildi!;
-  bool get isSturdy => (termKey.safeLength > 2 && uid.safeLength > 2 && kurumID.safeLength > 4) || (kurumID.safeLength > 4 && username.safeLength > 4 && password.safeLength > 4 && kurumID!.startsWith('739'));
+  bool get isGood => termKey.safeLength > 2 && uid.safeLength > 2 && kurumID.safeLength > 4 && girisYapildi;
+  bool get isSturdy => (termKey.safeLength > 2 && uid.safeLength > 2 && kurumID.safeLength > 4) || (kurumID.safeLength > 4 && username.safeLength > 4 && password.safeLength > 4 && kurumID.startsWith('739'));
 
   String? get zoomApiKey => otherData['zoomApiKey'];
   String? get zoomApiSecret => otherData['zoomApiSecret'];
 
   List<String> get genelMudurlukEducationList {
-    List<String> _result = [kurumID!, if (genelMudurlukId.safeLength > 0) genelMudurlukId!];
+    List<String> _result = [kurumID, if (genelMudurlukId.safeLength > 0) genelMudurlukId!];
     if (genelMudurlukGroupList != null && genelMudurlukGroupList!['education'] != null) {
       _result.addAll(List<String>.from((genelMudurlukGroupList!['education'] as Map).keys));
     }

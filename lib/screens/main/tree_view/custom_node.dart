@@ -6,7 +6,7 @@ import '../../../appbloc/appvar.dart';
 
 class SidebarNode extends ExpandableSideBarNode {
   static String get favoriteUsageSeasonCacheKey => '${AppVar.appBloc.hesapBilgileri.uid}favoritesusage';
-  String get usagePrefKey => AppVar.appBloc.hesapBilgileri.uid! + name! + '_usage';
+  String get usagePrefKey => AppVar.appBloc.hesapBilgileri.uid + name! + '_usage';
   SidebarNode({String? name, Function()? onTap, IconData? icon = Icons.question_answer}) {
     this.name = name;
     //? Breaking key silindi
@@ -20,7 +20,7 @@ class SidebarNode extends ExpandableSideBarNode {
       if (Fav.preferences.getInt(usagePrefKey, 0)! > 0) {
         (Fav.readSeasonCache(favoriteUsageSeasonCacheKey) as Map<String?, FavoriteUsage>)[name] = FavoriteUsage()
           ..name = name
-          ..usageCount = Fav.preferences.getInt(AppVar.appBloc.hesapBilgileri.uid! + name!, 0)
+          ..usageCount = Fav.preferences.getInt(AppVar.appBloc.hesapBilgileri.uid + name!, 0)
           ..node = this;
       }
     }

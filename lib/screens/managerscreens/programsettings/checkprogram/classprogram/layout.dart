@@ -35,7 +35,7 @@ class CheckClassProgram extends StatelessWidget {
             _leftBody = Body.child(child: EmptyState(emptyStateWidget: EmptyStateWidget.NORECORDSWITHPLUS));
           } else {
             _leftBody = Body.listviewBuilder(
-              pageStorageKey: AppVar.appBloc.hesapBilgileri.kurumID! + 'checkClassProgram',
+              pageStorageKey: AppVar.appBloc.hesapBilgileri.kurumID + 'checkClassProgram',
               listviewFirstWidget: Column(
                 children: [
                   if (AppVar.appBloc.hesapBilgileri.gtM)

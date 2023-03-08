@@ -355,7 +355,7 @@ class EkolPrintHelper {
           color: PdfColor(0, 0, 0, 0.02).flatten(),
           child: pw.Row(children: [
             pw.Expanded(flex: 1, child: pw.Text('kurumid'.translate + ':', style: pw.TextStyle(fontWeight: pw.FontWeight.bold))),
-            pw.Expanded(flex: 1, child: pw.Padding(padding: const pw.EdgeInsets.symmetric(vertical: 4, horizontal: 16), child: pw.Text(AppVar.appBloc.hesapBilgileri.kurumID!))),
+            pw.Expanded(flex: 1, child: pw.Padding(padding: const pw.EdgeInsets.symmetric(vertical: 4, horizontal: 16), child: pw.Text(AppVar.appBloc.hesapBilgileri.kurumID))),
           ]),
         ),
         pw.SizedBox(height: 8),

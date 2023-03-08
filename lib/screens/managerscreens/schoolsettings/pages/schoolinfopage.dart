@@ -87,7 +87,7 @@ class SchoolInfoPage extends StatelessWidget {
                     avatarImage: true,
                     validatorRules: ValidatorRules(req: true),
                     initialValue: AppVar.appBloc.schoolInfoService!.singleData?.logoUrl ?? "",
-                    saveLocation: AppVar.appBloc.hesapBilgileri.kurumID! + '/' + "GenerallyFiles",
+                    saveLocation: AppVar.appBloc.hesapBilgileri.kurumID + '/' + "GenerallyFiles",
                     onSaved: (value) {
                       _data["logoUrl"] = value;
                     },

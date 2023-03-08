@@ -58,7 +58,7 @@ class _JitsiMobileAppState extends State<JitsiMobileApp> {
         serverURL: serverUrl!,
         token: token!,
         userEmail: '',
-        userDisplayName: AppVar.appBloc.hesapBilgileri.name.toFirebaseSafeKey! + '*' + AppVar.appBloc.hesapBilgileri.uid! + '*' + (Platform.isIOS ? 'I' : 'A'),
+        userDisplayName: AppVar.appBloc.hesapBilgileri.name.toFirebaseSafeKey! + '*' + AppVar.appBloc.hesapBilgileri.uid + '*' + (Platform.isIOS ? 'I' : 'A'),
         isVideoMuted: isVideoMuted,
         isAudioMuted: isAudioMuted,
         onAudioMutedChanged: _onAudioMutedChanged,

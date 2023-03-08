@@ -200,7 +200,7 @@ class _AddHomeWorkState extends State<AddHomeWork> {
                   children: <Widget>[
                     if (widget.tur == 1 || widget.tur == 2 || widget.tur == 3)
                       MyPhotoUploadWidget(
-                        saveLocation: AppVar.appBloc.hesapBilgileri.kurumID! + '/' + AppVar.appBloc.hesapBilgileri.termKey! + '/' + "HomeWorkFiles",
+                        saveLocation: AppVar.appBloc.hesapBilgileri.kurumID + '/' + AppVar.appBloc.hesapBilgileri.termKey + '/' + "HomeWorkFiles",
                         onSaved: (value) {
                           if (value != null) {
                             _data.imgList ??= [];

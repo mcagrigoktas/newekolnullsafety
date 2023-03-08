@@ -24,10 +24,10 @@ class BusRideController extends BaseController {
   //* Ogrenci siralamasini kullanicin belirledigi sekilde kaydeder
   List<String?> orderList = [];
 
-  String get savePreferencesKey => AppVar.appBloc.hesapBilgileri.uid! + '-' + time.millisecondsSinceEpoch.dateFormat('dd-MMM-yyyy') + '-' + seferNo.toString() + 'saved';
-  String get dataPreferencesKey => AppVar.appBloc.hesapBilgileri.uid! + '-' + time.millisecondsSinceEpoch.dateFormat('dd-MMM-yyyy') + '-' + seferNo.toString() + 'data';
-  String get orderPreferencesKey => AppVar.appBloc.hesapBilgileri.uid! + '-' + time.millisecondsSinceEpoch.dateFormat('dd-MMM-yyyy') + '-' + seferNo.toString() + 'order';
-  String get notificationPreferencesKey => AppVar.appBloc.hesapBilgileri.uid! + '-' + time.millisecondsSinceEpoch.dateFormat('dd-MMM-yyyy') + '-' + seferNo.toString() + 'notification';
+  String get savePreferencesKey => AppVar.appBloc.hesapBilgileri.uid + '-' + time.millisecondsSinceEpoch.dateFormat('dd-MMM-yyyy') + '-' + seferNo.toString() + 'saved';
+  String get dataPreferencesKey => AppVar.appBloc.hesapBilgileri.uid + '-' + time.millisecondsSinceEpoch.dateFormat('dd-MMM-yyyy') + '-' + seferNo.toString() + 'data';
+  String get orderPreferencesKey => AppVar.appBloc.hesapBilgileri.uid + '-' + time.millisecondsSinceEpoch.dateFormat('dd-MMM-yyyy') + '-' + seferNo.toString() + 'order';
+  String get notificationPreferencesKey => AppVar.appBloc.hesapBilgileri.uid + '-' + time.millisecondsSinceEpoch.dateFormat('dd-MMM-yyyy') + '-' + seferNo.toString() + 'notification';
 
 //*{studentKey:{s: Durum(1 geldi -1 gelmedi 0 bilinmiyor),}}
   Map<String?, Map>? data;
@@ -247,7 +247,7 @@ class BusRideController extends BaseController {
     if (_result == true) {
       startLoading();
 
-      await TransportService.sendTransporterRollCall('S${seferNo}K${time.daysSinceEpoch}', AppVar.appBloc.hesapBilgileri.uid!, {'data': data, 'no': seferNo, 'time': time.dateFormat()}).then((value) {
+      await TransportService.sendTransporterRollCall('S${seferNo}K${time.daysSinceEpoch}', AppVar.appBloc.hesapBilgileri.uid, {'data': data, 'no': seferNo, 'time': time.dateFormat()}).then((value) {
         OverAlert.saveSuc();
         Fav.preferences.setBool(savePreferencesKey, true);
         _locationSubscription!.cancel();

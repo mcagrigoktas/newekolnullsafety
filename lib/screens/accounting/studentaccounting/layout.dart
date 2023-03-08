@@ -57,7 +57,7 @@ class StudentAccounting extends StatelessWidget {
             _leftBody = Body.child(child: MyProgressIndicator(isCentered: true));
           } else {
             _leftBody = Body.listviewBuilder(
-              pageStorageKey: AppVar.appBloc.hesapBilgileri.kurumID! + 'studentList',
+              pageStorageKey: AppVar.appBloc.hesapBilgileri.kurumID + 'studentList',
               listviewFirstWidget: MySearchBar(
                 onChanged: (text) {
                   controller.makeFilter(text);

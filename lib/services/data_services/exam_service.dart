@@ -3,11 +3,11 @@ part of '../dataservice.dart';
 class ExamService {
   ExamService._();
 
-  static String get _kurumId => AppVar.appBloc.hesapBilgileri.kurumID!;
-  static String get _termKey => AppVar.appBloc.hesapBilgileri.termKey!;
+  static String get _kurumId => AppVar.appBloc.hesapBilgileri.kurumID;
+  static String get _termKey => AppVar.appBloc.hesapBilgileri.termKey;
   static Database get _databaseProgramm => AppVar.appBloc.databaseProgram;
   static Database get _databaseVersionss => AppVar.appBloc.databaseVersions;
-  static String get _uid => AppVar.appBloc.hesapBilgileri.uid!;
+  static String get _uid => AppVar.appBloc.hesapBilgileri.uid;
   static Database get _databaseLogss => AppVar.appBloc.databaseLogs;
 
   static dynamic get _realTime => databaseTime;

@@ -63,7 +63,7 @@ class Contracts extends StatelessWidget {
             _leftBody = controller.newContract != null
                 ? null
                 : Body.listviewBuilder(
-                    pageStorageKey: AppVar.appBloc.hesapBilgileri.kurumID! + 'contractList',
+                    pageStorageKey: AppVar.appBloc.hesapBilgileri.kurumID + 'contractList',
                     listviewFirstWidget: Column(
                       children: [
                         MySearchBar(

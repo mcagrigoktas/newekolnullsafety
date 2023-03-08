@@ -168,7 +168,7 @@ class _NotificationListTile extends StatelessWidget {
           await InAppNotificationService.sendInAppNotification(
             InAppNotification(type: NotificationType.preparedStudentOk)
               ..argument = InAppNotificationArgument.addTokenAndCheck(token: arguments.token).toJson()
-              ..key = AppVar.appBloc.hesapBilgileri.uid! + 'preparemystudentok'
+              ..key = AppVar.appBloc.hesapBilgileri.uid + 'preparemystudentok'
               ..senderKey = AppVar.appBloc.hesapBilgileri.uid
               ..title = AppVar.appBloc.hesapBilgileri.name
               ..content = 'preparemystudentok'.translate,

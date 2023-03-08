@@ -22,7 +22,7 @@ class AdvancedClassController extends GetxController {
 
   bool _participantIsHost(int girisTuru, String? uid) => girisTuru < 30 && onlineLessonController.liveBroadcastItem!.teacherKey == uid;
   // ignore: unused_element
-  bool get _meIsHost => _participantIsHost(AppVar.appBloc.hesapBilgileri.girisTuru!, AppVar.appBloc.hesapBilgileri.uid);
+  bool get _meIsHost => _participantIsHost(AppVar.appBloc.hesapBilgileri.girisTuru, AppVar.appBloc.hesapBilgileri.uid);
 
   Widget hostEmptyWidget = MyProgressIndicator(
     isCentered: true,
@@ -34,7 +34,7 @@ class AdvancedClassController extends GetxController {
   String? bigWidgetKey;
   Map<String, Holder> participantHolders = {};
 
-  String get ownKey => AppVar.appBloc.hesapBilgileri.name.changeTurkishCharacter! + '*' + AppVar.appBloc.hesapBilgileri.uid! + '*W*' + AppVar.appBloc.hesapBilgileri.girisTuru.toString();
+  String get ownKey => AppVar.appBloc.hesapBilgileri.name.changeTurkishCharacter! + '*' + AppVar.appBloc.hesapBilgileri.uid + '*W*' + AppVar.appBloc.hesapBilgileri.girisTuru.toString();
   dynamic get ownElement => Fav.readSeasonCache(ownKey + 'Element');
   dynamic participantElement(String uid) => Fav.readSeasonCache(uid + 'Element');
 

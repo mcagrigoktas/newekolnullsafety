@@ -146,7 +146,7 @@ class AppBloc {
   StreamSubscription? _schoolVersionSubscription;
   Box? _schoolVersionsBox;
   Future<void> _subscribeSchoolVersions() async {
-    _schoolVersionsBox ??= await Get.openSafeBox(hesapBilgileri.kurumID! + AppConst.versionListBoxVersion.toString());
+    _schoolVersionsBox ??= await Get.openSafeBox(hesapBilgileri.kurumID + AppConst.versionListBoxVersion.toString());
     if (_schoolVersionSubscription == null) {
       await _schoolVersiondatalariCek(_schoolVersionsBox!.toMap());
 
@@ -163,7 +163,7 @@ class AppBloc {
   StreamSubscription? _personalVersionSubscription;
   Box? _personalVersionsBox;
   Future<void> _subscribePersonalVersions() async {
-    _personalVersionsBox ??= await Get.openSafeBox(hesapBilgileri.kurumID! + hesapBilgileri.uid! + hesapBilgileri.termKey! + AppConst.versionListBoxVersion.toString());
+    _personalVersionsBox ??= await Get.openSafeBox(hesapBilgileri.kurumID + hesapBilgileri.uid + hesapBilgileri.termKey + AppConst.versionListBoxVersion.toString());
     if (_personalVersionSubscription == null) {
       await _personalVersiondatalariCek(_personalVersionsBox!.toMap());
       _personalVersionSubscription = UserInfoService.dbPersonalVersions().onValue().listen((event) async {
@@ -394,10 +394,10 @@ class AppBloc {
   }
 
   void signOut() {
-    final String _kurumID = hesapBilgileri.kurumID!;
-    final String _termKey = hesapBilgileri.termKey!;
-    final String _userKey = hesapBilgileri.uid!;
-    Fav.securePreferences.deleteItemMap(UserImageHelper.ekolAllUserPrefKey, hesapBilgileri.kurumID! + hesapBilgileri.uid!);
+    final String _kurumID = hesapBilgileri.kurumID;
+    final String _termKey = hesapBilgileri.termKey;
+    final String _userKey = hesapBilgileri.uid;
+    Fav.securePreferences.deleteItemMap(UserImageHelper.ekolAllUserPrefKey, hesapBilgileri.kurumID + hesapBilgileri.uid);
     hesapBilgileri.reset();
     hesapBilgileri.removePreferences();
 

@@ -48,7 +48,7 @@ class EarningStatistics extends StatelessWidget {
                           final allEarningEntries = allLessonEarningEntries[l].value.entries.where((element) {
                             if (element.key == 'general') return true;
                             if (controller.girisTuru == EvaulationUserType.school) {
-                              if (element.key!.split('school').last.startsWith(AppVar.appBloc.hesapBilgileri.kurumID!)) return true;
+                              if (element.key!.split('school').last.startsWith(AppVar.appBloc.hesapBilgileri.kurumID)) return true;
                             }
                             if (controller.girisTuru != EvaulationUserType.school) {
                               if (element.key!.contains('class')) return false;

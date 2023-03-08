@@ -40,12 +40,12 @@ class EducationListEntranceController extends GetxController {
   List<Education> get _getAllEducationData => AppVar.appBloc.educationService!.dataList<Education>().where((element) => element.serverIdList!.any((element) => AppVar.appBloc.hesapBilgileri.genelMudurlukEducationList.contains(element))).toList();
 
   void _deleteFavoritesNonExistItems() {
-    final _favoritesItems = Fav.preferences.getLimitedStringList(AppVar.appBloc.hesapBilgileri.kurumID! + AppVar.appBloc.hesapBilgileri.uid! + 'favoritesEducationItems', [])!;
+    final _favoritesItems = Fav.preferences.getLimitedStringList(AppVar.appBloc.hesapBilgileri.kurumID + AppVar.appBloc.hesapBilgileri.uid + 'favoritesEducationItems', [])!;
     final _allEducationItems = _getAllEducationData;
     _favoritesItems.forEach((_favKey) {
       final _item = _allEducationItems.firstWhereOrNull((element) => element.key == _favKey);
       if (_item == null) {
-        Fav.preferences.removeThisStringInStringList(AppVar.appBloc.hesapBilgileri.kurumID! + AppVar.appBloc.hesapBilgileri.uid! + 'favoritesEducationItems', _favKey);
+        Fav.preferences.removeThisStringInStringList(AppVar.appBloc.hesapBilgileri.kurumID + AppVar.appBloc.hesapBilgileri.uid + 'favoritesEducationItems', _favKey);
       }
     });
   }

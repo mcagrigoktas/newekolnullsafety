@@ -108,7 +108,7 @@ class UserProfileImage extends StatelessWidget {
             style: TextStyle(color: Fav.design.primaryText),
           ),
           subTitle: Text(
-            hesap.kurumID ?? '',
+            hesap.kurumID,
             maxLines: 1,
             style: TextStyle(color: Fav.design.primaryText, fontSize: 10),
           ),

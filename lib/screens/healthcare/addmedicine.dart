@@ -100,7 +100,7 @@ class _AddMedicinaState extends State<AddMedicina> with AppFunctions {
   int medicineCount = 1;
 
   Future<void> sendNotification() async {
-    var list = whomStudentClassTeacher(AppVar.appBloc.hesapBilgileri.uid!);
+    var list = whomStudentClassTeacher(AppVar.appBloc.hesapBilgileri.uid);
 
     await InAppNotificationService.sendSameInAppNotificationMultipleTarget(
         InAppNotification(
@@ -260,7 +260,7 @@ class _MedicineDetailsState extends State<MedicineDetails> with AppFunctions {
     if (Fav.noConnection()) return;
 
     if (AppVar.appBloc.hesapBilgileri.gtS) {
-      var list = whomStudentClassTeacher(AppVar.appBloc.hesapBilgileri.uid!);
+      var list = whomStudentClassTeacher(AppVar.appBloc.hesapBilgileri.uid);
       if (list.isEmpty) {
         OverAlert.show(type: AlertType.danger, message: 'medicinenotifiyerr'.translate);
         return;

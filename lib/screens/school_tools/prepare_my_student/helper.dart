@@ -34,7 +34,7 @@ class PrepareMyStudentHelper {
                             ..argument = InAppNotificationArgument.addTokenAndCheck(
                               token: _token,
                             ).toJson()
-                            ..key = AppVar.appBloc.hesapBilgileri.uid! + 'pms1'
+                            ..key = AppVar.appBloc.hesapBilgileri.uid + 'pms1'
                             ..senderKey = AppVar.appBloc.hesapBilgileri.uid
                             ..title = AppVar.appBloc.hesapBilgileri.name
                             ..content = 'pms1'.translate,
@@ -63,7 +63,7 @@ class PrepareMyStudentHelper {
                             ..argument = InAppNotificationArgument.addTokenAndCheck(
                               token: _token,
                             ).toJson()
-                            ..key = AppVar.appBloc.hesapBilgileri.uid! + 'pms2'
+                            ..key = AppVar.appBloc.hesapBilgileri.uid + 'pms2'
                             ..senderKey = AppVar.appBloc.hesapBilgileri.uid
                             ..title = AppVar.appBloc.hesapBilgileri.name
                             ..content = 'pms2'.translate,

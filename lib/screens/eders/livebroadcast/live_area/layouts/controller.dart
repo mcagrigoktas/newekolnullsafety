@@ -363,7 +363,7 @@ class OnlineLessonController extends GetxController {
   }
 
   Future<bool> raiseHand() async {
-    Fav.timeGuardFunction(AppVar.appBloc.hesapBilgileri.uid! + 'raiseHand', 5.seconds, () async {
+    Fav.timeGuardFunction(AppVar.appBloc.hesapBilgileri.uid + 'raiseHand', 5.seconds, () async {
       LiveLessonChatModel message = LiveLessonChatModel()
         ..senderKey = AppVar.appBloc.hesapBilgileri.uid
         ..senderGirisTuru = AppVar.appBloc.hesapBilgileri.girisTuru
@@ -415,13 +415,13 @@ class OnlineLessonController extends GetxController {
   }
 
   void changeMicStatus() {
-    Fav.timeGuardFunction(AppVar.appBloc.hesapBilgileri.uid! + 'changeMicStatus', 1.seconds, () async {
+    Fav.timeGuardFunction(AppVar.appBloc.hesapBilgileri.uid + 'changeMicStatus', 1.seconds, () async {
       sendDataLiveMenu({'id': 7});
     });
   }
 
   void changeCamStatus() {
-    Fav.timeGuardFunction(AppVar.appBloc.hesapBilgileri.uid! + 'changeCamStatus', 1.seconds, () async {
+    Fav.timeGuardFunction(AppVar.appBloc.hesapBilgileri.uid + 'changeCamStatus', 1.seconds, () async {
       sendDataLiveMenu({'id': 6});
     });
   }

@@ -144,7 +144,7 @@ class _ShareAnnouncementsState extends State<ShareAnnouncements> with AppFunctio
                   const SizedBox(),
                   if (widget.existingAnnouncement == null)
                     MyMultiplePhotoUploadWidget(
-                      saveLocation: AppVar.appBloc.hesapBilgileri.kurumID! + '/' + AppVar.appBloc.hesapBilgileri.termKey! + '/' + "AnnouncementsFiles",
+                      saveLocation: AppVar.appBloc.hesapBilgileri.kurumID + '/' + AppVar.appBloc.hesapBilgileri.termKey + '/' + "AnnouncementsFiles",
                       validatorRules: ValidatorRules(req: false),
                       onSaved: (value) {
                         if (value != null) {

@@ -261,7 +261,7 @@ class ReserveP2PController extends BaseController {
     if (result == true) {
       P2PSimpleWeekDataItem? _itemForSave;
       if (!cancelReserve) {
-        _itemForSave = (existingItem ?? P2PSimpleWeekDataItem.create('w$selectedWeek' + '_p_' + selectedTeacher! + '_p_' + item.key))..addThisStudents({AppVar.appBloc.hesapBilgileri.uid!: AppVar.appBloc.hesapBilgileri.name!});
+        _itemForSave = (existingItem ?? P2PSimpleWeekDataItem.create('w$selectedWeek' + '_p_' + selectedTeacher! + '_p_' + item.key))..addThisStudents({AppVar.appBloc.hesapBilgileri.uid: AppVar.appBloc.hesapBilgileri.name!});
       } else {
         _itemForSave = existingItem!..removeThisStudent(AppVar.appBloc.hesapBilgileri.uid);
       }

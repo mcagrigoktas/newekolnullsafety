@@ -172,7 +172,7 @@ class __SoundRecorderState extends State<_SoundRecorder> {
     if (Fav.noConnection()) return;
     if (_isSending) return;
     if (_isRecording) await _stop();
-    final _targetPath = "aa_MF" + '/' + DateTime.now().dateFormat("yyyy-MM") + '/' + 'Aud' + '/' + AppVar.appBloc.hesapBilgileri.kurumID!;
+    final _targetPath = "aa_MF" + '/' + DateTime.now().dateFormat("yyyy-MM") + '/' + 'Aud' + '/' + AppVar.appBloc.hesapBilgileri.kurumID;
 
     setState(() {
       _isSending = true;

@@ -3,8 +3,8 @@ part of '../dataservice.dart';
 class RandomDataService {
   RandomDataService._();
 
-  static String get _kurumId => AppVar.appBloc.hesapBilgileri.kurumID!;
-  static String get _termKey => AppVar.appBloc.hesapBilgileri.termKey!;
+  static String get _kurumId => AppVar.appBloc.hesapBilgileri.kurumID;
+  static String get _termKey => AppVar.appBloc.hesapBilgileri.termKey;
 
   static Database get _databaseLogss => AppVar.appBloc.databaseLogs;
 

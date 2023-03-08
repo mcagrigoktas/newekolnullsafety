@@ -79,7 +79,7 @@ class AnswerKeyController extends GetxController {
         jsonParse: (key, value) => EarningItem.fromJson(value, key),
         lastUpdateKey: 'lastUpdate',
         sortFunction: (EarningItem i1, EarningItem i2) => i2.name!.compareTo(i1.name!),
-        queryRef: girisTuru == EvaulationUserType.school ? ExamService.dbSchoollEarningItemList() : ExamService.dbGlobalEarningItemList(Get.find<SuperManagerController>().hesapBilgileri.kurumID!),
+        queryRef: girisTuru == EvaulationUserType.school ? ExamService.dbSchoollEarningItemList() : ExamService.dbGlobalEarningItemList(Get.find<SuperManagerController>().hesapBilgileri.kurumID),
         filterDeletedData: true,
         removeFunction: (a) => a.name == null);
     _allEarningItemsSubscription = allEarningItems!.stream.listen((state) {

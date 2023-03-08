@@ -7,10 +7,10 @@ import '../../main/macos_dock/macos_dock.dart';
 class NotificationWidgetHelper {
   NotificationWidgetHelper._();
 
-  static String get prefKeyReadTime => AppVar.appBloc.hesapBilgileri.kurumID! + AppVar.appBloc.hesapBilgileri.uid! + 'notreadtime';
+  static String get prefKeyReadTime => AppVar.appBloc.hesapBilgileri.kurumID + AppVar.appBloc.hesapBilgileri.uid + 'notreadtime';
 
   /// Son okunan bildrimlerin zamanindan sonra okunan tekil bildirimlerin listesini tutar. Tumu okundu yapildiginda temizlenir
-  static String get prefKeyReadKeyList => AppVar.appBloc.hesapBilgileri.kurumID! + AppVar.appBloc.hesapBilgileri.uid! + 'notreadkeylist';
+  static String get prefKeyReadKeyList => AppVar.appBloc.hesapBilgileri.kurumID + AppVar.appBloc.hesapBilgileri.uid + 'notreadkeylist';
 
   static Future<void> makeAllNotificationRead() async {
     final _notificationList = Get.find<MacOSDockController>().databaseNotificationList();

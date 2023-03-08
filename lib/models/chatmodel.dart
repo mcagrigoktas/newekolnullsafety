@@ -3,7 +3,7 @@ import 'package:mcg_extension/mcg_extension.dart';
 
 import '../appbloc/appvar.dart';
 
-String get _iV => AppVar.appBloc.hesapBilgileri.kurumID! + 'bu6gdtra';
+String get _iV => AppVar.appBloc.hesapBilgileri.kurumID + 'bu6gdtra';
 
 class MesaggingPreview extends DatabaseItem {
   String? senderKey;

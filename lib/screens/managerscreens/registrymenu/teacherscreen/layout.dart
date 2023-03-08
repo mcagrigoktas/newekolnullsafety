@@ -91,7 +91,7 @@ class TeacherList extends StatelessWidget {
             _leftBody = controller.newItem != null
                 ? null
                 : Body.listviewBuilder(
-                    pageStorageKey: AppVar.appBloc.hesapBilgileri.kurumID! + 'teacherList',
+                    pageStorageKey: AppVar.appBloc.hesapBilgileri.kurumID + 'teacherList',
                     listviewFirstWidget: MySearchBar(
                       onChanged: (text) {
                         controller.makeFilter(text);
@@ -264,7 +264,7 @@ class TeacherList extends StatelessWidget {
                           Align(
                             child: MyPhotoUploadWidget(
                               avatarImage: true,
-                              saveLocation: AppVar.appBloc.hesapBilgileri.kurumID! + '/' + AppVar.appBloc.hesapBilgileri.termKey! + '/' + "UserProfileImages",
+                              saveLocation: AppVar.appBloc.hesapBilgileri.kurumID + '/' + AppVar.appBloc.hesapBilgileri.termKey + '/' + "UserProfileImages",
                               initialValue: controller.itemData!.imgUrl,
                               onSaved: (value) {
                                 controller.itemData!.imgUrl = value;

@@ -38,7 +38,7 @@ class CheckTeacherProgram extends StatelessWidget {
             _leftBody = Body.child(child: EmptyState(emptyStateWidget: EmptyStateWidget.NORECORDSWITHPLUS));
           } else {
             _leftBody = Body.listviewBuilder(
-              pageStorageKey: AppVar.appBloc.hesapBilgileri.kurumID! + 'teacherCheckProgram',
+              pageStorageKey: AppVar.appBloc.hesapBilgileri.kurumID + 'teacherCheckProgram',
               listviewFirstWidget: MySearchBar(
                 onChanged: (text) {
                   controller.makeFilter(text);

@@ -33,7 +33,7 @@ class JitsiNewHelper {
       backgorundColor: Fav.design.scaffold.background.toHex.substring(Fav.design.scaffold.background.toHex.length - 6),
       jwtToken: getToken(domain, channelName ?? 'ChannelABCDEF'),
       girisTuru: AppVar.appBloc.hesapBilgileri.girisTuru.toString(),
-      edittedKey: AppVar.appBloc.hesapBilgileri.name! + '*' + AppVar.appBloc.hesapBilgileri.uid!,
+      edittedKey: AppVar.appBloc.hesapBilgileri.name! + '*' + AppVar.appBloc.hesapBilgileri.uid,
     );
 
     // return {
@@ -62,7 +62,7 @@ class JitsiNewHelper {
         domain: domain,
         name: AppVar.appBloc.hesapBilgileri.name! +
             '*' +
-            AppVar.appBloc.hesapBilgileri.uid! +
+            AppVar.appBloc.hesapBilgileri.uid +
             '*' +
             (kIsWeb
                 ? 'W'
@@ -71,7 +71,7 @@ class JitsiNewHelper {
                     : 'I'),
         id: AppVar.appBloc.hesapBilgileri.name! +
             '*' +
-            AppVar.appBloc.hesapBilgileri.uid! +
+            AppVar.appBloc.hesapBilgileri.uid +
             '*' +
             (kIsWeb
                 ? 'W'

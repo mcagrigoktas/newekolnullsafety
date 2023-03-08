@@ -74,7 +74,7 @@ class LessonList extends StatelessWidget {
             _leftBody = controller.newItem != null
                 ? null
                 : Body.listviewBuilder(
-                    pageStorageKey: AppVar.appBloc.hesapBilgileri.kurumID! + 'lessonlist',
+                    pageStorageKey: AppVar.appBloc.hesapBilgileri.kurumID + 'lessonlist',
                     listviewFirstWidget: Row(
                       children: [
                         if (controller.filteredClassKey['filteredClassKey'] != null)

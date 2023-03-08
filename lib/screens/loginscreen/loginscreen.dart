@@ -206,8 +206,8 @@ class _EkolSignInPageState extends State<EkolSignInPage> with TickerProviderStat
       _hesapBilgileri.girisTuru = 200;
       _hesapBilgileri.username = _username;
       _hesapBilgileri.password = _password;
-      _hesapBilgileri.kurumID = _serverId;
-      await Fav.securePreferences.addItemToMap(UserImageHelper.ekolAllUserPrefKey, _hesapBilgileri.kurumID! + 'SuperManager', _hesapBilgileri.toString());
+      _hesapBilgileri.kurumID = _serverId!;
+      await Fav.securePreferences.addItemToMap(UserImageHelper.ekolAllUserPrefKey, _hesapBilgileri.kurumID + 'SuperManager', _hesapBilgileri.toString());
       setState(() {
         _isLoading = false;
       });
@@ -387,11 +387,11 @@ class _EkolSignInPageState extends State<EkolSignInPage> with TickerProviderStat
 
         _hesapBilgileri.genelMudurlukId = _schoolInfo['gm'] == null ? null : _schoolInfo['gm']['si'];
         _hesapBilgileri.genelMudurlukGroupList = _schoolInfo['gmgl'];
-        _hesapBilgileri.termKey = _termKey;
-        _hesapBilgileri.girisTuru = _girisTuru;
+        _hesapBilgileri.termKey = _termKey!;
+        _hesapBilgileri.girisTuru = _girisTuru!;
         _hesapBilgileri.uid = snapshot.key;
         _hesapBilgileri.girisYapildi = true;
-        _hesapBilgileri.kurumID = _serverId;
+        _hesapBilgileri.kurumID = _serverId!;
         _hesapBilgileri.schoolType = _schoolInfo['schoolType'] ?? 'ekid';
         _hesapBilgileri.isParent = _isParent;
 
@@ -404,19 +404,19 @@ class _EkolSignInPageState extends State<EkolSignInPage> with TickerProviderStat
         _changeLiquidValue(0.7);
         //todo eger menu listsi ilk acildigind dogru gelmiyorsa burayi gucelle
         await Fav.securePreferences.setHiveMap("${_hesapBilgileri.kurumID}SchoolInfo" + AppConst.dataFetcherBoxVersion.toString(), _schoolInfo, clearExistingData: true);
-        await Fav.securePreferences.setHiveMap(_hesapBilgileri.kurumID! + AppConst.versionListBoxVersion.toString(), _lastSchoolVersions, clearExistingData: true);
+        await Fav.securePreferences.setHiveMap(_hesapBilgileri.kurumID + AppConst.versionListBoxVersion.toString(), _lastSchoolVersions, clearExistingData: true);
 
         _changeLiquidValue(0.8);
 
         var _newUserToken = Jwt.getUserAuthToken(
-          kurumID: _hesapBilgileri.kurumID!,
+          kurumID: _hesapBilgileri.kurumID,
           girisTuru: _hesapBilgileri.girisTuru,
           iM: _hesapBilgileri.gtM,
           iT: _hesapBilgileri.gtT,
           iS: _hesapBilgileri.gtS,
-          uid: _hesapBilgileri.uid!,
+          uid: _hesapBilgileri.uid,
         );
-        _futureList.add(SignInOutService.firstLoginSuccess(_serverId!, _termKey!, _hesapBilgileri.uid!, _kvkkSettings?.kvkkUrlVersion));
+        _futureList.add(SignInOutService.firstLoginSuccess(_serverId!, _termKey, _hesapBilgileri.uid, _kvkkSettings?.kvkkUrlVersion));
 
         _changeLiquidValue(0.9);
 

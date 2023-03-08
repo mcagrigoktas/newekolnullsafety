@@ -11,9 +11,9 @@ class ReferenceService {
 
   //
 
-  static String get _kurumId => AppVar.appBloc.hesapBilgileri.kurumID!;
+  static String get _kurumId => AppVar.appBloc.hesapBilgileri.kurumID;
   //static String? get _uid => AppVar.appBloc.hesapBilgileri.uid;
-  static String get _termKey => AppVar.appBloc.hesapBilgileri.termKey!;
+  static String get _termKey => AppVar.appBloc.hesapBilgileri.termKey;
 
   static String userContractCollectionRef() => 'Okullar/$_kurumId/Accounting/$_termKey/UserContracts';
   static String salesContractCollectionRef() => 'Okullar/$_kurumId/Accounting/$_termKey/SalesContracts';

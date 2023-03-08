@@ -39,10 +39,10 @@ class TokenAndNotificationListenerService {
     //? Web de simdilik topic yok sanirim incele
     if (isWeb) return;
     final _firebaseMessaging = FirebaseMessaging.instance;
-    _firebaseMessaging.subscribeToTopic(AppVar.appBloc.hesapBilgileri.kurumID! + 'pushnotification');
+    _firebaseMessaging.subscribeToTopic(AppVar.appBloc.hesapBilgileri.kurumID + 'pushnotification');
     if (AppVar.appBloc.hesapBilgileri.gtMT) {
       //? Only teachers bildirimierni bu topicten at
-      _firebaseMessaging.subscribeToTopic(AppVar.appBloc.hesapBilgileri.kurumID! + 'onlyteachers');
+      _firebaseMessaging.subscribeToTopic(AppVar.appBloc.hesapBilgileri.kurumID + 'onlyteachers');
     }
   }
 
@@ -79,7 +79,7 @@ class TokenAndNotificationListenerService {
 
       final _notificationTag = NotificationArgs.fromStringJson(tag);
 
-      if (_notificationTag.forDifferentUser(AppVar.appBloc.hesapBilgileri.uid!)) {
+      if (_notificationTag.forDifferentUser(AppVar.appBloc.hesapBilgileri.uid)) {
         final _otherUserAccountInfo = UserImageHelper.getAnyUserInThisUserList(_notificationTag.getUidList());
         if (_otherUserAccountInfo == null) {
           OverAlert.show(message: event.notification!.title! + '\n' + event.notification!.body!, autoClose: false);
@@ -97,7 +97,7 @@ class TokenAndNotificationListenerService {
 
       final _notificationTag = NotificationArgs.fromStringJson(tag);
 
-      if (_notificationTag.forDifferentUser(AppVar.appBloc.hesapBilgileri.uid!)) {
+      if (_notificationTag.forDifferentUser(AppVar.appBloc.hesapBilgileri.uid)) {
         final _otherUserAccountInfo = UserImageHelper.getAnyUserInThisUserList(_notificationTag.getUidList());
         if (_otherUserAccountInfo != null) {
           await (useDelay ? 4000 : 100).wait;

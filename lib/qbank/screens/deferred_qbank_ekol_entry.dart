@@ -151,7 +151,7 @@ class _DeferredEkolQBankPageState extends State<DeferredEkolQBankPage> {
     });
     final Map? lastBookList = jsonDecode(Fav.preferences.getString("lastBookList") ?? {}.toString());
 
-    if (AppVar.appBloc.hesapBilgileri.girisTuru! > 25) {
+    if (AppVar.appBloc.hesapBilgileri.girisTuru > 25) {
       String? classLevel = AppVar.appBloc.classService!.dataList.singleWhereOrNull((sinif) => sinif.key == AppVar.appBloc.hesapBilgileri.class0)?.classLevel;
       _bookList.removeWhere((book) {
         if (classLevel == '0' || classLevel == null) return false;

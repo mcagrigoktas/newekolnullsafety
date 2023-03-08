@@ -78,7 +78,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
         onSaved: (value) {
           _imgUrl = value;
         },
-        saveLocation: AppVar.appBloc.hesapBilgileri.kurumID! + '/' + AppVar.appBloc.hesapBilgileri.termKey! + '/' + "UserProfileImages",
+        saveLocation: AppVar.appBloc.hesapBilgileri.kurumID + '/' + AppVar.appBloc.hesapBilgileri.termKey + '/' + "UserProfileImages",
         avatarImage: true,
         initialValue: (_imgUrl?.startsWithHttp ?? false) ? _imgUrl : null,
       ),

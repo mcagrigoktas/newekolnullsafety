@@ -67,7 +67,7 @@ class PersonsList extends StatelessWidget {
                       },
                       resultCount: controller.filteredItemList.length,
                     ).p4,
-                    pageStorageKey: AppVar.appBloc.hesapBilgileri.kurumID! + 'personList',
+                    pageStorageKey: AppVar.appBloc.hesapBilgileri.kurumID + 'personList',
                     itemCount: controller.filteredItemList.length,
                     itemBuilder: (context, index) => MyCupertinoListTile(
                       title: controller.filteredItemList[index].name,
@@ -249,7 +249,7 @@ class PersonsList extends StatelessWidget {
                           Align(
                             child: MyPhotoUploadWidget(
                               avatarImage: true,
-                              saveLocation: AppVar.appBloc.hesapBilgileri.kurumID! + '/' + AppVar.appBloc.hesapBilgileri.termKey! + '/' + "UserProfileImages",
+                              saveLocation: AppVar.appBloc.hesapBilgileri.kurumID + '/' + AppVar.appBloc.hesapBilgileri.termKey + '/' + "UserProfileImages",
                               initialValue: controller.personData!.imgUrl,
                               onSaved: (value) {
                                 controller.personData!.imgUrl = value;

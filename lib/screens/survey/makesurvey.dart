@@ -233,7 +233,7 @@ class _SurveyEditState extends State<SurveyEdit> {
                       onSaved: (value) {
                         surveyList![i].imgUrl = value;
                       },
-                      saveLocation: AppVar.appBloc.hesapBilgileri.kurumID! + '/' + AppVar.appBloc.hesapBilgileri.termKey! + '/' + "GenerallyFiles",
+                      saveLocation: AppVar.appBloc.hesapBilgileri.kurumID + '/' + AppVar.appBloc.hesapBilgileri.termKey + '/' + "GenerallyFiles",
                       initialValue: surveyList![i].imgUrl,
                       validatorRules: ValidatorRules(),
                     ),
@@ -272,7 +272,7 @@ class _SurveyEditState extends State<SurveyEdit> {
                     MyMultiplePhotoUploadWidget(
                       validatorRules: ValidatorRules(req: true, minLength: 2),
                       initialValue: List<String>.from(survey.extraData ?? []),
-                      saveLocation: AppVar.appBloc.hesapBilgileri.kurumID! + '/' + AppVar.appBloc.hesapBilgileri.termKey! + '/' + 'SurveyPicture',
+                      saveLocation: AppVar.appBloc.hesapBilgileri.kurumID + '/' + AppVar.appBloc.hesapBilgileri.termKey + '/' + 'SurveyPicture',
                       onSaved: (value) {
                         surveyList![i].extraData = value;
                       },
@@ -343,7 +343,7 @@ class _SurveyEditState extends State<SurveyEdit> {
                       onSaved: (value) {
                         survey.image = value;
                       },
-                      saveLocation: AppVar.appBloc.hesapBilgileri.kurumID! + '/' + AppVar.appBloc.hesapBilgileri.termKey! + '/' + "GenerallyFiles",
+                      saveLocation: AppVar.appBloc.hesapBilgileri.kurumID + '/' + AppVar.appBloc.hesapBilgileri.termKey + '/' + "GenerallyFiles",
                       initialValue: survey.image,
                       validatorRules: ValidatorRules(),
                     ),
