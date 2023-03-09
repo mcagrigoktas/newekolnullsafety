@@ -95,7 +95,7 @@ class _NotificationAndAgendaWidgetState extends State<_NotificationAndAgendaWidg
               children: [
                 Expanded(
                   child: AnimatedOpacity(
-                    opacity: _index == 0 ? 1.0 : 0.7,
+                    opacity: _index == 0 ? 1.0 : 0.85,
                     duration: 200.milliseconds,
                     child: InkWell(
                       borderRadius: BorderRadius.circular(4),
@@ -105,16 +105,7 @@ class _NotificationAndAgendaWidgetState extends State<_NotificationAndAgendaWidg
                             _index = 0;
                           });
                       },
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Image.asset(GlassIcons.notifcation.imgUrl!, width: 32),
-                          8.widthBox,
-                          Expanded(
-                            child: _NotificationNameWidget(),
-                          ),
-                        ],
-                      ),
+                      child: _NotificationNameWidget(),
                     ),
                   ),
                 ),
@@ -126,7 +117,7 @@ class _NotificationAndAgendaWidgetState extends State<_NotificationAndAgendaWidg
                 ),
                 Expanded(
                   child: AnimatedOpacity(
-                    opacity: _index == 1 ? 1.0 : 0.7,
+                    opacity: _index == 1 ? 1.0 : 0.85,
                     duration: 200.milliseconds,
                     child: InkWell(
                       borderRadius: BorderRadius.circular(4),
@@ -136,16 +127,7 @@ class _NotificationAndAgendaWidgetState extends State<_NotificationAndAgendaWidg
                             _index = 1;
                           });
                       },
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Expanded(
-                            child: _AgendaNameWidget(),
-                          ),
-                          8.widthBox,
-                          Image.asset(GlassIcons.agenda.imgUrl!, width: 32),
-                        ],
-                      ),
+                      child: _AgendaNameWidget(),
                     ),
                   ),
                 ),
@@ -214,19 +196,7 @@ class _NotificationWidget extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.only(top: 16, right: 16, left: 16),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Image.asset(
-                  GlassIcons.notifcation.imgUrl!,
-                  height: 40,
-                ),
-                8.widthBox,
-                Expanded(
-                  child: _NotificationNameWidget(),
-                ),
-              ],
-            ),
+            child: _NotificationNameWidget(),
           ),
           Flexible(child: NotificationWidgetContent()),
           8.heightBox,
@@ -255,16 +225,7 @@ class _AgendaWidget extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.only(top: 16, right: 16, left: 16),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Image.asset(GlassIcons.agenda.imgUrl!, height: 40),
-                8.widthBox,
-                Expanded(
-                  child: _AgendaNameWidget(),
-                ),
-              ],
-            ),
+            child: _AgendaNameWidget(),
           ),
           Flexible(child: AgendaWidgetContent().px16),
           8.heightBox,
@@ -284,33 +245,83 @@ class _AgendaNameWidget extends StatelessWidget {
       final _isSmallLayout = _controller.isSmallLayoutEnable;
       final _badgeCount = _controller.agendaBadge.value;
       final _hintText = _badgeCount < 1 ? 'agendawidgethint'.translate : 'agendawidgethint2'.argsTranslate({'count': _badgeCount});
-      return SizedBox(
-        height: _isSmallLayout ? 36 : 48,
-        child: Column(
-          crossAxisAlignment: _isSmallLayout ? CrossAxisAlignment.end : CrossAxisAlignment.start,
-          children: [
-            Expanded(flex: 5, child: 'agenda'.translate.text.color(GlassIcons.agenda.color!).autoSize.fontSize(_isSmallLayout ? 18 : 24).maxLines(1).bold.make()),
-            Expanded(
-              flex: 3,
-              child: _badgeCount < 1
-                  ? _hintText.text.end.color(Fav.design.widgetSecondaryText!).autoSize.fontSize(_isSmallLayout ? 12 : 18).maxLines(1).make()
-                  : AutoSizeText.rich(
-                      TextSpan(
-                        children: [
-                          TextSpan(text: _hintText.split('$_badgeCount').first),
-                          TextSpan(text: '$_badgeCount', style: TextStyle(color: GlassIcons.agenda.color, fontWeight: FontWeight.w800, fontSize: _isSmallLayout ? 14 : 21)),
-                          TextSpan(text: _hintText.split('$_badgeCount').last),
-                        ],
+
+      if (_isSmallLayout) {
+        return SizedBox(
+          height: 36,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Expanded(
+                flex: 5,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(GlassIcons.agenda.imgUrl!),
+                    6.widthBox,
+                    'agenda'.translate.text.color(GlassIcons.agenda.color!).autoSize.fontSize(18).maxLines(1).bold.make(),
+                  ],
+                ),
+              ),
+              Expanded(
+                flex: 3,
+                child: _badgeCount < 1
+                    ? _hintText.text.end.color(Fav.design.widgetSecondaryText!).autoSize.fontSize(11).center.maxLines(1).make()
+                    : AutoSizeText.rich(
+                        TextSpan(
+                          children: [
+                            TextSpan(text: _hintText.split('$_badgeCount').first),
+                            TextSpan(text: '$_badgeCount', style: TextStyle(color: GlassIcons.agenda.color, fontWeight: FontWeight.w800, fontSize: 12)),
+                            TextSpan(text: _hintText.split('$_badgeCount').last),
+                          ],
+                        ),
+                        maxLines: 1,
+                        maxFontSize: 18,
+                        minFontSize: 8,
+                        style: TextStyle(color: Fav.design.widgetSecondaryText, fontSize: 11),
                       ),
-                      maxLines: 1,
-                      maxFontSize: 18,
-                      minFontSize: 8,
-                      style: TextStyle(color: Fav.design.widgetSecondaryText, fontSize: _isSmallLayout ? 12 : 18),
+              ),
+            ],
+          ),
+        );
+      } else {
+        return Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Image.asset(GlassIcons.agenda.imgUrl!, height: 40),
+            8.widthBox,
+            Expanded(
+              child: SizedBox(
+                height: 48,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(flex: 5, child: 'agenda'.translate.text.color(GlassIcons.agenda.color!).autoSize.fontSize(24).maxLines(1).bold.make()),
+                    Expanded(
+                      flex: 3,
+                      child: _badgeCount < 1
+                          ? _hintText.text.end.color(Fav.design.widgetSecondaryText!).autoSize.fontSize(18).maxLines(1).make()
+                          : AutoSizeText.rich(
+                              TextSpan(
+                                children: [
+                                  TextSpan(text: _hintText.split('$_badgeCount').first),
+                                  TextSpan(text: '$_badgeCount', style: TextStyle(color: GlassIcons.agenda.color, fontWeight: FontWeight.w800, fontSize: 21)),
+                                  TextSpan(text: _hintText.split('$_badgeCount').last),
+                                ],
+                              ),
+                              maxLines: 1,
+                              maxFontSize: 18,
+                              minFontSize: 8,
+                              style: TextStyle(color: Fav.design.widgetSecondaryText, fontSize: 18),
+                            ),
                     ),
+                  ],
+                ),
+              ),
             ),
           ],
-        ),
-      );
+        );
+      }
     });
   }
 }
@@ -327,35 +338,86 @@ class _NotificationNameWidget extends StatelessWidget {
       //  final _hintText = 'notificationwidgethint'.translate;
       final _isSmallLayout = _controller.isSmallLayoutEnable;
 
-      return SizedBox(
-        height: _isSmallLayout ? 36 : 48,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(flex: 5, child: 'notifications'.translate.text.color(GlassIcons.notifcation.color!).autoSize.fontSize(_isSmallLayout ? 18 : 24).maxLines(1).bold.make()),
-            // Expanded(flex: 2, child: _hintText.text.end.color(Fav.design.widgetSecondaryText).fontSize(_isSmallLayout ? 12 : 18).autoSize.maxLines(1).make()
+      if (_isSmallLayout) {
+        return SizedBox(
+          height: 36,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Expanded(
+                flex: 5,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(GlassIcons.notifcation.imgUrl!),
+                    6.widthBox,
+                    'notifications'.translate.text.color(GlassIcons.notifcation.color!).autoSize.fontSize(18).maxLines(1).bold.make(),
+                  ],
+                ),
+              ),
+              // Expanded(flex: 2, child: _hintText.text.end.color(Fav.design.widgetSecondaryText).fontSize(_isSmallLayout ? 12 : 18).autoSize.maxLines(1).make()
 
-            Expanded(
-              flex: 3,
-              child: _badgeCount < 1
-                  ? _hintText.text.end.color(Fav.design.widgetSecondaryText!).fontSize(_isSmallLayout ? 12 : 18).autoSize.maxLines(1).make()
-                  : AutoSizeText.rich(
-                      TextSpan(
-                        children: [
-                          TextSpan(text: _hintText.split('$_badgeCount').first),
-                          TextSpan(text: '$_badgeCount', style: TextStyle(color: GlassIcons.notifcation.color, fontWeight: FontWeight.w800, fontSize: _isSmallLayout ? 14 : 21)),
-                          TextSpan(text: _hintText.split('$_badgeCount').last),
-                        ],
+              Expanded(
+                flex: 3,
+                child: _badgeCount < 1
+                    ? _hintText.text.end.color(Fav.design.widgetSecondaryText!).fontSize(11).autoSize.maxLines(1).make()
+                    : AutoSizeText.rich(
+                        TextSpan(
+                          children: [
+                            TextSpan(text: _hintText.split('$_badgeCount').first),
+                            TextSpan(text: '$_badgeCount', style: TextStyle(color: GlassIcons.notifcation.color, fontWeight: FontWeight.w800, fontSize: 12)),
+                            TextSpan(text: _hintText.split('$_badgeCount').last),
+                          ],
+                        ),
+                        maxLines: 1,
+                        maxFontSize: 18,
+                        minFontSize: 8,
+                        style: TextStyle(color: Fav.design.widgetSecondaryText, fontSize: 11),
                       ),
-                      maxLines: 1,
-                      maxFontSize: 18,
-                      minFontSize: 8,
-                      style: TextStyle(color: Fav.design.widgetSecondaryText, fontSize: _isSmallLayout ? 12 : 18),
+              ),
+            ],
+          ),
+        );
+      } else {
+        return Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Image.asset(GlassIcons.notifcation.imgUrl!, height: 40),
+            8.widthBox,
+            Expanded(
+              child: SizedBox(
+                height: 48,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(flex: 5, child: 'notifications'.translate.text.color(GlassIcons.notifcation.color!).autoSize.fontSize(24).maxLines(1).bold.make()),
+                    // Expanded(flex: 2, child: _hintText.text.end.color(Fav.design.widgetSecondaryText).fontSize(_isSmallLayout ? 12 : 18).autoSize.maxLines(1).make()
+
+                    Expanded(
+                      flex: 3,
+                      child: _badgeCount < 1
+                          ? _hintText.text.end.color(Fav.design.widgetSecondaryText!).fontSize(18).autoSize.maxLines(1).make()
+                          : AutoSizeText.rich(
+                              TextSpan(
+                                children: [
+                                  TextSpan(text: _hintText.split('$_badgeCount').first),
+                                  TextSpan(text: '$_badgeCount', style: TextStyle(color: GlassIcons.notifcation.color, fontWeight: FontWeight.w800, fontSize: 21)),
+                                  TextSpan(text: _hintText.split('$_badgeCount').last),
+                                ],
+                              ),
+                              maxLines: 1,
+                              maxFontSize: 18,
+                              minFontSize: 8,
+                              style: TextStyle(color: Fav.design.widgetSecondaryText, fontSize: 18),
+                            ),
                     ),
+                  ],
+                ),
+              ),
             ),
           ],
-        ),
-      );
+        );
+      }
     });
   }
 }
