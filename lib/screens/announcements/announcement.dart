@@ -3,7 +3,7 @@ import 'package:mcg_extension/mcg_extension.dart';
 
 import '../../adminpages/screens/evaulationadmin/exams/model.dart';
 
-class Announcement extends DatabaseItem {
+class Announcement extends DatabaseItem implements Reliable {
   String key;
   bool aktif = true;
   String? title;
@@ -105,4 +105,7 @@ class Announcement extends DatabaseItem {
 
   @override
   bool active() => aktif != false;
+
+  @override
+  bool get isReliable => key.safeLength > 1 && title.safeLength > 1;
 }

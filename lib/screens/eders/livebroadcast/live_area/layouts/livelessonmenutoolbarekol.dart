@@ -170,7 +170,7 @@ class _SchoolMeetLogo extends StatelessWidget {
         Expanded(
             flex: 1,
             child: Text(
-              AppVar.appBloc.schoolInfoService!.singleData!.name!,
+              AppVar.appBloc.schoolInfoService!.singleData!.name,
               textAlign: TextAlign.center,
               style: TextStyle(color: Fav.design.primaryText, fontWeight: FontWeight.bold, fontSize: 13),
             )),

@@ -128,37 +128,33 @@ class AnnouncementAndSocialListSticky extends StatelessWidget {
     final animation = _val['anim'];
     final IconData? icon = _val['i'];
 
-    return Card(
-      margin: EdgeInsets.zero,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-      child: Container(
-        padding: EdgeInsets.all(3),
-        decoration: BoxDecoration(color: color.withOpacity(0.03), borderRadius: BorderRadius.circular(8)),
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            icon != null
-                ? icon.icon.color(color).make()
-                : artboard != null
-                    ? RiveSimpeLoopAnimation.asset(
-                        url: Assets.rive.ekolRIV,
-                        artboard: artboard,
-                        animation: animation,
-                        width: 32,
-                        heigth: 32,
-                        changeChildColorMap: {
-                          'line': color,
-                          'circle1': color,
-                          'circle2': color,
-                          'Rectangle Path 1': color,
-                        },
-                      )
-                    : SizedBox(height: 32),
-            8.widthBox,
-            Flexible(child: text.text.color(color).bold.make()),
-            8.widthBox,
-          ],
-        ),
+    return Container(
+      padding: EdgeInsets.all(3),
+      decoration: BoxDecoration(boxShadow: [BoxShadow(color: color.withOpacity(0.02))], color: color.withOpacity(0.02), borderRadius: BorderRadius.circular(8)),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          icon != null
+              ? icon.icon.color(color).make()
+              : artboard != null
+                  ? RiveSimpeLoopAnimation.asset(
+                      url: Assets.rive.ekolRIV,
+                      artboard: artboard,
+                      animation: animation,
+                      width: 32,
+                      heigth: 32,
+                      changeChildColorMap: {
+                        'line': color,
+                        'circle1': color,
+                        'circle2': color,
+                        'Rectangle Path 1': color,
+                      },
+                    )
+                  : SizedBox(height: 32),
+          8.widthBox,
+          Flexible(child: text.text.color(color).bold.make()),
+          8.widthBox,
+        ],
       ),
     ).px12;
   }

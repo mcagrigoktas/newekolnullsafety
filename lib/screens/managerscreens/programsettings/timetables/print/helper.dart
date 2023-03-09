@@ -28,7 +28,7 @@ class TimeTablePrintHelper {
 
     // final _gunlerdeToplamAcikDersSayisi = Iterable.generate(7).fold<int>(0, (p, e) => p+_times.getDayLessonCount(e+1));
 
-    _list.add(Center(child: Text(AppVar.appBloc.schoolInfoService!.singleData!.name! + ' ' + 'teacherprogrammenuname'.translate, style: TextStyle(fontSize: 4))));
+    _list.add(Center(child: Text(AppVar.appBloc.schoolInfoService!.singleData!.name + ' ' + 'teacherprogrammenuname'.translate, style: TextStyle(fontSize: 4))));
     _list.add(_borderContainer(
         Row(children: [
           _borderContainer(SizedBox(width: nameWidgetWidth), 'R', cellHeight: 10),

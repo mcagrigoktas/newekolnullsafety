@@ -100,7 +100,7 @@ class PrintAccounting {
       pw.SizedBox(height: 8),
       pw.Row(children: [
         pw.Text('Özel Okul Adı: ', style: pw.TextStyle(fontWeight: pw.FontWeight.bold)),
-        pw.Text(AppVar.appBloc.schoolInfoService!.singleData!.name!, style: const pw.TextStyle()),
+        pw.Text(AppVar.appBloc.schoolInfoService!.singleData!.name, style: const pw.TextStyle()),
       ]),
       pw.SizedBox(height: 8),
       PrintWidgetHelper.myTextContainer(color: PdfColors.grey, text: 'ÖĞRENCİNİN BİLGİLERİ', bold: true, padding: 4),
@@ -361,7 +361,7 @@ class PrintAccounting {
                   child: pw.Row(mainAxisAlignment: pw.MainAxisAlignment.center, children: [
                     logo,
                     pw.SizedBox(width: 16),
-                    pw.Text(AppVar.appBloc.schoolInfoService!.singleData!.name!, style: pw.TextStyle(fontWeight: pw.FontWeight.bold)),
+                    pw.Text(AppVar.appBloc.schoolInfoService!.singleData!.name, style: pw.TextStyle(fontWeight: pw.FontWeight.bold)),
                   ]))),
           pw.Expanded(
               flex: 1,

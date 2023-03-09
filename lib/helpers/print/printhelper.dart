@@ -182,11 +182,11 @@ class EkolPrintHelper {
 
   ///Okul bilgileri
   static Future<pw.Widget> schoolLogo(doc) async {
-    return pw.Image(pw.MemoryImage((await DownloadManager.downloadThenCache(url: AppVar.appBloc.schoolInfoService!.singleData!.logoUrl!))!.byteData), width: 40);
+    return pw.Image(pw.MemoryImage((await DownloadManager.downloadThenCache(url: AppVar.appBloc.schoolInfoService!.singleData!.logoUrl))!.byteData), width: 40);
   }
 
   static pw.Widget schoolInfo() {
-    return pw.Text(AppVar.appBloc.schoolInfoService!.singleData!.name!, style: pw.TextStyle(color: PdfColors.black, fontWeight: pw.FontWeight.bold));
+    return pw.Text(AppVar.appBloc.schoolInfoService!.singleData!.name, style: pw.TextStyle(color: PdfColors.black, fontWeight: pw.FontWeight.bold));
   }
 
   // static Future<void> printUsername(Student student) async {
@@ -289,7 +289,7 @@ class EkolPrintHelper {
                 flex: 1,
                 child: pw.Container(
                   padding: const pw.EdgeInsets.symmetric(vertical: 4, horizontal: 16),
-                  child: pw.Text(AppVar.appBloc.schoolInfoService!.singleData!.name!, style: pw.TextStyle(fontWeight: pw.FontWeight.bold)),
+                  child: pw.Text(AppVar.appBloc.schoolInfoService!.singleData!.name, style: pw.TextStyle(fontWeight: pw.FontWeight.bold)),
                 )),
             pw.Expanded(
                 flex: 1,

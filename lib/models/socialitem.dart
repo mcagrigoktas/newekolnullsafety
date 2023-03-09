@@ -4,7 +4,7 @@ import 'package:mcg_database/firestore/firestore.dart';
 import 'package:mcg_database/mcg_database.dart';
 import 'package:mcg_extension/mcg_extension.dart';
 
-class SocialItem extends DatabaseItem {
+class SocialItem extends DatabaseItem implements Reliable {
   String key;
   bool aktif = true;
   String? content;
@@ -139,4 +139,7 @@ class SocialItem extends DatabaseItem {
 
   @override
   bool active() => aktif != false;
+
+  @override
+  bool get isReliable => key.safeLength > 1 && senderName.safeLength > 1;
 }

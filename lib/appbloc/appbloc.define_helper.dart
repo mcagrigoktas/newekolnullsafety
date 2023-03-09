@@ -561,7 +561,7 @@ class AppblocDefineServiceHelper {
         jsonParse: (key, value) => SocialItem.fromJsonForFirestoreData(value, key),
         sortFunction: (SocialItem a, SocialItem b) => b.time - a.time,
         maxCount: _hesapBilgileri.gtM ? 2500 : 1500,
-        removeFunction: (a) => a.senderName == null,
+        removeFunction: (a) => !a.isReliable,
         targetList: _targetList,
         afterGetValue: () {
           SocialHelper.afterSocialNewData();
@@ -575,7 +575,7 @@ class AppblocDefineServiceHelper {
         jsonParse: (key, value) => SocialItem.fromJson(value, key),
         sortFunction: (SocialItem a, SocialItem b) => b.time - a.time,
         maxCount: 500,
-        removeFunction: (a) => a.senderName == null,
+        removeFunction: (a) => !a.isReliable,
         lastUpdateKey: 'timeStamp',
         afterGetValue: () {
           SocialHelper.afterSocialNewData();
@@ -590,7 +590,7 @@ class AppblocDefineServiceHelper {
         sortFunction: (SocialItem a, SocialItem b) => b.time - a.time,
         lastUpdateKey: 'timeStamp',
         maxCount: 500,
-        removeFunction: (a) => a.senderName == null,
+        removeFunction: (a) => !a.isReliable,
         afterGetValue: () {
           SocialHelper.afterSocialNewData();
         },
@@ -614,7 +614,7 @@ class AppblocDefineServiceHelper {
       },
       maxCount: _hesapBilgileri.gtM ? 2500 : 500,
       lastUpdateKey: 'timeStamp',
-      removeFunction: (i) => i.title.safeLength < 1,
+      removeFunction: (a) => !a.isReliable,
     );
     await _appBloc.announcementService!.init();
   }

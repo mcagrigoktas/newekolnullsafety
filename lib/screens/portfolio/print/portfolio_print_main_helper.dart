@@ -322,7 +322,7 @@ class PortfolioPrintHelper {
   }
 
   static Future<pw.Widget> _headerWidget(Student student) async {
-    final _studentImgUrl = student.imgUrl.safeLength > 6 ? student.imgUrl! : AppVar.appBloc.schoolInfoService!.singleData!.logoUrl!;
+    final _studentImgUrl = student.imgUrl.safeLength > 6 ? student.imgUrl! : AppVar.appBloc.schoolInfoService!.singleData!.logoUrl;
     return pw.Padding(
         padding: pw.EdgeInsets.symmetric(vertical: 8),
         child: pw.Row(crossAxisAlignment: pw.CrossAxisAlignment.center, children: [
@@ -344,7 +344,7 @@ class PortfolioPrintHelper {
                 .toList(),
           ])),
           pw.SizedBox(width: 16),
-          pw.Image(pw.MemoryImage((await DownloadManager.downloadThenCache(url: AppVar.appBloc.schoolInfoService!.singleData!.logoUrl!))!.byteData), width: 100, height: 100, alignment: pw.Alignment.center, fit: pw.BoxFit.contain),
+          pw.Image(pw.MemoryImage((await DownloadManager.downloadThenCache(url: AppVar.appBloc.schoolInfoService!.singleData!.logoUrl))!.byteData), width: 100, height: 100, alignment: pw.Alignment.center, fit: pw.BoxFit.contain),
         ]));
   }
 

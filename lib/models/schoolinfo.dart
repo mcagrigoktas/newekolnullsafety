@@ -6,8 +6,8 @@ import '../screens/main/widgetsettingspage/model.dart';
 import '../screens/managerscreens/schoolsettings/models/mutlu_cell.dart';
 
 class SchoolInfo {
-  String? name;
-  String? logoUrl;
+  String name;
+  String logoUrl;
   bool? aktif;
   String? activeTerm;
   String? slogan;
@@ -31,11 +31,12 @@ class SchoolInfo {
   //?{'education':{'grupkey':true}}
   Map? genelMudurlukGroupList;
 
-  SchoolInfo.fromJson(Map snapshot) {
-    name = snapshot["name"] ?? "";
+  SchoolInfo.fromJson(Map snapshot)
+      : name = snapshot["name"] ?? "",
+        logoUrl = snapshot["logoUrl"] ?? "" {
     eatMenuType = snapshot["et"] ?? 0;
     eatMenuUrl = snapshot["em"] ?? "";
-    logoUrl = snapshot["logoUrl"] ?? "";
+
     activeTerm = snapshot["activeTerm"] ?? "";
     slogan = snapshot["slogan"] ?? "";
     schoolType = snapshot["schoolType"] ?? "ekid";

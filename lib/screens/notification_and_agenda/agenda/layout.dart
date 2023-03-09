@@ -54,7 +54,6 @@ class AgendaWidgetContent extends StatelessWidget {
         //? tahmini header icin ayrilan yer dusuldu
         _height -= 40;
         _height -= agendaViewHeight;
-
         return SfCalendar(
           controller: calendarController,
           allowViewNavigation: true,
@@ -86,10 +85,27 @@ class AgendaWidgetContent extends StatelessWidget {
 
           monthCellBuilder: (context, details) {
             bool _isToday = details.date.year == _now.year && details.date.month == _now.month && details.date.day == _now.day;
+            bool _topLeftRounded = details.date == details.visibleDates.first;
+            bool _topRightRounded = details.date == details.visibleDates[6];
+            bool _bottomLeftRounded = details.date == details.visibleDates[details.visibleDates.length - 7];
+            bool _bottomRightRounded = details.date == details.visibleDates.last;
 
             return Container(
               alignment: Alignment.center,
-              decoration: ShapeDecoration(shape: RoundedRectangleBorder(side: BorderSide(color: Fav.design.primaryText.withAlpha(40), width: 0.8))),
+              decoration: ShapeDecoration(
+                shape: RoundedRectangleBorder(
+                  side: BorderSide(color: Fav.design.primaryText.withAlpha(40), width: 0.8),
+                  borderRadius: _topLeftRounded
+                      ? BorderRadius.only(topLeft: Radius.circular(8))
+                      : _topRightRounded
+                          ? BorderRadius.only(topRight: Radius.circular(8))
+                          : _bottomLeftRounded
+                              ? BorderRadius.only(bottomLeft: Radius.circular(8))
+                              : _bottomRightRounded
+                                  ? BorderRadius.only(bottomRight: Radius.circular(8))
+                                  : BorderRadius.zero,
+                ),
+              ),
               child: Column(
                 children: [
                   Spacer(flex: 3),
