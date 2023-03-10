@@ -134,14 +134,14 @@ class StudentAccounting extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
-            child: AdvanceDropdown(
+            child: AdvanceDropdown<String>(
               items: AppConst.accountingType
                   .map((paymentType) => DropdownItem(
                         name: AppVar.appBloc.schoolInfoService!.singleData!.paymentName(paymentType),
                         value: paymentType,
                       ))
                   .toList(),
-              onChanged: (dynamic value) {
+              onChanged: (value) {
                 controller.globalKey = GlobalKey();
                 Fav.preferences.setString('paymentTypeKey', value);
                 controller.paymentTypeKey = value;

@@ -215,16 +215,16 @@ class EventForm extends StatelessWidget {
                     SizedBox(
                       width: 80,
                       child: Obx(
-                        () => DropDownMenu(
+                        () => DropDownMenu<int>(
                           padding: EdgeInsets.symmetric(horizontal: 4, vertical: 4),
-                          onChanged: (dynamic value) {
+                          onChanged: (value) {
                             controller.selectedHour.value = value;
                           },
                           items: controller.selectedEvent == null
-                              ? []
-                              : Iterable.generate(
-                                  controller.selectedEvent!.endMinute ~/ 60 - controller.selectedEvent!.startMinute ~/ 60 + 1,
-                                ).map((hour) => DropdownItem(value: controller.selectedEvent!.startMinute ~/ 60 + hour, name: (controller.selectedEvent!.startMinute ~/ 60 + hour).toString().padLeft(2, '0'))).toList(),
+                              ? <DropdownItem<int>>[]
+                              : Iterable.generate(controller.selectedEvent!.endMinute ~/ 60 - controller.selectedEvent!.startMinute ~/ 60 + 1, (e) => e)
+                                  .map((hour) => DropdownItem(value: controller.selectedEvent!.startMinute ~/ 60 + hour, name: (controller.selectedEvent!.startMinute ~/ 60 + hour).toString().padLeft(2, '0')))
+                                  .toList(),
                           value: controller.selectedHour.value,
                         ),
                       ),
@@ -233,13 +233,13 @@ class EventForm extends StatelessWidget {
                     SizedBox(
                       width: 80,
                       child: Obx(
-                        () => DropDownMenu(
+                        () => DropDownMenu<int>(
                           padding: EdgeInsets.symmetric(horizontal: 4, vertical: 4),
                           placeHolderText: 'minute'.translate,
-                          onChanged: (dynamic value) {
+                          onChanged: (value) {
                             controller.selectedMinute.value = value;
                           },
-                          items: controller.selectedEvent == null ? [] : Iterable.generate(12).map((minute) => DropdownItem(value: minute * 5, name: (minute * 5).toString().padLeft(2, '0'))).toList(),
+                          items: controller.selectedEvent == null ? [] : Iterable.generate(12, (e) => e).map((minute) => DropdownItem(value: minute * 5, name: (minute * 5).toString().padLeft(2, '0'))).toList(),
                           value: controller.selectedMinute.value,
                         ),
                       ),
@@ -254,9 +254,9 @@ class EventForm extends StatelessWidget {
                     Expanded(child: 'duration'.translate.text.color(Fav.design.card.text).fontSize(16).bold.make()),
                     SizedBox(
                       width: 80,
-                      child: Obx(() => DropDownMenu(
+                      child: Obx(() => DropDownMenu<int>(
                             padding: EdgeInsets.symmetric(horizontal: 4, vertical: 4),
-                            onChanged: (dynamic value) {
+                            onChanged: (value) {
                               controller.selectedLessonDuration.value = value;
                             },
                             items: Iterable.generate(12, (i) => i * 5 + 5).map((hour) => DropdownItem(value: hour, name: hour.toString().padLeft(2, '0'))).toList(),

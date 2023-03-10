@@ -86,7 +86,7 @@ class ClassList extends StatelessWidget {
                           initialText: controller.filteredText,
                         ).px4,
                         if (AppVar.appBloc.hesapBilgileri.isEkolOrUni)
-                          AdvanceDropdown(
+                          AdvanceDropdown<int>(
                             padding: Inset(4),
                             items: [
                               DropdownItem(name: 'all'.translate, value: -1),
@@ -99,7 +99,7 @@ class ClassList extends StatelessWidget {
                                       ))
                                   .toList()
                             ],
-                            onChanged: (dynamic value) {
+                            onChanged: (value) {
                               controller.filteredClassType = value;
                               controller.makeFilter(controller.filteredText);
                               controller.update();

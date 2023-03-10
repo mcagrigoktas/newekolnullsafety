@@ -214,7 +214,7 @@ class FilterMenu extends StatelessWidget {
                       items: [
                         MyMultiSelectItem('all', 'all'.translate),
                         ...AppConst.accountingType.map((paymentType) {
-                          final _realPaymentName = AppVar.appBloc.schoolInfoService!.singleData!.paymentName(paymentType)!;
+                          final _realPaymentName = AppVar.appBloc.schoolInfoService!.singleData!.paymentName(paymentType);
                           return MyMultiSelectItem(paymentType, _realPaymentName);
                         }).toList()
                       ],

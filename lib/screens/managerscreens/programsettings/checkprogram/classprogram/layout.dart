@@ -48,7 +48,7 @@ class CheckClassProgram extends StatelessWidget {
                       resultCount: controller.filteredItemList.length,
                     ).p4,
                   if (AppVar.appBloc.hesapBilgileri.gtM)
-                    AdvanceDropdown(
+                    AdvanceDropdown<int>(
                       padding: Inset(4),
                       items: [
                         DropdownItem(name: 'all'.translate, value: -1),
@@ -61,7 +61,7 @@ class CheckClassProgram extends StatelessWidget {
                                 ))
                             .toList()
                       ],
-                      onChanged: (dynamic value) {
+                      onChanged: (value) {
                         controller.filteredClassType = value;
                         controller.makeFilter(controller.filteredText);
                         controller.update();

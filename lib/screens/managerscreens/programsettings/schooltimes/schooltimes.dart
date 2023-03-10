@@ -131,18 +131,18 @@ class _SchoolTimesState extends State<SchoolTimes> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              AdvanceDropdown(
+                              AdvanceDropdown<int>(
                                 initialValue: _timesModel.getWeekDaysLessonCountForSetup(),
                                 name: 'weekdayslessoncount'.translate,
                                 iconData: MdiIcons.tablet,
                                 searchbarEnableLength: 1000,
-                                items: Iterable.generate(/*15*/ 30)
+                                items: Iterable.generate(/*15*/ 30, (e) => e)
                                     .map((no) => DropdownItem(
                                           name: '${no + 1}',
                                           value: no + 1,
                                         ))
                                     .toList(),
-                                onChanged: (dynamic value) {
+                                onChanged: (value) {
                                   setState(() {
                                     _timesModel.setWeekDaysLessonCount(value);
                                   });
@@ -197,18 +197,18 @@ class _SchoolTimesState extends State<SchoolTimes> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              AdvanceDropdown(
+                              AdvanceDropdown<int>(
                                 initialValue: _timesModel.getWeekEndLessonCountForSetup(),
                                 name: 'weekendlessoncount'.translate,
                                 iconData: MdiIcons.tablet,
                                 searchbarEnableLength: 1000,
-                                items: Iterable.generate(30 /*15*/)
+                                items: Iterable.generate(30 /*15*/, (e) => e)
                                     .map((no) => DropdownItem(
                                           name: '${no + 1}',
                                           value: no + 1,
                                         ))
                                     .toList(),
-                                onChanged: (dynamic value) {
+                                onChanged: (value) {
                                   setState(() {
                                     _timesModel.setWeekEndLessonCount(value);
                                   });
@@ -270,17 +270,17 @@ class _SchoolTimesState extends State<SchoolTimes> {
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: <Widget>[
-                                      AdvanceDropdown(
+                                      AdvanceDropdown<int>(
                                         initialValue: _timesModel.getDayLessonCount(day) ?? 1,
                                         name: McgFunctions.getDayNameFromDayOfWeek(int.tryParse(day)!),
                                         iconData: MdiIcons.tablet,
-                                        items: Iterable.generate(30)
+                                        items: Iterable.generate(30, (e) => e)
                                             .map((no) => DropdownItem(
                                                   name: '${no + 1}',
                                                   value: no + 1,
                                                 ))
                                             .toList(),
-                                        onChanged: (dynamic value) {
+                                        onChanged: (value) {
                                           setState(() {
                                             _timesModel.setDayLessonCount(day, value);
                                           });

@@ -187,12 +187,12 @@ class AnnouncementItem extends StatelessWidget {
 
     Widget? optionWidget;
     if (AppVar.appBloc.hesapBilgileri.gtT || AuthorityHelper.hasYetki4(warning: false)) {
-      optionWidget = PopupMenuButton(
+      optionWidget = PopupMenuButton<String?>(
         tooltip: 'Menu',
         child: SizedBox(width: 32.0, height: 32.0, child: Icon(Icons.more_vert, size: 20.0, color: Fav.design.primaryText.withAlpha(180))),
         // child: MyMiniRaisedButton(text: ".",color: appBloc.appTheme.disablePink,),
         itemBuilder: (context) {
-          return <PopupMenuEntry>[
+          return <PopupMenuEntry<String>>[
             if (AppVar.appBloc.hesapBilgileri.gtM || AppVar.appBloc.hesapBilgileri.uid == announcement!.senderKey) PopupMenuItem(value: "pinned", child: Text(((announcement!.isPinned ?? false) ? "notpinned" : "pinned").translate)),
             announcement!.targetList!.contains('onlyteachers') ? PopupMenuItem(value: "onlyteachers", child: Text("onlyteachersshared".translate)) : PopupMenuItem(value: "targetlist", child: Text("targetlist".translate)),
             const PopupMenuDivider(),
@@ -200,7 +200,7 @@ class AnnouncementItem extends StatelessWidget {
             if (AppVar.appBloc.hesapBilgileri.gtM || AppVar.appBloc.hesapBilgileri.uid == announcement!.senderKey) PopupMenuItem(value: "delete", child: Text(Words.delete)),
           ];
         },
-        onSelected: (dynamic value) {
+        onSelected: (value) {
           if (Fav.noConnection()) return;
           if (value == "delete") AnnonuncementItemHelper.delete(announcement);
           if (value == "edit") AnnonuncementItemHelper.edit(announcement, forWidgetMenu);

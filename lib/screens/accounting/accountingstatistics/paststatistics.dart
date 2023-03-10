@@ -130,7 +130,7 @@ class _PastStatisticsState extends State<PastStatistics> {
                       tarih: payment.tarih,
                     ));
 
-                    final _message = 'accountingnoificationwarning'.argsTranslate({'date': payment.tarih!.dateFormat("d-MMM-yyyy"), 'amount': (payment.tutar! - odennenTutar).toStringAsFixed(2)}) + ' (' + _realPaymentName! + ')';
+                    final _message = 'accountingnoificationwarning'.argsTranslate({'date': payment.tarih!.dateFormat("d-MMM-yyyy"), 'amount': (payment.tutar! - odennenTutar).toStringAsFixed(2)}) + ' (' + _realPaymentName + ')';
 
                     final _existingItemThisStudent = _notificationList.singleWhereOrNull((element) => element.uid == studentKey);
                     if (_existingItemThisStudent == null) {
@@ -172,14 +172,14 @@ class _PastStatisticsState extends State<PastStatistics> {
 
     final _topActions = TopActionsTitleWithChild(
         title: TopActionsTitle(title: 'accountingstatitictype0'.translate),
-        child: AdvanceDropdown(
+        child: AdvanceDropdown<String>(
           name: 'paymenttype'.translate,
           items: AppConst.accountingType.map((paymentType) {
             final _realPaymentName = AppVar.appBloc.schoolInfoService!.singleData!.paymentName(paymentType);
             return DropdownItem(name: _realPaymentName, value: _realPaymentName);
           }).toList()
             ..add(DropdownItem(name: 'all'.translate, value: 'all')),
-          onChanged: (dynamic value) {
+          onChanged: (value) {
             setState(() {
               _paymentTypeKey = value;
               _makeFilter();

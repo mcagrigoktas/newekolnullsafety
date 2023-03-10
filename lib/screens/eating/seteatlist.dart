@@ -134,9 +134,9 @@ class SetEatListState extends State<SetEatList> {
                   getDayEatList();
                 },
               ),
-              CupertinoSlidingSegmentedControl(
+              CupertinoSlidingSegmentedControl<int>(
                 children: {0: Text(" " + "shortmorningbreakfast".translate + " "), 1: Text(" " + "shortlunch".translate + " "), 2: Text(" " + "shortafternoonbreakfast".translate + " ")},
-                onValueChanged: (dynamic value) {
+                onValueChanged: (value) {
                   setState(() {
                     segmentValue = value;
                   });

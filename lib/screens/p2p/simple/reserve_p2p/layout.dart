@@ -29,14 +29,14 @@ class ReserveP2PLayout extends StatelessWidget {
                 title: TopActionsTitle(title: 'requestp2p'.translate),
                 child: Column(
                   children: [
-                    AdvanceDropdown(
+                    AdvanceDropdown<int>(
                       iconData: Icons.calendar_today,
                       name: 'week'.translate,
                       initialValue: controller.selectedWeek,
                       nullValueText: 'week'.translate,
                       items: CommonP2PHelper.weekItems,
                       validatorRules: ValidatorRules(req: true),
-                      onChanged: (dynamic value) {
+                      onChanged: (value) {
                         controller.weekChange(value);
                       },
                     ),

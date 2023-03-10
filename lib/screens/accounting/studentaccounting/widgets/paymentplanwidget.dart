@@ -589,7 +589,7 @@ class _PaymentPlanWidgetState extends State<PaymentPlanWidget> {
         student,
         faturaNo: faturaNo,
         paymentName: FaturaModel.fromJson(faturaData, 'fatura$faturaNo').paymentName!,
-        paymentTypeKey: FaturaModel.fromJson(faturaData, 'fatura$faturaNo').paymentTypeKey,
+        paymentTypeKey: FaturaModel.fromJson(faturaData, 'fatura$faturaNo').paymentTypeKey!,
         tutar: FaturaModel.fromJson(faturaData, 'fatura$faturaNo').tutar,
         date: payDate,
       );

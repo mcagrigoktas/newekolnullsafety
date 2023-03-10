@@ -46,10 +46,10 @@ class UserPermissionPageLayout extends StatelessWidget {
                                 children: [
                                   SizedBox(
                                     width: 100,
-                                    child: AdvanceDropdown(
+                                    child: AdvanceDropdown<int>(
                                       iconData: Icons.pin_drop,
                                       items: List.generate(6, (index) => DropdownItem(name: '$index', value: index)).toList()..add(DropdownItem(name: 'unlimited'.translate, value: 100)),
-                                      onSaved: (dynamic value) {
+                                      onSaved: (value) {
                                         controller.data[PermissionEnum.teacherMaxPinAnnouncement] = value;
                                       },
                                       initialValue: AppVar.appBloc.permissionService!.data[PermissionEnum.teacherMaxPinAnnouncement] ?? 100,
@@ -134,10 +134,10 @@ class UserPermissionPageLayout extends StatelessWidget {
                                       children: [
                                         SizedBox(
                                           width: 135,
-                                          child: AdvanceDropdown(
+                                          child: AdvanceDropdown<int>(
                                             iconData: Icons.lock_clock,
-                                            items: Iterable.generate(24).map((item) => DropdownItem(name: '$item:00', value: item)).toList(),
-                                            onSaved: (dynamic value) {
+                                            items: Iterable.generate(24, (e) => e).map((item) => DropdownItem(name: '$item:00', value: item)).toList(),
+                                            onSaved: (value) {
                                               controller.data[PermissionEnum.bannedClockStartTime] = value;
                                             },
                                             initialValue: AppVar.appBloc.permissionService!.data[PermissionEnum.bannedClockStartTime] ?? 0,
@@ -147,10 +147,10 @@ class UserPermissionPageLayout extends StatelessWidget {
                                         '-'.translate.text.make(),
                                         SizedBox(
                                           width: 135,
-                                          child: AdvanceDropdown(
+                                          child: AdvanceDropdown<int>(
                                             iconData: Icons.lock_clock,
-                                            items: Iterable.generate(24).map((item) => DropdownItem(name: '$item:00', value: item)).toList(),
-                                            onSaved: (dynamic value) {
+                                            items: Iterable.generate(24, (e) => e).map((item) => DropdownItem(name: '$item:00', value: item)).toList(),
+                                            onSaved: (value) {
                                               controller.data[PermissionEnum.bannedClockEndTime] = value;
                                             },
                                             initialValue: AppVar.appBloc.permissionService!.data[PermissionEnum.bannedClockEndTime] ?? 23,

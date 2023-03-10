@@ -131,17 +131,17 @@ class _MakeLiveBroadcastProgramState extends State<MakeLiveBroadcastProgram> {
           child: Column(
             children: <Widget>[
               if (AppVar.appBloc.hesapBilgileri.gtM && AppVar.appBloc.teacherService!.dataList.isNotEmpty && widget.existingItem == null)
-                AdvanceDropdown(
+                AdvanceDropdown<String>(
                   searchbarEnableLength: 25,
                   name: "teacher".translate,
                   iconData: MdiIcons.humanMaleBoard,
-                  onChanged: (dynamic value) {
+                  onChanged: (value) {
                     _teacherKey = value;
                   },
                   items: AppVar.appBloc.teacherService!.dataList.map((teacher) {
                     return DropdownItem(value: teacher.key, name: teacher.name);
                   }).toList(),
-                  onSaved: (dynamic value) {
+                  onSaved: (value) {
                     _data.teacherKey = value;
                   },
                 ),

@@ -71,7 +71,7 @@ class SchoolInfo {
     return _limits['cN'][i - 1];
   }
 
-  String? paymentName(String? key) {
+  String paymentName(String key) {
     if (_limits['pN'] == null) return key.translate;
     if (_limits['pN'][key] == null) return key.translate;
     return _limits['pN'][key];

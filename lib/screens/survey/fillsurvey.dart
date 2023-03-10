@@ -136,7 +136,7 @@ class _SurveyFillPageState extends State<SurveyFillPage> {
                     ? Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                         getContentText(surveyItem),
                         4.heightBox,
-                        AdvanceDropdown(
+                        AdvanceDropdown<String>(
                           padding: const EdgeInsets.all(0),
                           initialValue: filledSurveyData[surveyItem.key],
                           iconData: Icons.list,
@@ -147,7 +147,7 @@ class _SurveyFillPageState extends State<SurveyFillPage> {
                                     value: options,
                                   ))
                               .toList(),
-                          onSaved: (dynamic value) {
+                          onSaved: (value) {
                             sendingSurveyData[surveyItem.key] = value;
                           },
                           validatorRules: surveyItem.isRequired == true ? ValidatorRules(minLength: 1, req: true) : ValidatorRules.none(),
@@ -176,7 +176,7 @@ class _SurveyFillPageState extends State<SurveyFillPage> {
                             ? Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                                 getContentText(surveyItem),
                                 4.heightBox,
-                                AdvanceDropdown(
+                                AdvanceDropdown<String>(
                                   validatorRules: surveyItem.isRequired == true ? ValidatorRules(minLength: 1, req: true) : ValidatorRules.none(),
                                   padding: const EdgeInsets.all(0),
                                   initialValue: filledSurveyData[surveyItem.key],
@@ -194,7 +194,7 @@ class _SurveyFillPageState extends State<SurveyFillPage> {
                                             value: options,
                                           ))
                                       .toList(),
-                                  onSaved: (dynamic value) {
+                                  onSaved: (value) {
                                     sendingSurveyData[surveyItem.key] = value;
                                   },
                                 )

@@ -119,7 +119,7 @@ class StudentList extends StatelessWidget {
                           resultCount: controller.filteredItemList.length,
                           initialText: controller.filteredText,
                         ).px4,
-                        AdvanceDropdown(
+                        AdvanceDropdown<String?>(
                           padding: Inset(4),
                           items: [
                             DropdownItem(
@@ -143,7 +143,7 @@ class StudentList extends StatelessWidget {
                               value: 'noclass',
                             ),
                           ],
-                          onChanged: (dynamic value) {
+                          onChanged: (value) {
                             controller.filteredClassKey = value;
                             controller.makeFilter(controller.filteredText);
                             controller.update();

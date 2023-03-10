@@ -174,10 +174,10 @@ class _UsageInfoState extends State<UsageInfo> with AppFunctions {
       ],
     ));
 
-    final _monthWidget = AdvanceDropdown(
+    final _monthWidget = AdvanceDropdown<int>(
       padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 16),
       name: 'month'.translate,
-      onChanged: (dynamic value) {
+      onChanged: (value) {
         setState(() {
           month = value;
           makeTable();

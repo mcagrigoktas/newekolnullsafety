@@ -79,10 +79,10 @@ class LessonList extends StatelessWidget {
                       children: [
                         if (controller.filteredClassKey['filteredClassKey'] != null)
                           Expanded(
-                            child: AdvanceDropdown(
+                            child: AdvanceDropdown<String>(
                               padding: Inset(4),
                               items: controller.classListDropdown,
-                              onChanged: (dynamic value) {
+                              onChanged: (value) {
                                 controller.selectedItem = null;
                                 controller.filteredClassKey['filteredClassKey'] = value;
                                 controller.makeFilter();
@@ -154,11 +154,11 @@ class LessonList extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              AdvanceDropdown(
+                              AdvanceDropdown<String?>(
                                 iconData: MdiIcons.book,
                                 initialValue: controller.itemData!.branch,
                                 name: 'branch'.translate,
-                                onSaved: (dynamic value) {
+                                onSaved: (value) {
                                   controller.itemData!.branch = value;
                                 },
                                 extraWidget: MyMiniTextButton(

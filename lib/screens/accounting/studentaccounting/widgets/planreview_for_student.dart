@@ -208,7 +208,7 @@ class _StudentPlanReviewState extends State<StudentPlanReview> with AppFunctions
           children.add(_buildCustomPaymentPlanWidget(context, data![type]));
         } else if (data!.containsKey(type)) {
           children.add(Text(
-            AppVar.appBloc.schoolInfoService!.singleData!.paymentName(type)!.toUpperCase(),
+            AppVar.appBloc.schoolInfoService!.singleData!.paymentName(type).toUpperCase(),
             style: TextStyle(fontWeight: FontWeight.bold, color: Fav.design.primaryText, fontSize: 22),
           ).rounded(background: Fav.design.primaryText.withAlpha(10)));
           children.add(_buildPaymentPlanWidget(context, data![type]));

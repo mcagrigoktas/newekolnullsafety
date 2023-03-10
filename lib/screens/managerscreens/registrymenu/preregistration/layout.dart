@@ -146,7 +146,7 @@ class PreRegistrationList extends StatelessWidget {
                                   controller.itemData!.birthday = value;
                                 },
                               ),
-                              AdvanceDropdown(
+                              AdvanceDropdown<bool>(
                                 initialValue: controller.itemData!.gender,
                                 name: "genre".translate,
                                 iconData: MdiIcons.genderMaleFemale,
@@ -154,7 +154,7 @@ class PreRegistrationList extends StatelessWidget {
                                   DropdownItem(child: "genre1".translate.text.make(), value: false),
                                   DropdownItem(child: "genre2".translate.text.make(), value: true),
                                 ],
-                                onSaved: (dynamic value) {
+                                onSaved: (value) {
                                   controller.itemData!.gender = value;
                                 },
                               ),

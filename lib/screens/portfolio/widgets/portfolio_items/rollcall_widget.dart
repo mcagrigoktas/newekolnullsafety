@@ -50,12 +50,12 @@ class _PortfolioRollCallMainWidgetState extends State<PortfolioRollCallMainWidge
     return Column(
       children: [
         if (_subTermValue != null)
-          AdvanceDropdown(
+          AdvanceDropdown<String>(
             padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
             initialValue: _subTermValue,
             name: 'subtermlist'.translate,
             items: _subTermData!.map((e) => DropdownItem(name: e.name, value: e.name)).toList(),
-            onChanged: (dynamic value) {
+            onChanged: (value) {
               setState(() {
                 _subTermValue = value;
                 _calculaterCachedData();

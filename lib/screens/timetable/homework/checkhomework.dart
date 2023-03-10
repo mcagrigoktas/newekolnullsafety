@@ -115,10 +115,10 @@ class _CheckHomeWorkState extends State<CheckHomeWork> {
                 formKey: formKey,
                 child: Column(
                   children: <Widget>[
-                    AdvanceDropdown(
+                    AdvanceDropdown<int>(
                         initialValue: checktype,
                         name: 'checktype'.translate,
-                        onChanged: (dynamic value) {
+                        onChanged: (value) {
                           setState(() {
                             checktype = value;
                             formKey = GlobalKey();
@@ -130,7 +130,7 @@ class _CheckHomeWorkState extends State<CheckHomeWork> {
                           [1, 'hwpercent100'],
                           [2, 'hwpercent10'],
                           [3, 'hwpercent5']
-                        ].map((e) => DropdownItem(value: e.first, name: (e.last as String).translate)).toList()),
+                        ].map((e) => DropdownItem(value: e.first as int, name: (e.last as String).translate)).toList()),
                     ...AppVar.appBloc.studentService!.dataList
                         .where((student) => student.classKeyList.contains(widget.homeWork!.classKey))
                         .map((student) => Container(

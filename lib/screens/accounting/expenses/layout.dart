@@ -128,16 +128,16 @@ class Expenses extends StatelessWidget {
                                   controller.itemData!.date = value;
                                 },
                               ),
-                              AdvanceDropdown(
+                              AdvanceDropdown<String?>(
                                 items: controller.personList.where((element) => element.isSupplier).map((e) => DropdownItem(name: e.name, value: e.key)).toList(),
                                 initialValue: controller.itemData!.supplier,
                                 iconData: Icons.support,
                                 name: 'supplier'.translate,
-                                onSaved: (dynamic value) {
+                                onSaved: (value) {
                                   controller.itemData!.supplier = value;
                                 },
                               ),
-                              AdvanceDropdown(
+                              AdvanceDropdown<ExpenseType>(
                                 items: [
                                   DropdownItem(value: ExpenseType.ENFORCED, name: 'enforcedexpense'.translate),
                                   DropdownItem(value: ExpenseType.OTHER, name: 'otherexpense'.translate),
@@ -145,16 +145,16 @@ class Expenses extends StatelessWidget {
                                 initialValue: controller.itemData!.type ?? ExpenseType.ENFORCED,
                                 iconData: Icons.merge_type,
                                 name: 'type'.translate,
-                                onSaved: (dynamic value) {
+                                onSaved: (value) {
                                   controller.itemData!.type = value;
                                 },
                               ),
-                              AdvanceDropdown(
+                              AdvanceDropdown<String?>(
                                 items: controller.personList.where((element) => element.isEmployee).map((e) => DropdownItem(name: e.name, value: e.key)).toList(),
                                 initialValue: controller.itemData!.personKey,
                                 iconData: Icons.support,
                                 name: 'employee'.translate,
-                                onSaved: (dynamic value) {
+                                onSaved: (value) {
                                   controller.itemData!.personKey = value;
                                 },
                               ),
@@ -263,10 +263,10 @@ class Expenses extends StatelessWidget {
                                                       value: e.key))
                                                   .toList(),
                                             )),
-                                            DataCell(AdvanceDropdown(
+                                            DataCell(AdvanceDropdown<int>(
                                               padding: const EdgeInsets.all(2.0),
-                                              items: Iterable.generate(maxCaseNumber + 1).map((i) => DropdownItem(value: i, name: i == 0 ? 'casenumber'.translate : AppVar.appBloc.schoolInfoService!.singleData!.caseName(i))).toList(),
-                                              onChanged: (dynamic value) {
+                                              items: Iterable.generate(maxCaseNumber + 1, (e) => e).map((i) => DropdownItem(value: i, name: i == 0 ? 'casenumber'.translate : AppVar.appBloc.schoolInfoService!.singleData!.caseName(i))).toList(),
+                                              onChanged: (value) {
                                                 item.kasaNo = value;
                                                 Fav.writeSeasonCache('${controller.itemData!.key}LastCaseNo', value);
                                               },

@@ -58,12 +58,12 @@ class _PortfolioLessonHomeWorkResultMainWidgetState extends State<PortfolioLesso
     return Column(
       children: [
         if (_subTermValue != null)
-          AdvanceDropdown(
+          AdvanceDropdown<String>(
             padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
             initialValue: _subTermValue,
             name: 'subtermlist'.translate,
             items: _subTermData!.map((e) => DropdownItem(name: e.name, value: e.name)).toList(),
-            onChanged: (dynamic value) {
+            onChanged: (value) {
               setState(() {
                 _subTermValue = value;
                 _calculaterCachedData();
@@ -71,12 +71,12 @@ class _PortfolioLessonHomeWorkResultMainWidgetState extends State<PortfolioLesso
               });
             },
           ),
-        AdvanceDropdown(
+        AdvanceDropdown<String>(
           padding: EdgeInsets.symmetric(horizontal: 12),
           initialValue: lessonKey,
           name: 'lessonlist'.translate,
           items: _cachedData.keys.where((element) => element != 'all').map((e) => DropdownItem(name: (AppVar.appBloc.lessonService!.dataListItem(e!)?.name ?? e), value: e)).toList()..insert(0, DropdownItem(name: 'all'.translate, value: 'all')),
-          onChanged: (dynamic value) {
+          onChanged: (value) {
             setState(() {
               lessonKey = value;
             });

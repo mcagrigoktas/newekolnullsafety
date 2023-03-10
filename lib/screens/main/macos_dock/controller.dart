@@ -38,6 +38,12 @@ class MacOSDockController extends GetxController with GetSingleTickerProviderSta
   void makeSturdyItems() {
     bigScreenItems.clear();
     miniScreenItems.clear();
+    itemList.sort((a, b) => a.dockItemButtonType == b.dockItemButtonType
+        ? 0
+        : a.dockItemButtonType == DockItemButtonType.buttonAndOpenNewTarget
+            ? 1
+            : -1);
+
     itemList.forEach((element) {
       if (element.dockItemVisibleScreen == DockItemVisibleScreen.big || element.dockItemVisibleScreen == DockItemVisibleScreen.both) {
         bigScreenItems.add(element);

@@ -135,7 +135,7 @@ class SocialItemWidget extends StatelessWidget with SocialFunctions {
 
     // Popup Menu Button ve içerisine silme ve hedef listesi oluşturur
     if (AppVar.appBloc.hesapBilgileri.gtT || AuthorityHelper.hasYetki4()) {
-      _extralist.add(PopupMenuButton(
+      _extralist.add(PopupMenuButton<String>(
         child: SizedBox(
           width: 32.0,
           height: 32.0,
@@ -147,13 +147,13 @@ class SocialItemWidget extends StatelessWidget with SocialFunctions {
         ),
         // child: MyMiniRaisedButton(text: ".",color: appBloc.appTheme.disablePink,),
         itemBuilder: (context) {
-          return <PopupMenuEntry>[
+          return <PopupMenuEntry<String>>[
             item!.targetList!.contains('onlyteachers') ? PopupMenuItem(value: "onlyteachers", child: Text("onlyteachersshared".translate)) : PopupMenuItem(value: "targetlist", child: Text("targetlist".translate)),
             const PopupMenuDivider(),
             if (AppVar.appBloc.hesapBilgileri.gtM || (AppVar.appBloc.hesapBilgileri.gtT && AppVar.appBloc.hesapBilgileri.uid == item!.senderKey)) PopupMenuItem(value: "delete", child: Text(Words.delete)),
           ];
         },
-        onSelected: (dynamic value) {
+        onSelected: (value) {
           if (Fav.noConnection()) return;
           if (value == "delete") _delete(item, _isPhoto ? "SocialNetwork" : "Video");
           if (value == "targetlist") _operTargetList(context, item);

@@ -73,7 +73,7 @@ class Contracts extends StatelessWidget {
                           },
                           resultCount: controller.filteredPersonList.length,
                         ).p4,
-                        AdvanceDropdown(
+                        AdvanceDropdown<String>(
                             items: [
                               DropdownItem(value: 'teacher', name: 'teacher'.translate),
                               DropdownItem(value: 'manager', name: 'manager'.translate),
@@ -81,7 +81,7 @@ class Contracts extends StatelessWidget {
                             ],
                             padding: EdgeInsets.only(left: 4, right: 4, bottom: 4),
                             initialValue: controller.filterDropdownValue,
-                            onChanged: (dynamic value) {
+                            onChanged: (value) {
                               controller.filterDropdownValue = value;
                               controller.makeFilter(controller.filteredText);
                               controller.update();
@@ -160,10 +160,10 @@ class Contracts extends StatelessWidget {
                                 .make(),
                             Expanded(
                               flex: 2,
-                              child: AdvanceDropdown(
+                              child: AdvanceDropdown<int>(
                                 padding: const EdgeInsets.all(0.0),
-                                items: Iterable.generate(maxCaseNumber + 1).map((i) => DropdownItem(value: i, name: i == 0 ? 'casenumber'.translate : AppVar.appBloc.schoolInfoService!.singleData!.caseName(i))).toList(),
-                                onChanged: (dynamic value) {
+                                items: Iterable.generate(maxCaseNumber + 1, (e) => e).map((i) => DropdownItem(value: i, name: i == 0 ? 'casenumber'.translate : AppVar.appBloc.schoolInfoService!.singleData!.caseName(i))).toList(),
+                                onChanged: (value) {
                                   controller.payOff!.kasaNo = value;
                                   controller.update();
                                 },

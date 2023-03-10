@@ -205,8 +205,8 @@ class _EditStickersState extends State<EditStickers> {
         title: TopActionsTitle(title: "stickeredit".translate + ' (${sinif.name})'),
         child: Column(
           children: [
-            CupertinoSlidingSegmentedControl(
-              onValueChanged: (dynamic value) {
+            CupertinoSlidingSegmentedControl<StickerStatus>(
+              onValueChanged: (value) {
                 setState(() {
                   segmentStatus = value;
                   formKey = GlobalKey<FormState>();

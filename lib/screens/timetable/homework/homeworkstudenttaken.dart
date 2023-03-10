@@ -122,14 +122,14 @@ class _HomeWorkStudentTakenState extends State<HomeWorkStudentTaken> {
                   if (AppVar.appBloc.hesapBilgileri.gtM)
                     Expanded(
                       flex: 1,
-                      child: AdvanceDropdown(
+                      child: AdvanceDropdown<String>(
                           padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
                           initialValue: classListDropDownValue,
                           name: 'classlist'.translate,
                           iconData: Icons.class_,
                           searchbarEnableLength: 10,
                           items: AppVar.appBloc.classService!.dataList.map((sinif) => DropdownItem(name: sinif.name, value: sinif.key)).toList()..insert(0, DropdownItem(value: '-', name: 'all'.translate)),
-                          onChanged: (dynamic value) {
+                          onChanged: (value) {
                             setState(() {
                               classListDropDownValue = value;
                             });

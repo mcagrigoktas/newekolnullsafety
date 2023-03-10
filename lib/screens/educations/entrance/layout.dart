@@ -37,8 +37,8 @@ class EducationListEntrance extends StatelessWidget {
                         imgUrl: GlassIcons.education.imgUrl,
                       ),
                 child: controller.classLevelList.length > 1
-                    ? AdvanceDropdown(
-                        onChanged: (dynamic value) {
+                    ? AdvanceDropdown<String>(
+                        onChanged: (value) {
                           controller.classLevel = value;
                           controller.filterItemList();
                           controller.update();

@@ -8,7 +8,7 @@ class CommonP2PHelper {
 
   static int get currentWeekDay => DateTime.fromMillisecondsSinceEpoch(AppVar.appBloc.realTime).weekday;
 
-  static List<DropdownItem> get weekItems {
+  static List<DropdownItem<int>> get weekItems {
     final _time = DateTime.fromMillisecondsSinceEpoch(AppVar.appBloc.realTime);
 
     final _nextWeekMondayTime = _time.add(Duration(days: 7 - currentWeekDay + 1));

@@ -23,14 +23,14 @@ class StudentRequest extends StatelessWidget {
             formKey: controller.formKey,
             child: Column(
               children: [
-                AdvanceDropdown(
+                AdvanceDropdown<int>(
                   iconData: Icons.calendar_today,
                   name: 'week'.translate,
                   initialValue: controller.week,
                   nullValueText: 'week'.translate,
                   items: CommonP2PHelper.weekItems,
                   validatorRules: ValidatorRules(req: true),
-                  onChanged: (dynamic value) {
+                  onChanged: (value) {
                     controller.weekChange(value);
                   },
                 ),

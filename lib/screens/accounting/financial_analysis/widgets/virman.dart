@@ -32,12 +32,12 @@ class VirmanPage extends StatelessWidget {
                   Row(
                     children: [
                       Expanded(
-                        child: AdvanceDropdown(
-                          items: Iterable.generate(maxCaseNumber + 1).map((i) => DropdownItem(value: i, name: i == 0 ? 'casenumber'.translate : AppVar.appBloc.schoolInfoService!.singleData!.caseName(i))).toList(),
-                          onChanged: (dynamic value) {
+                        child: AdvanceDropdown<int>(
+                          items: Iterable.generate(maxCaseNumber + 1, (e) => e).map((i) => DropdownItem(value: i, name: i == 0 ? 'casenumber'.translate : AppVar.appBloc.schoolInfoService!.singleData!.caseName(i))).toList(),
+                          onChanged: (value) {
                             _controller.virmanItemForSave!.enteringCase = value;
                           },
-                          onSaved: (dynamic value) {
+                          onSaved: (value) {
                             _controller.virmanItemForSave!.enteringCase = value;
                           },
                           validatorRules: ValidatorRules(req: true, minValue: 1, mustNumber: true),
@@ -48,12 +48,12 @@ class VirmanPage extends StatelessWidget {
                       if (_controller.virmanPageType == VirmanType.change) Icons.arrow_right_alt_sharp.icon.color(Colors.green).make().circleBackground(background: Colors.green.withAlpha(20)),
                       if (_controller.virmanPageType == VirmanType.change)
                         Expanded(
-                          child: AdvanceDropdown(
-                            items: Iterable.generate(maxCaseNumber + 1).map((i) => DropdownItem(value: i, name: i == 0 ? 'casenumber'.translate : AppVar.appBloc.schoolInfoService!.singleData!.caseName(i))).toList(),
-                            onChanged: (dynamic value) {
+                          child: AdvanceDropdown<int>(
+                            items: Iterable.generate(maxCaseNumber + 1, (e) => e).map((i) => DropdownItem(value: i, name: i == 0 ? 'casenumber'.translate : AppVar.appBloc.schoolInfoService!.singleData!.caseName(i))).toList(),
+                            onChanged: (value) {
                               _controller.virmanItemForSave!.sendingCase = value;
                             },
-                            onSaved: (dynamic value) {
+                            onSaved: (value) {
                               _controller.virmanItemForSave!.sendingCase = value;
                             },
                             validatorRules: ValidatorRules(req: true, minValue: 1, mustNumber: true),

@@ -142,10 +142,10 @@ class SalesContracts extends StatelessWidget {
                                 .make(),
                             Expanded(
                               flex: 2,
-                              child: AdvanceDropdown(
+                              child: AdvanceDropdown<int>(
                                 padding: const EdgeInsets.all(0.0),
-                                items: Iterable.generate(maxCaseNumber + 1).map((i) => DropdownItem(value: i, name: i == 0 ? 'casenumber'.translate : AppVar.appBloc.schoolInfoService!.singleData!.caseName(i))).toList(),
-                                onChanged: (dynamic value) {
+                                items: Iterable.generate(maxCaseNumber + 1, (e) => e).map((i) => DropdownItem(value: i, name: i == 0 ? 'casenumber'.translate : AppVar.appBloc.schoolInfoService!.singleData!.caseName(i))).toList(),
+                                onChanged: (value) {
                                   controller.payOff!.kasaNo = value;
                                   controller.update();
                                 },

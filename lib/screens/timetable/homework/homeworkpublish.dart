@@ -82,19 +82,13 @@ class _HomeWorkPublishState extends State<HomeWorkPublish> {
           children: <Widget>[
             Expanded(
               flex: 1,
-              child: AdvanceDropdown(
+              child: AdvanceDropdown<int>(
                 padding: const EdgeInsets.only(left: 12, top: 4, bottom: 4, right: 4),
                 initialValue: classType,
                 iconData: MdiIcons.humanMaleBoard,
                 items: [
-                  DropdownItem(
-                    value: 0,
-                    name: 'classtype0'.translate,
-                  ),
-                  DropdownItem(
-                    value: 1,
-                    name: 'classtype1'.translate,
-                  ),
+                  DropdownItem(value: 0, name: 'classtype0'.translate),
+                  DropdownItem(value: 1, name: 'classtype1'.translate),
                   ...AppVar.appBloc.schoolInfoService!.singleData!.filteredClassType!.entries
                       .map((item) => DropdownItem(
                             name: item.value,
@@ -102,7 +96,7 @@ class _HomeWorkPublishState extends State<HomeWorkPublish> {
                           ))
                       .toList()
                 ],
-                onChanged: (dynamic value) {
+                onChanged: (value) {
                   setState(() {
                     classType = value;
                     classKey = null;

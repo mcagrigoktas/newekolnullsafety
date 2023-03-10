@@ -247,7 +247,7 @@ class TeacherList extends StatelessWidget {
                                   controller.itemData!.explanation = value;
                                 },
                               ),
-                              AdvanceDropdown(
+                              AdvanceDropdown<bool>(
                                 // canvasColor: Fav.design.dropdown.canvas,
                                 initialValue: controller.itemData!.seeAllClass ?? false,
                                 name: "teacherseeclasslist0".translate,
@@ -255,7 +255,7 @@ class TeacherList extends StatelessWidget {
                                 //  color: Colors.red,
 
                                 items: ['teacherseeclasslist1', 'teacherseeclasslist2'].map((text) => DropdownItem(value: text == 'teacherseeclasslist1' ? false : true, name: text.translate)).toList(),
-                                onSaved: (dynamic value) {
+                                onSaved: (value) {
                                   controller.itemData!.seeAllClass = value;
                                 },
                               ),

@@ -82,10 +82,10 @@ class LiveBroadcastListState extends State<LiveBroadcastList> {
       topActions: TopActionsTitleWithChild(
         childIsPinned: false,
         title: TopActionsTitle(imgUrl: GlassIcons.liveBroadcastIcon.imgUrl, color: GlassIcons.liveBroadcastIcon.color, title: "elesson".translate),
-        child: AdvanceDropdown(
+        child: AdvanceDropdown<String?>(
           initialValue: _teacherKey,
           searchbarEnableLength: 30,
-          onChanged: (dynamic value) {
+          onChanged: (value) {
             _teacherKey = value;
             _filterData();
           },

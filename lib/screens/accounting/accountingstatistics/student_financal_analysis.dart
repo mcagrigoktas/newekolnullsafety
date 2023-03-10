@@ -152,14 +152,14 @@ class _StudentFinancalAnalysisState extends State<StudentFinancalAnalysis> {
 
     final _topActions = TopActionsTitleWithChild(
         title: TopActionsTitle(title: 'accountingstatitictype2'.translate),
-        child: AdvanceDropdown(
+        child: AdvanceDropdown<String>(
           name: 'paymenttype'.translate,
           items: AppConst.accountingType.map((paymentType) {
             final _realPaymentName = AppVar.appBloc.schoolInfoService!.singleData!.paymentName(paymentType);
             return DropdownItem(name: _realPaymentName, value: _realPaymentName);
           }).toList()
             ..add(DropdownItem(name: 'all'.translate, value: 'all')),
-          onChanged: (dynamic value) {
+          onChanged: ( value) {
             setState(() {
               _paymentTypeKey = value;
               log(_paymentTypeKey);

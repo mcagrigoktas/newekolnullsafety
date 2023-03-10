@@ -233,14 +233,14 @@ class _SocialPageState extends State<SocialPage> {
                       ],
                     ),
                   ),
-                  CupertinoSlidingSegmentedControl(
+                  CupertinoSlidingSegmentedControl<SocialType>(
                     groupValue: segment,
                     children: {
                       SocialType.photoAndVideo: 'all'.translate.text.make(),
                       SocialType.photo: 'photo'.translate.text.make(),
                       SocialType.video: 'video'.translate.text.make(),
                     },
-                    onValueChanged: (dynamic value) {
+                    onValueChanged: (value) {
                       setState(() {
                         segment = value;
                         _calculatedList = SocialHelper.getAllFilteredSocialList(value);
@@ -268,11 +268,11 @@ class _SocialPageState extends State<SocialPage> {
                           )),
                           8.widthBox,
                           Expanded(
-                              child: DropDownMenu(
+                              child: DropDownMenu<String>(
                             padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
                             value: _searchClassKey,
                             placeHolderText: 'classlist'.translate,
-                            onChanged: (dynamic value) {
+                            onChanged: (value) {
                               setState(() {
                                 _searchClassKey = value;
                                 _makeFilter();

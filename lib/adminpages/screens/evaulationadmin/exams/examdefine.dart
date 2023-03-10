@@ -94,13 +94,13 @@ class ExamDefine extends StatelessWidget {
                               );
                             }),
                             QudsPopupMenuWidget(builder: (ctx) {
-                              return AdvanceDropdown(
+                              return AdvanceDropdown<String?>(
                                 name: 'examtype'.translate,
                                 nullValueText: 'examtype'.translate,
                                 initialValue: controller.filteredExamTypeKey,
                                 searchbarEnableLength: 1000,
                                 items: controller.allExamType.map((e) => DropdownItem(value: e.key, name: e.name)).toList()..insert(0, DropdownItem(value: null, name: 'all'.translate)),
-                                onChanged: (dynamic value) {
+                                onChanged: (value) {
                                   controller.filteredExamTypeKey = value;
                                   controller.update();
                                 },

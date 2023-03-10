@@ -198,9 +198,9 @@ class StickersPageState extends State<StickersPage> with AppFunctions {
                               color: GlassIcons.stickers.color,
                               imgUrl: GlassIcons.stickers.imgUrl,
                             ),
-                            child: CupertinoSlidingSegmentedControl(
+                            child: CupertinoSlidingSegmentedControl<int>(
                               groupValue: segmentIndex,
-                              onValueChanged: (dynamic value) {
+                              onValueChanged: (value) {
                                 setState(() {
                                   segmentIndex = value;
                                 });
@@ -300,9 +300,9 @@ class StickersPageState extends State<StickersPage> with AppFunctions {
                               foregroundColor: Colors.black.withAlpha(150),
                               borderColor: GlassIcons.stickers.color.withAlpha(100),
                             ),
-                            CupertinoSlidingSegmentedControl(
+                            CupertinoSlidingSegmentedControl<int>(
                               groupValue: segmentIndex,
-                              onValueChanged: (dynamic value) {
+                              onValueChanged: (value) {
                                 setState(() {
                                   segmentIndex = value;
                                 });

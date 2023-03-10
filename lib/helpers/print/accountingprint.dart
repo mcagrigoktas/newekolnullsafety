@@ -339,7 +339,7 @@ class PrintAccounting {
     );
   }
 
-  static Future<void> printMakbuz(BuildContext context, Student student, {faturaNo, String? paymentTypeKey, required String paymentName, tutar, int? date}) async {
+  static Future<void> printMakbuz(BuildContext context, Student student, {faturaNo, required String paymentTypeKey, required String paymentName, tutar, int? date}) async {
     final _realPaymentName = AppVar.appBloc.schoolInfoService!.singleData!.paymentName(paymentTypeKey);
 
     final doc = pw.Document();

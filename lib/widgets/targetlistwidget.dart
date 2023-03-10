@@ -23,8 +23,8 @@ class _TargetListWidgetState extends State<TargetListWidget> with AppFunctions {
   String? dropdownValue;
   var uniquekey = UniqueKey();
 
-  List<DropdownItem> getDropdownItems() {
-    List<DropdownItem> dropdownItems = [];
+  List<DropdownItem<String>> getDropdownItems() {
+    List<DropdownItem<String>> dropdownItems = [];
     dropdownItems.add(DropdownItem(value: null, disabled: true, name: "anitemchoose".translate));
     if (AppVar.appBloc.hesapBilgileri.gtM || AppVar.appBloc.hesapBilgileri.teacherSeeAllClass == true || widget.alluser) {
       dropdownItems.addAll([
@@ -120,13 +120,13 @@ class _TargetListWidgetState extends State<TargetListWidget> with AppFunctions {
             ),
             child: GroupWidget(
               children: <Widget>[
-                AdvanceDropdown(
+                AdvanceDropdown<String>(
                   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
                   items: getDropdownItems(),
                   iconData: MdiIcons.accountGroup,
                   name: "choosetarget".translate,
                   initialValue: dropdownValue,
-                  onChanged: (dynamic value) {
+                  onChanged: (value) {
                     setState(() {
                       dropdownValue = value;
                       uniquekey = UniqueKey();
@@ -168,7 +168,7 @@ class _SuperManagerTargetListWidgetState extends State<SuperManagerTargetListWid
   String? dropdownValue;
   var uniquekey = UniqueKey();
 
-  List<DropdownItem> getDropdownItems(BuildContext context) {
+  List<DropdownItem<String?>> getDropdownItems() {
     return [
       DropdownItem(value: null, name: "anitemchoose".translate),
       DropdownItem(value: "allschool", name: "allschool".translate),
@@ -213,18 +213,18 @@ class _SuperManagerTargetListWidgetState extends State<SuperManagerTargetListWid
             ),
             child: GroupWidget(
               children: <Widget>[
-                AdvanceDropdown(
+                AdvanceDropdown<String?>(
                   padding: const EdgeInsets.all(0.0),
-                  items: getDropdownItems(context),
+                  items: getDropdownItems(),
                   iconData: MdiIcons.accountGroup,
                   name: "choosetarget".translate,
                   initialValue: null,
-                  onChanged: (dynamic value) {
+                  onChanged: (value) {
                     setState(() {
                       dropdownValue = value;
                       uniquekey = UniqueKey();
                       if (value == "allschool") {
-                        state.didChange([value]);
+                        state.didChange([value!]);
                       } else {
                         state.didChange([]);
                       }

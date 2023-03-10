@@ -238,11 +238,11 @@ class _AnnouncementsPageState extends State<AnnouncementsPage> {
                           )),
                           8.widthBox,
                           Expanded(
-                              child: DropDownMenu(
+                              child: DropDownMenu<String>(
                             padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
                             value: _searchClassKey,
                             placeHolderText: 'classlist'.translate,
-                            onChanged: (dynamic value) {
+                            onChanged: (value) {
                               setState(() {
                                 _searchClassKey = value;
                                 _makeFilter();

@@ -39,7 +39,7 @@ class StudentRequestList extends StatelessWidget {
       decoration: BoxDecoration(color: Fav.design.scaffold.accentBackground, borderRadius: BorderRadius.only(topRight: Radius.circular(8))),
       child: Column(
         children: [
-          AdvanceDropdown(
+          AdvanceDropdown<String>(
               padding: EdgeInsets.symmetric(horizontal: 4, vertical: 4),
               initialValue: controller.filteredClass,
               searchbarEnableLength: 1000,
@@ -51,7 +51,7 @@ class StudentRequestList extends StatelessWidget {
                   .map((e) => DropdownItem(name: e.name, value: e.key))
                   .toList()
                 ..insert(0, DropdownItem(name: 'allclass'.translate, value: 'all')),
-              onChanged: (dynamic value) {
+              onChanged: (value) {
                 controller.filteredClass = value;
                 controller.update();
               }),

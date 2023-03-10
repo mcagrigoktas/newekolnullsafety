@@ -1,9 +1,9 @@
+import 'package:ficonsax/ficonsax.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:mcg_extension/mcg_extension.dart';
 import 'package:mypackage/mywidgets.dart';
 import 'package:widgetpackage/widgetpackage.dart';
-import 'package:ficonsax/ficonsax.dart';
 
 import '../../../../appbloc/appvar.dart';
 import '../../../../assets.dart';

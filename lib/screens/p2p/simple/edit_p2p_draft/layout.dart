@@ -24,8 +24,8 @@ class P2PEditLayoutPage extends StatelessWidget {
               }),
           topActions: TopActionsTitleWithChild(
               title: TopActionsTitle(title: 'setp2ptime'.translate),
-              child: AdvanceDropdown(
-                onChanged: (dynamic value) {
+              child: AdvanceDropdown<String>(
+                onChanged: (value) {
                   controller.teacherDropdownValue = value;
                   controller.update();
                 },

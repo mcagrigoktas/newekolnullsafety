@@ -120,9 +120,9 @@ class _VideoChatManagerScreenState extends State<VideoChatManagerScreen> {
       ),
       topActions: TopActionsTitleWithChild(
         title: TopActionsTitle(title: widget.forStudent ? 'makeanappointment'.translate : "p2pappointmentlesson".translate, imgUrl: GlassIcons.videoLesson.imgUrl, color: GlassIcons.videoLesson.color),
-        child: AdvanceDropdown(
+        child: AdvanceDropdown<String?>(
           searchbarEnableLength: 35,
-          onChanged: (dynamic value) {
+          onChanged: (value) {
             _teacherKey = value;
             fetchData();
           },

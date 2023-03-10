@@ -414,9 +414,9 @@ class ExamController extends GetxController {
                       children: [
                         if (selectedItem!.examBookLetFiles.isNotEmpty) 'examfiles'.translate.text.bold.make().p8,
                         ...selectedItem!.examBookLetFiles
-                            .map((e) => AdvanceDropdown(
+                            .map((e) => AdvanceDropdown<bool>(
                                   name: e.name,
-                                  onChanged: (dynamic value) => e.isPublish = value,
+                                  onChanged: (value) => e.isPublish = value,
                                   initialValue: e.isPublish ?? false,
                                   iconData: Icons.attach_file_outlined,
                                   items: [

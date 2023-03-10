@@ -258,7 +258,7 @@ class ChatScreenState extends State<ChatScreen> with AppFunctions {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   if (!AppVar.appBloc.hesapBilgileri.isEkid && (AppVar.appBloc.hesapBilgileri.gtMT || AppVar.appBloc.hesapBilgileri.isParent))
-                    CupertinoSlidingSegmentedControl(
+                    CupertinoSlidingSegmentedControl<int>(
                       groupValue: _pageType,
                       children: {
                         0: Text(
@@ -278,20 +278,20 @@ class ChatScreenState extends State<ChatScreen> with AppFunctions {
                             AppVar.appBloc.hesapBilgileri.gtS ? 'messagesegment2'.translate : 'father'.translate,
                           )
                       },
-                      onValueChanged: (dynamic value) {
+                      onValueChanged: (value) {
                         setState(() {
                           _pageType = value;
                         });
                       },
                     ).px4,
                   if (AppVar.appBloc.hesapBilgileri.isEkid && AppVar.appBloc.hesapBilgileri.gtMT && _student?.parentState == 2)
-                    CupertinoSlidingSegmentedControl(
+                    CupertinoSlidingSegmentedControl<int>(
                       groupValue: _pageType,
                       children: {
                         0: Text('mother'.translate),
                         2: Text('father'.translate),
                       },
-                      onValueChanged: (dynamic value) {
+                      onValueChanged: (value) {
                         setState(() {
                           _pageType = value;
                         });

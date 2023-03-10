@@ -338,7 +338,7 @@ class _VideoChatAppointmentState extends State<VideoChatAppointment> with AppFun
         leadingTitle: "videolesson".translate,
         trailingActions: <Widget>[
           if (AppVar.appBloc.hesapBilgileri.gtMT)
-            PopupMenuButton(
+            PopupMenuButton<String>(
               tooltip: 'Menu',
               child: SizedBox(
                 width: 32.0,
@@ -350,13 +350,13 @@ class _VideoChatAppointmentState extends State<VideoChatAppointment> with AppFun
                 ),
               ),
               itemBuilder: (context) {
-                return <PopupMenuEntry>[
+                return <PopupMenuEntry<String>>[
                   PopupMenuItem(value: "targetlist", child: Text("targetlist".translate)),
                   const PopupMenuDivider(),
                   if (_program != null && _program!.endTime! > DateTime.now().millisecondsSinceEpoch) PopupMenuItem(value: "delete", child: Text(Words.delete)),
                 ];
               },
-              onSelected: (dynamic value) {
+              onSelected: (value) {
                 if (Fav.noConnection()) return;
 
                 if (value == "delete") delete();
@@ -474,7 +474,7 @@ class _VideoChatAppointmentState extends State<VideoChatAppointment> with AppFun
                           color: Fav.design.primary,
                         ),
                       if (AppVar.appBloc.hesapBilgileri.gtMT && item.state == 1)
-                        PopupMenuButton(
+                        PopupMenuButton<String>(
                           tooltip: 'Menu',
                           child: SizedBox(
                             width: 32.0,
@@ -486,14 +486,14 @@ class _VideoChatAppointmentState extends State<VideoChatAppointment> with AppFun
                             ),
                           ),
                           itemBuilder: (context) {
-                            return <PopupMenuEntry>[
-                              PopupMenuItem(
+                            return <PopupMenuEntry<String>>[
+                              PopupMenuItem<String>(
                                 value: "deletereservestudent",
                                 child: Text("deletereservestudent".translate),
                               ),
                             ];
                           },
-                          onSelected: (dynamic value) {
+                          onSelected: (value) {
                             if (Fav.noConnection()) return;
 
                             if (value == "deletereservestudent") {

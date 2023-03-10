@@ -90,45 +90,26 @@ class DrawerWidget extends StatelessWidget {
             'settings'.translate,
             style: TextStyle(color: Fav.design.primaryText, fontSize: 20, fontWeight: FontWeight.bold),
           ),
-          AdvanceDropdown(
+          AdvanceDropdown<int>(
               iconData: MdiIcons.resize,
               initialValue: _controller.timeTableSettings.size,
               name: 'cellsize'.translate,
-              items: [
-                DropdownItem(
-                  name: 'small'.translate,
-                  value: 1,
-                ),
-                DropdownItem(
-                  name: 'medium'.translate,
-                  value: 2,
-                ),
-                DropdownItem(
-                  name: 'large'.translate,
-                  value: 3,
-                )
-              ],
-              onChanged: (dynamic value) {
+              items: [DropdownItem(name: 'small'.translate, value: 1), DropdownItem(name: 'medium'.translate, value: 2), DropdownItem(name: 'large'.translate, value: 3)],
+              onChanged: (value) {
                 _controller.timeTableSettings.changeCellSize(value);
                 _controller.update();
                 //  setState(() {});
               }),
           8.heightBox,
-          AdvanceDropdown(
+          AdvanceDropdown<bool>(
               iconData: MdiIcons.tablet,
               initialValue: _controller.timeTableSettings.boxColorIsTeacher,
               name: 'boxcolor'.translate,
               items: [
-                DropdownItem(
-                  name: 'teacherboxcolor'.translate,
-                  value: true,
-                ),
-                DropdownItem(
-                  name: 'lessonboxcolor'.translate,
-                  value: false,
-                ),
+                DropdownItem(name: 'teacherboxcolor'.translate, value: true),
+                DropdownItem(name: 'lessonboxcolor'.translate, value: false),
               ],
-              onChanged: (dynamic value) {
+              onChanged: (value) {
                 _controller.timeTableSettings.boxColorIsTeacher = value;
                 _controller.update();
                 //    setState(() {});

@@ -374,12 +374,12 @@ class _DailyReportTeacherScreenState extends State<DailyReportTeacherScreen> wit
         child: AnimatedSwitcher(
           duration: 333.milliseconds,
           child: Fav.preferences.getBool(_kStudentListStyleKey, false)!
-              ? AdvanceDropdown(
+              ? AdvanceDropdown<String>(
                   items: _ogrenciListesi.map((e) => DropdownItem(name: e.name, value: e.key)).toList(),
                   name: 'studentlist'.translate,
                   initialValue: _seciliOgrenciKey,
                   searchbarEnableLength: 10,
-                  onChanged: (dynamic value) {
+                  onChanged: (value) {
                     _seciliOgrenciKey = value;
                     setState(() {
                       _refreshPageData();
@@ -525,7 +525,7 @@ class _DailyReportTeacherScreenState extends State<DailyReportTeacherScreen> wit
             ),
             Expanded(
               child: daily.hasOption!
-                  ? AdvanceDropdown(
+                  ? AdvanceDropdown<String>(
                       nullValueText: '...',
                       initialValue: (_receivingStudentReportData[daily.header] ?? {})["value"],
                       name: daily.header,
@@ -536,7 +536,7 @@ class _DailyReportTeacherScreenState extends State<DailyReportTeacherScreen> wit
                                 value: option,
                               ))
                           .toList(),
-                      onSaved: (dynamic value) {
+                      onSaved: (value) {
                         _sendingStudentReportData[daily.header] = {"icon": daily.iconName, "value": value, "tur": daily.tur};
                         _savingStudentReportData[daily.key] = value;
                       },

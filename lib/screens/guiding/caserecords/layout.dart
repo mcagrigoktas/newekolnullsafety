@@ -80,13 +80,13 @@ class CaseRecordPage extends StatelessWidget {
                           resultCount: controller.filteredItemList.length,
                           initialText: controller.filteredText,
                         ).p4,
-                        AdvanceDropdown(
+                        AdvanceDropdown<int>(
                           padding: EdgeInsets.only(left: 4, right: 4, bottom: 4),
                           items: [
                             DropdownItem(name: 'caserecordA'.translate, value: 0),
                             DropdownItem(name: 'caserecordC'.translate, value: 1),
                           ],
-                          onChanged: (dynamic value) {
+                          onChanged: (value) {
                             controller.caseRecordStatusDropdownValue = value;
                             controller.makeFilter(controller.filteredText);
                             controller.update();

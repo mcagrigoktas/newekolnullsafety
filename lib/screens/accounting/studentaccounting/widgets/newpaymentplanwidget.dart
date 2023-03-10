@@ -373,8 +373,8 @@ class _NewPaymentPlanWidgetState extends State<NewPaymentPlanWidget> {
                 validatorRules: ValidatorRules(mustNumber: true, req: true, minValue: 1),
                 keyboardType: const TextInputType.numberWithOptions(decimal: true),
               ),
-              CupertinoSlidingSegmentedControl(
-                onValueChanged: (dynamic value) {
+              CupertinoSlidingSegmentedControl<int>(
+                onValueChanged: (value) {
                   setState(() {
                     _segmentCash = value;
                     if (value == 1) {
@@ -404,17 +404,17 @@ class _NewPaymentPlanWidgetState extends State<NewPaymentPlanWidget> {
                 keyboardType: const TextInputType.numberWithOptions(decimal: true),
               ),
               _segmentCash == 1
-                  ? AdvanceDropdown(
+                  ? AdvanceDropdown<int>(
                       iconData: MdiIcons.formatListNumbered,
                       name: 'installmentnumber'.translate,
                       initialValue: _taksitSayisi,
-                      items: Iterable.generate(19)
+                      items: Iterable.generate(19, (e) => e)
                           .map((i) => DropdownItem(
                                 name: '${i + 2}',
                                 value: i + 2,
                               ))
                           .toList(),
-                      onChanged: (dynamic value) {
+                      onChanged: (value) {
                         setState(() {
                           _taksitSayisi = value;
                           _taksitListesiniTanimla();

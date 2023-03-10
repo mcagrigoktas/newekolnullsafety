@@ -131,14 +131,14 @@ class _MakeVideoChatProgramState extends State<MakeVideoChatProgram> {
           child: Column(
             children: <Widget>[
               if (AppVar.appBloc.hesapBilgileri.gtM && AppVar.appBloc.teacherService!.dataList.isNotEmpty)
-                AdvanceDropdown(
+                AdvanceDropdown<String>(
                   searchbarEnableLength: 25,
                   name: "teacher".translate,
                   iconData: MdiIcons.humanMaleBoard,
                   items: AppVar.appBloc.teacherService!.dataList.map((teacher) {
                     return DropdownItem(value: teacher.key, name: teacher.name);
                   }).toList(),
-                  onSaved: (dynamic value) {
+                  onSaved: (value) {
                     _data.teacherKey = value;
                   },
                 ),
