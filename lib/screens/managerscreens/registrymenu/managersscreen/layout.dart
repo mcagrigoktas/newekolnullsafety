@@ -18,7 +18,7 @@ class ManagerList extends StatelessWidget {
     return GetBuilder<ManagerListController>(
         init: ManagerListController(initialItem: initialItem),
         builder: (controller) {
-          final Widget _newButton = Icons.add.icon.color(Fav.design.appBar.text).onPressed(controller.clickNewItem).make();
+          final Widget _newButton = AddIcon(onPressed: controller.clickNewItem);
 
           final Widget _sendSmsButton = Tooltip(
             message: 'sendusername1'.translate,

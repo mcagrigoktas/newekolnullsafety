@@ -29,7 +29,9 @@ class StudentList extends StatelessWidget {
     return GetBuilder<StudentListController>(
         init: StudentListController(initialItem: initialItem, preRegistrationData: preRegistrationData),
         builder: (controller) {
-          final Widget _newButton = Icons.add.icon.color(Fav.design.appBar.text).onPressed(controller.clickNewItem).make();
+          final Widget _newButton = AddIcon(onPressed: controller.clickNewItem);
+
+          //  Icons.add.icon.color(Fav.design.appBar.text).onPressed(controller.clickNewItem).make();
           final Widget _middle = (controller.newItem != null
                   ? 'new'.translate
                   : controller.selectedItem != null

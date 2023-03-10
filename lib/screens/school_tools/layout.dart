@@ -25,9 +25,9 @@ class SchoolToolsPage extends StatelessWidget {
       scaffoldBackgroundColor: forMiniScreen ? null : Colors.transparent,
       topBar: TopBar(leadingTitle: 'tools'.translate, hideBackButton: !forMiniScreen, trailingActions: [
         if (AppVar.appBloc.hesapBilgileri.gtM && AuthorityHelper.hasYetki2())
-          Icons.add.icon.onPressed(() {
+          AddIcon(onPressed: () {
             Fav.to(WidgetSettingsPage());
-          }).make(),
+          }),
       ]),
       topActions: TopActionsTitle(title: "tools".translate, imgUrl: GlassIcons.tag.imgUrl, color: GlassIcons.tag.color),
       body: Body.singleChildScrollView(

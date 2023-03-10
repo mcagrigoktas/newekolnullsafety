@@ -55,8 +55,7 @@ class _SurveyListState extends State<SurveyList> {
         topBar: TopBar(
           leadingTitle: 'menu1'.translate,
           trailingActions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.add, color: Fav.design.appBar.text),
+            AddIcon(
               onPressed: () {
                 Fav.to(SurveyEdit());
               },

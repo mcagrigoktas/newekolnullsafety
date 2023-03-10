@@ -190,16 +190,15 @@ class _SocialPageState extends State<SocialPage> {
                   _isSearchMenuOpen = !_isSearchMenuOpen;
                 });
               },
-            ).px4,
+            ),
           if (AppVar.appBloc.hesapBilgileri.gtT || AuthorityHelper.hasYetki4())
             AddIcon(
               onPressed: () {
                 Fav.to(ShareSocial(previousPageTitle: 'social'.translate), preventDuplicates: false);
               },
-              reversedIcon: true,
               toolTip: true,
               color: GlassIcons.social.color,
-            ).px4,
+            ),
         ],
       ),
       topActions: TopActionsTitleWithChild(

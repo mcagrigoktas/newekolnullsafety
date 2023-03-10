@@ -41,7 +41,10 @@ class ExamTypeDefine extends StatelessWidget {
                 controller.deSelectItem();
               }
             },
-            trailingWidgets: [Icons.add.icon.color(Fav.design.appBar.text).onPressed(controller.addItem).make(), if (controller.girisTuru == EvaulationUserType.school) copyAnotherTermWidget],
+            trailingWidgets: [
+              AddIcon(onPressed: controller.addItem),
+              if (controller.girisTuru == EvaulationUserType.school) copyAnotherTermWidget,
+            ],
           ),
           mainScreen: ExamTypeList(),
           detailScreen: ExamTypeDetail(),
@@ -162,7 +165,11 @@ class ExamTypeDetail extends StatelessWidget {
                   AbsorbPointer(
                     absorbing: !controller.dataIsNew,
                     child: Row(
-                      children: ['Lessons'.text.bold.make(), 8.widthBox, Icons.add_box_rounded.icon.color(Fav.design.primaryText).onPressed(controller.addNewLesson).make()],
+                      children: [
+                        'Lessons'.text.bold.make(),
+                        8.widthBox,
+                        AddIcon(onPressed: controller.addNewLesson),
+                      ],
                     ).px12,
                   ),
                   ...(controller.selectedItem!.lessons ?? <ExamTypeLesson>[])
@@ -326,7 +333,11 @@ class ExamTypeDetail extends StatelessWidget {
                       .toList(),
                   if (controller.advanceMenu)
                     Row(
-                      children: ['Scoring'.text.bold.make(), 8.widthBox, Icons.add_box_rounded.icon.color(Fav.design.primaryText).onPressed(controller.addNewScoring).make()],
+                      children: [
+                        'Scoring'.text.bold.make(),
+                        8.widthBox,
+                        AddIcon(onPressed: controller.addNewScoring),
+                      ],
                     ).px12,
                   if (controller.advanceMenu)
                     ...(controller.selectedItem!.scoring ?? <Scoring>[])

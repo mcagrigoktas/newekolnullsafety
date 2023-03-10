@@ -25,7 +25,7 @@ class ExamDefine extends StatelessWidget {
     return GetBuilder<ExamController>(
         init: ExamController(userType),
         builder: (controller) {
-          final Widget _newButton = Icons.add.icon.color(Fav.design.appBar.text).onPressed(controller.addItem).make();
+          final Widget _newButton = AddIcon(onPressed: controller.addItem);
 
           final Widget _middle = (controller.dataIsNew
                   ? 'new'.translate
@@ -433,7 +433,7 @@ class ExamDefine extends StatelessWidget {
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           children: [
                                             'examfiles'.translate.text.bold.color(Fav.design.primaryText).make(),
-                                            Icons.add.icon.color(Fav.design.primaryText).onPressed(controller.addexambookletfile).make(),
+                                            AddIcon(onPressed: controller.addexambookletfile),
                                           ],
                                         ).pb12,
                                         AnimatedGroupWidget(

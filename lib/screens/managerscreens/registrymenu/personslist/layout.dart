@@ -21,7 +21,7 @@ class PersonsList extends StatelessWidget {
             message: 'personlisthint1'.translate,
             decoration: BoxDecoration(color: Colors.black87, borderRadius: BorderRadius.circular(4)),
             textStyle: TextStyle(fontSize: 14, color: Colors.white),
-            child: Icons.add.icon.color(Fav.design.appBar.text).onPressed(controller.clickNewPerson).make(),
+            child: AddIcon(onPressed: controller.clickNewPerson),
           );
           final Widget _middle = (controller.newPerson != null
                   ? 'new'.translate

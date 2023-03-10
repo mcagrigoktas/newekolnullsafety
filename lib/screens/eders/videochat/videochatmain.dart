@@ -107,14 +107,13 @@ class _VideoChatManagerScreenState extends State<VideoChatManagerScreen> {
         hideBackButton: !widget.forMiniScreen,
         trailingActions: <Widget>[
           if (widget.forStudent == false && AppVar.appBloc.teacherService!.dataList.isNotEmpty)
-            IconButton(
+            AddIcon(
               onPressed: () async {
                 await Fav.to(MakeVideoChatProgram(), preventDuplicates: false);
                 if (AppVar.appBloc.hesapBilgileri.gtM) {
                   fetchData(true);
                 }
               },
-              icon: Icon(Icons.add, color: Fav.design.appBar.text),
             ),
         ],
       ),
@@ -191,11 +190,10 @@ class VideoChatTeacherScreen extends StatelessWidget {
               leadingTitle: 'menu1'.translate,
               trailingActions: <Widget>[
                 if (AppVar.appBloc.teacherService!.dataList.isNotEmpty)
-                  IconButton(
+                  AddIcon(
                     onPressed: () async {
                       await Fav.to(MakeVideoChatProgram(), preventDuplicates: false);
                     },
-                    icon: Icon(Icons.add, color: Fav.design.appBar.text),
                   ),
               ],
             ),

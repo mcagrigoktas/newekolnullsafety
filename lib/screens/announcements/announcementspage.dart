@@ -204,10 +204,9 @@ class _AnnouncementsPageState extends State<AnnouncementsPage> {
                   _isSearchMenuOpen = !_isSearchMenuOpen;
                 });
               },
-            ).px4,
+            ),
           if (AppVar.appBloc.hesapBilgileri.gtT || AuthorityHelper.hasYetki4(warning: false))
             AddIcon(
-              reversedIcon: true,
               toolTip: true,
               color: GlassIcons.announcementIcon.color,
               // icon: Icon(Icons.add, color: Fav.design.primaryText),
@@ -215,7 +214,7 @@ class _AnnouncementsPageState extends State<AnnouncementsPage> {
                 var result = await Fav.to(ShareAnnouncements(previousPageTitle: 'announcements'.translate), preventDuplicates: false);
                 if (result == true) OverAlert.saveSuc();
               },
-            ).px4,
+            ),
         ],
       ),
       topActions: TopActionsTitleWithChild(

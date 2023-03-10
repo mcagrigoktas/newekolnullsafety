@@ -18,7 +18,7 @@ class Expenses extends StatelessWidget {
     return GetBuilder<ExpensesController>(
         init: ExpensesController(),
         builder: (controller) {
-          final Widget _newButton = Icons.add.icon.color(Fav.design.appBar.text).onPressed(controller.clickNewItem).make();
+          final Widget _newButton = AddIcon(onPressed: controller.clickNewItem);
           final Widget _labelButton = Icons.label.icon.color(Fav.design.appBar.text).onPressed(() async {
             await Fav.to(ExpansesLabelEditor());
             await 100.wait;

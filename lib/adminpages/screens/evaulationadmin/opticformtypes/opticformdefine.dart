@@ -14,7 +14,7 @@ class OpticFormDefine extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<OpticFormDefineController>(
       builder: (controller) {
-        final Widget _newButton = Icons.add.icon.color(Fav.design.appBar.text).onPressed(controller.addItem).make();
+        final Widget _newButton = AddIcon(onPressed: controller.addItem);
         final Widget _middle = (controller.dataIsNew
                 ? 'new'.translate
                 : controller.selectedItem != null

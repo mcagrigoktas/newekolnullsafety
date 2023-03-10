@@ -71,12 +71,9 @@ class LiveBroadcastListState extends State<LiveBroadcastList> {
       scaffoldBackgroundColor: widget.forMiniScreen ? null : Colors.transparent,
       topBar: TopBar(leadingTitle: 'menu1'.translate, hideBackButton: !widget.forMiniScreen, trailingActions: <Widget>[
         if (AppVar.appBloc.hesapBilgileri.gtMT && AppVar.appBloc.teacherService!.dataList.isNotEmpty)
-          IconButton(
-            onPressed: () {
-              Fav.guardTo(MakeLiveBroadcastProgram());
-            },
-            icon: Icon(Icons.add, color: Fav.design.appBar.text),
-          ),
+          AddIcon(onPressed: () {
+            Fav.guardTo(MakeLiveBroadcastProgram());
+          }),
         8.widthBox
       ]),
       topActions: TopActionsTitleWithChild(
