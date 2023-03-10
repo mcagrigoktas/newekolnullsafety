@@ -56,6 +56,7 @@ class PrintHelper {
             ),
           ),
           build: ((context) => pageList),
+          maxPages: 1000,
         ),
       );
     }

@@ -100,6 +100,7 @@ class TimeTablePrintHelper {
     _pdf.addPage(MultiPage(
       pageTheme: PageTheme(orientation: PageOrientation.landscape, pageFormat: PdfPageFormat.a4, margin: EdgeInsets.all(Fav.preferences.getInt('printfullprogrammargin', 8)!.toDouble()), theme: ThemeData.withFont(fontFallback: [Font.ttf(font1)])),
       build: (context) => _list,
+      maxPages: 1000,
     ));
     await PrintLibraryHelper.printPdfDoc(_pdf);
   }

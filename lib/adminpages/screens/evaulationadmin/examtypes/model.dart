@@ -32,8 +32,11 @@ class ExamType {
     scoreLayoutCode = snapshot['sL'] ?? '';
 
     numberOfSeison = snapshot['sn'] ?? 1;
-    lessons = (snapshot['lessons'] ?? []).map((item) => ExamTypeLesson.fromJson(item)).toList();
-    scoring = (snapshot['scoring'] ?? []).map((item) => Scoring.fromJson(item)).toList();
+
+    // var a = (snapshot['lessons'] ?? []).map<ExamTypeLesson>((item) => ExamTypeLesson.fromJson(item)).toList();
+
+    lessons = ((snapshot['lessons'] ?? []) as List).map((item) => ExamTypeLesson.fromJson(item)).toList();
+    scoring = ((snapshot['scoring'] ?? []) as List).map((item) => Scoring.fromJson(item)).toList();
 
     userType = EvaulationUserType.values.singleWhereOrNull((element) => element.toString() == snapshot['userType']) ?? EvaulationUserType.admin;
     savedBy = snapshot['savedBy'] ?? EvaulationUserType.admin.toString();

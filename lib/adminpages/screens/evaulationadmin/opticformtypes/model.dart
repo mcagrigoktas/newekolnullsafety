@@ -75,7 +75,7 @@ class OpticFormModel {
     studentSectionData = DataStartEnd.fromJson(snapshot['ssd']);
     bookletTypeData = DataStartEnd.fromJson(snapshot['bt']);
 
-    lessonsData = (snapshot['lessonsData'] ?? {}).map((k, v) => MapEntry(k, DataStartEnd.fromJson(v)));
+    lessonsData = ((snapshot['lessonsData'] as Map?) ?? {}).map((k, v) => MapEntry(k, DataStartEnd.fromJson(v)));
 
     examTypeKey = snapshot['examTypeKey'];
     userType = EvaulationUserType.values.singleWhereOrNull((element) => element.toString() == snapshot['userType']) ?? EvaulationUserType.admin;

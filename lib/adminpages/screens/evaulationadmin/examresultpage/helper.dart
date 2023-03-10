@@ -66,6 +66,7 @@ class ExamResultReviewHelper {
           ),
         ),
         build: (context) => items,
+        maxPages: 1000,
       ),
     );
     await PrintLibraryHelper.printPdfDoc(doc);

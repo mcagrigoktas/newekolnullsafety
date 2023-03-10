@@ -71,15 +71,14 @@ class TimaTableEditController extends BaseController {
             isPageLoading = false;
             AppVar.appBloc.lessonService!.dataList.forEach((lesson) {
               Map lessonCaches = {};
-              lessonCaches['lessonColor'] = Color(int.tryParse('0xff${lesson.color ?? "24262A"}')!);
+              lessonCaches['lessonColor'] = (lesson.color ?? "24262A").parseColor;
               lessonCaches['lessonName'] = lesson.name;
-
-              var teacher = AppVar.appBloc.teacherService!.dataListItem(lesson.teacher!);
+              var teacher = AppVar.appBloc.teacherService!.dataListItem(lesson.teacher ?? '?');
 
               if (teacher == null) {
-                lessonCaches['teacherColor'] = Color(int.tryParse('0xff24262A')!);
+                lessonCaches['teacherColor'] = Color(0xff24262A);
               } else {
-                lessonCaches['teacherColor'] = Color(int.tryParse('0xff${teacher.color ?? "24262A"}')!);
+                lessonCaches['teacherColor'] = (lesson.color ?? "24262A").parseColor;
                 lessonCaches['teacherKey'] = teacher.key;
               }
               caches[lesson.key] = lessonCaches;

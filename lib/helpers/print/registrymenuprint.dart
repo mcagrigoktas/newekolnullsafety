@@ -19,7 +19,7 @@ class RegistryMenuPrint {
 
   static Map<String, List> studentDataHelper = {
     '1': ["studentno".translate, (Student student) => student.no],
-    '2': ['classtype0'.translate, (Student student) => AppVar.appBloc.classService?.dataListItem(student.class0!)?.name ?? '-'],
+    '2': ['classtype0'.translate, (Student student) => AppVar.appBloc.classService?.dataListItem(student.class0 ?? '?')?.name ?? '-'],
     '3': ['genre'.translate, (Student student) => student.genre == true ? "genre2".translate : "genre1".translate],
     '4': ['username'.translate, (Student student) => student.username],
     '5': ['password'.translate, (Student student) => student.passwordChangedByUser == true ? '******' : student.password],
