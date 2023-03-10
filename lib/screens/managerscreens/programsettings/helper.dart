@@ -26,7 +26,9 @@ class ProgramHelper {
 
   static Map getLastSturdyProgram({TimesModel? timesModel}) {
     final _times = timesModel ?? AppVar.appBloc.schoolTimesService!.dataList.last;
-    var _programData = AppVar.appBloc.tableProgramService!.takeData(1).entries.first.value['classProgram'];
+    final _tableProgramData = AppVar.appBloc.tableProgramService!.takeData(1);
+
+    var _programData = _tableProgramData.isEmpty ? {} : _tableProgramData.entries.first.value['classProgram'];
     return ProgramHelper.makeProgramSturdy(_programData, _times);
   }
 
@@ -35,7 +37,7 @@ class ProgramHelper {
     final _mustDeleteClassList = [];
     // Eger gun yada saat acik degilse o saat ve gundeki yazilmis dersleri kaldirir
     // [_duplicateCache] Ogretmenin ayni saate baska dersi varsa siler
-    Set<String?> _duplicateCache = {};
+    Set<String> _duplicateCache = {};
 
     _programData.forEach((classKey, classProgram) {
       final _class = AppVar.appBloc.classService!.dataListItem(classKey);

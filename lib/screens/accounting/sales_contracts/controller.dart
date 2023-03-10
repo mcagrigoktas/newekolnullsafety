@@ -55,7 +55,7 @@ class SalesContractsController extends GetxController {
   }
 
   Future<void> _init() async {
-    final _personFetcher = MiniFetchers.getFetcher(MiniFetcherKeys.schoolPersons);
+    final _personFetcher = MiniFetchers.getFetcher<Person>(MiniFetcherKeys.schoolPersons);
 
     dataPackage = PkgFireBox(
         boxKeyWithoutVersionNo: ReferenceService.salesContractCollectionRef().removeNonEnglishCharacter!,
@@ -77,7 +77,7 @@ class SalesContractsController extends GetxController {
     personList = [
       ...AppVar.appBloc.teacherService!.dataList.map((teacher) => ContractPerson(teacher: teacher)).toList(),
       ...AppVar.appBloc.managerService!.dataList.where((element) => element.key != 'Manager1').map((manager) => ContractPerson(manager: manager)).toList(),
-      ...(_personFetcher.dataList as List<Person>).map((person) => ContractPerson(person: person)).toList(),
+      ...(_personFetcher.dataList).map((person) => ContractPerson(person: person)).toList(),
     ];
     makeFilter(filteredText);
     isPageLoading = false;

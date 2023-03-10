@@ -8,7 +8,7 @@ import '../../../../services/dataservice.dart';
 import 'model.dart';
 
 class PersonsListController extends GetxController {
-  MiniFetcher<Person>? _personFetcher;
+  late MiniFetcher<Person> _personFetcher;
   Person? newPerson;
   Person? selectedPerson;
   Person? get personData => newPerson ?? selectedPerson;
@@ -24,10 +24,10 @@ class PersonsListController extends GetxController {
   VisibleScreen visibleScreen = VisibleScreen.main;
   @override
   void onInit() {
-    _personFetcher = MiniFetchers.getFetcher(MiniFetcherKeys.schoolPersons) as MiniFetcher<Person>?;
+    _personFetcher = MiniFetchers.getFetcher<Person>(MiniFetcherKeys.schoolPersons);
 
-    _personFetcher!.stream.listen((event) {
-      itemList = _personFetcher!.dataList;
+    _personFetcher.stream.listen((event) {
+      itemList = _personFetcher.dataList;
       makeFilter(filteredText);
       isPageLoading = false;
       update();

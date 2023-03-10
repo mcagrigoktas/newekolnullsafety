@@ -27,9 +27,9 @@ enum MiniFetcherKeys {
 class MiniFetchers {
   MiniFetchers._();
 
-  static MiniFetcher getFetcher(MiniFetcherKeys miniFetcherKey) {
-    if (Get.isRegistered<MiniFetcher>(tag: _boxKey(miniFetcherKey))) return Get.find<MiniFetcher>(tag: _boxKey(miniFetcherKey));
-    return _registerMiniFetcher(miniFetcherKey);
+  static MiniFetcher<T> getFetcher<T>(MiniFetcherKeys miniFetcherKey) {
+    if (Get.isRegistered<MiniFetcher>(tag: _boxKey(miniFetcherKey))) return Get.find<MiniFetcher>(tag: _boxKey(miniFetcherKey)) as MiniFetcher<T>;
+    return _registerMiniFetcher(miniFetcherKey) as MiniFetcher<T>;
   }
 
   static Future<void> unregisterAllFetcher() async {
@@ -50,7 +50,7 @@ class MiniFetchers {
   }
 
 //?
-  static MiniFetcher _registerMiniFetcher(MiniFetcherKeys miniFetcherKeys) {
+  static MiniFetcher _registerMiniFetcher<T>(MiniFetcherKeys miniFetcherKeys) {
     if (miniFetcherKeys == MiniFetcherKeys.allExamType) return _registerAllExamType(miniFetcherKeys);
     if (miniFetcherKeys == MiniFetcherKeys.schoolExamTypes) return _registerSchoollExamTypes(miniFetcherKeys);
     if (miniFetcherKeys == MiniFetcherKeys.allOpticformType) return _registerallOpticformType(miniFetcherKeys);
@@ -77,8 +77,8 @@ class MiniFetchers {
     return boxKeyList[miniFetcherKeys];
   }
 
-  static MiniFetcher _registerAllExamType(MiniFetcherKeys miniFetcherKey) {
-    Get.put<MiniFetcher>(
+  static MiniFetcher<ExamType> _registerAllExamType(MiniFetcherKeys miniFetcherKey) {
+    Get.put<MiniFetcher<ExamType>>(
         MiniFetcher<ExamType>(
           _boxKey(miniFetcherKey),
           FetchType.LISTEN,
@@ -92,11 +92,11 @@ class MiniFetchers {
         ),
         tag: _boxKey(miniFetcherKey),
         permanent: true);
-    return Get.find<MiniFetcher>(tag: _boxKey(miniFetcherKey));
+    return Get.find<MiniFetcher<ExamType>>(tag: _boxKey(miniFetcherKey));
   }
 
   static MiniFetcher _registerSchoollExamTypes(MiniFetcherKeys miniFetcherKey) {
-    Get.put<MiniFetcher>(
+    Get.put<MiniFetcher<ExamType>>(
         MiniFetcher<ExamType>(
           _boxKey(miniFetcherKey),
           FetchType.LISTEN,
@@ -110,11 +110,11 @@ class MiniFetchers {
         ),
         tag: _boxKey(miniFetcherKey),
         permanent: true);
-    return Get.find<MiniFetcher>(tag: _boxKey(miniFetcherKey));
+    return Get.find<MiniFetcher<ExamType>>(tag: _boxKey(miniFetcherKey));
   }
 
   static MiniFetcher _registerallOpticformType(MiniFetcherKeys miniFetcherKey) {
-    Get.put<MiniFetcher>(
+    Get.put<MiniFetcher<OpticFormModel>>(
         MiniFetcher<OpticFormModel>(
           _boxKey(miniFetcherKey),
           FetchType.LISTEN,
@@ -128,11 +128,11 @@ class MiniFetchers {
         ),
         tag: _boxKey(miniFetcherKey),
         permanent: true);
-    return Get.find<MiniFetcher>(tag: _boxKey(miniFetcherKey));
+    return Get.find<MiniFetcher<OpticFormModel>>(tag: _boxKey(miniFetcherKey));
   }
 
   static MiniFetcher _registerSchoolOpticformType(MiniFetcherKeys miniFetcherKey) {
-    Get.put<MiniFetcher>(
+    Get.put<MiniFetcher<OpticFormModel>>(
         MiniFetcher<OpticFormModel>(
           _boxKey(miniFetcherKey),
           FetchType.LISTEN,
@@ -146,11 +146,11 @@ class MiniFetchers {
         ),
         tag: _boxKey(miniFetcherKey),
         permanent: true);
-    return Get.find<MiniFetcher>(tag: _boxKey(miniFetcherKey));
+    return Get.find<MiniFetcher<OpticFormModel>>(tag: _boxKey(miniFetcherKey));
   }
 
   static MiniFetcher _registerAllSchoolExams(MiniFetcherKeys miniFetcherKey) {
-    Get.put<MiniFetcher>(
+    Get.put<MiniFetcher<Exam>>(
         MiniFetcher<Exam>(
           _boxKey(miniFetcherKey),
           FetchType.LISTEN,
@@ -164,11 +164,11 @@ class MiniFetchers {
         ),
         tag: _boxKey(miniFetcherKey),
         permanent: true);
-    return Get.find<MiniFetcher>(tag: _boxKey(miniFetcherKey));
+    return Get.find<MiniFetcher<Exam>>(tag: _boxKey(miniFetcherKey));
   }
 
   static MiniFetcher _registerAllGlobalExams(MiniFetcherKeys miniFetcherKey) {
-    Get.put<MiniFetcher>(
+    Get.put<MiniFetcher<Exam>>(
         MiniFetcher<Exam>(_boxKey(miniFetcherKey), FetchType.LISTEN,
             multipleData: true,
             jsonParse: (key, value) => Exam.fromJson(value, key),
@@ -180,11 +180,11 @@ class MiniFetchers {
             minLastUpdateTime: DateTime.now().subtract(Duration(days: 365)).millisecondsSinceEpoch),
         tag: _boxKey(miniFetcherKey),
         permanent: true);
-    return Get.find<MiniFetcher>(tag: _boxKey(miniFetcherKey));
+    return Get.find<MiniFetcher<Exam>>(tag: _boxKey(miniFetcherKey));
   }
 
   static MiniFetcher _registerSchoolPerson(MiniFetcherKeys miniFetcherKey) {
-    Get.put<MiniFetcher>(
+    Get.put<MiniFetcher<Person>>(
         MiniFetcher<Person>(
           _boxKey(miniFetcherKey),
           FetchType.LISTEN,
@@ -202,6 +202,6 @@ class MiniFetchers {
         ),
         tag: _boxKey(miniFetcherKey),
         permanent: true);
-    return Get.find<MiniFetcher>(tag: _boxKey(miniFetcherKey));
+    return Get.find<MiniFetcher<Person>>(tag: _boxKey(miniFetcherKey));
   }
 }

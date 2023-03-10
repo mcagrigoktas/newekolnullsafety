@@ -226,7 +226,7 @@ class TreeViewHelper {
     if (existingBusRides.dataList.isNotEmpty) {
       await TransportingMainRoutes.goExistingBusridesScreen(existingBusRides.dataList);
     } else {
-      'norecords'.showAlert(AlertType.danger);
+      'norecords'.translate.showAlert(AlertType.danger);
     }
   }
 

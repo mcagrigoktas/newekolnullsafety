@@ -12,7 +12,7 @@ class ExportHelper {
     return date.dateFormat("d-MMM-yyyy");
   }
 
-  static List<List<dynamic>> setupStudentList({String? studentKey, String? classKey = 'all'}) {
+  static List<List<dynamic>> setupStudentList({String? studentKey, String classKey = 'all'}) {
     List<List<dynamic>> data = AppVar.appBloc.studentService!.dataList
         .where((element) {
           if (studentKey != null) return element.key == studentKey;
@@ -83,7 +83,7 @@ class ExportHelper {
     return data;
   }
 
-  static void exportStudentList({String? classKey}) {
+  static void exportStudentList({required String classKey}) {
     ExcelLibraryHelper.export(setupStudentList(classKey: classKey), 'studentlist'.translate);
   }
 

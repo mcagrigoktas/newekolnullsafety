@@ -261,7 +261,7 @@ class CopyFromAnotherTermHelper {
     if (_result == null) return;
     OverLoading.show();
 
-    final _thisTermOpticFormFetcher = MiniFetchers.getFetcher(MiniFetcherKeys.schoolOpticformTypes);
+    final _thisTermOpticFormFetcher = MiniFetchers.getFetcher<OpticFormModel>(MiniFetcherKeys.schoolOpticformTypes);
 
     final _existingOpticFormFetcher = MiniFetcher<OpticFormModel>(
       '${AppVar.appBloc.hesapBilgileri.kurumID}${_result}opticFormTypes',
@@ -309,7 +309,7 @@ class CopyFromAnotherTermHelper {
     if (_result == null) return;
     OverLoading.show();
 
-    final MiniFetcher<ExamType>? _thisTermExamTypeFetcher = MiniFetchers.getFetcher(MiniFetcherKeys.schoolExamTypes) as MiniFetcher<ExamType>?;
+    final MiniFetcher<ExamType>? _thisTermExamTypeFetcher = MiniFetchers.getFetcher<ExamType>(MiniFetcherKeys.schoolExamTypes);
 
     final _existingExamTypeFetcher = MiniFetcher<ExamType>(
       '${AppVar.appBloc.hesapBilgileri.kurumID}${_result}examTypes',

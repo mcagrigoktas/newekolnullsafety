@@ -61,13 +61,13 @@ class ExamTypeController extends GetxController {
   }
 
   void fetchAndSubscribeData() {
-    allExamTypes = MiniFetchers.getFetcher(MiniFetcherKeys.allExamType) as MiniFetcher<ExamType>?;
+    allExamTypes = MiniFetchers.getFetcher<ExamType>(MiniFetcherKeys.allExamType);
     subscription = allExamTypes!.stream.listen((state) {
       pageLoading = false;
       update();
     });
     if (girisTuru == EvaulationUserType.school) {
-      schoolExamTypes = MiniFetchers.getFetcher(MiniFetcherKeys.schoolExamTypes) as MiniFetcher<ExamType>?;
+      schoolExamTypes = MiniFetchers.getFetcher<ExamType>(MiniFetcherKeys.schoolExamTypes);
       subscription2 = schoolExamTypes!.stream.listen((state) {
         pageLoading = false;
         update();

@@ -38,7 +38,7 @@ class ExpensesController extends GetxController {
   }
 
   Future<void> _init() async {
-    final _personFetcher = MiniFetchers.getFetcher(MiniFetcherKeys.schoolPersons);
+    final _personFetcher = MiniFetchers.getFetcher<Person>(MiniFetcherKeys.schoolPersons);
 
     dataPackage = PkgFireBox(
         boxKeyWithoutVersionNo: ReferenceService.expensesCollectionRef().removeNonEnglishCharacter!,
@@ -58,7 +58,7 @@ class ExpensesController extends GetxController {
     });
     await 500.wait;
 
-    personList = ((_personFetcher.dataList as List<Person>?) ?? []);
+    personList = ((_personFetcher.dataList) ?? []);
     isPageLoading = false;
     update();
   }

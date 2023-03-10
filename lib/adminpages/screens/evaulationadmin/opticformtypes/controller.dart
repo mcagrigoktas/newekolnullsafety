@@ -78,13 +78,13 @@ class OpticFormDefineController extends GetxController {
   }
 
   void fetchAndSubscribeData() {
-    allOpticForms = MiniFetchers.getFetcher(MiniFetcherKeys.allOpticformType) as MiniFetcher<OpticFormModel>?;
+    allOpticForms = MiniFetchers.getFetcher<OpticFormModel>(MiniFetcherKeys.allOpticformType);
     subscription = allOpticForms!.stream.listen((state) {
       isPageLoading = false;
       update();
     });
     if (girisTuru == EvaulationUserType.school) {
-      allSchoolOpticForms = MiniFetchers.getFetcher(MiniFetcherKeys.schoolOpticformTypes) as MiniFetcher<OpticFormModel>?;
+      allSchoolOpticForms = MiniFetchers.getFetcher<OpticFormModel>(MiniFetcherKeys.schoolOpticformTypes);
       subscription2 = allSchoolOpticForms!.stream.listen((state) {
         isPageLoading = false;
         update();

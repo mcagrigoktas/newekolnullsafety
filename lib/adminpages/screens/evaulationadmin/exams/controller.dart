@@ -86,9 +86,9 @@ class ExamController extends GetxController {
 
   void fetchAndSubscribeData() {
     if (girisTuru == EvaulationUserType.school) {
-      allSchoolExams = MiniFetchers.getFetcher(MiniFetcherKeys.allSchoolExams) as MiniFetcher<Exam>?;
+      allSchoolExams = MiniFetchers.getFetcher<Exam>(MiniFetcherKeys.allSchoolExams);
     }
-    allGlobalExams = MiniFetchers.getFetcher(MiniFetcherKeys.allGlobalExams) as MiniFetcher<Exam>?;
+    allGlobalExams = MiniFetchers.getFetcher<Exam>(MiniFetcherKeys.allGlobalExams);
 
     subscription = allSchoolExams?.stream.listen((state) {
       isPageLoading = false;
