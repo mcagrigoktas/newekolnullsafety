@@ -4,6 +4,7 @@ import 'package:async/async.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mcg_extension/mcg_extension.dart';
+import 'package:mypackage/hover_icons/base.dart';
 import 'package:mypackage/mywidgets.dart';
 
 import '../../appbloc/appvar.dart';
@@ -181,13 +182,24 @@ class _SocialPageState extends State<SocialPage> {
         hideBackButton: true,
         leadingTitle: 'menu1'.translate,
         trailingActions: <Widget>[
+          if (AppVar.appBloc.hesapBilgileri.gtMT && _calculatedList.isNotEmpty)
+            FilterSearchIcon(
+              toolTip: true,
+              onPressed: () async {
+                setState(() {
+                  _isSearchMenuOpen = !_isSearchMenuOpen;
+                });
+              },
+            ).px4,
           if (AppVar.appBloc.hesapBilgileri.gtT || AuthorityHelper.hasYetki4())
-            IconButton(
+            AddIcon(
               onPressed: () {
                 Fav.to(ShareSocial(previousPageTitle: 'social'.translate), preventDuplicates: false);
               },
-              icon: Icon(Icons.add, color: Fav.design.appBar.text),
-            ),
+              reversedIcon: true,
+              toolTip: true,
+              color: GlassIcons.social.color,
+            ).px4,
         ],
       ),
       topActions: TopActionsTitleWithChild(
@@ -236,22 +248,7 @@ class _SocialPageState extends State<SocialPage> {
                       });
                     },
                   ),
-                  Expanded(
-                    child: Row(
-                      children: [
-                        if (AppVar.appBloc.hesapBilgileri.gtMT && _calculatedList.isNotEmpty)
-                          IconButton(
-                            tooltip: 'filter'.translate,
-                            icon: Icon(Icons.filter_list_sharp, color: Fav.design.primaryText),
-                            onPressed: () async {
-                              setState(() {
-                                _isSearchMenuOpen = !_isSearchMenuOpen;
-                              });
-                            },
-                          ),
-                      ],
-                    ),
-                  )
+                  Spacer(),
                 ],
               ),
               (AppVar.appBloc.hesapBilgileri.gtMT && _isSearchMenuOpen)

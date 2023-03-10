@@ -132,14 +132,14 @@ class AppointmentWidget extends StatelessWidget {
   }
 
   Widget getIcon() {
-    if (_agendaGroup == AgendaGroup.timetable) return Image.asset(GlassIcons.timetable2.imgUrl!, width: 22);
-    if (_agendaGroup == AgendaGroup.portfolioP2P) return Image.asset(GlassIcons.portfolio.imgUrl!, width: 22);
-    if (_agendaGroup == AgendaGroup.homework) return Image.asset(GlassIcons.homework.imgUrl!, width: 22);
-    if (_agendaGroup == AgendaGroup.liveBroadCast) return Image.asset(GlassIcons.liveBroadcastIcon.imgUrl!, width: 22);
-    if (_agendaGroup == AgendaGroup.videoLesson) return Image.asset(GlassIcons.videoLesson.imgUrl!, width: 22);
-    if (_agendaGroup == AgendaGroup.exam) return Image.asset(GlassIcons.exam.imgUrl!, width: 22);
-    if (_agendaGroup == AgendaGroup.lessonExam) return Image.asset(GlassIcons.exam.imgUrl!, width: 22);
-    if (_agendaGroup == AgendaGroup.birthDay) return Image.asset(GlassIcons.birthday.imgUrl!, width: 22);
+    if (_agendaGroup == AgendaGroup.timetable) return Image.asset(GlassIcons.timetable2.imgUrl, width: 22);
+    if (_agendaGroup == AgendaGroup.portfolioP2P) return Image.asset(GlassIcons.portfolio.imgUrl, width: 22);
+    if (_agendaGroup == AgendaGroup.homework) return Image.asset(GlassIcons.homework.imgUrl, width: 22);
+    if (_agendaGroup == AgendaGroup.liveBroadCast) return Image.asset(GlassIcons.liveBroadcastIcon.imgUrl, width: 22);
+    if (_agendaGroup == AgendaGroup.videoLesson) return Image.asset(GlassIcons.videoLesson.imgUrl, width: 22);
+    if (_agendaGroup == AgendaGroup.exam) return Image.asset(GlassIcons.exam.imgUrl, width: 22);
+    if (_agendaGroup == AgendaGroup.lessonExam) return Image.asset(GlassIcons.exam.imgUrl, width: 22);
+    if (_agendaGroup == AgendaGroup.birthDay) return Image.asset(GlassIcons.birthday.imgUrl, width: 22);
 
     return SizedBox();
   }

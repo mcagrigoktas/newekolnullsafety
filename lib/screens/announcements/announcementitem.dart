@@ -1,3 +1,4 @@
+import 'package:ficonsax/ficonsax.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -177,7 +178,7 @@ class AnnouncementItem extends StatelessWidget {
               AnnonuncementItemHelper.publish(announcement);
             },
             color: const Color(0xffFAEEF2),
-            iconData: MdiIcons.send,
+            iconData: IconsaxOutline.send_2,
             textColor: const Color(0xffB34064),
           ),
         ));

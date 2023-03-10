@@ -257,9 +257,9 @@ class _AgendaNameWidget extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset(GlassIcons.agenda.imgUrl!),
+                    Image.asset(GlassIcons.agenda.imgUrl),
                     6.widthBox,
-                    'agenda'.translate.text.color(GlassIcons.agenda.color!).autoSize.fontSize(18).maxLines(1).bold.make(),
+                    'agenda'.translate.text.color(GlassIcons.agenda.color).autoSize.fontSize(18).maxLines(1).bold.make(),
                   ],
                 ),
               ),
@@ -288,7 +288,7 @@ class _AgendaNameWidget extends StatelessWidget {
         return Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset(GlassIcons.agenda.imgUrl!, height: 40),
+            Image.asset(GlassIcons.agenda.imgUrl, height: 40),
             8.widthBox,
             Expanded(
               child: SizedBox(
@@ -296,7 +296,7 @@ class _AgendaNameWidget extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(flex: 5, child: 'agenda'.translate.text.color(GlassIcons.agenda.color!).autoSize.fontSize(24).maxLines(1).bold.make()),
+                    Expanded(flex: 5, child: 'agenda'.translate.text.color(GlassIcons.agenda.color).autoSize.fontSize(24).maxLines(1).bold.make()),
                     Expanded(
                       flex: 3,
                       child: _badgeCount < 1
@@ -349,9 +349,9 @@ class _NotificationNameWidget extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset(GlassIcons.notifcation.imgUrl!),
+                    Image.asset(GlassIcons.notifcation.imgUrl),
                     6.widthBox,
-                    'notifications'.translate.text.color(GlassIcons.notifcation.color!).autoSize.fontSize(18).maxLines(1).bold.make(),
+                    'notifications'.translate.text.color(GlassIcons.notifcation.color).autoSize.fontSize(18).maxLines(1).bold.make(),
                   ],
                 ),
               ),
@@ -382,7 +382,7 @@ class _NotificationNameWidget extends StatelessWidget {
         return Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset(GlassIcons.notifcation.imgUrl!, height: 40),
+            Image.asset(GlassIcons.notifcation.imgUrl, height: 40),
             8.widthBox,
             Expanded(
               child: SizedBox(
@@ -390,7 +390,7 @@ class _NotificationNameWidget extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(flex: 5, child: 'notifications'.translate.text.color(GlassIcons.notifcation.color!).autoSize.fontSize(24).maxLines(1).bold.make()),
+                    Expanded(flex: 5, child: 'notifications'.translate.text.color(GlassIcons.notifcation.color).autoSize.fontSize(24).maxLines(1).bold.make()),
                     // Expanded(flex: 2, child: _hintText.text.end.color(Fav.design.widgetSecondaryText).fontSize(_isSmallLayout ? 12 : 18).autoSize.maxLines(1).make()
 
                     Expanded(

@@ -64,7 +64,7 @@ class _ChatUiState extends State<ChatUi> {
                             ).p4,
                           ),
                           Expanded(
-                            child: Align(alignment: Alignment.center, child: widget.title.text.color(GlassIcons.messagesIcon.color!).bold.autoSize.fontSize(18).maxLines(1).make()),
+                            child: Align(alignment: Alignment.center, child: widget.title.text.color(GlassIcons.messagesIcon.color).bold.autoSize.fontSize(18).maxLines(1).make()),
                           ),
                           if (widget.trailing != null) Expanded(child: Align(alignment: Alignment.topRight, child: widget.trailing)) else const Spacer(),
                         ],

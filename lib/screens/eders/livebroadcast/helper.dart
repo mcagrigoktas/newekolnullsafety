@@ -76,7 +76,7 @@ class LiveBroadcastMainHalper {
           final _appointment = Appointment(
             startTime: _date,
             endTime: _finishDate,
-            color: GlassIcons.liveBroadcastIcon.color!,
+            color: GlassIcons.liveBroadcastIcon.color,
             subject: 'livebroadcast'.translate + ' - ' + _item.lessonName!,
             resourceIds: ResourceIdRule(AgendaGroup.liveBroadCast, otherKeys: [_item.explanation!, _item.key!]).idList,
           );

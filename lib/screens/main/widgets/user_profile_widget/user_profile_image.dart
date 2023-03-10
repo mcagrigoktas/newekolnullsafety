@@ -3,6 +3,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:mcg_extension/mcg_extension.dart';
 import 'package:mypackage/mywidgets.dart';
 import 'package:widgetpackage/widgetpackage.dart';
+import 'package:ficonsax/ficonsax.dart';
 
 import '../../../../appbloc/appvar.dart';
 import '../../../../assets.dart';
@@ -75,20 +76,20 @@ class UserProfileImage extends StatelessWidget {
       QudsPopupMenuDivider(),
       QudsPopupMenuItem(
           title: 'newaccount'.translate.text.make(),
-          leading: Icon(MdiIcons.accountPlus),
+          leading: Icon(IconsaxOutline.user_add, color: Fav.design.primaryText),
           onPressed: () {
             Fav.to(EkolSignInPage());
           }),
       if (!isWeb && AppVar.appBloc.hesapBilgileri.gtMT)
         QudsPopupMenuItem(
             title: 'webqrcodelogin'.translate.text.make(),
-            leading: Icon(Icons.qr_code_rounded),
+            leading: Icon(Icons.qr_code_rounded, color: Fav.design.primaryText),
             onPressed: () {
               Fav.to(QRCodeWebLogin());
             }),
       QudsPopupMenuItem(
           title: 'signout'.translate.text.color(Colors.red).make(),
-          leading: Icon(MdiIcons.exitRun, color: Colors.red),
+          leading: Icon(IconsaxOutline.logout, color: Colors.red),
           onPressed: () async {
             var sure = await Over.sure(message: 'quitalert'.translate);
             if (sure == true) {

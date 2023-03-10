@@ -145,7 +145,7 @@ class MainController extends GetxController {
         return NotificationAndAgendaBigScreenPage();
       },
       dockItem: DockItem(
-        child: Image.asset(GlassIcons.notifcation.imgUrl!, height: 50),
+        child: Image.asset(GlassIcons.notifcation.imgUrl, height: 50),
         name: 'notifications'.translate,
         primaryColor: GlassIcons.notifcation.color,
         tag: DockItemTag.nullTag,
@@ -162,7 +162,7 @@ class MainController extends GetxController {
         forMiniScreen: buttonLocation == DockButtonLocation.free,
       ),
       dockItem: DockItem(
-        child: Image.asset(GlassIcons.announcementIcon.imgUrl!, height: 50),
+        child: Image.asset(GlassIcons.announcementIcon.imgUrl, height: 50),
         name: 'announcements'.translate,
         primaryColor: GlassIcons.announcementIcon.color,
         tag: AnnouncementHelper.announcementIconTag,
@@ -180,7 +180,7 @@ class MainController extends GetxController {
           forMiniScreen: buttonLocation == DockButtonLocation.free,
         ),
         dockItem: DockItem(
-          child: Image.asset(GlassIcons.timetable2.imgUrl!, height: 50),
+          child: Image.asset(GlassIcons.timetable2.imgUrl, height: 50),
           name: 'mylessons'.translate,
           primaryColor: GlassIcons.timetable2.color,
           tag: DockItemTag.nullTag,
@@ -199,7 +199,7 @@ class MainController extends GetxController {
           forMiniScreen: buttonLocation == DockButtonLocation.free,
         ),
         dockItem: DockItem(
-          child: Image.asset(GlassIcons.books2.imgUrl!, height: 50),
+          child: Image.asset(GlassIcons.books2.imgUrl, height: 50),
           name: 'mybooks'.translate,
           primaryColor: GlassIcons.books2.color,
           tag: DockItemTag.nullTag,
@@ -218,7 +218,7 @@ class MainController extends GetxController {
           forMiniScreen: buttonLocation == DockButtonLocation.free,
         ),
         dockItem: DockItem(
-          child: Image.asset(GlassIcons.social.imgUrl!, height: 50),
+          child: Image.asset(GlassIcons.social.imgUrl, height: 50),
           name: 'social'.translate,
           primaryColor: GlassIcons.social.color,
           tag: SocialHelper.socialIconTag,
@@ -237,7 +237,7 @@ class MainController extends GetxController {
           forMiniScreen: buttonLocation == DockButtonLocation.free,
         ),
         dockItem: DockItem(
-          child: Image.asset(GlassIcons.education.imgUrl!, height: 50),
+          child: Image.asset(GlassIcons.education.imgUrl, height: 50),
           name: 'educationlist'.translate,
           primaryColor: GlassIcons.education.color,
           tag: DockItemTag.nullTag,
@@ -256,7 +256,7 @@ class MainController extends GetxController {
           forMiniScreen: buttonLocation == DockButtonLocation.free,
         ),
         dockItem: DockItem(
-          child: Image.asset(GlassIcons.messagesIcon.imgUrl!, height: 50),
+          child: Image.asset(GlassIcons.messagesIcon.imgUrl, height: 50),
           name: 'messages'.translate,
           primaryColor: GlassIcons.messagesIcon.color,
           tag: MessagePreviewHelper.messageIconTag,
@@ -275,7 +275,7 @@ class MainController extends GetxController {
         dockItemVisibleScreen: DockItemVisibleScreen.both,
         childBuilder: (buttonLocation) => DailyReportPage(forMiniScreen: buttonLocation == DockButtonLocation.free),
         dockItem: DockItem(
-          child: Image.asset(GlassIcons.dailyReport.imgUrl!, height: 50),
+          child: Image.asset(GlassIcons.dailyReport.imgUrl, height: 50),
           name: 'dailyreport'.translate,
           primaryColor: GlassIcons.dailyReport.color,
           tag: DailyReportHelper.dailyReportIconTag,
@@ -292,7 +292,7 @@ class MainController extends GetxController {
         dockItemVisibleScreen: DockItemVisibleScreen.both,
         childBuilder: (buttonLocation) => StickersPage(forMiniScreen: buttonLocation == DockButtonLocation.free),
         dockItem: DockItem(
-          child: Image.asset(GlassIcons.stickers.imgUrl!, height: 50),
+          child: Image.asset(GlassIcons.stickers.imgUrl, height: 50),
           name: 'stickersmenuname'.translate,
           primaryColor: GlassIcons.stickers.color,
           tag: DockItemTag.sticker,
@@ -309,7 +309,7 @@ class MainController extends GetxController {
         dockItemVisibleScreen: DockItemVisibleScreen.both,
         childBuilder: (buttonLocation) => PortfolioMain(forMiniScreen: buttonLocation == DockButtonLocation.free),
         dockItem: DockItem(
-          child: Image.asset(GlassIcons.portfolio.imgUrl!, height: 50),
+          child: Image.asset(GlassIcons.portfolio.imgUrl, height: 50),
           name: 'studentportfolio'.translate,
           primaryColor: GlassIcons.portfolio.color,
           tag: DockItemTag.portfolio,
@@ -332,7 +332,7 @@ class MainController extends GetxController {
         dockItemVisibleScreen: DockItemVisibleScreen.both,
         childBuilder: (buttonLocation) => LiveBroadcastMain(forMiniScreen: buttonLocation == DockButtonLocation.free),
         dockItem: DockItem(
-          child: Image.asset(GlassIcons.liveBroadcastIcon.imgUrl!, height: 50),
+          child: Image.asset(GlassIcons.liveBroadcastIcon.imgUrl, height: 50),
           name: 'elesson'.translate,
           primaryColor: GlassIcons.liveBroadcastIcon.color,
           tag: DockItemTag.liveBroadCast,
@@ -349,7 +349,7 @@ class MainController extends GetxController {
         dockItemVisibleScreen: DockItemVisibleScreen.both,
         childBuilder: (buttonLocation) => VideoChatMain(forMiniScreen: buttonLocation == DockButtonLocation.free),
         dockItem: DockItem(
-          child: Image.asset(GlassIcons.videoLesson.imgUrl!, height: 50),
+          child: Image.asset(GlassIcons.videoLesson.imgUrl, height: 50),
           name: 'p2pappointmentlesson'.translate,
           primaryColor: GlassIcons.videoLesson.color,
           tag: DockItemTag.videoLesson,
@@ -373,7 +373,7 @@ class MainController extends GetxController {
           }
         },
         dockItem: DockItem(
-          child: Image.asset(GlassIcons.mealIcon.imgUrl!, height: 50),
+          child: Image.asset(GlassIcons.mealIcon.imgUrl, height: 50),
           name: 'eatlist'.translate,
           primaryColor: GlassIcons.mealIcon.color,
           tag: DockItemTag.nullTag,
@@ -413,7 +413,7 @@ class MainController extends GetxController {
         return SchoolToolsPage(forMiniScreen: buttonLocation == DockButtonLocation.free);
       },
       dockItem: DockItem(
-        child: Image.asset(GlassIcons.tag.imgUrl!, height: 50),
+        child: Image.asset(GlassIcons.tag.imgUrl, height: 50),
         name: 'tools'.translate,
         primaryColor: GlassIcons.tag.color,
         tag: DockItemTag.nullTag,
@@ -444,7 +444,7 @@ class MainController extends GetxController {
           dockItemVisibleScreen: DockItemVisibleScreen.both,
           childBuilder: (buttonLocation) => AddedMedicineList(),
           dockItem: DockItem(
-            child: Image.asset(GlassIcons.medicine.imgUrl!, height: 50),
+            child: Image.asset(GlassIcons.medicine.imgUrl, height: 50),
             name: 'medicineprofilelist'.translate,
             primaryColor: GlassIcons.medicine.color,
             tag: medicinaBadgeTag,

@@ -20,7 +20,7 @@ class MessagePreviewItem extends StatelessWidget {
   MessagePreviewItem({this.item, this.ghost = false, this.ghostUid, this.forWidgetMenu = false, this.afterBackChatDetail});
   @override
   Widget build(BuildContext context) {
-    Widget imageWidget = (item!.senderImgUrl ?? '') != '' ? CircularProfileAvatar(imageUrl: (item!.senderImgUrl ?? ''), borderColor: GlassIcons.messagesIcon.color!, borderWidth: 1, elevation: 3, radius: 20.0) : Icon(MdiIcons.accountCircle, color: GlassIcons.messagesIcon.color, size: 42);
+    Widget imageWidget = (item!.senderImgUrl ?? '') != '' ? CircularProfileAvatar(imageUrl: (item!.senderImgUrl ?? ''), borderColor: GlassIcons.messagesIcon.color, borderWidth: 1, elevation: 3, radius: 20.0) : Icon(MdiIcons.accountCircle, color: GlassIcons.messagesIcon.color, size: 42);
 
     String _messageText = '';
     if (AppVar.appBloc.hesapBilgileri.gtMT) {

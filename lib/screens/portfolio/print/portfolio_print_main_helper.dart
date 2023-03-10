@@ -21,7 +21,7 @@ class PortfolioPrintHelper {
 
     final doc = pw.Document();
     List<pw.Widget> widgetList = [
-      PrintWidgetHelper.myTextContainer(color: GlassIcons.portfolio.color!.toPdfColor.flatten(), text: 'portfolio'.translate.toUpperCase(), bold: true, padding: 4),
+      PrintWidgetHelper.myTextContainer(color: GlassIcons.portfolio.color.toPdfColor.flatten(), text: 'portfolio'.translate.toUpperCase(), bold: true, padding: 4),
     ];
     widgetList.add(await _headerWidget(student!));
     if (_typeList.contains(PortfolioType.examreport)) widgetList.addAll(_examWidgets(portfolioMap[PortfolioType.examreport]!, dataList.where((element) => element.portfolioType == PortfolioType.examreport).map((e) => e.data<PortfolioExamReport>()).toList()).toList());
@@ -36,7 +36,7 @@ class PortfolioPrintHelper {
   static List<pw.Widget> _homeWorkWidgets(String menuName, List<HomeWorkCheck?> itemList) {
     List<pw.Widget> widgetList = [];
     widgetList.add(pw.SizedBox(height: 4));
-    widgetList.add(PrintWidgetHelper.myTextContainer(color: GlassIcons.homework.color!.toPdfColor.flatten(), text: menuName, bold: true, padding: 4));
+    widgetList.add(PrintWidgetHelper.myTextContainer(color: GlassIcons.homework.color.toPdfColor.flatten(), text: menuName, bold: true, padding: 4));
     final _headerWidget = pw.Row(children: [
       ...[
         ['date'.translate, 3],
@@ -102,7 +102,7 @@ class PortfolioPrintHelper {
   static List<pw.Widget> _rollCallWidgets(String menuName, List<RollCallStudentModel?> itemList) {
     List<pw.Widget> widgetList = [];
     widgetList.add(pw.SizedBox(height: 4));
-    widgetList.add(PrintWidgetHelper.myTextContainer(color: GlassIcons.dailyReport.color!.toPdfColor.flatten(), text: menuName, bold: true, padding: 4));
+    widgetList.add(PrintWidgetHelper.myTextContainer(color: GlassIcons.dailyReport.color.toPdfColor.flatten(), text: menuName, bold: true, padding: 4));
     final _headerWidget = pw.Row(children: [
       ...[
         ['date'.translate, 1],
@@ -164,7 +164,7 @@ class PortfolioPrintHelper {
   static List<pw.Widget> _p2pWidgets(String menuName, List<P2PModel?> itemList) {
     List<pw.Widget> widgetList = [];
     widgetList.add(pw.SizedBox(height: 4));
-    widgetList.add(PrintWidgetHelper.myTextContainer(color: GlassIcons.announcementIcon.color!.toPdfColor.flatten(), text: menuName, bold: true, padding: 4));
+    widgetList.add(PrintWidgetHelper.myTextContainer(color: GlassIcons.announcementIcon.color.toPdfColor.flatten(), text: menuName, bold: true, padding: 4));
     final _headerWidget = pw.Row(children: [
       ...[
         ['date'.translate, 3],
@@ -252,7 +252,7 @@ class PortfolioPrintHelper {
 
   static List<pw.Widget> _examWidgets(String menuName, List<PortfolioExamReport?> reports) {
     List<pw.Widget> widgetList = [];
-    widgetList.add(PrintWidgetHelper.myTextContainer(color: GlassIcons.exam.color!.toPdfColor.flatten(), text: menuName, bold: true, padding: 4));
+    widgetList.add(PrintWidgetHelper.myTextContainer(color: GlassIcons.exam.color.toPdfColor.flatten(), text: menuName, bold: true, padding: 4));
 
 //? Aslinda exam types uzerinden ayni sinav tipi olup olmadigi hesaplanmali fakat examtypekey 3 aralik 2022 de kondu bu ozelligi 2023 agustostan sonra degistirebilirsin
     // final Set<String> examTypes = {};
@@ -267,7 +267,7 @@ class PortfolioPrintHelper {
     examTypesFromLessons.forEach((examKey) {
       final _thisExamTypeReports = reports.where((element) => (element!.examType.lessons!.map((e) => e.key).toList()..sort()).join() == examKey);
       final examtype = _thisExamTypeReports.first!.examType;
-      final _examtypeNameWidget = PrintWidgetHelper.myTextContainer(color: GlassIcons.exam.color!.toPdfColor.flatten(), text: examtype.name!, bold: true, padding: 4);
+      final _examtypeNameWidget = PrintWidgetHelper.myTextContainer(color: GlassIcons.exam.color.toPdfColor.flatten(), text: examtype.name!, bold: true, padding: 4);
       widgetList.add(pw.SizedBox(height: 2));
       widgetList.add(_examtypeNameWidget);
 
@@ -330,7 +330,7 @@ class PortfolioPrintHelper {
           pw.SizedBox(width: 16),
           pw.Expanded(
               child: pw.Column(crossAxisAlignment: pw.CrossAxisAlignment.center, children: [
-            PrintWidgetHelper.myTextContainer(color: GlassIcons.portfolio.color!.toPdfColor.flatten(), text: 'studentinfo'.translate, bold: true, padding: 4),
+            PrintWidgetHelper.myTextContainer(color: GlassIcons.portfolio.color.toPdfColor.flatten(), text: 'studentinfo'.translate, bold: true, padding: 4),
             ...[
               ['namesurname'.translate, student.name],
               ['studentno'.translate, student.no],

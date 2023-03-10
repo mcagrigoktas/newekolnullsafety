@@ -53,7 +53,7 @@ class HomeWorkHelper {
             final _appointment = Appointment(
               startTime: _date,
               endTime: _date.add(Duration(minutes: 40)),
-              color: GlassIcons.homework.color!,
+              color: GlassIcons.homework.color,
               subject: 'homework'.translate + ' - ' + _item.lessonName!,
               resourceIds: ResourceIdRule(AgendaGroup.homework, otherKeys: [_item.title!, _item.lessonKey!]).idList,
               isAllDay: true,
@@ -64,7 +64,7 @@ class HomeWorkHelper {
             final _appointment = Appointment(
               startTime: _date,
               endTime: _date.add(Duration(minutes: 40)),
-              color: GlassIcons.exam.color!,
+              color: GlassIcons.exam.color,
               subject: 'exam'.translate + ' - ' + _item.lessonName!,
               resourceIds: ResourceIdRule(AgendaGroup.lessonExam, otherKeys: [_item.title!, _item.lessonKey!]).idList,
               isAllDay: true,

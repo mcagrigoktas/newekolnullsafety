@@ -315,7 +315,7 @@ class _DailyReportTeacherScreenState extends State<DailyReportTeacherScreen> wit
                       showInitialTextAbovePicture: true,
                       initialsText: _ogrenciListesi[index].name.text.center.autoSize.maxLines(2).fontSize(17).bold.color(Colors.white).make().p4,
                       foregroundColor: Colors.black.withAlpha(150),
-                      borderColor: GlassIcons.dailyReport.color!.withAlpha(100),
+                      borderColor: GlassIcons.dailyReport.color.withAlpha(100),
                       onTap: () {
                         _seciliOgrenciKey = _ogrenciListesi[index].key;
                         setState(() {
@@ -362,11 +362,11 @@ class _DailyReportTeacherScreenState extends State<DailyReportTeacherScreen> wit
           mainAxisSize: MainAxisSize.min,
           children: [
             Image.asset(
-              GlassIcons.dailyReport.imgUrl!,
+              GlassIcons.dailyReport.imgUrl,
               height: 24,
             ),
             3.widthBox,
-            "dailyreport".translate.text.color(GlassIcons.dailyReport.color!).bold.make(),
+            "dailyreport".translate.text.color(GlassIcons.dailyReport.color).bold.make(),
           ],
         ),
       ),
@@ -400,7 +400,7 @@ class _DailyReportTeacherScreenState extends State<DailyReportTeacherScreen> wit
                     _getStudentDailyReport();
                   },
                   foregroundColor: Colors.black.withAlpha(150),
-                  borderColor: GlassIcons.dailyReport.color!.withAlpha(100),
+                  borderColor: GlassIcons.dailyReport.color.withAlpha(100),
                 ),
         ),
       ),

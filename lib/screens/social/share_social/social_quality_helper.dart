@@ -112,7 +112,7 @@ class _QualityTile extends StatelessWidget {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
-              BoxShadow(color: GlassIcons.social.color!.withAlpha(value == groupValue ? 180 : 25), offset: Offset(2, 2)),
+              BoxShadow(color: GlassIcons.social.color.withAlpha(value == groupValue ? 180 : 25), offset: Offset(2, 2)),
             ],
             color: Fav.design.scaffold.background),
         child: Row(

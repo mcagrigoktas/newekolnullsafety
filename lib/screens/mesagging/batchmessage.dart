@@ -305,8 +305,8 @@ class BatchMessagesState extends State<BatchMessages> {
                       },
                       child: Column(
                         children: [
-                          Icons.sms.icon.color(_smsButtonIsAcitve ? GlassIcons.messagesIcon.color! : Fav.design.primaryText.withAlpha(120)).padding(0).make(),
-                          'SMS'.text.color(_smsButtonIsAcitve ? GlassIcons.messagesIcon.color! : Fav.design.primaryText.withAlpha(120)).fontSize(8).make(),
+                          Icons.sms.icon.color(_smsButtonIsAcitve ? GlassIcons.messagesIcon.color : Fav.design.primaryText.withAlpha(120)).padding(0).make(),
+                          'SMS'.text.color(_smsButtonIsAcitve ? GlassIcons.messagesIcon.color : Fav.design.primaryText.withAlpha(120)).fontSize(8).make(),
                         ],
                       ).pl16,
                     )

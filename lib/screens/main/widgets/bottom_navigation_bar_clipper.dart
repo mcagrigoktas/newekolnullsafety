@@ -262,7 +262,7 @@ class EkolCurverBotomNavigationFAB extends StatelessWidget {
           onPressed: onPressed);
     }
 
-    final imgAsset = GlassIcons.apps.imgUrl!;
+    final imgAsset = GlassIcons.apps.imgUrl;
     const icon = MdiIcons.widgetsOutline;
     return FloatingActionButton(
       onPressed: onPressed,

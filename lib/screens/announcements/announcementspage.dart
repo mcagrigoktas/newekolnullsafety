@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mcg_database/mcg_database.dart';
 import 'package:mcg_extension/mcg_extension.dart';
+import 'package:mypackage/hover_icons/base.dart';
 import 'package:mypackage/mywidgets.dart';
 
 import '../../appbloc/appvar.dart';
@@ -194,23 +195,27 @@ class _AnnouncementsPageState extends State<AnnouncementsPage> {
         leadingTitle: 'menu1'.translate,
         trailingActions: [
           if (AppVar.appBloc.hesapBilgileri.gtMT)
-            IconButton(
-              tooltip: 'filter'.translate,
-              icon: Icon(Icons.filter_list_sharp, color: Fav.design.primaryText),
+            FilterSearchIcon(
+              toolTip: true,
+              // tooltip: 'filter'.translate,
+              // icon: Icon(Icons.filter_list_sharp, color: Fav.design.primaryText),
               onPressed: () async {
                 setState(() {
                   _isSearchMenuOpen = !_isSearchMenuOpen;
                 });
               },
-            ),
+            ).px4,
           if (AppVar.appBloc.hesapBilgileri.gtT || AuthorityHelper.hasYetki4(warning: false))
-            IconButton(
-              icon: Icon(Icons.add, color: Fav.design.primaryText),
+            AddIcon(
+              reversedIcon: true,
+              toolTip: true,
+              color: GlassIcons.announcementIcon.color,
+              // icon: Icon(Icons.add, color: Fav.design.primaryText),
               onPressed: () async {
                 var result = await Fav.to(ShareAnnouncements(previousPageTitle: 'announcements'.translate), preventDuplicates: false);
                 if (result == true) OverAlert.saveSuc();
               },
-            ),
+            ).px4,
         ],
       ),
       topActions: TopActionsTitleWithChild(

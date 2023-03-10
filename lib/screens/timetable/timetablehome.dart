@@ -63,9 +63,9 @@ class _TimeTableHomeState extends State<TimeTableHome> {
             middle: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Image.asset(GlassIcons.timetable2.imgUrl!, height: 24),
+                Image.asset(GlassIcons.timetable2.imgUrl, height: 24),
                 3.widthBox,
-                'mylessons'.translate.text.color(GlassIcons.timetable2.color!).bold.make(),
+                'mylessons'.translate.text.color(GlassIcons.timetable2.color).bold.make(),
               ],
             ),
             trailingActions: [

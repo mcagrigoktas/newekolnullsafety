@@ -218,7 +218,7 @@ class SocialItemWidget extends StatelessWidget with SocialFunctions {
         item!.senderImgUrl.safeLength > 6
             ? CircularProfileAvatar(
                 imageUrl: item!.senderImgUrl,
-                borderColor: GlassIcons.social.color!,
+                borderColor: GlassIcons.social.color,
                 borderWidth: 1,
                 elevation: 3,
                 radius: forWidgetMenu ? 18.0 : 24.0,

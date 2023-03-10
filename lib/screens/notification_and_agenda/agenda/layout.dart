@@ -76,7 +76,7 @@ class AgendaWidgetContent extends StatelessWidget {
           dataSource: _dataSource,
           selectionDecoration: ShapeDecoration(
             color: Colors.transparent,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(2), side: BorderSide(color: GlassIcons.agenda.color!)),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(2), side: BorderSide(color: GlassIcons.agenda.color)),
           ),
           appointmentBuilder: (context, details) {
             if (details.appointments.length != 1) return Container();
@@ -151,7 +151,7 @@ class AgendaWidgetContent extends StatelessWidget {
           scheduleViewSettings: ScheduleViewSettings(
               appointmentItemHeight: 44,
               monthHeaderSettings: MonthHeaderSettings(
-                backgroundColor: GlassIcons.agenda.color!,
+                backgroundColor: GlassIcons.agenda.color,
                 height: 36,
                 textAlign: TextAlign.center,
               )),

@@ -188,9 +188,9 @@ class _DailyReportStudentScreenState extends State<DailyReportStudentScreen> {
                               mainAxisSize: MainAxisSize.min,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Image.asset(GlassIcons.dailyReport.imgUrl!, height: 24),
+                                Image.asset(GlassIcons.dailyReport.imgUrl, height: 24),
                                 16.widthBox,
-                                Flexible(child: ("dailyreport".translate + ' / ' + _dateMillis.dateFormat()).text.color(GlassIcons.dailyReport.color!).autoSize.fontSize(20).maxLines(1).bold.make()),
+                                Flexible(child: ("dailyreport".translate + ' / ' + _dateMillis.dateFormat()).text.color(GlassIcons.dailyReport.color).autoSize.fontSize(20).maxLines(1).bold.make()),
                               ],
                             ),
                             ...children

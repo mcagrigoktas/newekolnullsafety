@@ -207,7 +207,7 @@ class ChatScreenState extends State<ChatScreen> with AppFunctions {
           if (!widget.ghost! && !(AppVar.appBloc.hesapBilgileri.gtS && AppVar.appBloc.hesapBilgileri.isParent && _pageType == 0))
             Row(
               children: <Widget>[
-                Icons.add_rounded.icon.color(GlassIcons.messagesIcon.color!).onPressed(_addFile).padding(6).make(),
+                Icons.add_rounded.icon.color(GlassIcons.messagesIcon.color).onPressed(_addFile).padding(6).make(),
                 Expanded(
                     flex: 1,
                     child: CupertinoTextField(
@@ -237,8 +237,8 @@ class ChatScreenState extends State<ChatScreen> with AppFunctions {
                     onTap: _changeSmsButtonStatus,
                     child: Column(
                       children: [
-                        Icons.sms.icon.color(_smsButtonIsAcitve ? GlassIcons.messagesIcon.color! : Fav.design.primaryText.withAlpha(120)).padding(0).make(),
-                        'SMS'.text.color(_smsButtonIsAcitve ? GlassIcons.messagesIcon.color! : Fav.design.primaryText.withAlpha(120)).fontSize(8).make(),
+                        Icons.sms.icon.color(_smsButtonIsAcitve ? GlassIcons.messagesIcon.color : Fav.design.primaryText.withAlpha(120)).padding(0).make(),
+                        'SMS'.text.color(_smsButtonIsAcitve ? GlassIcons.messagesIcon.color : Fav.design.primaryText.withAlpha(120)).fontSize(8).make(),
                       ],
                     ).p8,
                   )
@@ -373,7 +373,7 @@ class ChatScreenState extends State<ChatScreen> with AppFunctions {
                                         //   backGroundColor: Fav.design.customDesign3.accent,
                                         backGroundColor: GlassIcons.messagesIcon.color,
                                         elevation: 1,
-                                        shadowColor: GlassIcons.messagesIcon.color!.hue30,
+                                        shadowColor: GlassIcons.messagesIcon.color.hue30,
                                         margin: const EdgeInsets.only(left: 8, top: 8),
                                         child: _messageChildItem,
                                       ),

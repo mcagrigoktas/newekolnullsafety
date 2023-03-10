@@ -61,9 +61,9 @@ class GlassIcons {
 
   ///treeview
   static _GlassIconData get favorite => _GlassIconData(imgUrl: _star, color: const Color(0xffF18D65));
-  static _GlassIconData get theme => _GlassIconData(imgUrl: _palette);
-  static _GlassIconData get account => _GlassIconData(imgUrl: _person);
-  static _GlassIconData get users => _GlassIconData(imgUrl: _docks);
+  static _GlassIconData get theme => _GlassIconData(imgUrl: _palette, color: const Color(0xffF18D65));
+  static _GlassIconData get account => _GlassIconData(imgUrl: _person, color: Color(0xff7FC0FB));
+  static _GlassIconData get users => _GlassIconData(imgUrl: _docks, color: const Color(0xff7FC0FB));
 
   static _GlassIconData get bag => _GlassIconData(imgUrl: _bag, color: Color(0xff61CFC6));
 
@@ -76,7 +76,7 @@ class GlassIcons {
 }
 
 class _GlassIconData {
-  final String? imgUrl;
-  final Color? color;
-  _GlassIconData({this.imgUrl, this.color});
+  final String imgUrl;
+  final Color color;
+  _GlassIconData({required this.imgUrl, required this.color});
 }

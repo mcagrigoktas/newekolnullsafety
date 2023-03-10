@@ -41,7 +41,7 @@ class OtherWidgetForMainMenu extends StatelessWidget {
               Expanded(
                 child: Column(
                   children: [
-                    'happybirthday'.translate.text.center.fontSize(36).bold.color(GlassIcons.agenda.color!).autoSize.maxLines(1).make(),
+                    'happybirthday'.translate.text.center.fontSize(36).bold.color(GlassIcons.agenda.color).autoSize.maxLines(1).make(),
                     (_data['birthday']!['name'] as String?).text.fontSize(24).bold.center.make(),
                   ],
                 ),

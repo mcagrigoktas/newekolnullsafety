@@ -115,7 +115,7 @@ class _CounterWidgetState extends State<_CounterWidget> {
                                   angleRange: 360,
                                   animationEnabled: false,
                                 ),
-                                innerWidget: (value) => Opacity(opacity: 0.3, child: Icons.hourglass_top_rounded.icon.color(GlassIcons.timer.color!).make()),
+                                innerWidget: (value) => Opacity(opacity: 0.3, child: Icons.hourglass_top_rounded.icon.color(GlassIcons.timer.color).make()),
                               ).p8;
                             },
                           ).p8;

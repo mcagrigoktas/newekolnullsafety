@@ -116,7 +116,7 @@ class AnnouncementHelper {
           final _appointment = Appointment(
             startTime: _date,
             endTime: _finishDate,
-            color: GlassIcons.exam.color!,
+            color: GlassIcons.exam.color,
             subject: _item.examInfo!['name'],
             resourceIds: ResourceIdRule(AgendaGroup.exam, otherKeys: [_item.key]).idList,
           );

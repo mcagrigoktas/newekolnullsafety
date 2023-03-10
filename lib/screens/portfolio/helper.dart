@@ -79,7 +79,7 @@ class PortfolioHelper {
           final _appointment = Appointment(
             startTime: _itemStartTime,
             endTime: _itemStartTime.add(Duration(minutes: _item.duration!)),
-            color: GlassIcons.portfolio.color!,
+            color: GlassIcons.portfolio.color,
             subject: 'p2p'.translate,
             resourceIds: ResourceIdRule(AgendaGroup.portfolioP2P, otherKeys: [subject, element.key!]).idList,
             notes: _item.note,

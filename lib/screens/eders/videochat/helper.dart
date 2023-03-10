@@ -29,7 +29,7 @@ class VideoChatHelper {
         final _appointment = Appointment(
           startTime: _date,
           endTime: _finishDate,
-          color: GlassIcons.videoLesson.color!,
+          color: GlassIcons.videoLesson.color,
           subject: 'p2pappointmentlesson'.translate + ' - ' + _item.lessonName.firstXcharacter(10)!,
           resourceIds: ResourceIdRule(AgendaGroup.videoLesson, otherKeys: [_item.explanation!, _item.key!]).idList,
         );
@@ -47,7 +47,7 @@ class VideoChatHelper {
         final _appointment = Appointment(
           startTime: _date,
           endTime: _finishDate,
-          color: GlassIcons.videoLesson.color!,
+          color: GlassIcons.videoLesson.color,
           subject: 'p2pappointmentlesson'.translate + ' - ' + _item.lessonName.firstXcharacter(10)!,
           resourceIds: ResourceIdRule(AgendaGroup.videoLesson, otherKeys: [_item.explanation!, _item.key!]).idList,
         );

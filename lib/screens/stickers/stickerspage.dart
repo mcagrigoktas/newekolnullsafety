@@ -298,7 +298,7 @@ class StickersPageState extends State<StickersPage> with AppFunctions {
                                 getStudentStickers(context);
                               },
                               foregroundColor: Colors.black.withAlpha(150),
-                              borderColor: GlassIcons.stickers.color!.withAlpha(100),
+                              borderColor: GlassIcons.stickers.color.withAlpha(100),
                             ),
                             CupertinoSlidingSegmentedControl(
                               groupValue: segmentIndex,
@@ -335,7 +335,7 @@ class StickersPageState extends State<StickersPage> with AppFunctions {
                                 showInitialTextAbovePicture: true,
                                 initialsText: _ogrenciListesi[index].name.text.center.autoSize.maxLines(2).fontSize(17).bold.color(Colors.white).make().p4,
                                 foregroundColor: Colors.black.withAlpha(150),
-                                borderColor: GlassIcons.stickers.color!.withAlpha(100),
+                                borderColor: GlassIcons.stickers.color.withAlpha(100),
                                 onTap: () {
                                   seciliOgrenciKey = _ogrenciListesi[index].key;
                                   setState(() {
