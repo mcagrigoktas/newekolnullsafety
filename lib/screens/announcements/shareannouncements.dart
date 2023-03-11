@@ -104,7 +104,7 @@ class _ShareAnnouncementsState extends State<ShareAnnouncements> with AppFunctio
           child: MyForm(
             formKey: formKey,
             child: SingleChildScrollView(
-              child: AnimatedColumnWidget(
+              child: FadeInUpColumn(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   TargetListWidget(

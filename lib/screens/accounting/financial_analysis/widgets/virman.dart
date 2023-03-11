@@ -26,7 +26,7 @@ class VirmanPage extends StatelessWidget {
           child: MyForm(
             formKey: _controller.virmanFormKey,
             child: SingleChildScrollView(
-              child: AnimatedColumnWidget(
+              child: FadeInUpColumn(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Row(

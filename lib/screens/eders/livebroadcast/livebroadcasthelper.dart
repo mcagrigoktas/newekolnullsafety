@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:mcg_database/mcg_database.dart';
 import 'package:mcg_extension/mcg_extension.dart';
-import 'package:mypackage/mywidgets.dart';
 import 'package:widgetpackage/dropdown_search/dropdownsimplewidget.dart';
 
 import '../../../appbloc/appvar.dart';

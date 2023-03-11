@@ -82,7 +82,7 @@ class StudentListController extends GetxController {
 
     if (MenuList.hasTimeTable()) {
       etudClassDropDownList = AppVar.appBloc.classService!.dataList.where((sinif) => sinif.classType == 1).map((sinif) {
-        return DropdownItem<String?>(value: sinif.key, child: Text(sinif.name, style: TextStyle(color: Fav.design.primaryText)));
+        return DropdownItem<String?>(value: sinif.key, name: sinif.name);
       }).toList();
       etudClassDropDownList!.insert(0, DropdownItem(value: null, name: "secimyapilmamis".translate));
     }

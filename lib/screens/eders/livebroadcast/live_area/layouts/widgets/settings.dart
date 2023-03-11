@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mcg_extension/mcg_extension.dart';
-import 'package:mypackage/mywidgets.dart';
 import 'package:widgetpackage/dropdown_search/dropdownsimplewidget.dart';
 
 import '../../../../../../appbloc/appvar.dart';
