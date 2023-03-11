@@ -54,7 +54,7 @@ class TeacherList extends StatelessWidget {
                 PopupMenuItem(value: 2, child: Text(Words.print)),
               ];
             },
-            child: Icon(Icons.more_vert, color: Fav.design.appBar.text).paddingOnly(right: 8),
+            child: MoreIcon(),
             onSelected: (value) async {
               if (value == 0) {
                 Fav.to(ImportPageMain(menuNo: 11)).unawaited;
@@ -74,9 +74,20 @@ class TeacherList extends StatelessWidget {
                   leadingTitleMainEqualBoth: true,
                   detailLeadingTitle: Words.teacherList,
                   detailBackButtonPressed: controller.detailBackButtonPressed,
-                  detailTrailingActions: [_newButton, if (controller.selectedItem != null) _sendSmsButton, _exportItems],
-                  mainTrailingActions: [_newButton, _exportItems],
-                  bothTrailingActions: [_newButton, if (controller.selectedItem != null) _sendSmsButton, _exportItems],
+                  detailTrailingActions: [
+                    if (controller.selectedItem != null) _sendSmsButton,
+                    _exportItems,
+                    _newButton,
+                  ],
+                  mainTrailingActions: [
+                    _exportItems,
+                    _newButton,
+                  ],
+                  bothTrailingActions: [
+                    if (controller.selectedItem != null) _sendSmsButton,
+                    _exportItems,
+                    _newButton,
+                  ],
                   mainMiddle: _middle,
                   detailMiddle: _middle,
                   bothMiddle: _middle,

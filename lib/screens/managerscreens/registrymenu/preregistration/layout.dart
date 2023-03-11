@@ -41,7 +41,7 @@ class PreRegistrationList extends StatelessWidget {
                 PopupMenuItem(value: 2, child: Text(Words.print)),
               ];
             },
-            child: Icon(Icons.more_vert, color: Fav.design.appBar.text).paddingOnly(right: 8),
+            child: MoreIcon(),
             onSelected: (value) {
               if (value == 2) {
                 RegistryMenuPrint.printPreRegisterList(context, controller.itemList);

@@ -36,7 +36,7 @@ class ClassListController extends GetxController {
 
   VisibleScreen visibleScreen = VisibleScreen.main;
 
-  late List<DropdownMenuItem<String>> teacherDropDownList;
+  late List<DropdownItem<String?>> teacherDropDownList;
   @override
   void onInit() {
     _refreshSubscription = AppVar.appBloc.classService!.stream.listen((event) {
@@ -47,14 +47,9 @@ class ClassListController extends GetxController {
     });
 
     teacherDropDownList = AppVar.appBloc.teacherService!.dataList.map((teacher) {
-      return DropdownMenuItem(
-          value: teacher.key,
-          child: Text(
-            teacher.name,
-            style: TextStyle(color: Fav.design.primaryText),
-          ));
+      return DropdownItem<String?>(value: teacher.key, name: teacher.name);
     }).toList();
-    teacherDropDownList.insert(0, DropdownMenuItem(value: null, child: Text("secimyapilmamis".translate, style: TextStyle(color: Fav.design.textField.hint))));
+    teacherDropDownList.insert(0, DropdownItem<String?>(value: null, name: "secimyapilmamis".translate));
 
     super.onInit();
   }

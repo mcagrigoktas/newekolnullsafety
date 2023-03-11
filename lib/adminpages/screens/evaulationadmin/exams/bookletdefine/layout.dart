@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mcg_extension/mcg_extension.dart';
 import 'package:mypackage/mywidgets.dart';
 import 'package:mypackage/srcwidgets/myfileuploadwidget.dart';
+import 'package:widgetpackage/dropdown_search/dropdownsimplewidget.dart';
 
 import '../../../../../appbloc/appvar.dart';
 import '../../../../../localization/usefully_words.dart';
@@ -46,13 +47,12 @@ class OnlineFormDefine extends StatelessWidget {
                           //   },
                           // ),
                           if (controller.model!.exambookletlocation == Exambookletlocation.pdf)
-                            MyDropDownField(
+                            AdvanceDropdown<bool>(
                               initialValue: controller.model!.isOnlyMainBooklet,
                               iconData: Icons.pending_rounded,
-                              color: Colors.pink,
                               items: [
-                                DropdownMenuItem(value: true, child: 'pdfonlymainbooklet1'.translate.text.color(Fav.design.dropdown.text).make()),
-                                DropdownMenuItem(value: false, child: 'pdfonlymainbooklet2'.translate.text.color(Fav.design.dropdown.text).make()),
+                                DropdownItem(value: true, name: 'pdfonlymainbooklet1'.translate),
+                                DropdownItem(value: false, name: 'pdfonlymainbooklet2'.translate),
                               ],
                               onSaved: (value) {
                                 controller.model!.isOnlyMainBooklet = value;

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mcg_extension/mcg_extension.dart';
 import 'package:mypackage/mywidgets.dart';
+import 'package:widgetpackage/dropdown_search/dropdownsimplewidget.dart';
 
 import '../../../../../../appbloc/appvar.dart';
 import '../controller.dart';
@@ -39,13 +40,11 @@ class Settings extends StatelessWidget {
               child: Column(
                 children: [
                   if (AppVar.appBloc.hesapBilgileri.gtMT)
-                    MyDropDownField(
-                      canvasColor: Fav.design.dropdown.canvas,
+                    AdvanceDropdown<int>(
                       name: "chats".translate,
                       iconData: Icons.mark_chat_read,
-                      color: Fav.design.primaryText,
                       initialValue: controller.videoChatSettings.chatEnableType,
-                      items: [0, 1, 2].map((e) => DropdownMenuItem(child: 'chatsenable$e'.translate.text.fontSize(12).make(), value: e)).toList(),
+                      items: [0, 1, 2].map((e) => DropdownItem(name: 'chatsenable$e'.translate, value: e)).toList(),
                       onChanged: (value) {
                         controller.videoChatSettings.chatEnableType = value;
                         controller.saveSettings();

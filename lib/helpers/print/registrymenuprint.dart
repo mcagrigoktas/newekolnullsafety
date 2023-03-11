@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mcg_extension/mcg_extension.dart';
 import 'package:mypackage/mywidgets.dart';
 import 'package:pdf/widgets.dart' as pw;
+import 'package:widgetpackage/dropdown_search/dropdownsimplewidget.dart';
 
 import '../../appbloc/appvar.dart';
 import '../../localization/usefully_words.dart';
@@ -74,12 +75,10 @@ class RegistryMenuPrint {
                       padding: const EdgeInsets.all(32),
                       child: Column(
                         children: [
-                          MyDropDownField(
+                          AdvanceDropdown(
                             iconData: Icons.class_,
                             name: 'classlist'.translate,
-                            canvasColor: Fav.design.dropdown.canvas,
-                            items: AppVar.appBloc.classService!.dataList.map((sinif) => DropdownMenuItem(child: Text(sinif.name, maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(color: Fav.design.primaryText)), value: sinif.key)).toList()
-                              ..insert(0, DropdownMenuItem(child: Text('all'.translate, maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(color: Fav.design.primaryText.withAlpha(150))), value: 'all'))
+                            items: AppVar.appBloc.classService!.dataList.map((sinif) => DropdownItem(name: sinif.name, value: sinif.key)).toList()..insert(0, DropdownItem(name: 'all'.translate, value: 'all'))
                             //  ..add(DropdownMenuItem(child: Text( 'noclassstudent'), maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(color:  Fav.design.primaryText)), value: 'noclass'))
                             ,
                             onSaved: (value) {
@@ -255,14 +254,13 @@ class RegistryMenuPrint {
                       padding: const EdgeInsets.all(32),
                       child: Column(
                         children: [
-                          MyDropDownField(
+                          AdvanceDropdown(
                             iconData: Icons.class_,
                             name: 'status'.translate,
-                            canvasColor: Fav.design.dropdown.canvas,
                             items: [
-                              DropdownMenuItem(child: Text('preregisterstatus1'.translate), value: PreRegisterStatus.aktif),
-                              DropdownMenuItem(child: Text('preregisterstatus2'.translate), value: PreRegisterStatus.saved),
-                              DropdownMenuItem(child: Text('preregisterstatus3'.translate), value: PreRegisterStatus.cancelled),
+                              DropdownItem(name: 'preregisterstatus1'.translate, value: PreRegisterStatus.aktif),
+                              DropdownItem(name: 'preregisterstatus2'.translate, value: PreRegisterStatus.saved),
+                              DropdownItem(name: 'preregisterstatus3'.translate, value: PreRegisterStatus.cancelled),
                             ],
                             onSaved: (value) {
                               printData['state'] = value;

@@ -71,7 +71,7 @@ class StudentList extends StatelessWidget {
                 PopupMenuItem(value: 2, child: Text(Words.print)),
               ];
             },
-            child: Icon(Icons.more_vert, color: Fav.design.appBar.text).paddingOnly(top: 0, right: 8, bottom: 0, left: 0),
+            child: MoreIcon(),
             onSelected: (value) async {
               if (value == 0) {
                 Fav.to(ImportPageMain(menuNo: 10)).unawaited;
@@ -93,9 +93,9 @@ class StudentList extends StatelessWidget {
                   leadingTitleMainEqualBoth: true,
                   detailLeadingTitle: 'studentlist'.translate,
                   detailBackButtonPressed: controller.detailBackButtonPressed,
-                  detailTrailingActions: AppVar.appBloc.hesapBilgileri.gtM ? [_newButton, if (controller.selectedItem != null) _sendSmsButton, _exportItems] : null,
-                  mainTrailingActions: AppVar.appBloc.hesapBilgileri.gtM ? [_newButton, _exportItems] : null,
-                  bothTrailingActions: AppVar.appBloc.hesapBilgileri.gtM ? [_newButton, if (controller.selectedItem != null) _sendSmsButton, _exportItems] : null,
+                  detailTrailingActions: AppVar.appBloc.hesapBilgileri.gtM ? [if (controller.selectedItem != null) _sendSmsButton, _exportItems, _newButton] : null,
+                  mainTrailingActions: AppVar.appBloc.hesapBilgileri.gtM ? [_exportItems, _newButton] : null,
+                  bothTrailingActions: AppVar.appBloc.hesapBilgileri.gtM ? [if (controller.selectedItem != null) _sendSmsButton, _exportItems, _newButton] : null,
                   mainMiddle: _middle,
                   detailMiddle: _middle,
                   bothMiddle: _middle,
@@ -283,12 +283,10 @@ class StudentList extends StatelessWidget {
                                         8.widthBox
                                       ],
                                     ),
-                                    MyDropDownField(
-                                      canvasColor: Fav.design.dropdown.canvas,
+                                    AdvanceDropdown<String?>(
                                       initialValue: controller.itemData!.class0,
                                       name: "classtype0".translate,
                                       iconData: MdiIcons.humanMaleBoard,
-                                      color: Colors.black,
                                       items: controller.classDropDownList,
                                       onSaved: (value) {
                                         controller.itemData!.class0 = value;
@@ -298,12 +296,10 @@ class StudentList extends StatelessWidget {
                                       },
                                     ),
                                     if (controller.etudClassDropDownList != null)
-                                      MyDropDownField(
-                                        canvasColor: Fav.design.dropdown.canvas,
+                                      AdvanceDropdown<String?>(
                                         initialValue: controller.itemData!.groupList['t1'],
                                         name: "classtype1".translate,
                                         iconData: MdiIcons.humanMaleBoard,
-                                        color: Colors.black,
                                         items: controller.etudClassDropDownList!,
                                         onSaved: (value) {
                                           controller.itemData!.groupList['t1'] = value;
@@ -311,30 +307,26 @@ class StudentList extends StatelessWidget {
                                       ),
                                     if (MenuList.hasTimeTable())
                                       ...AppVar.appBloc.schoolInfoService!.singleData!.filteredClassType!.entries.map((item) {
-                                        return MyDropDownField(
-                                          canvasColor: Fav.design.dropdown.canvas,
+                                        return AdvanceDropdown<String?>(
                                           initialValue: controller.itemData!.groupList[item.key], //todo
                                           name: item.value,
                                           iconData: MdiIcons.humanMaleBoard,
-                                          color: Colors.black,
                                           items: AppVar.appBloc.classService!.dataList.where((sinif) => sinif.classType == int.tryParse(item.key.replaceAll('t', ''))).map((sinif) {
-                                            return DropdownMenuItem(value: sinif.key, child: Text(sinif.name, style: TextStyle(color: Fav.design.primaryText)));
+                                            return DropdownItem<String?>(value: sinif.key, name: sinif.name);
                                           }).toList()
-                                            ..insert(0, DropdownMenuItem(value: null, child: Text("secimyapilmamis".translate, style: TextStyle(color: Fav.design.textField.hint)))),
+                                            ..insert(0, DropdownItem<String?>(value: null, name: "secimyapilmamis".translate)),
                                           onSaved: (value) {
                                             controller.itemData!.groupList[item.key] = value;
                                           },
                                         ); //todo
                                       }).toList(),
-                                    MyDropDownField(
-                                      canvasColor: Fav.design.dropdown.canvas,
+                                    AdvanceDropdown<bool>(
                                       initialValue: controller.itemData!.genre,
                                       name: "genre".translate,
                                       iconData: MdiIcons.genderMaleFemale,
-                                      color: Colors.blueAccent,
                                       items: [
-                                        DropdownMenuItem(child: Text("genre1".translate, style: TextStyle(color: Fav.design.primaryText)), value: false),
-                                        DropdownMenuItem(child: Text("genre2".translate, style: TextStyle(color: Fav.design.primaryText)), value: true),
+                                        DropdownItem(name: "genre1".translate, value: false),
+                                        DropdownItem(name: "genre2".translate, value: true),
                                       ],
                                       onSaved: (value) {
                                         controller.itemData!.genre = value;
@@ -362,12 +354,10 @@ class StudentList extends StatelessWidget {
                                       ),
                                     ...StudentDataExtra.widgetList(controller.itemData),
                                     if (controller.transporterDropDownList != null)
-                                      MyDropDownField(
-                                        canvasColor: Fav.design.dropdown.canvas,
+                                      AdvanceDropdown<String?>(
                                         initialValue: controller.itemData!.transporter,
                                         name: "transporter".translate,
                                         iconData: MdiIcons.bus,
-                                        color: Colors.deepPurpleAccent,
                                         items: controller.transporterDropDownList!,
                                         onSaved: (value) {
                                           controller.itemData!.transporter = value;
@@ -526,17 +516,15 @@ class StudentList extends StatelessWidget {
                                     ),
                                     Group2Widget(
                                       children: [
-                                        MyDropDownField(
-                                          canvasColor: Fav.design.dropdown.canvas,
+                                        AdvanceDropdown<int?>(
                                           initialValue: controller.itemData!.parentState,
                                           name: "parentState".translate,
                                           iconData: MdiIcons.bus,
-                                          color: Colors.deepPurpleAccent,
                                           items: [
-                                            DropdownMenuItem(child: '-'.text.make(), value: null),
-                                            ...Iterable.generate(5)
+                                            DropdownItem(child: '-'.text.make(), value: null),
+                                            ...Iterable.generate(5, (e) => e)
                                                 .map(
-                                                  (e) => DropdownMenuItem(child: 'parentState${e + 1}'.translate.text.make(), value: e + 1),
+                                                  (e) => DropdownItem(name: 'parentState${e + 1}'.translate, value: e + 1),
                                                 )
                                                 .toList(),
                                           ],
@@ -600,13 +588,11 @@ class StudentList extends StatelessWidget {
                                       controller.itemData!.allergy = value;
                                     },
                                   ),
-                                  MyDropDownField(
-                                    canvasColor: Fav.design.dropdown.canvas,
+                                  AdvanceDropdown<String>(
                                     initialValue: controller.itemData!.blood ?? "?",
                                     name: "bloodgenre".translate,
                                     iconData: MdiIcons.bloodBag,
-                                    color: Colors.red,
-                                    items: ['?', "0+", "0-", "A+", "A-", "B+", "B-", "AB+", "AB-"].map((e) => DropdownMenuItem(child: Text(e, style: TextStyle(color: Fav.design.primaryText.withAlpha(150))), value: e)).toList(),
+                                    items: ['?', "0+", "0-", "A+", "A-", "B+", "B-", "AB+", "AB-"].map((e) => DropdownItem(name: e, value: e)).toList(),
                                     onSaved: (value) {
                                       controller.itemData!.blood = value;
                                     },

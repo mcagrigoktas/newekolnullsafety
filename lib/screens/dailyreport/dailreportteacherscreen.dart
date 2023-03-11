@@ -489,15 +489,10 @@ class _DailyReportTeacherScreenState extends State<DailyReportTeacherScreen> wit
               child: MyCachedImage(width: 38.0, height: 38.0, imgUrl: DailyReport(iconName: "et14c.png").iconUrl, alignment: Alignment.center),
             ),
             Expanded(
-              child: MyDropDownField(
+              child: AdvanceDropdown<String>(
                 initialValue: (_receivingStudentReportData[eatName.substring(1)] ?? {})["value"],
                 name: eatName.substring(1),
-                items: ['...', "yedi".translate, "azyedi".translate, "yemedi".translate, "drunk".translate, "didntdrunk".translate]
-                    .map((options) => DropdownMenuItem(
-                          child: Text(options),
-                          value: options,
-                        ))
-                    .toList(),
+                items: ['...', "yedi".translate, "azyedi".translate, "yemedi".translate, "drunk".translate, "didntdrunk".translate].map((options) => DropdownItem(name: options, value: options)).toList(),
                 onSaved: (value) {
                   _sendingStudentReportData[eatName.substring(1)] = {"icon": "et14c.png", "value": value, 'tur': 0};
                   _savingStudentReportData[eatName.substring(1)] = value;

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mcg_extension/mcg_extension.dart';
 import 'package:mypackage/mywidgets.dart';
+import 'package:widgetpackage/dropdown_search/dropdownsimplewidget.dart';
 
 import '../../appbloc/appvar.dart';
 import '../../flavors/mainhelper.dart';
@@ -172,18 +173,17 @@ class _EditStickersState extends State<EditStickers> {
                     ),
                   ),
                   Expanded(
-                    child: MyDropDownField(
+                    child: AdvanceDropdown<int>(
                       name: 'starscountlimit'.translate,
                       iconData: Icons.star_border,
-                      color: Colors.pink,
                       initialValue: sticker.extraData,
                       onSaved: (value) {
                         sticker.extraData = value;
                       },
                       padding: const EdgeInsets.only(left: 16),
-                      items: Iterable.generate(8)
-                          .map((sayi) => DropdownMenuItem(
-                                child: Text((sayi + 3).toString()),
+                      items: Iterable.generate(8, (e) => e)
+                          .map((sayi) => DropdownItem(
+                                name: (sayi + 3).toString(),
                                 value: sayi + 3,
                               ))
                           .toList(),

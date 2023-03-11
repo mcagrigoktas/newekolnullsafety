@@ -196,7 +196,6 @@ class _SocialPageState extends State<SocialPage> {
               onPressed: () {
                 Fav.to(ShareSocial(previousPageTitle: 'social'.translate), preventDuplicates: false);
               },
-              toolTip: true,
               color: GlassIcons.social.color,
             ),
         ],

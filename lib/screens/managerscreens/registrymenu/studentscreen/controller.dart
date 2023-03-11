@@ -56,9 +56,9 @@ class StudentListController extends GetxController {
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  List<DropdownMenuItem<String>>? transporterDropDownList;
-  List<DropdownMenuItem<String>>? etudClassDropDownList;
-  late List<DropdownMenuItem<String>> classDropDownList;
+  List<DropdownItem<String?>>? transporterDropDownList;
+  List<DropdownItem<String?>>? etudClassDropDownList;
+  late List<DropdownItem<String?>> classDropDownList;
 
   var parentPassword = ''.obs;
 
@@ -75,27 +75,27 @@ class StudentListController extends GetxController {
 
     if (AppVar.appBloc.transporterService != null) {
       transporterDropDownList = AppVar.appBloc.transporterService!.dataList.map((transporter) {
-        return DropdownMenuItem(value: transporter.key, child: Text(transporter.profileName ?? '?', style: TextStyle(color: Fav.design.primaryText)));
+        return DropdownItem<String?>(value: transporter.key, name: transporter.profileName ?? '?');
       }).toList();
-      transporterDropDownList!.insert(0, DropdownMenuItem(value: null, child: Text("secimyapilmamis".translate, style: TextStyle(color: Fav.design.textField.hint))));
+      transporterDropDownList!.insert(0, DropdownItem<String?>(value: null, name: "secimyapilmamis".translate));
     }
 
     if (MenuList.hasTimeTable()) {
       etudClassDropDownList = AppVar.appBloc.classService!.dataList.where((sinif) => sinif.classType == 1).map((sinif) {
-        return DropdownMenuItem(value: sinif.key, child: Text(sinif.name, style: TextStyle(color: Fav.design.primaryText)));
+        return DropdownItem<String?>(value: sinif.key, child: Text(sinif.name, style: TextStyle(color: Fav.design.primaryText)));
       }).toList();
-      etudClassDropDownList!.insert(0, DropdownMenuItem(value: null, child: Text("secimyapilmamis".translate, style: TextStyle(color: Fav.design.textField.hint))));
+      etudClassDropDownList!.insert(0, DropdownItem(value: null, name: "secimyapilmamis".translate));
     }
 
     classDropDownList = AppVar.appBloc.classService!.dataList.where((sinif) => sinif.classType == 0).map((sinif) {
-      return DropdownMenuItem(value: sinif.key, child: Text(sinif.name, style: TextStyle(color: Fav.design.primaryText)));
+      return DropdownItem<String?>(value: sinif.key, name: sinif.name);
     }).toList();
 
     // if (AppVar.appBloc.hesapBilgileri.gtT) {
     //   classDropDownList.removeWhere((classDropDown) => !teacherClassList.contains(classDropDown.value));
     // }
 
-    classDropDownList.insert(0, DropdownMenuItem(value: null, child: Text("secimyapilmamis".translate, style: TextStyle(color: Fav.design.textField.hint))));
+    classDropDownList.insert(0, DropdownItem(value: null, name: "secimyapilmamis".translate));
 
     passwordController.addListener(() {
       parentPassword.value = AppHelpers.passwordToParentPassword(passwordController.text);

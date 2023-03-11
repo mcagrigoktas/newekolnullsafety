@@ -41,7 +41,7 @@ class LessonList extends StatelessWidget {
                   PopupMenuItem(value: 3, child: Text('copyanotherterm'.translate)),
                 ];
               },
-              child: Icon(Icons.more_vert, color: Fav.design.appBar.text).paddingOnly(top: 0, right: 8, bottom: 0, left: 0),
+              child: MoreIcon(),
               onSelected: (value) async {
                 if (value == 3) {
                   CopyFromAnotherTermHelper.copyLessons().unawaited;
@@ -57,9 +57,9 @@ class LessonList extends StatelessWidget {
                   leadingTitleMainEqualBoth: true,
                   detailLeadingTitle: 'lessonlist'.translate,
                   detailBackButtonPressed: controller.detailBackButtonPressed,
-                  detailTrailingActions: [_newButton, _otherItems],
-                  mainTrailingActions: [_newButton, _otherItems],
-                  bothTrailingActions: [_newButton, _otherItems],
+                  detailTrailingActions: [_otherItems, _newButton],
+                  mainTrailingActions: [_otherItems, _newButton],
+                  bothTrailingActions: [_otherItems, _newButton],
                   mainMiddle: _middle,
                   detailMiddle: _middle,
                   bothMiddle: _middle,
@@ -141,12 +141,10 @@ class LessonList extends StatelessWidget {
                                 opacity: controller.selectedItem != null ? 0.5 : 1,
                                 child: AbsorbPointer(
                                   absorbing: controller.selectedItem != null,
-                                  child: MyDropDownField(
-                                    canvasColor: Fav.design.dropdown.canvas,
+                                  child: AdvanceDropdown<String?>(
                                     initialValue: controller.itemData!.classKey,
                                     name: "class".translate,
                                     iconData: MdiIcons.humanMaleBoard,
-                                    color: Colors.black,
                                     items: controller.classListDropdown2,
                                     onSaved: (value) {
                                       controller.itemData!.classKey = value;
@@ -171,29 +169,26 @@ class LessonList extends StatelessWidget {
                                 ),
                                 items: AppVar.appBloc.schoolInfoService!.singleData!.branchList.map((e) => DropdownItem(name: e, value: e)).toList()..insert(0, DropdownItem(name: 'anitemchoose'.translate, value: null)),
                               ),
-                              MyDropDownField(
-                                canvasColor: Fav.design.dropdown.canvas,
+                              AdvanceDropdown<String?>(
                                 initialValue: controller.itemData!.teacher,
                                 name: "teacher".translate,
                                 iconData: MdiIcons.humanMaleBoard,
-                                color: Colors.black,
                                 items: controller.teacherListDropdown,
                                 onSaved: (value) {
                                   controller.itemData!.teacher = value;
                                 },
                               ),
-                              MyDropDownField(
-                                canvasColor: Fav.design.dropdown.canvas,
+                              AdvanceDropdown<int>(
                                 initialValue: controller.itemData!.count,
                                 name: "weeklycount".translate,
                                 iconData: MdiIcons.humanMaleBoard,
-                                color: Colors.black,
-                                items: Iterable.generate(20).map((number) {
-                                  return DropdownMenuItem(value: number + 1, child: Text('${number + 1}', style: TextStyle(color: Fav.design.primaryText)));
+                                items: Iterable.generate(20, (e) => e).map((number) {
+                                  return DropdownItem(value: number + 1, name: '${number + 1}');
                                 }).toList(),
                                 onSaved: (value) {
                                   controller.itemData!.count = value;
                                 },
+                                searchbarEnableLength: 100,
                               ),
                               if (AppVar.appBloc.hesapBilgileri.isEkolOrUni)
                                 MyTextFormField(

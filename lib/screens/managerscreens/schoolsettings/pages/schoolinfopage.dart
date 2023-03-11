@@ -3,6 +3,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:mcg_database/mcg_database.dart';
 import 'package:mcg_extension/mcg_extension.dart';
 import 'package:mypackage/mywidgets.dart';
+import 'package:widgetpackage/dropdown_search/dropdownsimplewidget.dart';
 
 import '../../../../appbloc/appvar.dart';
 import '../../../../localization/usefully_words.dart';
@@ -64,17 +65,16 @@ class SchoolInfoPage extends StatelessWidget {
                     _data["slogan"] = value;
                   },
                 ),
-                MyDropDownField(
+                AdvanceDropdown<int?>(
                   initialValue: AppVar.appBloc.schoolInfoService!.singleData?.eatMenuType,
                   items: [0, 1, 2]
-                      .map((item) => DropdownMenuItem(
+                      .map((item) => DropdownItem(
                             value: item,
-                            child: Text('eatmenutype$item'.translate),
+                            name: 'eatmenutype$item'.translate,
                           ))
                       .toList(),
                   name: "eatmenutype".translate,
                   iconData: MdiIcons.foodForkDrink,
-                  color: Colors.lightBlueAccent,
                   validatorRules: ValidatorRules(),
                   onSaved: (value) {
                     _data["et"] = value;

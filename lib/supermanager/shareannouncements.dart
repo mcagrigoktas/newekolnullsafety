@@ -4,6 +4,7 @@ import 'package:mcg_database/mcg_database.dart';
 import 'package:mcg_extension/mcg_extension.dart';
 import 'package:mypackage/mywidgets.dart';
 import 'package:mypackage/srcwidgets/myfileuploadwidget.dart';
+import 'package:widgetpackage/widgetpackage.dart';
 
 import '../adminpages/screens/supermanagerpages/models.dart';
 import '../appbloc/appvar.dart';
@@ -122,15 +123,13 @@ class _ShareSuperManagerAnnouncementsState extends State<ShareSuperManagerAnnoun
                         schoolWillShare = value!;
                       },
                     ),
-                    MyDropDownField(
-                      canvasColor: Fav.design.dropdown.canvas,
+                    AdvanceDropdown<int>(
                       name: '',
                       iconData: Icons.supervised_user_circle,
-                      color: Colors.pink,
                       initialValue: 0,
                       items: [
-                        DropdownMenuItem(value: 0, child: Text('allusers'.translate, style: TextStyle(color: Fav.design.primaryText))),
-                        DropdownMenuItem(value: 1, child: Text('onlyteachers'.translate, style: TextStyle(color: Fav.design.primaryText))),
+                        DropdownItem(value: 0, name: 'allusers'.translate),
+                        DropdownItem(value: 1, name: 'onlyteachers'.translate),
                       ],
                       onSaved: (value) {
                         if (value == 0) {

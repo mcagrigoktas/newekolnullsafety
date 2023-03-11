@@ -207,7 +207,6 @@ class _AnnouncementsPageState extends State<AnnouncementsPage> {
             ),
           if (AppVar.appBloc.hesapBilgileri.gtT || AuthorityHelper.hasYetki4(warning: false))
             AddIcon(
-              toolTip: true,
               color: GlassIcons.announcementIcon.color,
               // icon: Icon(Icons.add, color: Fav.design.primaryText),
               onPressed: () async {

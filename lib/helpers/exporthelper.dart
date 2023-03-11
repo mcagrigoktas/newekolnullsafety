@@ -12,8 +12,8 @@ class ExportHelper {
     return date.dateFormat("d-MMM-yyyy");
   }
 
-  static List<List<dynamic>> setupStudentList({String? studentKey, String classKey = 'all'}) {
-    List<List<dynamic>> data = AppVar.appBloc.studentService!.dataList
+  static List<List<String?>> setupStudentList({String? studentKey, String classKey = 'all'}) {
+    List<List<String?>> data = AppVar.appBloc.studentService!.dataList
         .where((element) {
           if (studentKey != null) return element.key == studentKey;
           return true;

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mcg_extension/mcg_extension.dart';
 import 'package:mypackage/mywidgets.dart';
 import 'package:mypackage/srcwidgets/myresponsivescaffold.dart';
+import 'package:widgetpackage/dropdown_search/dropdownsimplewidget.dart';
 
 import '../../../../localization/usefully_words.dart';
 import '../../../../screens/managerscreens/registrymenu/copy_another_term_helper.dart';
@@ -149,14 +150,13 @@ class ExamTypeDetail extends StatelessWidget {
                           opacity: controller.dataIsNew ? 1.0 : 0.5,
                           child: AbsorbPointer(
                             absorbing: !controller.dataIsNew,
-                            child: MyDropDownField(
+                            child: AdvanceDropdown<int>(
                               name: 'seisoncount'.translate,
                               validatorRules: ValidatorRules(req: true, mustNumber: true, minValue: 1),
                               iconData: Icons.alt_route_outlined,
                               initialValue: controller.selectedItem?.numberOfSeison ?? 1,
                               onSaved: (value) => controller.selectedItem!.numberOfSeison = value,
-                              canvasColor: Fav.design.dropdown.canvas,
-                              items: [1, 2, 3, 4, 5].map((e) => DropdownMenuItem(value: e, child: e.toString().text.color(Fav.design.dropdown.text).make())).toList(),
+                              items: [1, 2, 3, 4, 5].map((e) => DropdownItem(value: e, name: e.toString())).toList(),
                             ),
                           ),
                         ),
@@ -200,24 +200,24 @@ class ExamTypeDetail extends StatelessWidget {
                                               ),
                                               Expanded(
                                                 flex: 1,
-                                                child: MyDropDownField(
-                                                  name: 'Number of Options',
+                                                child: AdvanceDropdown<int>(
+                                                  padding: EdgeInsets.symmetric(horizontal: 6),
+                                                  name: 'Options Count',
                                                   validatorRules: ValidatorRules(req: true, mustNumber: true, minValue: 2),
                                                   initialValue: e.numberOfOptions ?? 5,
                                                   onSaved: (value) => e.numberOfOptions = value,
-                                                  canvasColor: Fav.design.dropdown.canvas,
-                                                  items: [3, 4, 5].map((e) => DropdownMenuItem(value: e, child: e.toString().text.color(Fav.design.dropdown.text).make())).toList(),
+                                                  items: [3, 4, 5].map((e) => DropdownItem(value: e, name: e.toString())).toList(),
                                                 ),
                                               ),
                                               Expanded(
                                                 flex: 1,
-                                                child: MyDropDownField(
+                                                child: AdvanceDropdown<int>(
+                                                  padding: EdgeInsets.zero,
                                                   name: 'Right Wrong Rate',
                                                   validatorRules: ValidatorRules(req: true, mustNumber: true, minValue: 0),
                                                   initialValue: e.rightWrongRate ?? 4,
                                                   onSaved: (value) => e.rightWrongRate = value,
-                                                  canvasColor: Fav.design.dropdown.canvas,
-                                                  items: [0, 1, 2, 3, 4, 5].map((e) => DropdownMenuItem(value: e, child: e.toString().text.color(Fav.design.dropdown.text).make())).toList(),
+                                                  items: [0, 1, 2, 3, 4, 5].map((e) => DropdownItem(value: e, name: e.toString())).toList(),
                                                 ),
                                               ),
                                             ],
@@ -293,14 +293,13 @@ class ExamTypeDetail extends StatelessWidget {
                                                         validatorRules: ValidatorRules(req: true, minLength: 1, maxLength: 1),
                                                       ),
                                                       12.heightBox,
-                                                      MyDropDownField(
+                                                      AdvanceDropdown<int>(
                                                         padding: EdgeInsets.zero,
                                                         name: 'Seison No',
                                                         validatorRules: ValidatorRules(req: true, mustNumber: true, minValue: 1),
                                                         initialValue: e.seisonNo,
                                                         onSaved: (value) => e.seisonNo = value,
-                                                        canvasColor: Fav.design.dropdown.canvas,
-                                                        items: [1, 2, 3, 4, 5].map((e) => DropdownMenuItem(value: e, child: e.toString().text.color(Fav.design.dropdown.text).make())).toList(),
+                                                        items: [1, 2, 3, 4, 5].map((e) => DropdownItem(value: e, name: e.toString())).toList(),
                                                       ),
                                                     ],
                                                   ),

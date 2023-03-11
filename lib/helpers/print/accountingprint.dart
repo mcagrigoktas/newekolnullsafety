@@ -6,6 +6,7 @@ import 'package:mcg_extension/mcg_extension.dart';
 import 'package:mypackage/mywidgets.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
+import 'package:widgetpackage/dropdown_search/dropdownsimplewidget.dart';
 
 import '../../appbloc/appvar.dart';
 import '../../models/allmodel.dart';
@@ -560,12 +561,11 @@ class PrintAccounting {
                               onSaved: (value) {
                                 userData['term'] = value;
                               }),
-                          MyDropDownField(
+                          AdvanceDropdown(
                               name: 'parabirimi'.translate,
                               validatorRules: ValidatorRules(),
-                              canvasColor: Fav.design.dropdown.canvas,
                               items: [
-                                DropdownMenuItem(value: '₺', child: Text('₺', style: TextStyle(color: Fav.design.primaryText))),
+                                DropdownItem(value: '₺', name: '₺'),
                                 //     DropdownMenuItem(value: '\$', child: Text('\$', style: TextStyle(color:  Fav.design.primaryText))),
                               ],
                               onSaved: (value) {

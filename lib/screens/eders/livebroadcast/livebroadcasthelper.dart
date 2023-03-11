@@ -6,6 +6,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:mcg_database/mcg_database.dart';
 import 'package:mcg_extension/mcg_extension.dart';
 import 'package:mypackage/mywidgets.dart';
+import 'package:widgetpackage/dropdown_search/dropdownsimplewidget.dart';
 
 import '../../../appbloc/appvar.dart';
 import 'makeprogram/livebroadcastdatamodel.dart';
@@ -14,25 +15,23 @@ class LiveBroadCastHelper {
   LiveBroadCastHelper._();
 
   static Widget broadcastTypeWidget(Function(dynamic) onSaved, Function(dynamic) onChanged, initialValue) {
-    final liveLessonTypes = <DropdownMenuItem>[];
-    liveLessonTypes.add(DropdownMenuItem(value: null, child: Text('anitemchoose'.translate, style: TextStyle(color: Fav.design.primaryText.withAlpha(150)))));
+    final liveLessonTypes = <DropdownItem<int?>>[];
+    liveLessonTypes.add(DropdownItem(value: null, name: 'anitemchoose'.translate));
 
     if (AppVar.appBloc.schoolInfoService!.singleData!.livedomainlist.safeLength > 4) {
-      liveLessonTypes.add(DropdownMenuItem(value: 5, child: Text('livebroadcasturltype4'.translate, style: TextStyle(color: Fav.design.primaryText))));
+      liveLessonTypes.add(DropdownItem(value: 5, name: 'livebroadcasturltype4'.translate));
     }
 
     if (AppVar.appBloc.hesapBilgileri.zoomApiKey.safeLength > 6 && AppVar.appBloc.hesapBilgileri.zoomApiSecret.safeLength > 6) {
-      liveLessonTypes.add(DropdownMenuItem(value: 9, child: Text('ZOOM', style: TextStyle(color: Fav.design.primaryText))));
+      liveLessonTypes.add(DropdownItem(value: 9, name: 'ZOOM'));
     } else {
-      liveLessonTypes.add(DropdownMenuItem(value: 2, child: Text('ZOOM', style: TextStyle(color: Fav.design.primaryText))));
+      liveLessonTypes.add(DropdownItem(value: 2, name: 'ZOOM'));
     }
-    liveLessonTypes.add(DropdownMenuItem(value: 3, child: Text('Google Meet', style: TextStyle(color: Fav.design.primaryText))));
-    liveLessonTypes.add(DropdownMenuItem(value: 10, child: Text('other'.translate, style: TextStyle(color: Fav.design.primaryText))));
-    return MyDropDownField(
-      canvasColor: Fav.design.dropdown.canvas,
+    liveLessonTypes.add(DropdownItem(value: 3, name: 'Google Meet'));
+    liveLessonTypes.add(DropdownItem(value: 10, name: 'other'.translate));
+    return AdvanceDropdown(
       name: "livebroadcasturltype".translate,
       iconData: MdiIcons.accessPoint,
-      color: Colors.red,
       items: liveLessonTypes,
       onSaved: onSaved,
       onChanged: onChanged,

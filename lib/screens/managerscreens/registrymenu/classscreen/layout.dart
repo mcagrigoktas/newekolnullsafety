@@ -40,7 +40,7 @@ class ClassList extends StatelessWidget {
               itemBuilder: (context) {
                 return <PopupMenuEntry>[PopupMenuItem(value: 3, child: Text('copyanotherterm'.translate)), if (MenuList.hasTimeTable()) PopupMenuItem(value: 4, child: Text('classgroups'.translate))];
               },
-              child: Icon(Icons.more_vert, color: Fav.design.appBar.text).paddingOnly(top: 0, right: 8, bottom: 0, left: 0),
+              child: MoreIcon(),
               onSelected: (value) async {
                 if (value == 3) {
                   CopyFromAnotherTermHelper.copyClass().unawaited;
@@ -157,26 +157,20 @@ class ClassList extends StatelessWidget {
                                           },
                                         ),
                                       if (MenuList.hasTimeTable())
-                                        MyDropDownField(
+                                        AdvanceDropdown<int?>(
                                           onChanged: (value) {
                                             controller.isCourseClass = (value == 0);
                                             controller.update();
                                           },
-                                          canvasColor: Fav.design.dropdown.canvas,
                                           initialValue: controller.itemData!.classType,
                                           name: "classtype".translate,
                                           iconData: MdiIcons.humanMaleBoard,
-                                          color: Colors.deepPurpleAccent,
                                           items: [
-                                            DropdownMenuItem(value: 0, child: Text('classtype0'.translate, style: TextStyle(color: Fav.design.primaryText))),
-                                            DropdownMenuItem(value: 1, child: Text('classtype1'.translate, style: TextStyle(color: Fav.design.primaryText))),
+                                            DropdownItem(value: 0, name: 'classtype0'.translate),
+                                            DropdownItem(value: 1, name: 'classtype1'.translate),
                                             ...AppVar.appBloc.schoolInfoService!.singleData!.filteredClassType!.entries
-                                                .map((item) => DropdownMenuItem(
-                                                      child: Text(
-                                                        item.value!,
-                                                        maxLines: 1,
-                                                        overflow: TextOverflow.ellipsis,
-                                                      ),
+                                                .map((item) => DropdownItem(
+                                                      name: item.value!,
                                                       value: int.parse(item.key.toString().replaceAll('t', '')),
                                                     ))
                                                 .toList()
@@ -186,23 +180,20 @@ class ClassList extends StatelessWidget {
                                           },
                                         ),
                                       //todo kontrol et belki bir asasgidadir  if (isCourseClass != false)
-                                      MyDropDownField(
-                                        canvasColor: Fav.design.dropdown.canvas,
+                                      AdvanceDropdown<String?>(
                                         initialValue: controller.itemData!.classTeacher,
                                         name: "classteacher".translate,
                                         iconData: MdiIcons.humanMaleBoard,
-                                        color: Colors.deepPurpleAccent,
                                         items: controller.teacherDropDownList,
                                         onSaved: (value) {
                                           controller.itemData!.classTeacher = value;
                                         },
                                       ),
                                       if (AppVar.appBloc.hesapBilgileri.isEkid)
-                                        MyDropDownField(
+                                        AdvanceDropdown<String?>(
                                           initialValue: controller.itemData!.classTeacher2,
                                           name: "teacher".translate + " 2",
                                           iconData: MdiIcons.humanMaleBoard,
-                                          color: Colors.amber,
                                           items: controller.teacherDropDownList,
                                           onSaved: (value) {
                                             controller.itemData!.classTeacher2 = value;
@@ -210,20 +201,11 @@ class ClassList extends StatelessWidget {
                                         ),
                                       if (AppVar.appBloc.hesapBilgileri.isEkolOrUni && MenuList.hasQBank() && controller.isCourseClass)
                                         Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
-                                          MyDropDownField(
-                                            canvasColor: Fav.design.dropdown.canvas,
-                                            initialValue: controller.itemData!.classLevel,
+                                          AdvanceDropdown<String>(
+                                            initialValue: controller.itemData!.classLevel ?? '0',
                                             name: "classLevel".translate,
                                             iconData: MdiIcons.humanMaleBoard,
-                                            color: Colors.deepPurpleAccent,
-                                            items: ["0", '5', '6', '7', '8', '9', '10', '11', '12', '20', '30', '40', '41']
-                                                .map((item) => DropdownMenuItem(
-                                                    value: item,
-                                                    child: Text(
-                                                      ('classlevel' + item).translate,
-                                                      style: TextStyle(color: Fav.design.primaryText),
-                                                    )))
-                                                .toList(),
+                                            items: ["0", '5', '6', '7', '8', '9', '10', '11', '12', '20', '30', '40', '41'].map((item) => DropdownItem(value: item, name: ('classlevel' + item).translate)).toList(),
                                             onSaved: (value) {
                                               controller.itemData!.classLevel = value;
                                             },

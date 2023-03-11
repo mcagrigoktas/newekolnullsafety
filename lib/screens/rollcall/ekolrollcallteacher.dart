@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mcg_database/mcg_database.dart';
 import 'package:mcg_extension/mcg_extension.dart';
 import 'package:mypackage/mywidgets.dart';
+import 'package:widgetpackage/dropdown_search/dropdownsimplewidget.dart';
 
 import '../../appbloc/appvar.dart';
 import '../../models/allmodel.dart';
@@ -221,7 +222,7 @@ class _EkolRollCallTeacherState extends State<EkolRollCallTeacher> {
                 child: Column(
                   children: <Widget>[
                     8.heightBox,
-                    MyDropDownField(
+                    AdvanceDropdown<int?>(
                       onChanged: (value) {
                         lessonNo = value;
                         getExistingData();
@@ -232,13 +233,9 @@ class _EkolRollCallTeacherState extends State<EkolRollCallTeacher> {
                       },
                       name: 'rcchooselessonno'.translate,
                       iconData: Icons.art_track,
-                      color: Colors.deepPurpleAccent,
                       items: lessonNumbers
-                          .map((no) => DropdownMenuItem(
-                                child: Text(
-                                  '${'lesson'.translate} $no',
-                                  style: TextStyle(color: Fav.design.primaryText),
-                                ),
+                          .map((no) => DropdownItem(
+                                name: '${'lesson'.translate} $no',
                                 value: no,
                               ))
                           .toList(),

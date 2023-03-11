@@ -46,13 +46,13 @@ class ManagerList extends StatelessWidget {
                   detailLeadingTitle: 'managerlist'.translate,
                   detailBackButtonPressed: controller.detailBackButtonPressed,
                   detailTrailingActions: [
-                    _newButton,
                     if (controller.selectedItem != null) _sendSmsButton,
+                    _newButton,
                   ],
                   mainTrailingActions: [_newButton],
                   bothTrailingActions: [
-                    _newButton,
                     if (controller.selectedItem != null) _sendSmsButton,
+                    _newButton,
                   ],
                   mainMiddle: _middle,
                   detailMiddle: _middle,
