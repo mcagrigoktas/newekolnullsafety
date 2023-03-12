@@ -7,7 +7,6 @@ import 'package:mypackage/mywidgets.dart';
 import 'package:mypackage/srcpages/documentview.dart';
 import 'package:mypackage/srcpages/photoview.dart';
 import 'package:mypackage/srcpages/youtube_player/youtubevideopreview.dart';
-import 'package:ficonsax/ficonsax.dart';
 
 import '../../adminpages/screens/evaulationadmin/exams/model.dart';
 import '../../adminpages/screens/evaulationadmin/onlineexam/controller.dart';

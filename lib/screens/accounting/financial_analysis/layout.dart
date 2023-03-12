@@ -123,8 +123,8 @@ class StatisticsPage extends StatelessWidget {
                             data: _model,
                             flexList: [4, 20, 12, 12, 6, 5, 5, 12],
                             cellFormat: (index, data) {
-                              if (index == 1) return (data).safeSubString(0, 50);
-                              if (index == 4) return (data).onlyCapitalLetters;
+                              if (index == 1) return (data as String?).safeSubString(0, 50) ?? '';
+                              if (index == 4) return (data as String?).onlyCapitalLetters ?? '';
 
                               if (index == 6) return data.toString().contains('done') ? '+' : '-';
 

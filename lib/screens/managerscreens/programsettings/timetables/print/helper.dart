@@ -311,7 +311,7 @@ class TimeTablePrintHelper {
                 Row(children: [
                   SizedBox(width: 120, child: Text('classteacher'.translate, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12))),
                   Text(': '.translate, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
-                  Text(AppVar.appBloc.teacherService!.dataListItem(sinif.classTeacher!)?.name ?? '', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
+                  Text(AppVar.appBloc.teacherService!.dataListItem(sinif.classTeacher ?? '?')?.name ?? '', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
                 ]),
               ])),
               Expanded(child: Center(child: Text(DateTime.now().millisecondsSinceEpoch.dateFormat('d-MM-yyyy'), style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12)))),

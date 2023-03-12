@@ -22,15 +22,15 @@ class TransporterStudentDialog extends StatelessWidget {
         child: FadeInUpColumn(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Spacer(
-              flex: 2,
-            ),
+            Spacer(flex: 2),
             if (student.imgUrl != null && student.imgUrl.startsWithHttp)
               ClipRRect(
                 borderRadius: BorderRadius.circular(16),
                 child: MyCachedImage(
                   imgUrl: student.imgUrl!,
                   width: 200,
+                  height: 140,
+                  fit: BoxFit.contain,
                 ),
               ).pt16,
             16.heightBox,

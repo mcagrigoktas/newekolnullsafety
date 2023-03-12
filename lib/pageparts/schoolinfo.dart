@@ -291,7 +291,7 @@ class _AdressBookEditState extends State<AdressBookEdit> {
                     ),
                     MyTextFormField(
                       iconData: state.value!.type == AdresBookType.mail ? Icons.alternate_email : (state.value!.type == AdresBookType.adres ? Icons.map : Icons.phone),
-                      labelText: '',
+                      labelText: state.value!.type == AdresBookType.adres ? 'adres'.translate : '',
                       validatorRules: ValidatorRules(req: true, minLength: 4),
                       initialValue: adress.data,
                       onSaved: (String? value) {
@@ -307,6 +307,7 @@ class _AdressBookEditState extends State<AdressBookEdit> {
                             child: MyTextFormField(
                               labelText: "latitude".translate,
                               initialValue: adress.latitude,
+                              validatorRules: ValidatorRules(req: true, mustNumber: true),
                               onSaved: (value) {
                                 _adressBookList![i].latitude = value;
                               },
@@ -316,6 +317,7 @@ class _AdressBookEditState extends State<AdressBookEdit> {
                             child: MyTextFormField(
                               labelText: "longitude".translate,
                               initialValue: adress.longitude,
+                              validatorRules: ValidatorRules(req: true, mustNumber: true),
                               onSaved: (value) {
                                 _adressBookList![i].longitude = value;
                               },
@@ -332,6 +334,27 @@ class _AdressBookEditState extends State<AdressBookEdit> {
       }
     }
 
+    final _addButton = MyProgressButton(
+      isLoading: _isLoadingAdd,
+      label: 'add'.translate,
+      onPressed: () {
+        _formKey.currentState!.save();
+        setState(() {
+          _isLoadingAdd = true;
+          _formKey = GlobalKey<FormState>();
+          _adressBookList!.add(AdressBookModel(type: AdresBookType.tel, data: '', name: ''));
+        });
+        Future.delayed(const Duration(milliseconds: 100)).then((_) {
+          _scrollController.animateTo(_scrollController.position.maxScrollExtent, duration: const Duration(milliseconds: 300), curve: Curves.linear);
+        });
+        Future.delayed(const Duration(milliseconds: 400)).then((_) {
+          setState(() {
+            _isLoadingAdd = false;
+          });
+        });
+      },
+    );
+
     return AppScaffold(
       topBar: TopBar(leadingTitle: 'adressbook'.translate),
       topActions: TopActionsTitle(title: 'adressbookedit'.translate),
@@ -342,34 +365,14 @@ class _AdressBookEditState extends State<AdressBookEdit> {
           : Body.singleChildScrollView(
               maxWidth: 720,
               scrollController: _scrollController,
-              child: Form(key: _formKey, child: Column(children: adressBookWidgetList)),
+              child: Form(key: _formKey, child: Column(children: adressBookWidgetList..add(_addButton))),
             ),
       bottomBar: _adressBookList == null
           ? null
           : BottomBar(
               child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
-                MyProgressButton(
-                  isLoading: _isLoadingAdd,
-                  label: 'add'.translate,
-                  onPressed: () {
-                    _formKey.currentState!.save();
-                    setState(() {
-                      _isLoadingAdd = true;
-                      _formKey = GlobalKey<FormState>();
-                      _adressBookList!.add(AdressBookModel(type: AdresBookType.tel, data: '', name: ''));
-                    });
-                    Future.delayed(const Duration(milliseconds: 100)).then((_) {
-                      _scrollController.animateTo(_scrollController.position.maxScrollExtent, duration: const Duration(milliseconds: 300), curve: Curves.linear);
-                    });
-                    Future.delayed(const Duration(milliseconds: 400)).then((_) {
-                      setState(() {
-                        _isLoadingAdd = false;
-                      });
-                    });
-                  },
-                ),
                 MyProgressButton(
                   isLoading: _isLoading,
                   label: Words.save,

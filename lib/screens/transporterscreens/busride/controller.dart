@@ -250,7 +250,7 @@ class BusRideController extends BaseController {
       await TransportService.sendTransporterRollCall('S${seferNo}K${time.daysSinceEpoch}', AppVar.appBloc.hesapBilgileri.uid, {'data': data, 'no': seferNo, 'time': time.dateFormat()}).then((value) {
         OverAlert.saveSuc();
         Fav.preferences.setBool(savePreferencesKey, true);
-        _locationSubscription!.cancel();
+        _locationSubscription?.cancel();
 
         //* Eger transporter isi bittikten sonra konumunu silmek istiyorsan ac
         //  Database(app: _firebaseLogsApp).set('Okullar/${AppVar.appBloc.hesapBilgileri.kurumID}/${AppVar.appBloc.hesapBilgileri.termKey}/TransporterLocations/${AppVar.appBloc.hesapBilgileri.uid}', null);
