@@ -135,24 +135,13 @@ class SocialItemWidget extends StatelessWidget with SocialFunctions {
 
     // Popup Menu Button ve içerisine silme ve hedef listesi oluşturur
     if (AppVar.appBloc.hesapBilgileri.gtT || AuthorityHelper.hasYetki4()) {
-      _extralist.add(PopupMenuButton<String>(
-        child: SizedBox(
-          width: 32.0,
-          height: 32.0,
-          child: Icon(
-            Icons.more_vert,
-            size: 20.0,
-            color: Fav.design.disablePrimary,
-          ),
-        ),
-        // child: MyMiniRaisedButton(text: ".",color: appBloc.appTheme.disablePink,),
-        itemBuilder: (context) {
-          return <PopupMenuEntry<String>>[
-            item!.targetList!.contains('onlyteachers') ? PopupMenuItem(value: "onlyteachers", child: Text("onlyteachersshared".translate)) : PopupMenuItem(value: "targetlist", child: Text("targetlist".translate)),
-            const PopupMenuDivider(),
-            if (AppVar.appBloc.hesapBilgileri.gtM || (AppVar.appBloc.hesapBilgileri.gtT && AppVar.appBloc.hesapBilgileri.uid == item!.senderKey)) PopupMenuItem(value: "delete", child: Text(Words.delete)),
-          ];
-        },
+      _extralist.add(SimplePopupButton<String>(
+        child: MoreIcon2(),
+        itemList: [
+          item!.targetList!.contains('onlyteachers') ? PopupItem(value: "onlyteachers", title: "onlyteachersshared".translate) : PopupItem(value: "targetlist", title: "targetlist".translate),
+          PopupItem.divider(),
+          if (AppVar.appBloc.hesapBilgileri.gtM || (AppVar.appBloc.hesapBilgileri.gtT && AppVar.appBloc.hesapBilgileri.uid == item!.senderKey)) PopupItem(value: "delete", title: Words.delete),
+        ],
         onSelected: (value) {
           if (Fav.noConnection()) return;
           if (value == "delete") _delete(item, _isPhoto ? "SocialNetwork" : "Video");

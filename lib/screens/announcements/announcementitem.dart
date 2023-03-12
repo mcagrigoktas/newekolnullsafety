@@ -7,6 +7,7 @@ import 'package:mypackage/mywidgets.dart';
 import 'package:mypackage/srcpages/documentview.dart';
 import 'package:mypackage/srcpages/photoview.dart';
 import 'package:mypackage/srcpages/youtube_player/youtubevideopreview.dart';
+import 'package:ficonsax/ficonsax.dart';
 
 import '../../adminpages/screens/evaulationadmin/exams/model.dart';
 import '../../adminpages/screens/evaulationadmin/onlineexam/controller.dart';
@@ -187,19 +188,15 @@ class AnnouncementItem extends StatelessWidget {
 
     Widget? optionWidget;
     if (AppVar.appBloc.hesapBilgileri.gtT || AuthorityHelper.hasYetki4(warning: false)) {
-      optionWidget = PopupMenuButton<String?>(
-        tooltip: 'Menu',
-        child: SizedBox(width: 32.0, height: 32.0, child: Icon(Icons.more_vert, size: 20.0, color: Fav.design.primaryText.withAlpha(180))),
-        // child: MyMiniRaisedButton(text: ".",color: appBloc.appTheme.disablePink,),
-        itemBuilder: (context) {
-          return <PopupMenuEntry<String>>[
-            if (AppVar.appBloc.hesapBilgileri.gtM || AppVar.appBloc.hesapBilgileri.uid == announcement!.senderKey) PopupMenuItem(value: "pinned", child: Text(((announcement!.isPinned ?? false) ? "notpinned" : "pinned").translate)),
-            announcement!.targetList!.contains('onlyteachers') ? PopupMenuItem(value: "onlyteachers", child: Text("onlyteachersshared".translate)) : PopupMenuItem(value: "targetlist", child: Text("targetlist".translate)),
-            const PopupMenuDivider(),
-            if (AppVar.appBloc.hesapBilgileri.gtM || AppVar.appBloc.hesapBilgileri.uid == announcement!.senderKey) PopupMenuItem(value: "edit", child: Text("edit".translate)),
-            if (AppVar.appBloc.hesapBilgileri.gtM || AppVar.appBloc.hesapBilgileri.uid == announcement!.senderKey) PopupMenuItem(value: "delete", child: Text(Words.delete)),
-          ];
-        },
+      optionWidget = SimplePopupButton<String?>(
+        child: MoreIcon2(),
+        itemList: [
+          if (AppVar.appBloc.hesapBilgileri.gtM || AppVar.appBloc.hesapBilgileri.uid == announcement!.senderKey) PopupItem(value: "pinned", title: ((announcement!.isPinned ?? false) ? "notpinned" : "pinned").translate),
+          announcement!.targetList!.contains('onlyteachers') ? PopupItem(value: "onlyteachers", title: "onlyteachersshared".translate) : PopupItem(value: "targetlist", title: "targetlist".translate),
+          PopupItem.divider(),
+          if (AppVar.appBloc.hesapBilgileri.gtM || AppVar.appBloc.hesapBilgileri.uid == announcement!.senderKey) PopupItem(value: "edit", title: "edit".translate, iconData: IconsaxOutline.edit),
+          if (AppVar.appBloc.hesapBilgileri.gtM || AppVar.appBloc.hesapBilgileri.uid == announcement!.senderKey) PopupItem(value: "delete", title: Words.delete, iconData: IconsaxOutline.trash),
+        ],
         onSelected: (value) {
           if (Fav.noConnection()) return;
           if (value == "delete") AnnonuncementItemHelper.delete(announcement);

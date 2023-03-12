@@ -67,8 +67,8 @@ class ContractCheckoutPage extends StatelessWidget {
                                 DataCell(product.discount!.toStringAsFixed(2).text.make()),
                                 DataCell(product.tax!.toStringAsFixed(2).text.make()),
                                 DataCell(product.net.toStringAsFixed(2).text.make()),
-                                DataCell(product.startDate!.dateFormat("d-MMM-yyyy").text.make()),
-                                DataCell(product.endDate!.dateFormat("d-MMM-yyyy").text.make()),
+                                DataCell((product.startDate ?? 0).dateFormat("d-MMM-yyyy").text.autoSize.maxLines(1).make()),
+                                DataCell((product.endDate ?? 0).dateFormat("d-MMM-yyyy").text.autoSize.maxLines(1).make()),
                                 DataCell(product.exp.text.make()),
                                 DataCell(SizedBox())
                               ].toList(),

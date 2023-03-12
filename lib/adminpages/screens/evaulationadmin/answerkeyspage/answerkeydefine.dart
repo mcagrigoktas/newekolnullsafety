@@ -18,14 +18,11 @@ class AnswerKeyDefine extends StatelessWidget {
       builder: (controller) {
         return AppScaffold(
           topBar: TopBar(leadingTitle: controller.exam!.name, trailingActions: [
-            MyPopupMenuButton(
-              itemBuilder: (context) {
-                return <PopupMenuEntry>[
-                  PopupMenuItem(value: 0, child: Text('sampleexcel'.translate)),
-                  PopupMenuItem(value: 1, child: Text('fromexcell'.translate)),
-                ];
-              },
-              child: Icon(Icons.more_vert, color: Fav.design.appBar.text).paddingOnly(right: 8),
+            SimplePopupButton(
+              itemList: [
+                PopupItem(value: 0, title: 'sampleexcel'.translate),
+                PopupItem(value: 1, title: 'fromexcell'.translate),
+              ],
               onSelected: (value) {
                 if (value == 0) {
                   controller.downloadExcelFile();

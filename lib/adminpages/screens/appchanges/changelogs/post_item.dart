@@ -43,17 +43,11 @@ class PostItemWidget extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               8.widthBox,
-              PopupMenuButton(
-                child: SizedBox(
-                  width: 32.0,
-                  height: 32.0,
-                  child: Icon(Icons.more_vert, size: 20.0, color: Fav.design.disablePrimary),
-                ),
-                itemBuilder: (context) {
-                  return <PopupMenuEntry>[
-                    PopupMenuItem(value: "delete", child: Text(Words.delete)),
-                  ];
-                },
+              SimplePopupButton(
+                child: MoreIcon2(),
+                itemList: [
+                  PopupItem(value: "delete", title: Words.delete),
+                ],
                 onSelected: (value) {
                   if (Fav.noConnection()) return;
                   if (value == "delete") _delete();

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:ficonsax/ficonsax.dart';
 import 'package:flutter/material.dart';
 import 'package:mcg_extension/mcg_extension.dart';
 import 'package:mypackage/mywidgets.dart';
@@ -338,24 +339,13 @@ class _VideoChatAppointmentState extends State<VideoChatAppointment> with AppFun
         leadingTitle: "videolesson".translate,
         trailingActions: <Widget>[
           if (AppVar.appBloc.hesapBilgileri.gtMT)
-            PopupMenuButton<String>(
-              tooltip: 'Menu',
-              child: SizedBox(
-                width: 32.0,
-                height: 32.0,
-                child: Icon(
-                  Icons.more_vert,
-                  size: 20.0,
-                  color: Fav.design.appBar.text,
-                ),
-              ),
-              itemBuilder: (context) {
-                return <PopupMenuEntry<String>>[
-                  PopupMenuItem(value: "targetlist", child: Text("targetlist".translate)),
-                  const PopupMenuDivider(),
-                  if (_program != null && _program!.endTime! > DateTime.now().millisecondsSinceEpoch) PopupMenuItem(value: "delete", child: Text(Words.delete)),
-                ];
-              },
+            SimplePopupButton<String>(
+              child: MoreIcon2(),
+              itemList: [
+                PopupItem(value: "targetlist", title: "targetlist".translate),
+                PopupItem.divider(),
+                if (_program != null && _program!.endTime! > DateTime.now().millisecondsSinceEpoch) PopupItem(value: "delete", title: Words.delete, iconData: IconsaxOutline.trash),
+              ],
               onSelected: (value) {
                 if (Fav.noConnection()) return;
 
@@ -474,25 +464,14 @@ class _VideoChatAppointmentState extends State<VideoChatAppointment> with AppFun
                           color: Fav.design.primary,
                         ),
                       if (AppVar.appBloc.hesapBilgileri.gtMT && item.state == 1)
-                        PopupMenuButton<String>(
-                          tooltip: 'Menu',
-                          child: SizedBox(
-                            width: 32.0,
-                            height: 32.0,
-                            child: Icon(
-                              Icons.more_vert,
-                              size: 20.0,
-                              color: Fav.design.disablePrimary,
+                        SimplePopupButton<String>(
+                          child: MoreIcon2(),
+                          itemList: [
+                            PopupItem<String>(
+                              value: "deletereservestudent",
+                              title: "deletereservestudent".translate,
                             ),
-                          ),
-                          itemBuilder: (context) {
-                            return <PopupMenuEntry<String>>[
-                              PopupMenuItem<String>(
-                                value: "deletereservestudent",
-                                child: Text("deletereservestudent".translate),
-                              ),
-                            ];
-                          },
+                          ],
                           onSelected: (value) {
                             if (Fav.noConnection()) return;
 

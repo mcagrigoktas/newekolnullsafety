@@ -1,4 +1,5 @@
 {
+    "forbidden_operation": "You are no longer able to perform this operation.",
     "subtermsettings": "Term settings",
     "reviewterm": "Review this academic year",
     "reviewtermhint": "You are currently reviewing another academic year. Click here to switch to the active academic year.",

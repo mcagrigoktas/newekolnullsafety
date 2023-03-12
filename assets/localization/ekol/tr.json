@@ -1,4 +1,5 @@
 {
+    "forbidden_operation": "Bu işlemi artık yapamazsınız",
     "subtermsettings": "Dönem işlemleri",
     "reviewterm": "Bu eğitim yılını incele",
     "reviewtermhint": "Şu an başka bir eğitim yılını inceliyorsunuz. Aktif eğitim yılına geçmek için buraya tıklayın.",

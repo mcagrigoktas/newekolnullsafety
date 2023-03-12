@@ -164,7 +164,7 @@ class NewContract extends StatelessWidget {
                               flex: 3,
                               child: MyDatePicker(
                                 padding: Inset.h(2),
-                                initialValue: controller.itemData!.products![_i].startDate,
+                                initialValue: controller.itemData!.products![_i].startDate ?? DateTime.now().millisecondsSinceEpoch,
                                 onChanged: (value) async {
                                   controller.itemData!.products![_i].startDate = value;
                                 },
@@ -177,7 +177,7 @@ class NewContract extends StatelessWidget {
                               flex: 3,
                               child: MyDatePicker(
                                 padding: Inset.h(2),
-                                initialValue: controller.itemData!.products![_i].endDate,
+                                initialValue: controller.itemData!.products![_i].endDate ?? DateTime.now().millisecondsSinceEpoch,
                                 onChanged: (value) async {
                                   controller.itemData!.products![_i].endDate = value;
                                 },

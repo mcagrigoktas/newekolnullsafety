@@ -239,9 +239,12 @@ class SalesContracts extends StatelessWidget {
                 ).pr16
               ],
             );
-            _bottomChild = IgnorePointer(
-              ignoring: controller.selectedContract != null && controller.newContract == null && controller.selectedContract!.isCompleted == true,
-              child: _bottomChild,
+            _bottomChild = GestureDetector(
+              onTap: () => OverAlert.showWarning(message: 'forbidden_operation'.translate),
+              child: AbsorbPointer(
+                absorbing: controller.selectedContract != null && controller.newContract == null && controller.selectedContract!.isCompleted == true,
+                child: _bottomChild,
+              ),
             );
             _bottomBar = RBottomBar(
               bothChild: _bottomChild,
