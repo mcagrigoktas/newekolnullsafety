@@ -519,7 +519,7 @@ class StudentList extends StatelessWidget {
                                         AdvanceDropdown<int?>(
                                           initialValue: controller.itemData!.parentState,
                                           name: "parentState".translate,
-                                          iconData: MdiIcons.bus,
+                                          iconData: MdiIcons.accountSupervisorCircle,
                                           items: [
                                             DropdownItem(child: '-'.text.make(), value: null),
                                             ...Iterable.generate(5, (e) => e)

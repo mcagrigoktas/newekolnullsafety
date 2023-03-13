@@ -137,6 +137,6 @@ class PortfolioController extends GetxController {
   }
 
   void printPortfolio() {
-    PortfolioPrintHelper.print(_dataList ?? [], portfolioMap, AppVar.appBloc.hesapBilgileri.gtS ? AppVar.appBloc.hesapBilgileri.castStudentData as Student? : selectedStudent);
+    PortfolioPrintHelper.print(_dataList ?? [], portfolioMap, AppVar.appBloc.hesapBilgileri.gtS ? (AppVar.appBloc.hesapBilgileri.castStudentData()) : selectedStudent);
   }
 }
